@@ -11,9 +11,19 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        min-height: 90vh;
-        background-color: red;
+        // min-height: 90vh;
+        // background-color: red;
+        // height: 90vh;
+        // margin-top: -80px;
+        // position: relative;
+        background-image: url('/Tennispllatz.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 100vh;
+        margin-top: -150px;
         text-align: center;
+        color: white;
         
         .content {
             padding: 20px;
@@ -25,10 +35,10 @@
 
             .btn {
                 display: inline-block;
-                background: white;
-                color: #3b82f6;
+                background: darkgray;
+                color: white;
                 padding: 0.75rem 1.5rem;
-                border-radius: 3px;
+                border-radius: 5px;
                 font-weight: bold;
                 text-decoration: none;
                 transition: background 0.2s;
@@ -38,6 +48,12 @@
                     color: #2563eb;
                 }
             }
+        }
+    }
+
+    @media (max-width: 600px) {
+        .hero {
+            margin-top: -70px;
         }
     }
     

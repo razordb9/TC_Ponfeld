@@ -11,7 +11,7 @@
 </script>
 
 
-<header>
+<header class="site-header">
 	<Navigation routes={routes}>
 
 	</Navigation>
@@ -30,11 +30,16 @@
     	scroll-behavior: smooth; 
   	}
 
+	.site-header {
+		position: relative;
+		z-index: 2;
+	}
 	.main{
 		display: flex;
 		flex-direction: column;
 		min-height: calc(100vh - 190px);
 		height: 100%;
-		background-color: red;
+		// background-color: red;
+		z-index: 1;
 	}
 </style>

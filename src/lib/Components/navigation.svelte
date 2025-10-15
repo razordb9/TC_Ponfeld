@@ -23,7 +23,7 @@
 </script>
 <nav class="navbar">
   <a href="/" class="logo">
-      <img src="/logo.png" alt="Thomas Hudson-Zaussnig" width="250" height="auto">
+      <img src="/logo_transparent_bg.png" alt="Thomas Hudson-Zaussnig"> <!--  width="450" height="auto"> -->
   </a>
   <ul class="nav-links">
     {#each routes as route}
@@ -46,18 +46,20 @@
 </nav>
 <style lang="scss">
   .navbar {
+    color: white;
+    font-size: 20px;
     width: 100%;
-    height: 70px;
+    height: 150px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: purple;
+    // background-color: purple;
     padding: 10px 0px;
 
     .logo {
       display: flex;
       width: 250px;
-      height: 100%;
+      height: 120px;
 
       img {
         width: 100%;
@@ -75,6 +77,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    // background-color: lightgray;
+    background-color: rgba(211, 211, 211, 0.6);
 
     .nav-item{
       display: flex;
@@ -107,6 +111,14 @@
   }
 
   @media (max-width: 600px) {
+    .navbar {
+      height: 70px;
+      padding: 10px 0px;
+      .logo {
+        height: 70px;
+        padding-top: 10px;
+      }
+    }
     .nav-links {
       display: none;
     }
@@ -115,6 +127,7 @@
       display: block;
     }
     .nav-burger-menu {
+      // background-color: rgba(211, 211, 211, 0.6);
       margin-right:10px;
       display: inline-block;
     }
@@ -126,7 +139,7 @@
       position: absolute;
       height: auto;
       width: 100%;
-      background-color: var(--brand);
+      background-color: rgba(211, 211, 211, 0.6);
       right: 0; /* Align dropdown to the right */
       margin: 10px 0;
       padding: 10px 0;
@@ -139,7 +152,7 @@
         a{
           font-size: 1.2rem;
           text-decoration: none;
-          color: white;
+          color: black;
         }
       }
     }
