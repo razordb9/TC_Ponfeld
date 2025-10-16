@@ -6,7 +6,8 @@
 	import Sponsor from '$lib/Components/sponsor.svelte';
 	import Contact from '$lib/Components/contact.svelte';
 	import { routes } from '$lib/Components/routes';
-
+	import { board_members } from "$lib/Components/board_members";
+	import { sponsors } from '$lib/Components/sponsors';
 	let { children } = $props();
 </script>
 
@@ -18,8 +19,11 @@
 </header>
 <main class="main">
 	{@render children?.()}
-	<About />
-	<Sponsor />
+	<About board_members={board_members}>
+
+	</About>
+	<Sponsor sponsors={sponsors}>
+	</Sponsor>
 	<Contact />
 </main>
 <Footer />

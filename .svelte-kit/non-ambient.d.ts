@@ -36,6 +36,6 @@ declare module "$app/types" {
 		};
 		Pathname(): "/";
 		ResolvedPathname(): `${"" | `/${string}`}${ReturnType<AppTypes['Pathname']>}`;
-		Asset(): "/instagram.svg" | "/logo.png" | "/robots.txt" | string & {};
+		Asset(): "/Tennispllatz.jpg" | "/avatar_female.jpg" | "/avatar_male.jpg" | "/instagram.svg" | "/logo.png" | "/logo_transparent_bg.png" | "/robots.txt" | string & {};
 	}
 }

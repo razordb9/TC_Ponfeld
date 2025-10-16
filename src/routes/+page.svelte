@@ -21,7 +21,7 @@
         background-position: center;
         background-repeat: no-repeat;
         height: 100vh;
-        margin-top: -150px;
+        // margin-top: -150px;
         text-align: center;
         color: white;
         

@@ -46,6 +46,7 @@
 </nav>
 <style lang="scss">
   .navbar {
+    position: fixed;
     color: white;
     font-size: 20px;
     width: 100%;
