@@ -7,7 +7,21 @@ declare global {
 		// interface PageData {}
 		// interface PageState {}
 		// interface Platform {}
+
+		interface Route {
+			path:string,
+			name:string
+		}
+
+		interface BoardMember {
+			name: string,
+			function: string,
+			picture: string,
+			about: string
+		}
 	}
 }
 
-export {};
+
+
+export {Route, BoardMember};

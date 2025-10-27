@@ -1,29 +1,29 @@
 <script lang="ts">
+    import type { BoardMember } from "../../app";
 
+    
     let {
-        name = "",
-        funktion = "",
-        picture = "",
-        about = "",
-    }: Props = $props();
+        boardmember=null
+    }=$props();
 
+    console.log("AboutCard", boardmember)
 </script>
 
 <div class="about_card">
     <img
         class="about-image"
-        src='{picture}'
-        alt="{picture}"
+        src='{boardmember.picture}'
+        alt="{boardmember.picture}"
     />
     <div class="about-meta">
         <div class="about_card_title">
-            {name}    
+            {boardmember.name}    
         </div>
         <div class="blog_card_subtext">
-            {funktion}
+            {boardmember.funktion}
         </div>
         <div class="blog_card_publisher">
-            <div>{about}</div>
+            <div>{boardmember.about}</div>
         </div>
     </div>
 </div>

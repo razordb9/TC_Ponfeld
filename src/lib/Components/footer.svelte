@@ -1,13 +1,20 @@
+<script lang="ts">
+    import { footer } from '$lib/Components/footer';
+
+    console.log(footer);
+</script>
+
 <footer>
-    <div id="footer-content">
-        Copyright &copy; Thomas HUDSON-ZAUSSNIG •
-        <a href="/impressum">Impressum •</a>
-        <a href="/agb">AGB •</a>
-        <a href="/kontakt">Kontakt</a>
-    </div>
-    <span>
+    Copyright &copy; Thomas HUDSON-ZAUSSNIG •
+    {#each footer as foot}
+        <div id="footer-content">
+            <a href={foot.path}>{foot.name} •</a>
+            <!-- <a href="/AGB">AGB •</a> k -->
+        </div>
+    {/each}
+        <!--<span>
         <a href="https://www.instagram.com/tsonga_64/" target="_blank"><img class="footer-img" src="/instagram.svg" alt="Instagram"/></a>
-    </span>
+    </span> -->
 </footer>
 
 

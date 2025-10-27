@@ -1,10 +1,8 @@
 <script lang="ts">
-  // import {Routes} from "$lib/Components/routes";
+	import { routes } from '$lib/Components/routes';
+  // import { Route } from '../../app';
 
-  type Route={
-    path:string,
-    name:string
-  }
+  
 
   var open = $state(false);
   const openBurgerMenue = (e:MouseEvent) => {
@@ -19,18 +17,16 @@
     routes: Routes;
   }
 
-  let { routes }: Props = $props();
 </script>
-<nav class="navbar">
+<!-- <nav class="navbar">
   <a href="/" class="logo">
-      <img src="/logo_transparent_bg.png" alt="Thomas Hudson-Zaussnig"> <!--  width="450" height="auto"> -->
+      <img src="/logo_transparent_bg.png" alt="Thomas Hudson-Zaussnig"> 
   </a>
   <ul class="nav-links">
     {#each routes as route}
       <li class="nav-item"><a href="{route.path}">{route.name}</a></li>
     {/each}
   </ul>
-   <!-- svelte-ignore a11y_click_events_have_key_events -->
    <div class="nav-burger-menu" onclick={openBurgerMenue}> 
     <div class="line"></div>
     <div class="line"></div>
@@ -43,7 +39,7 @@
   </div>
   
 
-</nav>
+</nav> -->
 <style lang="scss">
   .navbar {
     position: fixed;
