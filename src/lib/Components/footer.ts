@@ -1,3 +1,5 @@
+import type { Route } from "$lib/types";
+
 export const footer=[
     {
         name: "AGB",
@@ -7,4 +9,4 @@ export const footer=[
         name: "Impressum",
         path: "/Impressum"
     }
-]
+] as Route[]

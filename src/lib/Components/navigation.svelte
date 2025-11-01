@@ -1,7 +1,5 @@
 <script lang="ts">
 	import { routes } from '$lib/Components/routes';
-  // import { Route } from '../../app';
-
   
 
   var open = $state(false);
@@ -11,14 +9,9 @@
     open = !open;
   }
 
-  type Routes = Array<Route>;
-
-  interface Props {
-    routes: Routes;
-  }
 
 </script>
-<!-- <nav class="navbar">
+<nav class="navbar">
   <a href="/" class="logo">
       <img src="/logo_transparent_bg.png" alt="Thomas Hudson-Zaussnig"> 
   </a>
@@ -39,7 +32,7 @@
   </div>
   
 
-</nav> -->
+</nav>
 <style lang="scss">
   .navbar {
     position: fixed;

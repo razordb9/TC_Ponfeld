@@ -1,22 +1,25 @@
 <script lang="ts">
+    import type { Sponsor } from "$lib/types";
 
+    // import { Sponsor } from '../../app'
+    
     let {
-        name = "",
-        logo = "",
-        link = ""
-    }: Props = $props();
+        sponsor
+    }:{sponsor:Sponsor} = $props();
+
+
 </script>
 
 <div class="sponsor_card">
-    <a href={link}>
+    <a href={sponsor?.link}>
         <img 
             class="sponsor_img"
-            src={logo}
-            alt={logo}
+            src={sponsor?.logo}
+            alt={sponsor?.logo}
         />
-        <!-- <div class="sponsor_name">
-            {name}
-        </div> -->
+        <div class="sponsor_name">
+            {sponsor?.name}
+        </div>
     </a>
 </div>
 

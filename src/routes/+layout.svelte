@@ -1,4 +1,5 @@
 <script lang="ts">
+	import '@picocss/pico/css/pico.min.css';
 	import "$lib/css/custom_styles.css";
 	import Footer from '$lib/Components/footer.svelte';
 	import Navigation from '$lib/Components/navigation.svelte';

@@ -1,3 +1,5 @@
+import type { Route } from "../../app";
+
 export const routes=[
     {
         path:"#about",
@@ -12,4 +14,4 @@ export const routes=[
         name:"Kontakt"
     },
 
-]
+] as Route[]

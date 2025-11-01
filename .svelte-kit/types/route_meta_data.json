@@ -1,5 +1,12 @@
 {
-	"/": [],
-	"/AGB": [],
-	"/Impressum": []
+	"/": [
+		"src/routes/+layout.ts",
+		"src/routes/+layout.ts"
+	],
+	"/AGB": [
+		"src/routes/+layout.ts"
+	],
+	"/Impressum": [
+		"src/routes/+layout.ts"
+	]
 }

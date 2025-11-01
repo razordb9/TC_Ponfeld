@@ -1,3 +1,5 @@
+import type { BoardMember } from "$lib/types";
+
 export const board_members =[
     {
         name:"Holzer Roland",
@@ -35,4 +37,4 @@ export const board_members =[
         picture:"/avatar_male.jpg",
         about:"mister lover lover"
     },
-]
+] as BoardMember[]

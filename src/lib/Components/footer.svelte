@@ -6,15 +6,13 @@
 
 <footer>
     Copyright &copy; Thomas HUDSON-ZAUSSNIG •
-    {#each footer as foot}
-        <div id="footer-content">
-            <a href={foot.path}>{foot.name} •</a>
-            <!-- <a href="/AGB">AGB •</a> k -->
-        </div>
+    {#each footer as foot}        
+        <a href={foot.path}>{foot.name} •</a>
+        <!-- <a href="/AGB">AGB •</a> k -->
     {/each}
-        <!--<span>
+        <span>
         <a href="https://www.instagram.com/tsonga_64/" target="_blank"><img class="footer-img" src="/instagram.svg" alt="Instagram"/></a>
-    </span> -->
+    </span>
 </footer>
 
 

@@ -1,3 +1,5 @@
+import type { Sponsor } from "$lib/types";
+
 export const sponsors=[
     {
         name:"Uniqua",
@@ -44,4 +46,4 @@ export const sponsors=[
         logo:"/logo_sponsor.png",
         link:"https://www.auto-rainer.at"
     }, 
-]
+] as Sponsor[]

@@ -2,18 +2,21 @@
     import SponsorsCard from "./sponsors_card.svelte";
 	import { sponsors } from '$lib/Components/sponsors';
     
-
-    // console.log(sponsors);
+    console.log(sponsors);
 </script>
 
 <div id="sponsor">
     <h1>Wer sind unsere Sponsoren</h1>
     <div class="sponsor-container">
+        {#if sponsors.length}
         {#each sponsors as sponsor}
             <div class=sponsor-item>
-                <SponsorsCard name={sponsor.name} logo={sponsor.logo} link={sponsor.link}></SponsorsCard>
+                <SponsorsCard sponsor={sponsor}></SponsorsCard>
             </div>
         {/each}
+        {:else}
+            <p>Wir sind negger</p>
+        {/if}
     </div>
 </div>
 

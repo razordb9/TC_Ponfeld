@@ -1,12 +1,9 @@
 <script lang="ts">
-    import type { BoardMember } from "../../app";
-
-    
     let {
-        boardmember=null
+        boardmember
     }=$props();
 
-    console.log("AboutCard", boardmember)
+    // console.log("AboutCard", boardmember)
 </script>
 
 <div class="about_card">
@@ -20,7 +17,7 @@
             {boardmember.name}    
         </div>
         <div class="blog_card_subtext">
-            {boardmember.funktion}
+            {boardmember.function}
         </div>
         <div class="blog_card_publisher">
             <div>{boardmember.about}</div>

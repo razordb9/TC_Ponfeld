@@ -8,20 +8,10 @@ declare global {
 		// interface PageState {}
 		// interface Platform {}
 
-		interface Route {
-			path:string,
-			name:string
-		}
-
-		interface BoardMember {
-			name: string,
-			function: string,
-			picture: string,
-			about: string
-		}
+		
 	}
 }
 
 
 
-export {Route, BoardMember};
+export {};

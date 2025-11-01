@@ -1,1 +1,1 @@
-export const sources
+export const sources = []
