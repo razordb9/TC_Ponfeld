@@ -3,7 +3,7 @@
 	import About from '$lib/Components/about.svelte';
 	import Sponsor from '$lib/Components/sponsor.svelte';
     import type { ActionData, PageProps } from "./$types";
-    import Contact from "$lib/Components/Contact.svelte";
+    import Contact from "$lib/Components/contact.svelte";
     let { form }: { form: ActionData } = $props(); 
 
 </script>

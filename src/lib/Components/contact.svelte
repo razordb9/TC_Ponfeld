@@ -1,6 +1,6 @@
 <script lang="ts">
     import { enhance } from "$app/forms";
-    import type { ActionData } from "../../routes/$types";
+    import type { ActionData } from "./TC_Groessinghof_Ponfeld/Homepage/TC_Ponfeld/.svelte-kit/types/src/routes/$types";
 
     let {form= $bindable<ActionData | null>(null) } = $props();
 
