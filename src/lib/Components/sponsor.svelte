@@ -1,6 +1,6 @@
 <script lang="ts">
     import SponsorsCard from "./sponsors_card.svelte";
-	import { sponsors } from '$lib/Components/sponsors';
+	import { sponsors } from '$lib/sponsors';
     
     console.log(sponsors);
 </script>

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { footer } from '$lib/Components/footer';
+    import { footer } from '$lib/footer';
 
     console.log(footer);
 </script>

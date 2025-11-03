@@ -1,6 +1,6 @@
 <script lang="ts">
     import AboutCard from "./about_card.svelte";
-	import { board_members } from "$lib/Components/board_members";
+	import { board_members } from "$lib/board_members";
     
 
     

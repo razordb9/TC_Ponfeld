@@ -2,6 +2,8 @@ import { fail } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 import { z } from "zod";
 import { form } from '$app/server';
+import { Resend } from 'resend';
+import { RESEND_API_KEY, EMAIL_FROM, EMAIL_TO } from '$env/static/private';
 
 const contactform = z.object({
   name: z.string().min(3, { message: "Name is required and must be at least 3 characters long" }),
@@ -9,12 +11,13 @@ const contactform = z.object({
   message: z.string().min(10, { message: "Bitte Nachricht eingeben mit 10 Zeichen"}),
 }); 
 
-
+const resend = new Resend(RESEND_API_KEY);
 
 export const load:PageServerLoad = async(event) => {};
 export const actions = {
   sendmail: async(event) => {
     const formData = await event.request.formData();
+
     console.log(formData);
     const formEntriey = Object.fromEntries(formData);
     const result = await contactform.safeParseAsync(formEntriey);
@@ -24,6 +27,9 @@ export const actions = {
     const message = formData.get("message");
 
     console.log(result);
+    console.log('api key:', RESEND_API_KEY)
+    console.log('from:', EMAIL_FROM)
+    console.log('to:', EMAIL_TO)
     if (!result.success){
       const tree = z.treeifyError(result.error);  
       console.log(tree.properties)
@@ -39,8 +45,26 @@ export const actions = {
             }); 
     }
 
+    try {
+      await resend.emails.send({
+        from: 'TC Ponfeld Groessinghof <onboarding@resend.dev>',
+        // from: EMAIL_FROM as string,
+        to: EMAIL_TO as string,
+        subject: 'New message from TC Ponfeld Groessinghof website',
+        text: `
+          Name: ${result.data.name}
+          Email: ${result.data.email}
 
-    return{success: true}
+          Message:
+          ${result.data.message}
+                  `,
+      });
+      
+      return{success: true}
+    } catch (err){
+      console.log(err)
+      return { error: "Failed to send email. Try again later." };
+    }
   }
 
 } satisfies Actions

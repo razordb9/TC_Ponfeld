@@ -166,7 +166,21 @@ function Contact($$renderer, $$props) {
     } else {
       $$renderer2.push("<!--[!-->");
     }
-    $$renderer2.push(`<!--]--> <button type="submit">Absenden</button></fieldset></form></div>`);
+    $$renderer2.push(`<!--]--> <button type="submit">Absenden</button> `);
+    if (form?.success) {
+      $$renderer2.push("<!--[-->");
+      $$renderer2.push(`<p style="color:green;">✅ Message sent successfully!</p>`);
+    } else {
+      $$renderer2.push("<!--[!-->");
+    }
+    $$renderer2.push(`<!--]--> `);
+    if (form?.error) {
+      $$renderer2.push("<!--[-->");
+      $$renderer2.push(`<p style="color:red;">❌ ${escape_html(form.error)}</p>`);
+    } else {
+      $$renderer2.push("<!--[!-->");
+    }
+    $$renderer2.push(`<!--]--></fieldset></form></div>`);
     bind_props($$props, { form });
   });
 }

@@ -27,6 +27,7 @@
 	},
 	"dependencies": {
 		"@picocss/pico": "^2.1.1",
+		"resend": "^6.4.0",
 		"zod": "^4.1.12"
 	}
 }

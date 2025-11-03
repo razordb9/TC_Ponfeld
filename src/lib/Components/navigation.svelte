@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { routes } from '$lib/Components/routes';
+	import { routes } from '$lib/routes';
   
 
   var open = $state(false);
