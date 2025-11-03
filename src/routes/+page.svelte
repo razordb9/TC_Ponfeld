@@ -1,11 +1,11 @@
 <script lang="ts">
 	import "$lib/css/custom_styles.css";
-	// import Footer from '$lib/Components/footer.svelte';
-	// import Navigation from '$lib/Components/navigation.svelte';
 	import About from '$lib/Components/about.svelte';
 	import Sponsor from '$lib/Components/sponsor.svelte';
-	import Contact from '$lib/Components/contact.svelte';
-	let { children } = $props();
+    import type { ActionData, PageProps } from "./$types";
+    import Contact from "$lib/Components/Contact.svelte";
+    let { form }: { form: ActionData } = $props(); 
+
 </script>
 
 <section class="hero">
@@ -21,7 +21,7 @@
 	</About>
 	<Sponsor>
 	</Sponsor>
-	<Contact />
+	<Contact {form} />
 </main>
 
 
@@ -77,7 +77,19 @@
             }
         }
     }
+    #contact {
+        // height: 600px;
+        text-align: center;
+        background-color: salmon;
+    }
 
+    form {
+        max-width: 400px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+    }
     @media (max-width: 600px) {
         .hero {
             margin-top: -70px;

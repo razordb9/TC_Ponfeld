@@ -1,22 +1,32 @@
-<!-- <script lang="ts">
+<script lang="ts">
+    import { enhance } from "$app/forms";
+    import type { ActionData } from "../../routes/$types";
 
-</script> -->
+    let {form= $bindable<ActionData | null>(null) } = $props();
+
+</script>
+
 <div id="contact">
     <h1>Wie könnt ihr mit uns in Verbindung treten?</h1>
-    <form method="POST">
-        <label>Name (*)</label>
-        <input type="text" name="name" required>
-
-        <label>Email (*)</label>
-        <input type="email" name="email" required>
-
-        <label>Text(*)</label>
-        <textarea id="message" name="message" rows="7"></textarea>
-        <!-- <input type="text" name="message" required> -->
-
-        <button type="submit">Absenden</button>
-    </form>
+    <form bind:this={form} method="POST" use:enhance action="?/sendmail">
+        <fieldset>
+            <label>Name (*) <input type="text" id="name" name="name"></label>
+            {#if form?.errors && form?.values.name}
+                <p class="error">{form?.errors["name"]?.errors}</p>
+            {/if} 
+            <label>Email (*)<input type="email" id="email" name="email" autocomplete="username" placeholder="example@domain.com" ></label>
+            {#if form?.errors && form?.values.email}
+                <p class="error">{form?.errors["email"]?.errors}</p>
+            {/if} 
+            <label>Text (*)<textarea id="message" name="message" rows="7"></textarea></label>    
+            {#if form?.errors && form?.values.message}
+                <p class="error">{form?.errors["message"]?.errors}</p>
+            {/if}     
+            <button type="submit">Absenden</button>
+        </fieldset>
+     </form>
 </div>
+
 <style lang="scss">
     #contact {
         // height: 600px;
@@ -32,7 +42,4 @@
         gap: 0.6rem;
     }
   
-//   input, textarea {
-//     padding: 8px;
-//   }
 </style>

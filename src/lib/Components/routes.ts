@@ -1,4 +1,4 @@
-import type { Route } from "../../app";
+import type { Route } from "$lib/types";
 
 export const routes=[
     {
