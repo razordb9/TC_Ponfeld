@@ -14,10 +14,6 @@
     "file": "chunks/context.js",
     "name": "context"
   },
-  "_custom_styles.DIa8Lgby.css": {
-    "file": "_app/immutable/assets/custom_styles.DIa8Lgby.css",
-    "src": "_custom_styles.DIa8Lgby.css"
-  },
   "_environment.js": {
     "file": "chunks/environment.js",
     "name": "environment"
@@ -55,6 +51,17 @@
       "_equality.js",
       "_context.js",
       "_environment.js"
+    ]
+  },
+  "_project.DyCbbVGy.css": {
+    "file": "_app/immutable/assets/project.DyCbbVGy.css",
+    "src": "_project.DyCbbVGy.css"
+  },
+  "_project.config.js": {
+    "file": "chunks/project.config.js",
+    "name": "project.config",
+    "css": [
+      "_app/immutable/assets/project.DyCbbVGy.css"
     ]
   },
   "_query.js": {
@@ -139,12 +146,12 @@
     "src": "src/routes/+layout.svelte",
     "isEntry": true,
     "imports": [
+      "_project.config.js",
       "_index2.js",
       "_context.js"
     ],
     "css": [
-      "_app/immutable/assets/_layout.B2mWLKhJ.css",
-      "_app/immutable/assets/custom_styles.DIa8Lgby.css"
+      "_app/immutable/assets/_layout.meeW7VJK.css"
     ]
   },
   "src/routes/+layout.ts": {
@@ -169,6 +176,7 @@
     "src": "src/routes/+page.svelte",
     "isEntry": true,
     "imports": [
+      "_project.config.js",
       "_index2.js",
       "_context.js",
       "_exports.js",
@@ -176,8 +184,7 @@
       "_state.svelte.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.OvRbJBKt.css",
-      "_app/immutable/assets/custom_styles.DIa8Lgby.css"
+      "_app/immutable/assets/_page.BLWO_hoT.css"
     ]
   },
   "src/routes/AGB/+page.svelte": {
