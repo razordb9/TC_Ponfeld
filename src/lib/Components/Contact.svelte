@@ -1,6 +1,6 @@
 <script lang="ts">
     import { enhance } from "$app/forms";
-    import type { ActionData } from "./TC_Groessinghof_Ponfeld/Homepage/TC_Ponfeld/.svelte-kit/types/src/routes/$types";
+    import type { ActionData } from "../../routes/$types";
 
     let {form= $bindable<ActionData | null>(null) } = $props();
 
@@ -33,20 +33,3 @@
         </fieldset>
      </form>
 </div>
-
-<style lang="scss">
-    #contact {
-        // height: 600px;
-        text-align: center;
-        background-color: salmon;
-    }
-
-    form {
-        max-width: 400px;
-        margin: auto;
-        display: flex;
-        flex-direction: column;
-        gap: 0.6rem;
-    }
-  
-</style>

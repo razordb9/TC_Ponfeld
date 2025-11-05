@@ -20,7 +20,7 @@
             {boardmember.function}
         </div>
         <div class="blog_card_publisher">
-            <div>{boardmember.about}</div>
+            <div>{boardmember.description}</div>
         </div>
     </div>
 </div>

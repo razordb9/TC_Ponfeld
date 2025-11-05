@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { routes } from '$lib/routes';
+  import { navigation } from '$lib/project.config';
   
 
   var open = $state(false);
@@ -16,8 +16,8 @@
       <img src="/logo_transparent_bg.png" alt="Thomas Hudson-Zaussnig"> 
   </a>
   <ul class="nav-links">
-    {#each routes as route}
-      <li class="nav-item"><a href="{route.path}">{route.name}</a></li>
+    {#each navigation as route}
+      <li class="nav-item"><a href="{route.url}">{route.name}</a></li>
     {/each}
   </ul>
    <div class="nav-burger-menu" onclick={openBurgerMenue}> 
@@ -25,133 +25,9 @@
     <div class="line"></div>
     <div class="line"></div>
     <ul class="nav-burger-menu-links" class:mobile={open==true}>
-      {#each routes as route}
-        <li class="nav-item"><a href="{route.path}">{route.name}</a></li>
+      {#each navigation as route}
+        <li class="nav-item"><a href="{route.url}">{route.name}</a></li>
       {/each}
     </ul> 
   </div>
-  
-
 </nav>
-<style lang="scss">
-  .navbar {
-    position: fixed;
-    color: white;
-    font-size: 20px;
-    width: 100%;
-    height: 150px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    // background-color: purple;
-    padding: 10px 0px;
-
-    .logo {
-      display: flex;
-      width: 250px;
-      height: 120px;
-
-      img {
-        width: 100%;
-        object-fit: contain;
-        height: auto;
-      }
-    }
-  }
-  .nav-burger-menu {
-      display: none;
-    }
-  .nav-links {
-    width: auto;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    // background-color: lightgray;
-    background-color: rgba(211, 211, 211, 0.6);
-
-    .nav-item{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      list-style: none;
-      height: 50%;
-      margin-right: 10px;
-
-      a{
-        display: flex;
-        padding-inline: 1rem;
-        align-items: center;
-        height: 100%;
-        text-decoration: none;
-        transition: all 200ms ease-in-out;
-        color: var(--nav_secondary);
-        border-radius: 5px;
-        background-color: var(--surface-1-light);
-      }
-
-      &:hover {
-        a {
-          // background-color: var(--nav_secondary);
-          transition: all 200ms ease-in-out;
-          color: var(--nav_primary);
-        }
-      }
-    }
-  }
-
-  @media (max-width: 600px) {
-    .navbar {
-      height: 70px;
-      padding: 10px 0px;
-      .logo {
-        height: 70px;
-        padding-top: 10px;
-      }
-    }
-    .nav-links {
-      display: none;
-    }
-
-    .nav-burger-menu .mobile {
-      display: block;
-    }
-    .nav-burger-menu {
-      // background-color: rgba(211, 211, 211, 0.6);
-      margin-right:10px;
-      display: inline-block;
-    }
-
-    .nav-burger-menu-links {
-      flex-direction: column;
-      display: none;
-      top: 60px;
-      position: absolute;
-      height: auto;
-      width: 100%;
-      background-color: rgba(211, 211, 211, 0.6);
-      right: 0; /* Align dropdown to the right */
-      margin: 10px 0;
-      padding: 10px 0;
-
-      .nav-item {
-        margin: 10px;
-        text-align: center;
-        list-style-type: none;
-
-        a{
-          font-size: 1.2rem;
-          text-decoration: none;
-          color: black;
-        }
-      }
-    }
-
-    .line {
-      width: 25px;
-      height: 3px;
-      background-color: #fff;
-      margin: 3px;
-    }
-  }
-</style>

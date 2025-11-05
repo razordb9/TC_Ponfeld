@@ -1,8 +1,6 @@
 <script lang="ts">
     import type { Sponsor } from "$lib/types";
 
-    // import { Sponsor } from '../../app'
-    
     let {
         sponsor
     }:{sponsor:Sponsor} = $props();
@@ -11,7 +9,7 @@
 </script>
 
 <div class="sponsor_card">
-    <a href={sponsor?.link}>
+    <a href={sponsor?.url}>
         <img 
             class="sponsor_img"
             src={sponsor?.logo}
@@ -22,11 +20,3 @@
         </div>
     </a>
 </div>
-
-<style lang="scss">
-    img {
-        width: 150px;
-        height: 150px;
-        border-radius: 100px;
-    }
-</style>

@@ -16,84 +16,9 @@
 
 </section>
     <main class="main">
-	<About>
+	<About/>
 
-	</About>
 	<Sponsor>
 	</Sponsor>
 	<Contact {form} />
 </main>
-
-
-<style lang="scss">
-    .main{
-		display: flex;
-		flex-direction: column;
-		min-height: calc(100vh - 190px);
-		height: 100%;
-		// background-color: red;
-		z-index: 1;
-	}
-    .hero{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        // min-height: 90vh;
-        // background-color: red;
-        // height: 90vh;
-        // margin-top: -80px;
-        // position: relative;
-        background-image: url('/Tennispllatz.jpg');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        height: 100vh;
-        // margin-top: -150px;
-        text-align: center;
-        color: white;
-        
-        .content {
-            padding: 20px;
-
-            h1 {
-                font-size: 3rem;
-                margin-bottom: 1rem;
-            }
-
-            .btn {
-                display: inline-block;
-                background: darkgray;
-                color: white;
-                padding: 0.75rem 1.5rem;
-                border-radius: 5px;
-                font-weight: bold;
-                text-decoration: none;
-                transition: background 0.2s;
-
-                &:hover {
-                    background: #e0e7ff;
-                    color: #2563eb;
-                }
-            }
-        }
-    }
-    #contact {
-        // height: 600px;
-        text-align: center;
-        background-color: salmon;
-    }
-
-    form {
-        max-width: 400px;
-        margin: auto;
-        display: flex;
-        flex-direction: column;
-        gap: 0.6rem;
-    }
-    @media (max-width: 600px) {
-        .hero {
-            margin-top: -70px;
-        }
-    }
-    
-</style>

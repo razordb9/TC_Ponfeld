@@ -13,5 +13,5 @@ export interface BoardMember {
 export interface Sponsor {
 			name: string,
 			logo: string,
-			link: string
+			url: string
 		}
