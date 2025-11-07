@@ -2,10 +2,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* outline: 1px solid red; */
 }
 
 html {
   scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  width: 100%
 }/*# sourceMappingURL=custom_styles.css.map */
 
 /* Navbar */
@@ -135,11 +139,12 @@ html {
   align-items: center;
   justify-items: center;
   margin: 2rem auto;
-  width: 900px;
+  /* width: 900px; */
     
 }
 .about-item {
   background: lightgray;
+  flex: 0 0 calc(25% - 1rem);
   padding: 1rem;
   text-align: center;
   border-radius: 10px;
@@ -156,9 +161,9 @@ html {
 }
 
 .sponsor_img {
-  width: 150px;
-  height: 150px;
-  border-radius: 100px;
+  width: 170px;
+  height: 90px;
+  /* border-radius: 100px; */
 }
 
 .sponsor-container {
@@ -236,46 +241,53 @@ footer {
   /* Hero section */
 
   .hero {
-    margin-top: -70px;
+    /* margin-top: -70px; */
   }
 
   /* Nav bar */
 
   .navbar {
+    margin: 10px 0px;
     height: 70px;
-    padding: 10px 0px;
+    padding: 10px 10px;
+    /* padding: 0; */
     .logo {
       height: 70px;
-      padding-top: 10px;
     }
   }
   .nav-links {
     display: none;
   }
 
-  /* .nav-burger-menu .mobile {
-    display: block;
-  } */
+  .nav-burger-menu .mobile {
+    display: flex;
+    flex-direction: column;
+    width: 102%;
+  }
 
   .nav-burger-menu {
-    margin-right:10px;
+    /* margin-right:10px; */
+    margin: 0;
+    padding: 0;
     display: inline-block;
   }
 
   .nav-burger-menu-links {
-    flex-direction: column;
+    overflow-x: hidden;
     display: none;
-    top: 60px;
+    flex-direction: column;
     position: absolute;
-    height: auto;
-    width: 100%;
-    background-color: rgba(211, 211, 211, 0.6);
-    right: 0; /* Align dropdown to the right */
-    margin: 10px 0;
+    top: 80px;
+    left: 0;
+    right: 0; 
+    width: 100vw;
+    background-color: rgba(255,255,255);
+    margin: 0;
     padding: 10px 0;
+    z-index: 1000;
 
     .nav-item {
-      margin: 10px;
+      margin: 10px 0;
       text-align: center;
       list-style-type: none;
 
@@ -292,5 +304,17 @@ footer {
     height: 3px;
     background-color: #fff;
     margin: 3px;
+  }
+
+  #about {
+    padding-top: 100px;
+  }
+
+  #sponsor {
+    padding-top: 100px;
+  }
+
+  #contact {
+    padding-top: 100px;
   }
 }

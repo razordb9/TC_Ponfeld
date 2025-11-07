@@ -19,9 +19,9 @@ interface Member {
 
 export const sponsors: Sponsor[] = [
      {
-       name: 'Raiffeisen Bank',
-       logo: '/logo_sponsor.png',
-       url: 'https://www.raiffeisen.ro/',
+       name: 'petzner',
+       logo: '/petzner.png',
+       url: 'http://www.petzner.at/',
        description: 'Raiffeisen Bank is der geilste Sponsor aller Zeiten.'
    },
    {
@@ -81,7 +81,7 @@ export const members: Member[] = [
         name:"Pirker Michael",
         function:"Stv. Obmann",
         picture:"/avatar_male.jpg",
-        description:"Platwart/Hirsch"
+        description:"Platwartz/Hirsch"
     },
     {
         name:"Jakeisch Michael",
@@ -102,10 +102,10 @@ export const members: Member[] = [
         description:"IT guy"
     },
     {
-        name:"Schallegger Gerald",
+        name:"Bitte bewerben",
         function:"Stv. Schriftführer",
-        picture:"/avatar_male.jpg",
-        description:"mister lover lover"
+        picture:"/avatar_female.jpg",
+        description:"schriftlich"
     },
 ]
 
@@ -124,6 +124,10 @@ export const navigation: Link[] = [
     {
         name:"Über uns",
         url:"#about"
+    },
+    {
+        name:"News",
+        url:"/"
     },
     {
         name:"Sponsoren",

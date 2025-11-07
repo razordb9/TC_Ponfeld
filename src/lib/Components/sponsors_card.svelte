@@ -9,7 +9,7 @@
 </script>
 
 <div class="sponsor_card">
-    <a href={sponsor?.url}>
+    <a href={sponsor?.url} target="_blank">
         <img 
             class="sponsor_img"
             src={sponsor?.logo}
