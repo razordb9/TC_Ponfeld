@@ -27,16 +27,17 @@ export {};
 
 declare module "$app/types" {
 	export interface AppTypes {
-		RouteId(): "/" | "/AGB" | "/Impressum";
+		RouteId(): "/" | "/AGB" | "/Impressum" | "/Scroller";
 		RouteParams(): {
 			
 		};
 		LayoutParams(): {
 			"/": Record<string, never>;
 			"/AGB": Record<string, never>;
-			"/Impressum": Record<string, never>
+			"/Impressum": Record<string, never>;
+			"/Scroller": Record<string, never>
 		};
-		Pathname(): "/" | "/AGB" | "/AGB/" | "/Impressum" | "/Impressum/";
+		Pathname(): "/" | "/AGB" | "/AGB/" | "/Impressum" | "/Impressum/" | "/Scroller" | "/Scroller/";
 		ResolvedPathname(): `${"" | `/${string}`}${ReturnType<AppTypes['Pathname']>}`;
 		Asset(): "/Tennispllatz.jpg" | "/avatar_female.jpg" | "/avatar_male.jpg" | "/error.png" | "/instagram.svg" | "/logo.png" | "/logo_sponsor.png" | "/logo_transparent_bg.png" | "/petzner.png" | "/robots.txt" | string & {};
 	}

@@ -9,5 +9,8 @@
 	],
 	"/Impressum": [
 		"src/routes/+layout.ts"
+	],
+	"/Scroller": [
+		"src/routes/+layout.ts"
 	]
 }
