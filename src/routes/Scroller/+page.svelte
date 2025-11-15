@@ -1,22 +1,4 @@
 <script lang="ts">
-    // import starbucks from "$lib/assets/starbucks-100.svg";
-    // import apple from "$lib/assets/apple-100.svg";
-    // import bbc from "$lib/assets/bbc-100.svg";
-    // import hbo from "$lib/assets/hbo-100.svg";
-    // import microsoft from "$lib/assets/microsoft-100.svg";
-    // import brave from "$lib/assets/brave-100.svg";
-    // import amazon from "$lib/assets/amazon-100.svg";
-    // import discord from "$lib/assets/discord-100.svg";
-    // import nordvpn from "$lib/assets/nordvpn-100.svg";
-    // import subway from "$lib/assets/subway-100.svg";
-    
-    // import p1 from "$lib/assets/p1.jpg";
-    // import p2 from "$lib/assets/p2.jpg";
-    // import p3 from "$lib/assets/p3.jpg";
-    // import p4 from "$lib/assets/p4.jpg";
-    // import p5 from "$lib/assets/p5.jpg";
-    // import p6 from "$lib/assets/p6.jpg";
-
     import Horizontalscroller from "$lib/Components/horizontalscroller.svelte";
     import { sponsors } from "$lib/project.config";
     import { members } from "$lib/project.config";

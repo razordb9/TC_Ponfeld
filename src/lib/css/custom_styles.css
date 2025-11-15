@@ -24,6 +24,12 @@ html {
   font-family: syste-ui, sans-serif;
   scroll-behavior: smooth;
 } 
+.error-msg {
+  padding-top: var(--padding);
+  text-align: center;
+  margin: auto 0;
+}
+
 /* Navbar */
 .navbar {
   position: fixed;

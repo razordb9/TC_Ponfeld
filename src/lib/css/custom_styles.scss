@@ -26,6 +26,12 @@ html {
     scroll-behavior: smooth;
 }/*# sourceMappingURL=custom_styles.css.map */
 
+
+.error-msg {
+    padding-top: var(--padding);
+    text-align: center;
+    margin: auto 0;
+}
 /* Navbar */
 
 .navbar {
