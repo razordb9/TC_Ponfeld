@@ -29,6 +29,9 @@ declare module '$env/static/private' {
 	export const RESEND_API_KEY: string;
 	export const EMAIL_TO: string;
 	export const EMAIL_FROM: string;
+	export const BETTER_AUTH_SECRET: string;
+	export const BETTER_AUTH_URL: string;
+	export const DATABASE_URL: string;
 	export const TERM_PROGRAM: string;
 	export const NODE: string;
 	export const INIT_CWD: string;
@@ -126,6 +129,9 @@ declare module '$env/dynamic/private' {
 		RESEND_API_KEY: string;
 		EMAIL_TO: string;
 		EMAIL_FROM: string;
+		BETTER_AUTH_SECRET: string;
+		BETTER_AUTH_URL: string;
+		DATABASE_URL: string;
 		TERM_PROGRAM: string;
 		NODE: string;
 		INIT_CWD: string;

@@ -1,14 +1,15 @@
+// @ts-nocheck
 import type { Actions } from "@sveltejs/kit";
 import type { PageServerLoad } from "../../../routes/$types";
 import { loginSchema, signupSchema } from "$lib/schema/auth";
 import z from "zod";
 
-export const load: PageServerLoad = async ({ request, locals, params }) => {
+export const load = async ({ request, locals, params }: Parameters<PageServerLoad>[0]) => {
     return {};
 }
 
-export const actions: Actions = {
-    login: async ({ request }) => {
+export const actions = {
+    login: async ({ request }: import('./$types').RequestEvent) => {
         const formData = await request.formData();
         const email = formData.get("email")?.toString() ?? "";
         const password = formData.get("password")?.toString() ?? "";
@@ -28,4 +29,4 @@ export const actions: Actions = {
         }
 
     }
-};
+};;null as any as Actions;

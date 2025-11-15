@@ -1,5 +1,5 @@
 import { fail } from '@sveltejs/kit';
-import type { Actions, PageServerLoad } from './(app)/$types';
+import type { Actions, PageServerLoad } from '../routes/$types';
 import { z } from "zod";
 import { form } from '$app/server';
 import { Resend } from 'resend';

@@ -16,7 +16,8 @@ export const nodes = [
 	() => import('./nodes/12'),
 	() => import('./nodes/13'),
 	() => import('./nodes/14'),
-	() => import('./nodes/15')
+	() => import('./nodes/15'),
+	() => import('./nodes/16')
 ];
 
 export const server_loads = [3];
@@ -33,7 +34,8 @@ export const dictionary = {
 		"/admin/posts/[slug]/edit": [~11],
 		"/admin/users": [~13,[3]],
 		"/admin/users/create": [~14,[3]],
-		"/auth/login": [~15]
+		"/auth/login": [~15],
+		"/auth/signup": [~16]
 	};
 
 export const hooks = {

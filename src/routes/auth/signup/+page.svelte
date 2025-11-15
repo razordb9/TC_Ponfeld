@@ -6,6 +6,7 @@
     import { goto, invalidateAll } from "$app/navigation";
 
     let { form }: { form: ActionData } = $props();
+    let name = $state<string>("");
     let email = $state<string>("");
     let password = $state<string>("");
     let betterAuthError = $state<string | null>(null);
@@ -15,13 +16,14 @@
             await applyAction(result);
             if (result.type === "success" && result.data?.success === true) {
                 // handle successful signup, e.g., redirect or show a message
-                await authClient.signIn.email({
+                await authClient.signUp.email({
+                    name,
                     password,
                     email,
                 },{
                     onSuccess: async (data) => {
                         await invalidateAll();
-                        goto("/admin");
+                        goto("/");
                     },
                     onError: async (error) => {
                         betterAuthError = error instanceof Error ? error.error.code : String(error.error.code);
@@ -32,7 +34,7 @@
     };
 </script>
 
-<h1>Login</h1>
+<h1>Signup</h1>
 {#if form?.errors}
     {@render error(form?.message)}
 {/if}
@@ -40,8 +42,17 @@
     {@render error(betterAuthError)}
 {/if}
 
-<form action="?/login" use:enhance={submitFunction} method="POST">
+<form action="?/signup" use:enhance={submitFunction} method="POST">
     <fieldset>
+        <label for="name">Name</label>
+        <input
+            type="text"
+            bind:value={name}
+            name="name"
+            id="name"
+            required
+        />
+        {@render fromError(form?.errors, "name")}   
         <label for="email">email</label>
         <input
             type="email"
@@ -56,12 +67,12 @@
             type="password"
             bind:value={password}
             name="password"
-            id="login_password"
-            autocomplete="current-password"
+            id="password"
+            autocomplete="new-password"
             required
         />
         {@render fromError(form?.errors, "password")}   
-        <button type="submit">Login</button>
+        <button type="submit">Sign Up</button>
     </fieldset>
 </form>
 
