@@ -2,19 +2,35 @@
 	import "$lib/css/custom_styles.css";
 	import Footer from '$lib/components/footer.svelte';
 	import Navigation from '$lib/components/navigation.svelte';
+	import type { User } from "better-auth";
+	import type { Snippet } from "svelte";
 	
-	let { children } = $props();
+	let { data, children }: {data:{user:User}, children: Snippet} = $props();
+
+	let user = $state<User | null>(null);
+	
+	
+	$effect(() => {
+		user = data?.user;
+	}) 
+
 </script>
+<div class="app">
+	<header class="site-header">
+		{user?.name ?? "guest"}
+		<Navigation>
+
+		</Navigation>
+	</header>
+	<main>
+		
+		{@render children?.()}
+		<Footer/>
+	</main>
+</div>
 
 
-<header class="site-header">
-	<Navigation>
 
-	</Navigation>
-</header>
-	{@render children?.()}
-
-<Footer/>
 
 
 <style lang="scss">
@@ -23,8 +39,13 @@
   	}
 
 	.site-header {
-		position: relative;
+		top: 0;
+		position: fixed;
 		z-index: 2;
+	}
+
+	main {
+		margin-top: 150px;
 	}
 	
 </style>

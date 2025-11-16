@@ -1,10 +1,10 @@
 <script lang="ts">
 	import "$lib/css/custom_styles.css";
     import type { ActionData, PageProps } from "./$types";
-    import Contact from "$lib/components/Contact.svelte";
     import Horizontalscroller from "$lib/components/horizontalscroller.svelte";
     import { sponsors } from "$lib/project.config";
     import { members } from "$lib/project.config";
+    import Contact from "$lib/components/Contact.svelte";
     let { form }: { form: ActionData } = $props(); 
 
 </script>

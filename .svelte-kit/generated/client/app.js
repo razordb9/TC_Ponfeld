@@ -20,14 +20,14 @@ export const nodes = [
 	() => import('./nodes/16')
 ];
 
-export const server_loads = [3];
+export const server_loads = [0,3];
 
 export const dictionary = {
 		"/": [~4],
 		"/AGB": [5],
 		"/Impressum": [6],
 		"/Scroller": [7,[2]],
-		"/admin": [8],
+		"/admin": [~8],
 		"/admin/posts": [~9],
 		"/admin/posts/create": [~12],
 		"/admin/posts/[slug]": [~10],

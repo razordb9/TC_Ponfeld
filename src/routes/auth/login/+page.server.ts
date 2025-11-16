@@ -1,31 +1,24 @@
-import type { Actions } from "@sveltejs/kit";
-import type { PageServerLoad } from "../../../routes/$types";
-import { loginSchema, signupSchema } from "$lib/schema/auth";
+import type { Actions } from '../../../routes/$types';
+import { loginSchema } from "$lib/schema/auth";
 import z from "zod";
 
-export const load: PageServerLoad = async ({ request, locals, params }) => {
-    return {};
-}
-
-export const actions: Actions = {
-    login: async ({ request }) => {
+export const actions:Actions = {
+    login: async({ request }) => {
         const formData = await request.formData();
-        const email = formData.get("email")?.toString() ?? "";
-        const password = formData.get("password")?.toString() ?? "";
-        // Validate input;
-        const result = await loginSchema.safeParseAsync({ email, password });
-        if (!result.success) {
+        const formEntries = Object.fromEntries(formData);
+        const result = await loginSchema.safeParseAsync(formEntries);
+
+        if(!result.success) {
             return {
                 success: false,
-                message: 'Validation failed',
+                message: "Validation failed",
                 errors: z.treeifyError(result.error)?.properties
-            }   // ZodError instance
+            }
         } else {
             return {
-                message: 'Signup successful',
                 success: true,
+                message: "Login successful"
             }
         }
-
     }
-};
+}

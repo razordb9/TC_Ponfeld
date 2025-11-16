@@ -16,7 +16,7 @@ ECECEB
     --primary-background: #ECECEB;
 
     --secondary-color: #0C0D0B;
-    --secondary-background: ;
+    --secondary-background: #020302;
 
     --animation-speed: "10s";
     --padding: 250px;
@@ -102,6 +102,13 @@ html {
       }
     }
   }
+}
+/* Login page */
+#signup {
+    padding-top: 300px;
+    height: auto;
+    background-color: orange;
+    padding-bottom: 50px;
 }
 
 /*Hero section */

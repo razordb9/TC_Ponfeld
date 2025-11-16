@@ -15,7 +15,7 @@ ECECEB
   --primary-color: #8FA33B;
   --primary-background: #ECECEB;
   --secondary-color: #0C0D0B;
-  --secondary-background: ;
+  --secondary-background: #020302;
   --animation-speed: "10s";
   --padding: 250px;
 }
@@ -93,6 +93,14 @@ html {
   transition: all 200ms ease-in-out;
   color: var(--nav_primary);
   background-color: rgba(211, 211, 211, 0.6);
+}
+
+/* Login page */
+#signup {
+  padding-top: 300px;
+  height: auto;
+  background-color: orange;
+  padding-bottom: 50px;
 }
 
 /*Hero section */
