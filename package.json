@@ -11,7 +11,8 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "prettier --write .",
-		"lint": "prettier --check ."
+		"lint": "prettier --check .",
+		"db:push": "drizzle-kit push"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^6.0.0",
@@ -32,6 +33,7 @@
 	"dependencies": {
 		"better-auth": "^1.3.34",
 		"better-sqlite3": "^12.4.1",
+		"quill": "^2.0.3",
 		"resend": "^6.4.0",
 		"zod": "^4.1.12"
 	}

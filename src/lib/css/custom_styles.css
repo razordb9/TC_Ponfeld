@@ -30,6 +30,11 @@ html {
   margin: auto 0;
 }
 
+/* Admin Page */
+#adminPage {
+  padding: var(--padding);
+}
+
 /* Navbar */
 .navbar {
   position: fixed;
@@ -133,6 +138,11 @@ html {
 }
 
 .btn {
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  min-height: 30px;
+  outline: none;
+  border: none;
   display: inline-block;
   background: darkgray;
   color: white;

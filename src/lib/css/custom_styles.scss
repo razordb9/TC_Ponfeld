@@ -12,7 +12,7 @@ ECECEB
 
 }
 :root {
-    --primary-color: #8FA33B;
+   --primary-color: #8FA33B;
     --primary-background: #ECECEB;
 
     --secondary-color: #0C0D0B;
@@ -32,6 +32,12 @@ html {
     text-align: center;
     margin: auto 0;
 }
+
+/* Admin Page */
+#adminPage {
+    padding: var(--padding);
+}
+
 /* Navbar */
 
 .navbar {
@@ -111,6 +117,14 @@ html {
     padding-bottom: 50px;
 }
 
+/* Create Posts */
+#createpost{
+    padding: var(--padding);
+
+    #editor {
+        height: 300px;
+    }
+}
 /*Hero section */
 
 .main{
@@ -146,6 +160,10 @@ html {
 }
 
 .btn {
+    min-width: fit-content;
+    min-height: 30px;
+    outline: none;
+    border: none;
     display: inline-block;
     background: darkgray;
     color: white;
