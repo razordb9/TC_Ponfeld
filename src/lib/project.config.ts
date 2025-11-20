@@ -123,15 +123,15 @@ export const footer: Link[] = [
 export const navigation: Link[] = [
     {
         name:"Über uns",
-        url:"#about"
+        url:"#team"
     },
-    {
-        name:"News",
-        url:"/"
-    },
+    // {
+    //     name:"News",
+    //     url:"/"
+    // },
     {
         name:"Sponsoren",
-        url:"#sponsor"
+        url:"#sponsors"
     },
     {
         name:"Kontakt",

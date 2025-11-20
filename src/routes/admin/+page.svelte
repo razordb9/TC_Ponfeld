@@ -1,0 +1,9 @@
+<section id="adminPage">
+    <h1>AdminPage</h1>
+
+    <ul>
+        <li><a href="/admin/posts/create">Create Post</a></li>
+        <li><a href="/auth/signup">Create new user</a></li>
+    </ul>
+    
+</section>

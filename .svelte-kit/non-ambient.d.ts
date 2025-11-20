@@ -27,17 +27,29 @@ export {};
 
 declare module "$app/types" {
 	export interface AppTypes {
-		RouteId(): "/" | "/AGB" | "/Impressum";
+		RouteId(): "/" | "/AGB" | "/Impressum" | "/Scroller" | "/admin" | "/admin/posts" | "/admin/posts/create" | "/admin/posts/[slug]" | "/admin/posts/[slug]/edit" | "/admin/users" | "/admin/users/create" | "/auth" | "/auth/login" | "/auth/signup";
 		RouteParams(): {
-			
+			"/admin/posts/[slug]": { slug: string };
+			"/admin/posts/[slug]/edit": { slug: string }
 		};
 		LayoutParams(): {
-			"/": Record<string, never>;
+			"/": { slug?: string };
 			"/AGB": Record<string, never>;
-			"/Impressum": Record<string, never>
+			"/Impressum": Record<string, never>;
+			"/Scroller": Record<string, never>;
+			"/admin": { slug?: string };
+			"/admin/posts": { slug?: string };
+			"/admin/posts/create": Record<string, never>;
+			"/admin/posts/[slug]": { slug: string };
+			"/admin/posts/[slug]/edit": { slug: string };
+			"/admin/users": Record<string, never>;
+			"/admin/users/create": Record<string, never>;
+			"/auth": Record<string, never>;
+			"/auth/login": Record<string, never>;
+			"/auth/signup": Record<string, never>
 		};
-		Pathname(): "/" | "/AGB" | "/AGB/" | "/Impressum" | "/Impressum/";
+		Pathname(): "/" | "/AGB" | "/AGB/" | "/Impressum" | "/Impressum/" | "/Scroller" | "/Scroller/" | "/admin" | "/admin/" | "/admin/posts" | "/admin/posts/" | "/admin/posts/create" | "/admin/posts/create/" | `/admin/posts/${string}` & {} | `/admin/posts/${string}/` & {} | `/admin/posts/${string}/edit` & {} | `/admin/posts/${string}/edit/` & {} | "/admin/users" | "/admin/users/" | "/admin/users/create" | "/admin/users/create/" | "/auth" | "/auth/" | "/auth/login" | "/auth/login/" | "/auth/signup" | "/auth/signup/";
 		ResolvedPathname(): `${"" | `/${string}`}${ReturnType<AppTypes['Pathname']>}`;
-		Asset(): "/Tennispllatz.jpg" | "/avatar_female.jpg" | "/avatar_male.jpg" | "/error.png" | "/instagram.svg" | "/logo.png" | "/logo_sponsor.png" | "/logo_transparent_bg.png" | "/robots.txt" | string & {};
+		Asset(): "/Tennispllatz.jpg" | "/avatar_female.jpg" | "/avatar_male.jpg" | "/error.png" | "/instagram.svg" | "/logo.png" | "/logo_sponsor.png" | "/logo_transparent_bg.png" | "/petzner.png" | "/robots.txt" | string & {};
 	}
 }

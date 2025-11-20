@@ -1,21 +1,36 @@
 <script lang="ts">
-	import '@picocss/pico/css/pico.min.css';
 	import "$lib/css/custom_styles.css";
-	import Footer from '$lib/Components/footer.svelte';
-	import Navigation from '$lib/Components/navigation.svelte';
+	import Footer from '$lib/components/footer.svelte';
+	import Navigation from '$lib/components/navigation.svelte';
+	import type { Snippet } from "svelte";
+  	import type { ExtendedUser } from "../app";
 	
-	let { children } = $props();
+	let { data, children }: {data:{user:ExtendedUser}, children: Snippet} = $props();
+
+	let user = $state<ExtendedUser | null>(null);
+	console.log(data.user);
+	
+	$effect(() => {
+		user = data?.user;
+	}) 
+
 </script>
+<div class="app">
+	<header class="site-header">
+		{user?.name ?? "guest"}
+		<Navigation user={data.user}>
+
+		</Navigation>
+	</header>
+	<main>
+		
+		{@render children?.()}
+		<Footer/>
+	</main>
+</div>
 
 
-<header class="site-header">
-	<Navigation>
 
-	</Navigation>
-</header>
-	{@render children?.()}
-
-<Footer/>
 
 
 <style lang="scss">
@@ -24,8 +39,13 @@
   	}
 
 	.site-header {
-		position: relative;
+		top: 0;
+		position: fixed;
 		z-index: 2;
+	}
+
+	main {
+		margin-top: 150px;
 	}
 	
 </style>

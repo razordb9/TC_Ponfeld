@@ -22,7 +22,7 @@
             {#if form?.errors && form?.values.message}
                 <p class="error">{form?.errors["message"]?.errors}</p>
             {/if}     
-            <button type="submit">Absenden</button>
+            <button class="btn" type="submit">Absenden</button>
             {#if form?.success}
                 <p style="color:green;">✅ Message sent successfully!</p>
             {/if}
