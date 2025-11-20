@@ -4,7 +4,7 @@
     import Horizontalscroller from "$lib/components/horizontalscroller.svelte";
     import { sponsors } from "$lib/project.config";
     import { members } from "$lib/project.config";
-    import Contact from "$lib/components/Contact.svelte";
+    import Contact from "$lib/components/contact_new.svelte";
     let { form }: { form: ActionData } = $props(); 
 
 </script>
