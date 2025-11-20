@@ -17,7 +17,7 @@
 </script>
 <div class="app">
 	<header class="site-header">
-		{user?.name ?? "guest"}
+		<!-- {user?.name ?? "guest"} -->
 		<Navigation user={data.user}>
 
 		</Navigation>

@@ -5,6 +5,7 @@
     import { sponsors } from "$lib/project.config";
     import { members } from "$lib/project.config";
     import Contact from "$lib/Components/contact_new.svelte";
+    import AboutCard from "$lib/components/about_card.svelte";
     let { form }: { form: ActionData } = $props(); 
 
 </script>
@@ -17,21 +18,28 @@
 
 </section>
 <main class="main">
-     <article id="team">
-        <h2>Our Team</h2>
-            <Horizontalscroller speed="20s" width="1500px" direction="reverse">
-                {#each members as member}
-                    <li class="team-member">
-                        <!-- <AboutCard boardmember={member}></AboutCard> -->
-                        <img loading="eager" src={member.picture} alt={member.name}>
+    <section id="team"> 
+        <h2>Our Team</h2> 
+        <article id="team-container">
+        
+            <!-- <Horizontalscroller speed="20s" width="1500px" direction="reverse"> -->
+
+            {#each members as member}
+                <div class="team-member">
+                    <li>
+                        <AboutCard boardmember={member}></AboutCard>
+                        <!-- <img loading="eager" src={member.picture} alt={member.name}>
                         <h3>{member.name}</h3>
-                        <h4>{member.function}</h4>
-                    </li> 
-                {/each}
-            </Horizontalscroller>
-    </article>
-	<article id="sponsors">
+                        <h4>{member.function}</h4>-->
+                    </li>  
+                </div>
+            {/each}
+            <!-- </Horizontalscroller> -->
+        </article>
+    </section>
+    <section id="sponsors">
         <h2>Unsere Sponsoren</h2>
+        <article id="sponsors-container">
             <Horizontalscroller speed="30s" width="600px" direction="forward">
                 {#each sponsors as sponsor}
                     <li class="sponsor">
@@ -41,8 +49,9 @@
                     </li>
                 {/each}
             </Horizontalscroller>
-
-    </article>
+        </article>
+    </section>
+	
     
 	<Contact {form} />
 </main>
