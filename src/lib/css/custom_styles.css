@@ -9,6 +9,7 @@ ECECEB
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  list-style: none;
 }
 
 :root {
@@ -17,13 +18,18 @@ ECECEB
   --secondary-color: #0C0D0B;
   --secondary-background: #020302;
   --animation-speed: "10s";
-  --padding: 250px;
+  --padding: 150px;
 }
 
 html {
   font-family: syste-ui, sans-serif;
   scroll-behavior: smooth;
 } 
+.checkbox-wrap input, .checkbox-wrap label {
+  display: inline-block;
+  vertical-align: middle;
+}
+
 .error-msg {
   padding-top: var(--padding);
   text-align: center;
@@ -101,11 +107,23 @@ html {
 }
 
 /* Login page */
+#login {
+  padding-top: 150px;
+  height: 100vh;
+  margin: 0 auto;
+}
+
+/* Signup page */
 #signup {
-  padding-top: 300px;
-  height: auto;
-  background-color: orange;
-  padding-bottom: 50px;
+  padding: 50px 0px;
+}
+
+/* Create Posts */
+#createpost {
+  padding: 50px;
+}
+#createpost #editor {
+  height: 300px;
 }
 
 /*Hero section */

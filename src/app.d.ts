@@ -7,17 +7,19 @@ declare global {
 	namespace App {
 		// interface Error {}
 		interface Locals {
-			user: User,
+			user: ExtendedUser,
 			session: Session
 		}
 		// interface PageData {}
 		// interface PageState {}
 		// interface Platform {}
-
+		interface ExtendedUser extends User{
+			isAdmin: boolean,
+		}
 		
 	}
 }
 
 
 
-export {Locals};
+export {Locals, ExtendedUser};

@@ -11,19 +11,24 @@ export const actions = {
     signup: async({ request }: import('./$types').RequestEvent) => {
         const formData = await request.formData();
         const formEntries = Object.fromEntries(formData);
-        const result = await signupSchema.safeParseAsync(formEntries);
+        console.log(formData);
+        let isAdmin = formData.get('isAdmin')?.toString() === 'on' ? true : false;
+    
+        console.log(isAdmin)
 
-        if(!result.success) {
-            return {
-                success: false,
-                message: "Validation failed",
-                errors: z.treeifyError(result.error)?.properties
-            }
-        } else {
-            return {
-                success: true,
-                message: "Signup successful"
-            }
-        }
+        // const result = await signupSchema.safeParseAsync(formEntries);
+
+        // if(!result.success) {
+        //     return {
+        //         success: false,
+        //         message: "Validation failed",
+        //         errors: z.treeifyError(result.error)?.properties
+        //     }
+        // } else {
+        //     return {
+        //         success: true,
+        //         message: "Signup successful"
+        //     }
+        // }
     }
 };null as any as Actions;

@@ -2,13 +2,13 @@
 	import "$lib/css/custom_styles.css";
 	import Footer from '$lib/components/footer.svelte';
 	import Navigation from '$lib/components/navigation.svelte';
-	import type { User } from "better-auth";
 	import type { Snippet } from "svelte";
+  	import type { ExtendedUser } from "../app";
 	
-	let { data, children }: {data:{user:User}, children: Snippet} = $props();
+	let { data, children }: {data:{user:ExtendedUser}, children: Snippet} = $props();
 
-	let user = $state<User | null>(null);
-	
+	let user = $state<ExtendedUser | null>(null);
+	console.log(data.user);
 	
 	$effect(() => {
 		user = data?.user;
