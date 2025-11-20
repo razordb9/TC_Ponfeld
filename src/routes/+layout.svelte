@@ -1,7 +1,7 @@
 <script lang="ts">
 	import "$lib/css/custom_styles.css";
-	import Footer from '$lib/components/footer.svelte';
-	import Navigation from '$lib/components/navigation.svelte';
+	import Footer from '$lib/Components/footer.svelte';
+	import Navigation from '$lib/Components/navigation.svelte';
 	import type { Snippet } from "svelte";
   	import type { ExtendedUser } from "../app";
 	

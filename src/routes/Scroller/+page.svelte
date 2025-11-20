@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Horizontalscroller from "$lib/components/horizontalscroller.svelte";
+    import Horizontalscroller from "$lib/Components/horizontalscroller.svelte";
     import { sponsors } from "$lib/project.config";
     import { members } from "$lib/project.config";
     console.log(members);
