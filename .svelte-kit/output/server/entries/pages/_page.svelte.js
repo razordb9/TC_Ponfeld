@@ -1,0 +1,93 @@
+import { c as bind_props, e as ensure_array_like } from "../../chunks/index2.js";
+/* empty css                         */
+import { H as Horizontalscroller } from "../../chunks/horizontalscroller.js";
+import { m as members, s as sponsors } from "../../chunks/project.config.js";
+import "@sveltejs/kit/internal";
+import "../../chunks/exports.js";
+import "../../chunks/utils2.js";
+import { e as escape_html } from "../../chunks/escaping.js";
+import "clsx";
+import "@sveltejs/kit/internal/server";
+import "../../chunks/state.svelte.js";
+import { a as attr } from "../../chunks/attributes.js";
+function Contact($$renderer, $$props) {
+  $$renderer.component(($$renderer2) => {
+    let { form = null } = $$props;
+    $$renderer2.push(`<div id="contact"><h1>Wie könnt ihr mit uns in Verbindung treten?</h1> <form method="POST" action="?/sendmail"><fieldset><label>Name (*) <input type="text" id="name" name="name"/></label> `);
+    if (form?.errors && form?.values.name) {
+      $$renderer2.push("<!--[-->");
+      $$renderer2.push(`<p class="error">${escape_html(form?.errors["name"]?.errors)}</p>`);
+    } else {
+      $$renderer2.push("<!--[!-->");
+    }
+    $$renderer2.push(`<!--]--> <label>Email (*)<input type="email" id="email" name="email" autocomplete="username" placeholder="example@domain.com"/></label> `);
+    if (form?.errors && form?.values.email) {
+      $$renderer2.push("<!--[-->");
+      $$renderer2.push(`<p class="error">${escape_html(form?.errors["email"]?.errors)}</p>`);
+    } else {
+      $$renderer2.push("<!--[!-->");
+    }
+    $$renderer2.push(`<!--]--> <label>Text (*)<textarea id="message" name="message" rows="7"></textarea></label> `);
+    if (form?.errors && form?.values.message) {
+      $$renderer2.push("<!--[-->");
+      $$renderer2.push(`<p class="error">${escape_html(form?.errors["message"]?.errors)}</p>`);
+    } else {
+      $$renderer2.push("<!--[!-->");
+    }
+    $$renderer2.push(`<!--]--> <button class="btn" type="submit">Absenden</button> `);
+    if (form?.success) {
+      $$renderer2.push("<!--[-->");
+      $$renderer2.push(`<p style="color:green;">✅ Message sent successfully!</p>`);
+    } else {
+      $$renderer2.push("<!--[!-->");
+    }
+    $$renderer2.push(`<!--]--> `);
+    if (form?.error) {
+      $$renderer2.push("<!--[-->");
+      $$renderer2.push(`<p style="color:red;">❌ ${escape_html(form.error)}</p>`);
+    } else {
+      $$renderer2.push("<!--[!-->");
+    }
+    $$renderer2.push(`<!--]--></fieldset></form></div>`);
+    bind_props($$props, { form });
+  });
+}
+function _page($$renderer, $$props) {
+  let { form } = $$props;
+  $$renderer.push(`<section class="hero"><div class="content"><h1>TC Grössinghof Ponfeld</h1> <a href="https://groessinghof-ponfeld.tennisplatz.info/" target="_blank" class="btn">Platzreservierung</a></div></section> <main class="main"><article id="team"><h2>Our Team</h2> `);
+  Horizontalscroller($$renderer, {
+    speed: "20s",
+    width: "1500px",
+    direction: "reverse",
+    children: ($$renderer2) => {
+      $$renderer2.push(`<!--[-->`);
+      const each_array = ensure_array_like(members);
+      for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
+        let member = each_array[$$index];
+        $$renderer2.push(`<li class="team-member"><img loading="eager"${attr("src", member.picture)}${attr("alt", member.name)}/> <h3>${escape_html(member.name)}</h3> <h4>${escape_html(member.function)}</h4></li>`);
+      }
+      $$renderer2.push(`<!--]-->`);
+    }
+  });
+  $$renderer.push(`<!----></article> <article id="sponsors"><h2>Unsere Sponsoren</h2> `);
+  Horizontalscroller($$renderer, {
+    speed: "30s",
+    width: "600px",
+    direction: "forward",
+    children: ($$renderer2) => {
+      $$renderer2.push(`<!--[-->`);
+      const each_array_1 = ensure_array_like(sponsors);
+      for (let $$index_1 = 0, $$length = each_array_1.length; $$index_1 < $$length; $$index_1++) {
+        let sponsor = each_array_1[$$index_1];
+        $$renderer2.push(`<li class="sponsor"><a${attr("href", sponsor.url)} target="_blank" rel="noopener"><img${attr("src", sponsor.logo)}${attr("alt", sponsor.name)} width="100" height="100"/></a></li>`);
+      }
+      $$renderer2.push(`<!--]-->`);
+    }
+  });
+  $$renderer.push(`<!----></article> `);
+  Contact($$renderer, { form });
+  $$renderer.push(`<!----></main>`);
+}
+export {
+  _page as default
+};
