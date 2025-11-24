@@ -48,6 +48,7 @@ Jungle Civilization
 
   --padding-block: 1rem;
   --animation-fix-padding: 0.5rem;
+  --radius: 5px;
 
   box-sizing: border-box;
   margin: 0;
@@ -67,13 +68,6 @@ html {
     text-align: center;
     margin: auto 0;
 }
-section {
-    // padding-top: var(--padding);
-    // margin: 0 auto;
-    // padding: 20px;
-    // border: solid red;
-    // width: 90%;
-}
 h1, h2, h3, h4, h5, h6 {
     text-align: center;
 }
@@ -86,7 +80,7 @@ h1, h2, h3, h4, h5, h6 {
     background: darkgray;
     color: white;
     padding: 0.75rem 1.5rem;
-    border-radius: 5px;
+    border-radius: var(--radius);
     font-weight: bold;
     text-decoration: none;
     transition: background 0.2s;
@@ -144,6 +138,7 @@ form {
 
 /* Design pattern page */
 #designpattern {
+  padding: var(--padding);
   text-align: left;
 }
 /* Admin Page */
@@ -164,11 +159,6 @@ form {
   width: 100%;
   background-color: var(--third-color);
   
-  // .navbar.scrolled {
-  //   background-color: rgba(255, 255, 255, 0.9); /* or any color */
-  //   backdrop-filter: blur(8px); /* optional */
-  // }
-
   .navbar-left .logo {
     height: 140px;
   }
@@ -179,7 +169,7 @@ form {
     margin: 0;
     padding: 0;
   }
-  a {
+  .nav-item a {
     text-decoration: none;
     color: white;
     font-weight: 500;
@@ -189,19 +179,18 @@ form {
     // background-color: var(--primary-color);
     &:hover {
       background-color: var(--secondary-background);
-
+      border-radius: var(--radius);
       a {
         color: var(--third-background); 
       }
     }
   }
-  // .nav-item:hover {
-  //   background-color: var(--secondary-background);
-
-  //   a {
-  //     color: var(--third-background); 
-  //   }
-  // }
+  .navbar-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
 
   .nav-burger-menu{
     display: none;

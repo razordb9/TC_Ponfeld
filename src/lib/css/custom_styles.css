@@ -41,6 +41,7 @@ Jungle Civilization
   --padding: 180px;
   --padding-block: 1rem;
   --animation-fix-padding: 0.5rem;
+  --radius: 5px;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -75,7 +76,7 @@ h1, h2, h3, h4, h5, h6 {
   background: darkgray;
   color: white;
   padding: 0.75rem 1.5rem;
-  border-radius: 5px;
+  border-radius: var(--radius);
   font-weight: bold;
   text-decoration: none;
   transition: background 0.2s;
@@ -138,6 +139,7 @@ form {
 /* Default settings end */
 /* Design pattern page */
 #designpattern {
+  padding: var(--padding);
   text-align: left;
 }
 
@@ -169,7 +171,7 @@ form {
   margin: 0;
   padding: 0;
 }
-.navbar a {
+.navbar .nav-item a {
   text-decoration: none;
   color: white;
   font-weight: 500;
@@ -179,9 +181,16 @@ form {
 }
 .navbar .navbar-center .nav-item:hover {
   background-color: var(--secondary-background);
+  border-radius: var(--radius);
 }
 .navbar .navbar-center .nav-item:hover a {
   color: var(--third-background);
+}
+.navbar .navbar-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 .navbar .nav-burger-menu {
   display: none;

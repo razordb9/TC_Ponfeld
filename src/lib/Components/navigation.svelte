@@ -44,14 +44,14 @@
         <li class="nav-item"><a href="{route.url}">{route.name}</a></li>
     {/each}
   </ul>
-  <div class="navbar-right">
+  <ul class="navbar-right">
     {#if user}
       <li class="nav-item"><a href="/admin">Admin Page</a></li>
-      <li class="nav-item"><a role="button" class="btn" onclick={signout}>Logout</a></li>
+      <li class="nav-item"><a role="button" class="btn" onclick={signout} tabindex="1">Logout</a></li>
     {:else}
       <li class="nav-item"><a role="button" class="btn" href="/auth/login">Login</a></li>
     {/if}
-  </div>
+  </ul>
 
   <!-- svelte-ignore a11y_click_events_have_key_events -->
   <!-- svelte-ignore a11y_no_static_element_interactions -->
