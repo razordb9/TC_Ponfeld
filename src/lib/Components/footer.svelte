@@ -4,14 +4,15 @@
 
     console.log("Footer: ", footer);
 </script>
-
-<footer>
-    Copyright &copy; Thomas HUDSON-ZAUSSNIG •
-    {#each footer as foot}        
-        <a href={foot.url}>{foot.name} •</a>
-        <!-- <a href="/AGB">AGB •</a> k -->
-    {/each}
+<section id="footer">
+    <footer>
+        Copyright &copy; Thomas HUDSON-ZAUSSNIG •
+        {#each footer as foot}        
+            <a href={foot.url}>{foot.name} •</a>
+            <!-- <a href="/AGB">AGB •</a> k -->
+        {/each}
         <span>
-        <a href="https://www.instagram.com/tcgroessinghofponfeld/" target="_blank"><img class="footer-img" src="/instagram.svg" alt="Instagram"/></a>
-    </span>
-</footer>
+            <a href="https://www.instagram.com/tcgroessinghofponfeld/" target="_blank">Instagram<img class="footer-img" src="/instagram.svg" alt="Instagram"/></a>
+        </span>
+    </footer>
+</section>

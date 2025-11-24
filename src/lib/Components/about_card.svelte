@@ -5,22 +5,23 @@
 
     // console.log("AboutCard", boardmember)
 </script>
-
-<div class="about_card">
-    <img
-        class="about-image"
-        src='{boardmember.picture}'
-        alt="{boardmember.picture}"
-    />
-    <div class="about-meta">
-        <div class="about_card_title">
-            {boardmember.name}    
-        </div>
-        <div class="blog_card_subtext">
-            {boardmember.function}
-        </div>
-        <div class="blog_card_publisher">
-            <div>{boardmember.description}</div>
+<div id="member">
+    <div class="member_card">
+        <img
+            class="member-image"
+            src='{boardmember.picture}'
+            alt="{boardmember.picture}"
+        />
+        <div class="member-meta">
+            <div class="about_card_title">
+                {boardmember.name}    
+            </div>
+            <div class="blog_card_subtext">
+                {boardmember.function}
+            </div>
+            <div class="blog_card_publisher">
+                <div>{boardmember.description}</div>
+            </div>
         </div>
     </div>
 </div>

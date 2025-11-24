@@ -8,6 +8,7 @@ const BLOCK_EFFECT = 1 << 4;
 const BRANCH_EFFECT = 1 << 5;
 const ROOT_EFFECT = 1 << 6;
 const BOUNDARY_EFFECT = 1 << 7;
+const CONNECTED = 1 << 9;
 const CLEAN = 1 << 10;
 const DIRTY = 1 << 11;
 const MAYBE_DIRTY = 1 << 12;
@@ -19,8 +20,6 @@ const EAGER_EFFECT = 1 << 17;
 const HEAD_EFFECT = 1 << 18;
 const EFFECT_PRESERVED = 1 << 19;
 const USER_EFFECT = 1 << 20;
-const UNOWNED = 1 << 8;
-const DISCONNECTED = 1 << 9;
 const WAS_MARKED = 1 << 15;
 const REACTION_IS_UPDATING = 1 << 21;
 const ASYNC = 1 << 22;
@@ -707,20 +706,19 @@ export {
   COMMENT_NODE as C,
   DIRTY as D,
   ERROR_VALUE as E,
-  is_passive_event as F,
-  render as G,
+  render as F,
   HYDRATION_ERROR as H,
   INERT as I,
   LEGACY_PROPS as L,
   MAYBE_DIRTY as M,
   ROOT_EFFECT as R,
   STATE_SYMBOL as S,
-  UNOWNED as U,
+  UNINITIALIZED as U,
   WAS_MARKED as W,
   attr_style as a,
   stringify as b,
-  bind_props as c,
-  attr_class as d,
+  attr_class as c,
+  bind_props as d,
   ensure_array_like as e,
   HYDRATION_END as f,
   HYDRATION_START as g,
@@ -729,18 +727,18 @@ export {
   CLEAN as j,
   EFFECT as k,
   BLOCK_EFFECT as l,
-  BRANCH_EFFECT as m,
-  DESTROYED as n,
-  DERIVED as o,
-  EFFECT_TRANSPARENT as p,
-  EFFECT_PRESERVED as q,
-  EAGER_EFFECT as r,
+  DERIVED as m,
+  BRANCH_EFFECT as n,
+  DESTROYED as o,
+  HEAD_EFFECT as p,
+  EFFECT_TRANSPARENT as q,
+  EFFECT_PRESERVED as r,
   slot as s,
-  UNINITIALIZED as t,
-  HEAD_EFFECT as u,
+  CONNECTED as t,
+  EAGER_EFFECT as u,
   STALE_REACTION as v,
   RENDER_EFFECT as w,
   USER_EFFECT as x,
-  DISCONNECTED as y,
-  REACTION_IS_UPDATING as z
+  REACTION_IS_UPDATING as y,
+  is_passive_event as z
 };

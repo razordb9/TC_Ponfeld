@@ -1,4 +1,4 @@
-const load = ({ locals }) => {
+const load = ({ locals, platform }) => {
   return {
     user: locals.user
   };

@@ -1,19 +1,19 @@
-import { c as bind_props, e as ensure_array_like } from "../../chunks/index2.js";
+import { d as bind_props, e as ensure_array_like } from "../../chunks/index2.js";
 /* empty css                         */
 import { H as Horizontalscroller } from "../../chunks/horizontalscroller.js";
 import { m as members, s as sponsors } from "../../chunks/project.config.js";
 import "@sveltejs/kit/internal";
 import "../../chunks/exports.js";
-import "../../chunks/utils2.js";
+import "../../chunks/utils.js";
 import { e as escape_html } from "../../chunks/escaping.js";
 import "clsx";
 import "@sveltejs/kit/internal/server";
 import "../../chunks/state.svelte.js";
 import { a as attr } from "../../chunks/attributes.js";
-function Contact($$renderer, $$props) {
+function Contact_new($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {
     let { form = null } = $$props;
-    $$renderer2.push(`<div id="contact"><h1>Wie könnt ihr mit uns in Verbindung treten?</h1> <form method="POST" action="?/sendmail"><fieldset><label>Name (*) <input type="text" id="name" name="name"/></label> `);
+    $$renderer2.push(`<section id="contact"><h2>Wie könnt ihr mit uns in Verbindung treten?</h2> <form method="POST" action="?/sendmail" name="contact"><fieldset><label>Name (*) <input type="text" id="name" name="name"/></label> `);
     if (form?.errors && form?.values.name) {
       $$renderer2.push("<!--[-->");
       $$renderer2.push(`<p class="error">${escape_html(form?.errors["name"]?.errors)}</p>`);
@@ -48,28 +48,31 @@ function Contact($$renderer, $$props) {
     } else {
       $$renderer2.push("<!--[!-->");
     }
-    $$renderer2.push(`<!--]--></fieldset></form></div>`);
+    $$renderer2.push(`<!--]--></fieldset></form></section>`);
     bind_props($$props, { form });
+  });
+}
+function About_card($$renderer, $$props) {
+  $$renderer.component(($$renderer2) => {
+    let { boardmember } = $$props;
+    $$renderer2.push(`<div id="member"><div class="member_card"><img class="member-image svelte-pqwzcw"${attr(
+      "src",
+      // console.log("AboutCard", boardmember)
+      boardmember.picture
+    )}${attr("alt", boardmember.picture)}/> <div class="member-meta"><div class="about_card_title">${escape_html(boardmember.name)}</div> <div class="blog_card_subtext">${escape_html(boardmember.function)}</div> <div class="blog_card_publisher"><div>${escape_html(boardmember.description)}</div></div></div></div></div>`);
   });
 }
 function _page($$renderer, $$props) {
   let { form } = $$props;
-  $$renderer.push(`<section class="hero"><div class="content"><h1>TC Grössinghof Ponfeld</h1> <a href="https://groessinghof-ponfeld.tennisplatz.info/" target="_blank" class="btn">Platzreservierung</a></div></section> <main class="main"><article id="team"><h2>Our Team</h2> `);
-  Horizontalscroller($$renderer, {
-    speed: "20s",
-    width: "1500px",
-    direction: "reverse",
-    children: ($$renderer2) => {
-      $$renderer2.push(`<!--[-->`);
-      const each_array = ensure_array_like(members);
-      for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
-        let member = each_array[$$index];
-        $$renderer2.push(`<li class="team-member"><img loading="eager"${attr("src", member.picture)}${attr("alt", member.name)}/> <h3>${escape_html(member.name)}</h3> <h4>${escape_html(member.function)}</h4></li>`);
-      }
-      $$renderer2.push(`<!--]-->`);
-    }
-  });
-  $$renderer.push(`<!----></article> <article id="sponsors"><h2>Unsere Sponsoren</h2> `);
+  $$renderer.push(`<section id="hero"><div class="content"><h1>TC Grössinghof Ponfeld</h1> <a href="https://groessinghof-ponfeld.tennisplatz.info/" target="_blank" class="btn">Platzreservierung</a></div></section> <section id="team"><h2>Our Team</h2> <article id="team-container"><!--[-->`);
+  const each_array = ensure_array_like(members);
+  for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
+    let member = each_array[$$index];
+    $$renderer.push(`<div class="team-member"><li>`);
+    About_card($$renderer, { boardmember: member });
+    $$renderer.push(`<!----></li></div>`);
+  }
+  $$renderer.push(`<!--]--></article></section> <section id="sponsors"><h2>Unsere Sponsoren</h2> <article id="sponsors-container">`);
   Horizontalscroller($$renderer, {
     speed: "30s",
     width: "600px",
@@ -84,9 +87,9 @@ function _page($$renderer, $$props) {
       $$renderer2.push(`<!--]-->`);
     }
   });
-  $$renderer.push(`<!----></article> `);
-  Contact($$renderer, { form });
-  $$renderer.push(`<!----></main>`);
+  $$renderer.push(`<!----></article></section> `);
+  Contact_new($$renderer, { form });
+  $$renderer.push(`<!---->`);
 }
 export {
   _page as default

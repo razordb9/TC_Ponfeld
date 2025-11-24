@@ -5,9 +5,14 @@ import type { User, Session } from "better-auth";
 // for information about these interfaces
 declare global {
 	namespace App {
-		// interface Error {}
+		interface Platform {
+            env: Env
+            cf: CfProperties
+            ctx: ExecutionContext
+			caches: { default: Cache } & CacheStorage 
+        }
 		interface Locals {
-			user: ExtendedUser,
+			user: ExtendedUser | null,
 			session: Session
 		}
 		// interface PageData {}
@@ -16,10 +21,9 @@ declare global {
 		interface ExtendedUser extends User{
 			isAdmin: boolean,
 		}
-		
 	}
 }
 
 
 
-export {Locals, ExtendedUser};
+export {Locals, ExtendedUser, Platform};

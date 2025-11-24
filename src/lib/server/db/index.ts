@@ -1,10 +1,20 @@
-import { drizzle } from 'drizzle-orm/better-sqlite3';
-import Database from 'better-sqlite3';
+import { drizzle } from 'drizzle-orm/d1';
 import * as schema from './schema';
-import { env } from '$env/dynamic/private';
+import type { Platform } from '../../../app';
+import { local_db } from '../local_db';
 
-if (!env.DATABASE_URL) throw new Error('DATABASE_URL is not set');
+export type DBType = ReturnType<typeof drizzle<typeof schema>> | ReturnType<typeof local_db>
 
-const client = new Database(env.DATABASE_URL);
 
-export const db = drizzle(client, { schema });
+export const db = (platform:Platform):DBType => {
+    if(!platform) {
+        throw new Error ("Platform not found");
+    }
+    if (import.meta.env.MODE === 'development') {
+        return local_db(platform.env.DATABASE_URL);
+    } else {
+        let connection = platform.env["tc_ponfeld"];
+        return drizzle(connection, {schema})        
+    }
+}
+

@@ -18,6 +18,9 @@
 		"src/routes/admin/+page.server.ts",
 		"src/routes/+layout.server.ts"
 	],
+	"/admin/design": [
+		"src/routes/+layout.server.ts"
+	],
 	"/admin/posts": [
 		"src/routes/admin/posts/+page.server.ts",
 		"src/routes/+layout.server.ts"

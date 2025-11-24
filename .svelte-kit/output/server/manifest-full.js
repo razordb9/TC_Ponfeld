@@ -10,7 +10,7 @@ return {
 	assets: new Set(["Tennispllatz.jpg","avatar_female.jpg","avatar_male.jpg","error.png","instagram.svg","logo.png","logo_sponsor.png","logo_transparent_bg.png","petzner.png","robots.txt"]),
 	mimeTypes: {".jpg":"image/jpeg",".png":"image/png",".svg":"image/svg+xml",".txt":"text/plain"},
 	_: {
-		client: {start:"_app/immutable/entry/start.Cq52Tygq.js",app:"_app/immutable/entry/app.CLv_F8nb.js",imports:["_app/immutable/entry/start.Cq52Tygq.js","_app/immutable/chunks/B_a2Eynt.js","_app/immutable/chunks/MLM6vQ92.js","_app/immutable/chunks/BXMoDmWe.js","_app/immutable/chunks/DIeogL5L.js","_app/immutable/entry/app.CLv_F8nb.js","_app/immutable/chunks/BXMoDmWe.js","_app/immutable/chunks/DIeogL5L.js","_app/immutable/chunks/MLM6vQ92.js","_app/immutable/chunks/DsnmJJEf.js","_app/immutable/chunks/C0emFRR5.js","_app/immutable/chunks/BFDgNCUR.js","_app/immutable/chunks/CuqBbPPh.js"],stylesheets:[],fonts:[],uses_env_dynamic_public:false},
+		client: {start:"_app/immutable/entry/start.DdsA9TCT.js",app:"_app/immutable/entry/app.C5nj7jaL.js",imports:["_app/immutable/entry/start.DdsA9TCT.js","_app/immutable/chunks/DBKrvvuL.js","_app/immutable/chunks/jPJP2TQi.js","_app/immutable/chunks/xvY60Wq7.js","_app/immutable/chunks/DIeogL5L.js","_app/immutable/chunks/C_Kp0wSb.js","_app/immutable/entry/app.C5nj7jaL.js","_app/immutable/chunks/xvY60Wq7.js","_app/immutable/chunks/DIeogL5L.js","_app/immutable/chunks/jPJP2TQi.js","_app/immutable/chunks/C_Kp0wSb.js","_app/immutable/chunks/DsnmJJEf.js","_app/immutable/chunks/Dj_2yWtg.js","_app/immutable/chunks/BqoPXeZt.js","_app/immutable/chunks/DEcgcqw6.js"],stylesheets:[],fonts:[],uses_env_dynamic_public:false},
 		nodes: [
 			__memo(() => import('./nodes/0.js')),
 			__memo(() => import('./nodes/1.js')),
@@ -28,7 +28,8 @@ return {
 			__memo(() => import('./nodes/13.js')),
 			__memo(() => import('./nodes/14.js')),
 			__memo(() => import('./nodes/15.js')),
-			__memo(() => import('./nodes/16.js'))
+			__memo(() => import('./nodes/16.js')),
+			__memo(() => import('./nodes/17.js'))
 		],
 		remotes: {
 			
@@ -70,59 +71,66 @@ return {
 				endpoint: null
 			},
 			{
+				id: "/admin/design",
+				pattern: /^\/admin\/design\/?$/,
+				params: [],
+				page: { layouts: [0,], errors: [1,], leaf: 9 },
+				endpoint: null
+			},
+			{
 				id: "/admin/posts",
 				pattern: /^\/admin\/posts\/?$/,
 				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 9 },
+				page: { layouts: [0,], errors: [1,], leaf: 10 },
 				endpoint: null
 			},
 			{
 				id: "/admin/posts/create",
 				pattern: /^\/admin\/posts\/create\/?$/,
 				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 12 },
+				page: { layouts: [0,], errors: [1,], leaf: 13 },
 				endpoint: null
 			},
 			{
 				id: "/admin/posts/[slug]",
 				pattern: /^\/admin\/posts\/([^/]+?)\/?$/,
 				params: [{"name":"slug","optional":false,"rest":false,"chained":false}],
-				page: { layouts: [0,], errors: [1,], leaf: 10 },
+				page: { layouts: [0,], errors: [1,], leaf: 11 },
 				endpoint: null
 			},
 			{
 				id: "/admin/posts/[slug]/edit",
 				pattern: /^\/admin\/posts\/([^/]+?)\/edit\/?$/,
 				params: [{"name":"slug","optional":false,"rest":false,"chained":false}],
-				page: { layouts: [0,], errors: [1,], leaf: 11 },
+				page: { layouts: [0,], errors: [1,], leaf: 12 },
 				endpoint: null
 			},
 			{
 				id: "/admin/users",
 				pattern: /^\/admin\/users\/?$/,
 				params: [],
-				page: { layouts: [0,3,], errors: [1,,], leaf: 13 },
+				page: { layouts: [0,3,], errors: [1,,], leaf: 14 },
 				endpoint: null
 			},
 			{
 				id: "/admin/users/create",
 				pattern: /^\/admin\/users\/create\/?$/,
 				params: [],
-				page: { layouts: [0,3,], errors: [1,,], leaf: 14 },
+				page: { layouts: [0,3,], errors: [1,,], leaf: 15 },
 				endpoint: null
 			},
 			{
 				id: "/auth/login",
 				pattern: /^\/auth\/login\/?$/,
 				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 15 },
+				page: { layouts: [0,], errors: [1,], leaf: 16 },
 				endpoint: null
 			},
 			{
 				id: "/auth/signup",
 				pattern: /^\/auth\/signup\/?$/,
 				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 16 },
+				page: { layouts: [0,], errors: [1,], leaf: 17 },
 				endpoint: null
 			}
 		],

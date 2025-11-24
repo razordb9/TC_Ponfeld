@@ -3,26 +3,30 @@
     import { authClient } from "$lib/auth-client";
     import { type SubmitFunction, type ActionResult } from "@sveltejs/kit";
     import type { ActionData } from "./$types";
+    import { goto } from "$app/navigation";
 
     let { form }: { form: ActionData} = $props();
     let name = $state<string>("");
     let email = $state<string>("");
     let password = $state<string>("");
-    let admin = false;
+    let isAdmin = true;
 
     const submitFunction: SubmitFunction = (event) =>{
         return async ({result}: { result: ActionResult}) => {
             await applyAction(result);
+            console.log("xxxxxx ", result);
             if (result.type == "success" && result.data?.success === true) {
                 console.log(result)
                 
                 await authClient.signUp.email({
                     email,
                     name,
-                    password
+                    password,
+                    isAdmin
                 },{
                     onSuccess: async (data) =>{
                         console.log(data.response.status);
+                        goto("/auth/login")
                     },
                     onError: async (error) =>{
                         let betterauthError = error instanceof Error ? error.error.message : "failed";
@@ -45,7 +49,7 @@
             <label for="password">Password</label>
             <input type="password" bind:value={password} name="password" id="login_password" autocomplete="current-password" required/>
             <div class="checkbox-wrap">
-                <input type="checkbox" name="isAdmin" id="isAdmin" bind:checked={admin}>
+                <input type="checkbox" name="isAdmin" id="isAdmin" bind:checked={isAdmin}>
                 <label for="isAdmin">is Admin</label>
             </div>
             <button class="btn" type="submit">Create</button>

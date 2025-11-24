@@ -5,10 +5,9 @@
     let {form= $bindable<ActionData | null>(null) } = $props();
 
 </script>
-
-<div id="contact">
-    <h1>Wie könnt ihr mit uns in Verbindung treten?</h1>
-    <form bind:this={form} method="POST" use:enhance action="?/sendmail">
+<section id="contact">
+    <h2>Wie könnt ihr mit uns in Verbindung treten?</h2>
+    <form bind:this={form} method="POST" use:enhance action="?/sendmail" name="contact">
         <fieldset>
             <label>Name (*) <input type="text" id="name" name="name"></label>
             {#if form?.errors && form?.values.name}
@@ -29,7 +28,6 @@
             {#if form?.error}
                 <p style="color:red;">❌ {form.error}</p>
             {/if}
-
         </fieldset>
      </form>
-</div>
+</section>

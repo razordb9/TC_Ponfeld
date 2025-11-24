@@ -10,14 +10,13 @@
 
 </script>
 
-<section class="hero">
-    <div class="content">
-        <h1>TC Grössinghof Ponfeld</h1>
-        <a href="https://groessinghof-ponfeld.tennisplatz.info/" target="_blank" class="btn">Platzreservierung</a>
-    </div>
 
-</section>
-<main class="main">
+    <section id="hero">
+        <div class="content">
+            <h1>TC Grössinghof Ponfeld</h1>
+            <a href="https://groessinghof-ponfeld.tennisplatz.info/" target="_blank" class="btn">Platzreservierung</a>
+        </div>
+    </section>
     <section id="team"> 
         <h2>Our Team</h2> 
         <article id="team-container">
@@ -54,4 +53,3 @@
 	
     
 	<Contact {form} />
-</main>
