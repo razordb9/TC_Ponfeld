@@ -12,23 +12,10 @@
             src='{boardmember.picture}'
             alt="{boardmember.picture}"
         />
-        <div class="member-meta">
-            <div class="about_card_title">
-                {boardmember.name}    
-            </div>
-            <div class="blog_card_subtext">
-                {boardmember.function}
-            </div>
-            <div class="blog_card_publisher">
-                <div>{boardmember.description}</div>
-            </div>
+        <div class="member-info">
+                <h3>{boardmember.name}</h3>
+                <h4>{boardmember.function}</h4>
+                <p>{boardmember.description}</p>
         </div>
     </div>
 </div>
-
-<style lang="scss">
-    img {
-        height: 80px;
-        width: 80px;
-    }
-</style>

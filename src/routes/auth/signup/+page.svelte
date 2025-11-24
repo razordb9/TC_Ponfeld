@@ -39,8 +39,8 @@
 </script>
 
 <div id="signup">
-    <h1>Create new user</h1>
     <form method="POST" use:enhance={submitFunction} action="?/signup">
+        <h1>Create new user</h1>
         <fieldset>
             <label for="name">Name</label>
             <input type="text" bind:value={name} name="name" id="name" required/>

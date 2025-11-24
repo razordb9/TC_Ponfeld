@@ -55,16 +55,16 @@ function Contact_new($$renderer, $$props) {
 function About_card($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {
     let { boardmember } = $$props;
-    $$renderer2.push(`<div id="member"><div class="member_card"><img class="member-image svelte-pqwzcw"${attr(
+    $$renderer2.push(`<div id="member"><div class="member_card"><img class="member-image"${attr(
       "src",
       // console.log("AboutCard", boardmember)
       boardmember.picture
-    )}${attr("alt", boardmember.picture)}/> <div class="member-meta"><div class="about_card_title">${escape_html(boardmember.name)}</div> <div class="blog_card_subtext">${escape_html(boardmember.function)}</div> <div class="blog_card_publisher"><div>${escape_html(boardmember.description)}</div></div></div></div></div>`);
+    )}${attr("alt", boardmember.picture)}/> <div class="member-info"><h3>${escape_html(boardmember.name)}</h3> <h4>${escape_html(boardmember.function)}</h4> <p>${escape_html(boardmember.description)}</p></div></div></div>`);
   });
 }
 function _page($$renderer, $$props) {
   let { form } = $$props;
-  $$renderer.push(`<section id="hero"><div class="content"><h1>TC Grössinghof Ponfeld</h1> <a href="https://groessinghof-ponfeld.tennisplatz.info/" target="_blank" class="btn">Platzreservierung</a></div></section> <section id="team"><h2>Our Team</h2> <article id="team-container"><!--[-->`);
+  $$renderer.push(`<div id="hero"><div class="content"><h1>TC Grössinghof Ponfeld</h1> <a href="https://groessinghof-ponfeld.tennisplatz.info/" target="_blank" class="btn">Platzreservierung</a></div></div> <div id="team"><h2>Our Team</h2> <article id="team-container"><!--[-->`);
   const each_array = ensure_array_like(members);
   for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
     let member = each_array[$$index];
@@ -72,7 +72,7 @@ function _page($$renderer, $$props) {
     About_card($$renderer, { boardmember: member });
     $$renderer.push(`<!----></li></div>`);
   }
-  $$renderer.push(`<!--]--></article></section> <section id="sponsors"><h2>Unsere Sponsoren</h2> <article id="sponsors-container">`);
+  $$renderer.push(`<!--]--></article></div> <div id="sponsors"><h2>Unsere Sponsoren</h2> <article id="sponsors-container">`);
   Horizontalscroller($$renderer, {
     speed: "30s",
     width: "600px",
@@ -87,7 +87,7 @@ function _page($$renderer, $$props) {
       $$renderer2.push(`<!--]-->`);
     }
   });
-  $$renderer.push(`<!----></article></section> `);
+  $$renderer.push(`<!----></article></div> `);
   Contact_new($$renderer, { form });
   $$renderer.push(`<!---->`);
 }

@@ -25,21 +25,21 @@ function Navigation($$renderer, $$props) {
     let { user } = $$props;
     var open = false;
     console.log("get user: " + user);
-    $$renderer2.push(`<section id="navbar"><a href="/" class="logo"><img src="/logo_transparent_bg.png" alt="Thomas Hudson-Zaussnig"/></a> <ul class="nav-links">`);
+    $$renderer2.push(`<div class="navbar"><div class="navbar-left"><a href="/"><img src="/logo_transparent_bg.png" alt="Thomas Hudson-Zaussnig" class="logo"/></a></div> <ul class="navbar-center"><!--[-->`);
+    const each_array = ensure_array_like(navigation);
+    for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
+      let route = each_array[$$index];
+      $$renderer2.push(`<li class="nav-item"><a${attr("href", route.url)}>${escape_html(route.name)}</a></li>`);
+    }
+    $$renderer2.push(`<!--]--></ul> <div class="navbar-right">`);
     if (user) {
       $$renderer2.push("<!--[-->");
-      $$renderer2.push(`<li class="nav-item"><a href="/admin">Admin Page</a></li> <li class="nav-item"><button class="btn">Logout</button></li>`);
+      $$renderer2.push(`<li class="nav-item"><a href="/admin">Admin Page</a></li> <li class="nav-item"><a role="button" class="btn">Logout</a></li>`);
     } else {
       $$renderer2.push("<!--[!-->");
-      $$renderer2.push(`<!--[-->`);
-      const each_array = ensure_array_like(navigation);
-      for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
-        let route = each_array[$$index];
-        $$renderer2.push(`<li class="nav-item"><a${attr("href", route.url)}>${escape_html(route.name)}</a></li>`);
-      }
-      $$renderer2.push(`<!--]--> <li class="nav-item"><a role="button" class="btn" href="/auth/login">Login</a></li>`);
+      $$renderer2.push(`<li class="nav-item"><a role="button" class="btn" href="/auth/login">Login</a></li>`);
     }
-    $$renderer2.push(`<!--]--></ul>  <div class="nav-burger-menu"><div class="line"></div> <div class="line"></div> <div class="line"></div> <ul${attr_class("nav-burger-menu-links", void 0, { "mobile": open == true })}>`);
+    $$renderer2.push(`<!--]--></div>  <div class="nav-burger-menu"><div class="line"></div> <div class="line"></div> <div class="line"></div> <ul${attr_class("nav-burger-menu-links", void 0, { "mobile": open == true })}>`);
     if (user) {
       $$renderer2.push("<!--[-->");
       $$renderer2.push(`<li class="nav-item"><a href="/admin">Admin Page</a></li> <li class="nav-item"><button class="btn">Logout</button></li>`);
@@ -53,16 +53,16 @@ function Navigation($$renderer, $$props) {
       }
       $$renderer2.push(`<!--]--> <li class="nav-item"><a role="button" class="btn" href="/auth/login">Login</a></li>`);
     }
-    $$renderer2.push(`<!--]--></ul></div></section>`);
+    $$renderer2.push(`<!--]--></ul></div></div>`);
   });
 }
 function _layout($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {
     let { data, children } = $$props;
     console.log(data.user);
-    $$renderer2.push(`<div class="app"><header class="site-header">`);
+    $$renderer2.push(`<div class="app"><header class="site-header"></header> `);
     Navigation($$renderer2, { user: data.user });
-    $$renderer2.push(`<!----></header> <main class="main">`);
+    $$renderer2.push(`<!----> <main class="main">`);
     children?.($$renderer2);
     $$renderer2.push(`<!----></main> <footer>`);
     Footer($$renderer2);

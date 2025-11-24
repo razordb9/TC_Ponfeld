@@ -13,15 +13,15 @@
 	$effect(() => {
 		user = data?.user;
 	}) 
-
 </script>
 <div class="app">
 	<header class="site-header">
 		<!-- {user?.name ?? "guest"} -->
-		<Navigation user={data.user}>
-
-		</Navigation>
+		
 	</header>
+	<Navigation user={data.user}>
+
+	</Navigation>
 	<main class="main">
 		
 		{@render children?.()}

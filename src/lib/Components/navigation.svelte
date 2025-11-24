@@ -30,21 +30,29 @@
 
 </script>
 
-<section id="navbar">
-  <a href="/" class="logo">
-      <img src="/logo_transparent_bg.png" alt="Thomas Hudson-Zaussnig"> 
-  </a>
-  <ul class="nav-links">
+
+  
+
+<div class="navbar">
+  <div class="navbar-left">
+    <a href="/">
+      <img src="/logo_transparent_bg.png" alt="Thomas Hudson-Zaussnig" class="logo"> 
+    </a>
+  </div>
+  <ul class="navbar-center">
+    {#each navigation as route}
+        <li class="nav-item"><a href="{route.url}">{route.name}</a></li>
+    {/each}
+  </ul>
+  <div class="navbar-right">
     {#if user}
       <li class="nav-item"><a href="/admin">Admin Page</a></li>
-      <li class="nav-item"><button class="btn" onclick={signout}>Logout</button></li>
+      <li class="nav-item"><a role="button" class="btn" onclick={signout}>Logout</a></li>
     {:else}
-      {#each navigation as route}
-        <li class="nav-item"><a href="{route.url}">{route.name}</a></li>
-      {/each}
       <li class="nav-item"><a role="button" class="btn" href="/auth/login">Login</a></li>
     {/if}
-  </ul>
+  </div>
+
   <!-- svelte-ignore a11y_click_events_have_key_events -->
   <!-- svelte-ignore a11y_no_static_element_interactions -->
   <div class="nav-burger-menu" onclick={openBurgerMenue}> 
@@ -63,4 +71,4 @@
     {/if}
     </ul> 
   </div>
-</section>
+</div>
