@@ -30,6 +30,7 @@ Jungle Civilization
   box-sizing: border-box;
   list-style: none
 }
+*::after { box-sizing: border-box; }
 
 :root {
   //
@@ -201,23 +202,24 @@ form {
 /* Login page */
 #login {
     height: 100vh;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    margin-top: 170px;
+    border: 1px solid red;
 }
 
 /* Signup page */
 #signup {
   height: calc(100vh - 150px);
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  margin-top: 170px;
 }
 
 /* Create Posts */
@@ -274,6 +276,9 @@ form {
     align-items: center;
     gap: 20px;
     padding: 20px 0px;
+    // width: 100vw;
+
+    // border: 1px solid red;
 
     .team-member{
       flex: 1;
@@ -294,8 +299,53 @@ form {
           margin: .5rem;
           border-radius: 50%;
       }
-    }
-  }
+      .member_card {
+        position: relative;
+        width: 100%;
+        height: 300px;
+        overflow: hidden;
+        border-radius: 12px;
+        background: #fff;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        // cursor: pointer;
+      }
+
+
+      /* The sliding panel */
+      .member-info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 1rem;
+        background: rgba(0,0,0,0.75);
+        color: white;
+
+        transform: translateY(100%);    /* hide panel below card */
+        transition: transform 0.3s ease-out;
+        
+        h3, h4, p {
+          margin: 0;
+        }
+        h3 {
+          font-size: 1.1rem;
+          margin-bottom: 0.25rem;
+        }
+        h4 {
+          font-size: 0.9rem;
+          opacity: 0.8;
+          margin-bottom: 0.5rem;
+        }
+        p {
+          font-size: 0.85rem;
+        }
+      }
+
+      .member_card:hover .member-info {
+        transform: translateY(0%);      /* slide up into view */
+      }
+          }
+        }
 }
 
 /* Sponsor section */
@@ -387,7 +437,7 @@ form {
     /* border: 3px solid red; */
     // background-color: green;
     max-width: var(--horizontal-scroller-width, 100%);
-    width: 100%;
+    width: 100vw;
 }
 .inner-scroller {
     margin: 0;
@@ -437,58 +487,12 @@ form {
 /* horizontal scroller end*/
 
 /* abour card */
-.member_card {
-  position: relative;
-  width: 220px;
-  height: 300px;
-  overflow: hidden;
-  border-radius: 12px;
-  background: #fff;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  // cursor: pointer;
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-}
-
-
-/* The sliding panel */
-.member-info {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 1rem;
-  background: rgba(0,0,0,0.75);
-  color: white;
-
-  transform: translateY(100%);    /* hide panel below card */
-  transition: transform 0.3s ease-out;
-  
-  h3, h4, p {
-    margin: 0;
-  }
-  h3 {
-    font-size: 1.1rem;
-    margin-bottom: 0.25rem;
-  }
-  h4 {
-    font-size: 0.9rem;
-    opacity: 0.8;
-    margin-bottom: 0.5rem;
-  }
-  p {
-    font-size: 0.85rem;
-  }
-}
-
-.member_card:hover .member-info {
-  transform: translateY(0%);      /* slide up into view */
-}
 /* about card end*/
+
+// div{
+//   border: 1px solid red;
+// }
 
 @media (max-width: 600px) {
   
@@ -503,10 +507,11 @@ form {
   .navbar {
     height: 70px;
     padding: 10px 20px;
-    width: 100%;
+    width: 100vw;
     display: flex;
     justify-content: space-between;
     .navbar-left .logo {
+      // display: none;
       height: 70px;
       // padding-top: 10px;
     }

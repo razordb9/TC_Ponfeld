@@ -99,7 +99,7 @@ const footer = [
 const navigation = [
   {
     name: "Über uns",
-    url: "#team"
+    url: "/#team"
   },
   // {
   //     name:"News",
@@ -107,11 +107,11 @@ const navigation = [
   // },
   {
     name: "Sponsoren",
-    url: "#sponsors"
+    url: "/#sponsors"
   },
   {
     name: "Kontakt",
-    url: "#contact"
+    url: "/#contact"
   }
 ];
 export {

@@ -1,4 +1,4 @@
-import { H as HYDRATION_ERROR, C as COMMENT_NODE, f as HYDRATION_END, g as HYDRATION_START, h as HYDRATION_START_ELSE, B as BOUNDARY_EFFECT, E as ERROR_VALUE, i as EFFECT_RAN, j as CLEAN, I as INERT, k as EFFECT, l as BLOCK_EFFECT, D as DIRTY, m as DERIVED, W as WAS_MARKED, n as BRANCH_EFFECT, R as ROOT_EFFECT, M as MAYBE_DIRTY, o as DESTROYED, A as ASYNC, p as HEAD_EFFECT, q as EFFECT_TRANSPARENT, r as EFFECT_PRESERVED, t as CONNECTED, u as EAGER_EFFECT, S as STATE_SYMBOL, U as UNINITIALIZED, v as STALE_REACTION, w as RENDER_EFFECT, x as USER_EFFECT, y as REACTION_IS_UPDATING, z as is_passive_event, L as LEGACY_PROPS, F as render } from "./index2.js";
+import { H as HYDRATION_ERROR, C as COMMENT_NODE, d as HYDRATION_END, f as HYDRATION_START, g as HYDRATION_START_ELSE, B as BOUNDARY_EFFECT, E as ERROR_VALUE, h as EFFECT_RAN, i as CLEAN, I as INERT, j as EFFECT, k as BLOCK_EFFECT, D as DIRTY, l as DERIVED, W as WAS_MARKED, m as BRANCH_EFFECT, R as ROOT_EFFECT, M as MAYBE_DIRTY, n as DESTROYED, A as ASYNC, o as HEAD_EFFECT, p as EFFECT_TRANSPARENT, q as EFFECT_PRESERVED, r as CONNECTED, t as EAGER_EFFECT, S as STATE_SYMBOL, U as UNINITIALIZED, u as STALE_REACTION, v as RENDER_EFFECT, w as USER_EFFECT, x as REACTION_IS_UPDATING, y as is_passive_event, L as LEGACY_PROPS, z as render } from "./index2.js";
 import { D as DEV } from "./server.js";
 import { r as run_all, d as deferred, o as object_prototype, a as array_prototype, g as get_descriptor, b as get_prototype_of, i as is_array, c as is_extensible, e as index_of, f as define_property, h as array_from } from "./utils2.js";
 import { a as safe_equals, e as equals } from "./equality.js";
@@ -2659,7 +2659,7 @@ const options = {
 		<div class="error">
 			<span class="status">` + status + '</span>\n			<div class="message">\n				<h1>' + message + "</h1>\n			</div>\n		</div>\n	</body>\n</html>\n"
   },
-  version_hash: "xnc9rz"
+  version_hash: "eg5gje"
 };
 async function get_hooks() {
   let handle;

@@ -1,4 +1,5 @@
 import { a as attr } from "../../../../chunks/attributes.js";
+import { e as escape_html } from "../../../../chunks/escaping.js";
 import "@sveltejs/kit/internal";
 import "../../../../chunks/exports.js";
 import "../../../../chunks/utils.js";
@@ -10,7 +11,14 @@ function _page($$renderer, $$props) {
     let { form } = $$props;
     let email = "";
     let password = "";
-    $$renderer2.push(`<div id="login"><form method="POST" action="?/login"><h1>Login</h1> <fieldset><label for="email">email</label> <input type="email"${attr("value", email)} name="email" id="email" required/> <label for="password">Password</label> <input type="password"${attr("value", password)} name="password" id="login_password" autocomplete="current-password" required/> <button class="btn" type="submit">Login</button></fieldset></form></div>`);
+    $$renderer2.push(`<div id="login"><form method="POST" action="?/login"><h1>Login</h1> <fieldset><label for="email">email</label> <input type="email"${attr("value", email)} name="email" id="email" required/> <label for="password">Password</label> <input type="password"${attr("value", password)} name="password" id="login_password" autocomplete="current-password" required/> <button class="btn" type="submit">Login</button> `);
+    if (form?.error) {
+      $$renderer2.push("<!--[-->");
+      $$renderer2.push(`<p style="color:red;">❌ ${escape_html(form.error)}</p>`);
+    } else {
+      $$renderer2.push("<!--[!-->");
+    }
+    $$renderer2.push(`<!--]--></fieldset></form></div>`);
   });
 }
 export {

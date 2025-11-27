@@ -1,1 +1,0 @@
-import"../chunks/DsnmJJEf.js";import"../chunks/69_IOA4Y.js";import{i as r,a as i}from"../chunks/xvY60Wq7.js";var p=r('<div id="impressum" class="svelte-qwjfh8"><h1>Impressum</h1></div>');function e(m){var o=p();i(m,o)}export{e as component};

@@ -1,4 +1,4 @@
-import { d as bind_props, e as ensure_array_like } from "../../chunks/index2.js";
+import { c as bind_props, e as ensure_array_like } from "../../chunks/index2.js";
 /* empty css                         */
 import { H as Horizontalscroller } from "../../chunks/horizontalscroller.js";
 import { m as members, s as sponsors } from "../../chunks/project.config.js";
@@ -64,7 +64,7 @@ function About_card($$renderer, $$props) {
 }
 function _page($$renderer, $$props) {
   let { form } = $$props;
-  $$renderer.push(`<div id="hero"><div class="content"><h1>TC Grössinghof Ponfeld</h1> <a href="https://groessinghof-ponfeld.tennisplatz.info/" target="_blank" class="btn">Platzreservierung</a></div></div> <div id="team"><h2>Our Team</h2> <article id="team-container"><!--[-->`);
+  $$renderer.push(`<div id="hero"><div class="content"><h1>TC Grössinghof Ponfeld</h1> <a href="https://groessinghof-ponfeld.tennisplatz.info/" target="_blank" class="btn">Platzreservierung</a></div></div> <div id="team"><h2>Our Team</h2> <div id="team-container"><!--[-->`);
   const each_array = ensure_array_like(members);
   for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
     let member = each_array[$$index];
@@ -72,7 +72,7 @@ function _page($$renderer, $$props) {
     About_card($$renderer, { boardmember: member });
     $$renderer.push(`<!----></li></div>`);
   }
-  $$renderer.push(`<!--]--></article></div> <div id="sponsors"><h2>Unsere Sponsoren</h2> <article id="sponsors-container">`);
+  $$renderer.push(`<!--]--></div></div> <br style="background-color: green;"/> <div id="sponsors"><h2>Unsere Sponsoren</h2> <div id="sponsors-container">`);
   Horizontalscroller($$renderer, {
     speed: "30s",
     width: "600px",
@@ -87,7 +87,7 @@ function _page($$renderer, $$props) {
       $$renderer2.push(`<!--]-->`);
     }
   });
-  $$renderer.push(`<!----></article></div> `);
+  $$renderer.push(`<!----></div></div> `);
   Contact_new($$renderer, { form });
   $$renderer.push(`<!---->`);
 }

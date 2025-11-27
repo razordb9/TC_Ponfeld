@@ -59,7 +59,7 @@
     <div class="line"></div>
     <div class="line"></div>
     <div class="line"></div>
-    <ul class="nav-burger-menu-links" class:mobile={open==true}>
+    <ul class="nav-burger-menu-links" > class:mobile={open}
       {#if user}
       <li class="nav-item"><a href="/admin">Admin Page</a></li>
       <li class="nav-item"><button class="btn" onclick={signout}>Logout</button></li>

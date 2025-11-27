@@ -14,7 +14,6 @@
             await applyAction(result);
             if (result.type == "success" && result.data?.success === true) {
                 console.log(result)
-                
                 await authClient.signIn.email({
                     email,
                     password,
@@ -27,6 +26,7 @@
                     onError: async (error) =>{
                         let betterauthError = error instanceof Error ? error.error.message : "failed";
                         console.log(betterauthError);
+                        alert(error.error.message);
                     }
                 })
             }
@@ -56,6 +56,9 @@
                 required
             />
             <button class="btn" type="submit">Login</button>
+            {#if form?.error}
+                <p style="color:red;">❌ {form.error}</p>
+            {/if}
         </fieldset>
     </form>
 </div>

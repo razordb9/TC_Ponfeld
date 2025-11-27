@@ -1,4 +1,4 @@
-import { t as to_class, b as to_style, c as clsx, a as attr } from "./attributes.js";
+import { t as to_style, c as clsx, b as to_class, a as attr } from "./attributes.js";
 import { e as escape_html } from "./escaping.js";
 import { s as set_ssr_context, a as ssr_context, p as push, b as pop } from "./context.js";
 const DERIVED = 1 << 1;
@@ -668,10 +668,6 @@ function attributes(attrs, css_hash, classes, styles, flags = 0) {
 function stringify(value) {
   return typeof value === "string" ? value : value == null ? "" : value + "";
 }
-function attr_class(value, hash, directives) {
-  var result = to_class(value, hash, directives);
-  return result ? ` class="${escape_html(result, true)}"` : "";
-}
 function attr_style(value, directives) {
   var result = to_style(value, directives);
   return result ? ` style="${escape_html(result, true)}"` : "";
@@ -706,7 +702,6 @@ export {
   COMMENT_NODE as C,
   DIRTY as D,
   ERROR_VALUE as E,
-  render as F,
   HYDRATION_ERROR as H,
   INERT as I,
   LEGACY_PROPS as L,
@@ -717,28 +712,28 @@ export {
   WAS_MARKED as W,
   attr_style as a,
   stringify as b,
-  attr_class as c,
-  bind_props as d,
+  bind_props as c,
+  HYDRATION_END as d,
   ensure_array_like as e,
-  HYDRATION_END as f,
-  HYDRATION_START as g,
-  HYDRATION_START_ELSE as h,
-  EFFECT_RAN as i,
-  CLEAN as j,
-  EFFECT as k,
-  BLOCK_EFFECT as l,
-  DERIVED as m,
-  BRANCH_EFFECT as n,
-  DESTROYED as o,
-  HEAD_EFFECT as p,
-  EFFECT_TRANSPARENT as q,
-  EFFECT_PRESERVED as r,
+  HYDRATION_START as f,
+  HYDRATION_START_ELSE as g,
+  EFFECT_RAN as h,
+  CLEAN as i,
+  EFFECT as j,
+  BLOCK_EFFECT as k,
+  DERIVED as l,
+  BRANCH_EFFECT as m,
+  DESTROYED as n,
+  HEAD_EFFECT as o,
+  EFFECT_TRANSPARENT as p,
+  EFFECT_PRESERVED as q,
+  CONNECTED as r,
   slot as s,
-  CONNECTED as t,
-  EAGER_EFFECT as u,
-  STALE_REACTION as v,
-  RENDER_EFFECT as w,
-  USER_EFFECT as x,
-  REACTION_IS_UPDATING as y,
-  is_passive_event as z
+  EAGER_EFFECT as t,
+  STALE_REACTION as u,
+  RENDER_EFFECT as v,
+  USER_EFFECT as w,
+  REACTION_IS_UPDATING as x,
+  is_passive_event as y,
+  render as z
 };

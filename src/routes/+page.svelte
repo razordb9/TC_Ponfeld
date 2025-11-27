@@ -19,7 +19,7 @@
 </div>
 <div id="team"> 
     <h2>Our Team</h2> 
-    <article id="team-container">
+    <div id="team-container">
     
         <!-- <Horizontalscroller speed="20s" width="1500px" direction="reverse"> -->
 
@@ -34,21 +34,22 @@
             </div>
         {/each}
         <!-- </Horizontalscroller> -->
-    </article>
+        </div>
 </div>
+<br style="background-color: green;">
 <div id="sponsors">
     <h2>Unsere Sponsoren</h2>
-    <article id="sponsors-container">
+    <div id="sponsors-container">
         <Horizontalscroller speed="30s" width="600px" direction="forward">
             {#each sponsors as sponsor}
                 <li class="sponsor">
                     <a href={sponsor.url} target="_blank" rel="noopener">
-                        <img src={sponsor.logo} alt={sponsor.name} width="100" height="100" />
+                        <img src={sponsor.logo} alt={sponsor.name} width="100" height="100" loading="lazy"/>
                     </a>
                 </li>
             {/each}
         </Horizontalscroller>
-    </article>
+    </div>
 </div>
     
 <Contact {form} />

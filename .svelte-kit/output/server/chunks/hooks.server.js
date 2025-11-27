@@ -165,7 +165,10 @@ const auth = ({ platform }) => {
       sveltekitCookies(getRequestEvent)
       // make sure that cookies are properly set when calling signIn/signOut
     ],
-    trustedOrigins: ["http://localhost:8787", "https://tc-ponfeld.thomas-zaussnig.workers.dev"]
+    trustedOrigins: [
+      "http://localhost:8787",
+      "https://tc-ponfeld.thomas-zaussnig.workers.dev"
+    ]
   });
 };
 async function handle({ event, resolve }) {

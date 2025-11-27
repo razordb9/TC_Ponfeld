@@ -11,6 +11,7 @@
             class="member-image"
             src='{boardmember.picture}'
             alt="{boardmember.picture}"
+            loading="lazy"
         />
         <div class="member-info">
                 <h3>{boardmember.name}</h3>

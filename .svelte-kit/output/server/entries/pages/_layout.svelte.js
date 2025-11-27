@@ -1,6 +1,6 @@
 import "clsx";
 /* empty css                         */
-import { e as ensure_array_like, c as attr_class } from "../../chunks/index2.js";
+import { e as ensure_array_like } from "../../chunks/index2.js";
 import { f as footer, n as navigation } from "../../chunks/project.config.js";
 import { a as attr } from "../../chunks/attributes.js";
 import { e as escape_html } from "../../chunks/escaping.js";
@@ -31,15 +31,15 @@ function Navigation($$renderer, $$props) {
       let route = each_array[$$index];
       $$renderer2.push(`<li class="nav-item"><a${attr("href", route.url)}>${escape_html(route.name)}</a></li>`);
     }
-    $$renderer2.push(`<!--]--></ul> <div class="navbar-right">`);
+    $$renderer2.push(`<!--]--></ul> <ul class="navbar-right">`);
     if (user) {
       $$renderer2.push("<!--[-->");
-      $$renderer2.push(`<li class="nav-item"><a href="/admin">Admin Page</a></li> <li class="nav-item"><a role="button" class="btn">Logout</a></li>`);
+      $$renderer2.push(`<li class="nav-item"><a href="/admin">Admin Page</a></li> <li class="nav-item"><a role="button" class="btn" tabindex="1">Logout</a></li>`);
     } else {
       $$renderer2.push("<!--[!-->");
       $$renderer2.push(`<li class="nav-item"><a role="button" class="btn" href="/auth/login">Login</a></li>`);
     }
-    $$renderer2.push(`<!--]--></div>  <div class="nav-burger-menu"><div class="line"></div> <div class="line"></div> <div class="line"></div> <ul${attr_class("nav-burger-menu-links", void 0, { "mobile": open == true })}>`);
+    $$renderer2.push(`<!--]--></ul>  <div class="nav-burger-menu"><div class="line"></div> <div class="line"></div> <div class="line"></div> <ul class="nav-burger-menu-links">class:mobile=${escape_html(open)} `);
     if (user) {
       $$renderer2.push("<!--[-->");
       $$renderer2.push(`<li class="nav-item"><a href="/admin">Admin Page</a></li> <li class="nav-item"><button class="btn">Logout</button></li>`);

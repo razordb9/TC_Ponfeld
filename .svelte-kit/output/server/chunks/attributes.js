@@ -143,7 +143,7 @@ function to_style(value, styles) {
 }
 export {
   attr as a,
-  to_style as b,
+  to_class as b,
   clsx as c,
-  to_class as t
+  to_style as t
 };
