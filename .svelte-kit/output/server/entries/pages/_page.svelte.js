@@ -59,7 +59,7 @@ function About_card($$renderer, $$props) {
       "src",
       // console.log("AboutCard", boardmember)
       boardmember.picture
-    )}${attr("alt", boardmember.picture)}/> <div class="member-info"><h3>${escape_html(boardmember.name)}</h3> <h4>${escape_html(boardmember.function)}</h4> <p>${escape_html(boardmember.description)}</p></div></div></div>`);
+    )}${attr("alt", boardmember.picture)} loading="lazy"/> <div class="member-info"><h3>${escape_html(boardmember.name)}</h3> <h4>${escape_html(boardmember.function)}</h4> <p>${escape_html(boardmember.description)}</p></div></div></div>`);
   });
 }
 function _page($$renderer, $$props) {
@@ -82,7 +82,7 @@ function _page($$renderer, $$props) {
       const each_array_1 = ensure_array_like(sponsors);
       for (let $$index_1 = 0, $$length = each_array_1.length; $$index_1 < $$length; $$index_1++) {
         let sponsor = each_array_1[$$index_1];
-        $$renderer2.push(`<li class="sponsor"><a${attr("href", sponsor.url)} target="_blank" rel="noopener"><img${attr("src", sponsor.logo)}${attr("alt", sponsor.name)} width="100" height="100"/></a></li>`);
+        $$renderer2.push(`<li class="sponsor"><a${attr("href", sponsor.url)} target="_blank" rel="noopener"><img${attr("src", sponsor.logo)}${attr("alt", sponsor.name)} width="100" height="100" loading="lazy"/></a></li>`);
       }
       $$renderer2.push(`<!--]-->`);
     }

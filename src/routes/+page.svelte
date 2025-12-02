@@ -1,23 +1,26 @@
 <script lang="ts">
 	import "$lib/css/custom_styles.css";
     import type { ActionData, PageProps } from "./$types";
-    import Horizontalscroller from "$lib/Components/horizontalscroller.svelte";
+    import Horizontalscroller from "$lib/components/horizontalscroller.svelte";
     import { sponsors } from "$lib/project.config";
     import { members } from "$lib/project.config";
-    import Contact from "$lib/Components/contact_new.svelte";
+    import Contact from "$lib/components/contact_new.svelte";
     import AboutCard from "$lib/components/about_card.svelte";
     let { form }: { form: ActionData } = $props(); 
 
 </script>
 
 
-<div id="hero">
+<section id="hero">
+
     <div class="content">
+    <img src="/Tennispllatz.jpg" alt="tennisplatz"/>    
+
         <h1>TC Grössinghof Ponfeld</h1>
         <a href="https://groessinghof-ponfeld.tennisplatz.info/" target="_blank" class="btn">Platzreservierung</a>
     </div>
-</div>
-<div id="team"> 
+</section>
+<section id="team"> 
     <h2>Our Team</h2> 
     <div id="team-container">
     
@@ -34,10 +37,9 @@
             </div>
         {/each}
         <!-- </Horizontalscroller> -->
-        </div>
-</div>
-<br style="background-color: green;">
-<div id="sponsors">
+    </div>
+</section>
+<section id="sponsors">
     <h2>Unsere Sponsoren</h2>
     <div id="sponsors-container">
         <Horizontalscroller speed="30s" width="600px" direction="forward">
@@ -50,6 +52,8 @@
             {/each}
         </Horizontalscroller>
     </div>
-</div>
-    
-<Contact {form} />
+</section>
+<section id="contact">
+    <h2>Wie könnt ihr mit uns in Verbindung treten?</h2>    
+    <Contact {form} />
+</section>

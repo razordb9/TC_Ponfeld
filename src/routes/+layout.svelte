@@ -15,16 +15,17 @@
 	}) 
 </script>
 <div class="app">
-	<header class="site-header">
-		<!-- {user?.name ?? "guest"} -->
+	<!-- <header class="site-header">
+		{user?.name ?? "guest"}
 		
-	</header>
+	</header> -->
 	<Navigation user={data.user}>
 
 	</Navigation>
 	<main class="main">
-		
-		{@render children?.()}
+		<div class="layout">
+			{@render children?.()}
+		</div>
 	</main>
 	<footer>
 		<Footer/>
