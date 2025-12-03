@@ -12,10 +12,8 @@
 
 
 <section id="hero">
-
-    <div class="content">
-    <img src="/Tennispllatz.jpg" alt="tennisplatz"/>    
-
+    <img src="/Tennispllatz.jpg" alt="tennisplatz" class="hero-img"/>    
+    <div class="hero-content">
         <h1>TC Grössinghof Ponfeld</h1>
         <a href="https://groessinghof-ponfeld.tennisplatz.info/" target="_blank" class="btn">Platzreservierung</a>
     </div>
