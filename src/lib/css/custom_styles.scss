@@ -857,8 +857,8 @@ Jungle Civilization
     height: 100%;
     z-index: 1;
   }
+  
   /* Nav bar */
-
   .navbar {
     height: 70px;
     padding: 10px 20px;
@@ -916,6 +916,12 @@ Jungle Civilization
 
   }
 
+  #team {
+    #team-container {
+      display: flex;
+      flex-direction: column;
+    }
+  }
   #hero {
     height: 100vh;
   }

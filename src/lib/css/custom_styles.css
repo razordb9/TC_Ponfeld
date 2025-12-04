@@ -767,6 +767,10 @@ Jungle Civilization
     background-color: var(--primary-color);
     margin: 3px;
   }
+  #team #team-container {
+    display: flex;
+    flex-direction: column;
+  }
   #hero {
     height: 100vh;
   }
