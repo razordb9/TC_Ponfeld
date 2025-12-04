@@ -59,7 +59,7 @@ const members = [
     name: "Pirker Michael",
     function: "Stv. Obmann",
     picture: "/avatar_male.jpg",
-    description: "Platwartz/Hirsch"
+    description: "Platzwart/Hirsch"
   },
   {
     name: "Jakeisch Michael",

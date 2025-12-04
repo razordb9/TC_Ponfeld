@@ -1,4 +1,4 @@
-import { c as bind_props, e as ensure_array_like } from "../../chunks/index2.js";
+import { d as bind_props, e as ensure_array_like } from "../../chunks/index2.js";
 /* empty css                         */
 import { H as Horizontalscroller } from "../../chunks/horizontalscroller.js";
 import { m as members, s as sponsors } from "../../chunks/project.config.js";
@@ -55,11 +55,11 @@ function Contact_new($$renderer, $$props) {
 function About_card($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {
     let { boardmember } = $$props;
-    $$renderer2.push(`<div id="member"><div class="member_card"><img class="member-image"${attr(
+    $$renderer2.push(`<div class="member_card"><img class="member-image"${attr(
       "src",
       // console.log("AboutCard", boardmember)
       boardmember.picture
-    )}${attr("alt", boardmember.picture)} loading="lazy"/> <div class="member-info"><h3>${escape_html(boardmember.name)}</h3> <h4>${escape_html(boardmember.function)}</h4> <p>${escape_html(boardmember.description)}</p></div></div></div>`);
+    )}${attr("alt", boardmember.picture)} loading="lazy"/> <div class="member-info"><h3>${escape_html(boardmember.name)}</h3> <h4>${escape_html(boardmember.function)}</h4> <p>${escape_html(boardmember.description)}</p></div></div>`);
   });
 }
 function _page($$renderer, $$props) {
