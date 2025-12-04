@@ -549,12 +549,10 @@ Jungle Civilization
   transition: all 10ms ease-in ease-in-out;
 }
 #team #team-container .team-member img {
-  width: 200px;
-  height: 200px;
+  width: 170px;
   -o-object-fit: cover;
      object-fit: cover;
   margin: 0.5rem;
-  border-radius: 50%;
 }
 #team #team-container .team-member .member_card {
   position: relative;

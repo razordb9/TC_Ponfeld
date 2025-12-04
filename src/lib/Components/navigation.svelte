@@ -59,16 +59,16 @@
     <div class="line"></div>
     <div class="line"></div>
     <div class="line"></div>
-    <ul class="nav-burger-menu-links" > class:mobile={open}
-      {#if user}
-      <li class="nav-item"><a href="/admin">Admin Page</a></li>
-      <li class="nav-item"><button class="btn" onclick={signout}>Logout</button></li>
-    {:else}
+    <ul class="nav-burger-menu-links" class:mobile={open}>
       {#each navigation as route}
-        <li class="nav-item"><a href="{route.url}">{route.name}</a></li>
+          <li class="nav-item"><a href="{route.url}">{route.name}</a></li>
       {/each}
-      <li class="nav-item"><a role="button" class="btn" href="/auth/login">Login</a></li>
-    {/if}
+      {#if user}
+        <li class="nav-item"><a href="/admin">Admin Page</a></li>
+        <li class="nav-item"><button class="btn" onclick={signout}>Logout</button></li>
+      {:else}
+        <li class="nav-item"><a role="button" class="btn" href="/auth/login">Login</a></li>
+      {/if}
     </ul> 
   </div>
 </div>

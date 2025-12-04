@@ -60,11 +60,11 @@ function _layout($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {
     let { data, children } = $$props;
     console.log(data.user);
-    $$renderer2.push(`<div class="app"><header class="site-header"></header> `);
+    $$renderer2.push(`<div class="app">`);
     Navigation($$renderer2, { user: data.user });
-    $$renderer2.push(`<!----> <main class="main">`);
+    $$renderer2.push(`<!----> <main class="main"><div class="layout">`);
     children?.($$renderer2);
-    $$renderer2.push(`<!----></main> <footer>`);
+    $$renderer2.push(`<!----></div></main> <footer>`);
     Footer($$renderer2);
     $$renderer2.push(`<!----></footer></div>`);
   });

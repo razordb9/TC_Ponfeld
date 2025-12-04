@@ -5,18 +5,17 @@
 
     // console.log("AboutCard", boardmember)
 </script>
-<div id="member">
-    <div class="member_card">
-        <img
-            class="member-image"
-            src='{boardmember.picture}'
-            alt="{boardmember.picture}"
-            loading="lazy"
-        />
-        <div class="member-info">
-                <h3>{boardmember.name}</h3>
-                <h4>{boardmember.function}</h4>
-                <p>{boardmember.description}</p>
-        </div>
+
+<div class="member_card">
+    <img
+        class="member-image"
+        src='{boardmember.picture}'
+        alt="{boardmember.picture}"
+        loading="lazy"
+    />
+    <div class="member-info">
+            <h3>{boardmember.name}</h3>
+            <h4>{boardmember.function}</h4>
+            <p>{boardmember.description}</p>
     </div>
 </div>

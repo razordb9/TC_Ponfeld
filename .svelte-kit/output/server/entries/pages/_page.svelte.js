@@ -13,7 +13,7 @@ import { a as attr } from "../../chunks/attributes.js";
 function Contact_new($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {
     let { form = null } = $$props;
-    $$renderer2.push(`<section id="contact"><h2>Wie könnt ihr mit uns in Verbindung treten?</h2> <form method="POST" action="?/sendmail" name="contact"><fieldset><label>Name (*) <input type="text" id="name" name="name"/></label> `);
+    $$renderer2.push(`<form method="POST" action="?/sendmail" name="contact"><fieldset><label>Name (*) <input type="text" id="name" name="name"/></label> `);
     if (form?.errors && form?.values.name) {
       $$renderer2.push("<!--[-->");
       $$renderer2.push(`<p class="error">${escape_html(form?.errors["name"]?.errors)}</p>`);
@@ -34,7 +34,7 @@ function Contact_new($$renderer, $$props) {
     } else {
       $$renderer2.push("<!--[!-->");
     }
-    $$renderer2.push(`<!--]--> <button class="btn" type="submit">Absenden</button> `);
+    $$renderer2.push(`<!--]--> <button type="submit">Absenden</button> `);
     if (form?.success) {
       $$renderer2.push("<!--[-->");
       $$renderer2.push(`<p style="color:green;">✅ Message sent successfully!</p>`);
@@ -48,7 +48,7 @@ function Contact_new($$renderer, $$props) {
     } else {
       $$renderer2.push("<!--[!-->");
     }
-    $$renderer2.push(`<!--]--></fieldset></form></section>`);
+    $$renderer2.push(`<!--]--></fieldset></form>`);
     bind_props($$props, { form });
   });
 }
@@ -64,7 +64,7 @@ function About_card($$renderer, $$props) {
 }
 function _page($$renderer, $$props) {
   let { form } = $$props;
-  $$renderer.push(`<div id="hero"><div class="content"><h1>TC Grössinghof Ponfeld</h1> <a href="https://groessinghof-ponfeld.tennisplatz.info/" target="_blank" class="btn">Platzreservierung</a></div></div> <div id="team"><h2>Our Team</h2> <div id="team-container"><!--[-->`);
+  $$renderer.push(`<section id="hero"><img src="/Tennispllatz.jpg" alt="tennisplatz" class="hero-img"/> <div class="hero-content"><h1>TC Grössinghof Ponfeld</h1> <a href="https://groessinghof-ponfeld.tennisplatz.info/" target="_blank" class="btn">Platzreservierung</a></div></section> <section id="team"><h2>Our Team</h2> <div id="team-container"><!--[-->`);
   const each_array = ensure_array_like(members);
   for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
     let member = each_array[$$index];
@@ -72,7 +72,7 @@ function _page($$renderer, $$props) {
     About_card($$renderer, { boardmember: member });
     $$renderer.push(`<!----></li></div>`);
   }
-  $$renderer.push(`<!--]--></div></div> <br style="background-color: green;"/> <div id="sponsors"><h2>Unsere Sponsoren</h2> <div id="sponsors-container">`);
+  $$renderer.push(`<!--]--></div></section> <section id="sponsors"><h2>Unsere Sponsoren</h2> <div id="sponsors-container">`);
   Horizontalscroller($$renderer, {
     speed: "30s",
     width: "600px",
@@ -87,9 +87,9 @@ function _page($$renderer, $$props) {
       $$renderer2.push(`<!--]-->`);
     }
   });
-  $$renderer.push(`<!----></div></div> `);
+  $$renderer.push(`<!----></div></section> <section id="contact"><h2>Wie könnt ihr mit uns in Verbindung treten?</h2> `);
   Contact_new($$renderer, { form });
-  $$renderer.push(`<!---->`);
+  $$renderer.push(`<!----></section>`);
 }
 export {
   _page as default
