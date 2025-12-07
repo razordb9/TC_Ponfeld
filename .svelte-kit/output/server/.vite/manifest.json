@@ -246,7 +246,7 @@
     "src": "src/routes/AGB/+page.svelte",
     "isEntry": true,
     "css": [
-      "_app/immutable/assets/_page.Bbz7Ggr9.css"
+      "_app/immutable/assets/_page.RevBRx5Z.css"
     ]
   },
   "src/routes/Impressum/+page.svelte": {
@@ -255,7 +255,7 @@
     "src": "src/routes/Impressum/+page.svelte",
     "isEntry": true,
     "css": [
-      "_app/immutable/assets/_page.nz92vUtf.css"
+      "_app/immutable/assets/_page.DAnw6OVw.css"
     ]
   },
   "src/routes/Scroller/+layout.svelte": {

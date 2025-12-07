@@ -16,37 +16,48 @@
 	],
 	"/admin": [
 		"src/routes/admin/+page.server.ts",
+		"src/routes/admin/+layout.server.ts",
+		"src/routes/+layout.server.ts",
+		"src/routes/admin/+layout.server.ts",
 		"src/routes/+layout.server.ts"
 	],
 	"/admin/design": [
+		"src/routes/admin/+layout.server.ts",
 		"src/routes/+layout.server.ts"
 	],
 	"/admin/posts": [
 		"src/routes/admin/posts/+page.server.ts",
+		"src/routes/admin/+layout.server.ts",
 		"src/routes/+layout.server.ts"
 	],
 	"/admin/posts/create": [
 		"src/routes/admin/posts/create/+page.server.ts",
+		"src/routes/admin/+layout.server.ts",
 		"src/routes/+layout.server.ts"
 	],
 	"/admin/posts/[slug]": [
 		"src/routes/admin/posts/[slug]/+page.server.ts",
+		"src/routes/admin/+layout.server.ts",
 		"src/routes/+layout.server.ts"
 	],
 	"/admin/posts/[slug]/edit": [
 		"src/routes/admin/posts/[slug]/edit/+page.server.ts",
+		"src/routes/admin/+layout.server.ts",
 		"src/routes/+layout.server.ts"
 	],
 	"/admin/users": [
 		"src/routes/admin/users/+page.server.ts",
 		"src/routes/admin/users/+layout.server.ts",
+		"src/routes/admin/+layout.server.ts",
 		"src/routes/+layout.server.ts",
 		"src/routes/admin/users/+layout.server.ts",
+		"src/routes/admin/+layout.server.ts",
 		"src/routes/+layout.server.ts"
 	],
 	"/admin/users/create": [
 		"src/routes/admin/users/create/+page.server.ts",
 		"src/routes/admin/users/+layout.server.ts",
+		"src/routes/admin/+layout.server.ts",
 		"src/routes/+layout.server.ts"
 	],
 	"/auth/login": [

@@ -102,8 +102,8 @@ Jungle Civilization
 /* Default settings start */
 @layer base {
   :root {
-    --primary-color: #8FA33B;
-    --primary-background: #ECECEB;
+    --primary-color: #8fa33b;
+    --primary-background: #ececeb;
     --secondary-color: #cadb68;
     --secondary-background: #fafdee;
     --third-color: #616a3e;
@@ -133,18 +133,11 @@ Jungle Civilization
     --h1: calc(var(--h2) * var(--scale));
     --p: calc(var(--base-font-size) * var(--scale));
     --box-shadow-action: 0 0 10px 1px hsla(39, 85%, 42%, 0.3);
-    --font-family: "Satoshi",
-    "Segoe UI",
-    "Zodiak",
-    Tahoma,
-    Geneva,
-    Verdana,
-    sans-serif,
-    serif;
-    --serif: "Zodiak",
-    serif;
-    --san-serif: "Satoshi",
-    sans-serif;
+    --font-family:
+      "Satoshi", "Segoe UI", "Zodiak", Tahoma, Geneva, Verdana, sans-serif,
+      serif;
+    --serif: "Zodiak", serif;
+    --san-serif: "Satoshi", sans-serif;
     --content-width-blog: 800px;
     --content-width: 1280px;
     --side: 2rem;
@@ -159,7 +152,12 @@ Jungle Civilization
     font-size: var(--base-font-size);
     font-weight: 400;
   }
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     text-align: center;
     font-family: serif;
     font-weight: true;
@@ -197,7 +195,7 @@ Jungle Civilization
   .text-small {
     font-size: calc(var(--base-font-size) / var(--scale));
   }
-  button {
+  button, .btn {
     display: block;
     background-color: transparent;
     padding: 0.8rem 1.2rem;
@@ -208,7 +206,7 @@ Jungle Civilization
     cursor: pointer;
     transition: all 0.3s ease;
   }
-  button:hover, button:active, button:focus {
+  button:hover, button:active, button:focus, .btn:hover, .btn:active, .btn:focus {
     transition: all 0.3s ease;
   }
   button,
@@ -220,28 +218,27 @@ Jungle Civilization
     font-family: var(--font-family);
     font-size: var(--base-font-size);
     padding: 0.5rem;
-    border: 1px solid var(--color-text-3, orange);
+    border: 1px solid var(--color-text-3, black);
     border-radius: 4px;
     width: 100%;
     box-sizing: border-box;
     outline: none;
     margin-bottom: 1rem;
-    box-shadow: 0 0 5px var(--background-1, orange);
+    box-shadow: 0 0 5px var(--background-1);
     transition: all 0.3s ease;
   }
   input:focus, input:hover, input:active,
   textarea:focus,
   textarea:hover,
   textarea:active {
-    border: 1px solid var(--color-accent-1, green);
     box-shadow: var(--box-shadow-action);
     transition: all 0.3s ease;
   }
   input::-moz-placeholder {
-    color: var(--color-text-3, green);
+    color: var(--color-text-3, black);
   }
   input::placeholder {
-    color: var(--color-text-3, green);
+    color: var(--color-text-3, black);
   }
   input[type=checkbox] {
     -webkit-appearance: none;
@@ -378,7 +375,8 @@ Jungle Civilization
     position: fixed;
   }
 }
-.checkbox-wrap input, .checkbox-wrap label {
+.checkbox-wrap input,
+.checkbox-wrap label {
   display: inline-block;
   vertical-align: middle;
 }
@@ -389,26 +387,6 @@ Jungle Civilization
   margin: auto 0;
 }
 
-.btn {
-  min-width: 60px;
-  min-height: 30px;
-  outline: none;
-  border: none;
-  display: inline-block;
-  background: darkgray;
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: var(--radius);
-  font-weight: bold;
-  text-decoration: none;
-  transition: background 0.2s;
-}
-.btn:hover {
-  background: #e0e7ff;
-  color: #2563eb;
-}
-
-/* Default settings end */
 /* Navbar */
 .navbar {
   top: 0;
@@ -472,8 +450,11 @@ Jungle Civilization
      object-fit: cover;
 }
 #hero .hero-content {
-  position: relative;
-  color: white;
+  z-index: 100000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Design pattern page */
@@ -574,7 +555,9 @@ Jungle Civilization
   transform: translateY(100%); /* hide panel below card */
   transition: transform 0.3s ease-out;
 }
-#team #team-container .team-member .member-info h3, #team #team-container .team-member .member-info h4, #team #team-container .team-member .member-info p {
+#team #team-container .team-member .member-info h3,
+#team #team-container .team-member .member-info h4,
+#team #team-container .team-member .member-info p {
   margin: 0;
 }
 #team #team-container .team-member .member-info h3 {
@@ -729,7 +712,8 @@ Jungle Civilization
   .navbar .nav-item {
     background-color: rgb(211, 211, 211);
   }
-  .navbar .navbar-center, .navbar .navbar-right {
+  .navbar .navbar-center,
+  .navbar .navbar-right {
     display: none;
   }
   .navbar .nav-burger-menu .mobile {
