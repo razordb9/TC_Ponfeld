@@ -85,3 +85,13 @@
         }
     }
 </style>
+
+File name 
+'/Users/thomashudson-zaussnig/Documents/Projects/TC_Groessinghof_Ponfeld/Homepage/TC_Ponfeld/src/lib/Components/horizontalscroller.svelte' 
+differs from already included file name 
+'/Users/thomashudson-zaussnig/Documents/Projects/TC_Groessinghof_Ponfeld/Homepage/TC_Ponfeld/src/lib/components/horizontalscroller.svelte' only in casing.
+
+The file is in the program because:
+    Matched by include pattern '.svelte-kit/../src/**/*.svelte' in '/Users/thomashudson-zaussnig/Documents/Projects/TC_Groessinghof_Ponfeld/Homepage/TC_Ponfeld/tsconfig.json'
+    Imported via "$lib/components/horizontalscroller.svelte" from file '/Users/thomashudson-zaussnig/Documents/Projects/TC_Groessinghof_Ponfeld/Homepage/TC_Ponfeld/src/routes/+page.svelte'
+    Imported via "$lib/components/horizontalscroller.svelte" from file '/Users/thomashudson-zaussnig/Documents/Projects/TC_Groessinghof_Ponfeld/Homepage/TC_Ponfeld/src/routes/Scroller/+page.svelte'ts(1149)

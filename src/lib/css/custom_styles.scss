@@ -128,7 +128,6 @@ Jungle Civilization
     --padding-block: 1rem;
     --animation-fix-padding: 0.5rem;
     --radius: 5px;
-
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -352,25 +351,19 @@ Jungle Civilization
 
 @layer base-layout {
   :root {
-    --header-height: 16 0px;
+    --header-height: 90px;
   }
 
   body {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
   }
-
   .app {
-    display: flex;
     align-items: center;
     flex-direction: column;
     height: auto;
-    min-height: 100vh;
   }
-
   main {
-    max-width: var(--content-width);
     padding-inline: var(--side);
     flex: 1;
     display: flex;
@@ -396,17 +389,17 @@ Jungle Civilization
     margin-top: var(--header-height);
   }
 
-  .main-header {
-    z-index: 999;
-    margin: 0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: var(--header-height);
-    width: 100%;
-    background-color: var(--color-accent-4);
-    box-shadow: var(--box-shadow-elevation-1);
-  }
+  // .main-header {
+  //   z-index: 999;
+  //   margin: 0;
+  //   position: fixed;
+  //   top: 0;
+  //   left: 0;
+  //   height: var(--header-height);
+  //   width: 100%;
+  //   background-color: var(--color-accent-4);
+  //   box-shadow: var(--box-shadow-elevation-1);
+  // }
   .logo {
     top: 0px;
     left: -5px;
@@ -428,15 +421,20 @@ Jungle Civilization
   display: inline-block;
   vertical-align: middle;
 }
+
+/* DONE */
 .error-msg {
-  padding-top: var(--padding);
-  text-align: center;
-  margin: auto 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  margin-top: 90px;
 }
 
 /* DONE */
 .navbar {
-  height: 90px;
+  height: var(--header-height);
   top: 0;
   position: fixed;
   z-index: 2;
@@ -449,7 +447,7 @@ Jungle Civilization
 
   .navbar-center {
     display: flex;
-    gap: 20px; /* spacing between links */
+    gap: 20px;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -471,7 +469,7 @@ Jungle Civilization
       }
     }
   }
- 
+
   .navbar-right {
     display: flex;
     justify-content: center;
@@ -493,14 +491,12 @@ Jungle Civilization
 }
 
 /* DONE */
-
 #hero {
-  height: 100vh;
   overflow: hidden;
   display: flex;
   justify-content: center;
-  align-items: center;
   text-align: center;
+  height: calc(100vh - var(--header-height));
 
   .hero-img {
     position: absolute;
@@ -529,27 +525,27 @@ Jungle Civilization
   flex-direction: column;
 }
 
-/* Admin Page */
+/* Admin Page done */
 #adminPage {
-  height: 100vh;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-/* Login page */
+/* Login page done */
 #login {
-  height: 100vh;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-/* Signup page */
+/* Signup page done */
 #signup {
-  height: 100vh;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -558,72 +554,49 @@ Jungle Civilization
 
 /* Create Posts */
 #createpost {
-  height: 100vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
 
   #editor {
     height: 300px;
   }
 }
 
-/*Hero section */
-
 /* Team  */
 #team {
-  // margin-top: 100vh;
+  scroll-margin-top: 90px;
+  height: 60vh;
   text-align: center;
-  // padding: var(--padding);
   height: 100%;
-  // border: 1px solid red;
 
   #team-container {
     padding-top: 0;
     display: flex;
     flex-wrap: wrap;
-    // flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 20px;
     padding: 20px 0px;
-    // width: 100vw;
 
-    // border: 1px solid red;
-
-    .team-member {
-      flex: 1;
-      gap: 1rem;
-      // background: #f0f0f0;
-      flex-direction: column;
-      transform: scale(1);
-      transition: all 10ms ease-in ease-in-out;
-      &:hover {
-        transform: scale(1.1);
-        transition: all 10ms ease-in ease-in-out;
-      }
+    .team-member-card {
+      // position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      // border-radius: 12px;
+      // background: #fff;
+      // box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 
       img {
         width: 170px;
-        // height:200px;
         object-fit: cover;
         margin: 0.5rem;
-        // border-radius: 50%;
-      }
-      .member_card {
-        position: relative;
-        width: 100%;
-        height: 300px;
-        overflow: hidden;
-        border-radius: 12px;
-        background: #fff;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        // cursor: pointer;
       }
 
-      /* The sliding panel */
-      .member-info {
+      .team-member-info {
         position: absolute;
         bottom: 0;
         left: 0;
@@ -632,8 +605,8 @@ Jungle Civilization
         background: rgba(0, 0, 0, 0.75);
         color: white;
 
-        transform: translateY(100%); /* hide panel below card */
-        transition: transform 0.3s ease-out;
+        // transform: translateY(100%); /* hide panel below card */
+        // transition: transform 0.3s ease-out;
 
         h3,
         h4,
@@ -653,26 +626,60 @@ Jungle Civilization
           font-size: 0.85rem;
         }
       }
+    }
 
-      .member_card:hover .member-info {
-        transform: translateY(0%); /* slide up into view */
-      }
+    // .team-member_card:hover .team-member-info {
+    //   transform: translateY(0%); /* slide up into view */
+    // }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* When active */
+    .modal.show {
+      display: flex;
+    }
+
+    /* Modal image */
+    .modal-content {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+    }
+
+    /* Close button */
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 40px;
+      color: white;
+      cursor: pointer;
     }
   }
 }
 
 /* Sponsor section */
 #sponsors {
+  scroll-margin-top: 90px;
+  height: 60vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   // background-color: aqua;
-  // height: 100vh;
   // border: 1px solid red;
-
   h2 {
-    text-align: left;
   }
 
   .sponsor {
@@ -700,11 +707,8 @@ Jungle Civilization
 
 /* Contact section */
 #contact {
-  height: 100vh;
   margin: 0 auto;
-  display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
 
@@ -789,11 +793,8 @@ Jungle Civilization
 @media (max-width: 600px) {
   #hero {
     margin-top: 70px;
-    min-height: calc(100vh - 190px);
     height: 100%;
-    z-index: 1;
   }
-
   /* Nav bar */
   .navbar {
     height: 70px;

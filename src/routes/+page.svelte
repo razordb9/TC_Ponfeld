@@ -21,7 +21,7 @@
 <section id="team"> 
     <h2>Our Team</h2> 
     <div id="team-container">
-    
+        
         <!-- <Horizontalscroller speed="20s" width="1500px" direction="reverse"> -->
 
         {#each members as member}
