@@ -46,6 +46,9 @@
                 id="email"
                 required
             />
+            {#if form?.errors}
+                <p style="color:red;">❌ {form.errors["email"]}</p>
+            {/if}
             <label for="password">Password</label>
             <input
                 type="password"
@@ -55,10 +58,10 @@
                 autocomplete="current-password"
                 required
             />
-            <button class="btn" type="submit">Login</button>
-            {#if form?.error}
-                <p style="color:red;">❌ {form.error}</p>
+            {#if form?.errors}
+                <p style="color:red;">❌ {form.errors["password"]}</p>
             {/if}
+            <button class="btn" type="submit">Login</button>
         </fieldset>
     </form>
 </div>

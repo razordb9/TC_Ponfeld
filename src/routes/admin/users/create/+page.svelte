@@ -9,7 +9,7 @@
     let name = $state<string>("");
     let email = $state<string>("");
     let password = $state<string>("");
-    let isAdmin = true;
+    let isAdmin = $state(false);
 
     const submitFunction: SubmitFunction = (event) =>{
         return async ({result}: { result: ActionResult}) => {

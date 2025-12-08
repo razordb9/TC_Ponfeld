@@ -389,86 +389,84 @@ Jungle Civilization
 }
 
 /* DONE */
-@layer navbar {
-  .navbar {
-    height: 90px;
-    top: 0;
-    position: fixed;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    width: 100%;
-    background-color: var(--third-color);
-  }
-  .navbar .navbar-center {
-    display: flex;
-    gap: 20px; /* spacing between links */
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  .navbar .nav-item a {
-    text-decoration: none;
-    color: white;
-    font-weight: 500;
-  }
-  .navbar .navbar-center .nav-item {
-    padding: 0.8rem 1.2rem;
-  }
-  .navbar .navbar-center .nav-item:hover {
-    background-color: var(--secondary-color);
-    border-radius: var(--radius);
-  }
-  .navbar .navbar-center .nav-item:hover a {
-    color: var(--third-background);
-  }
-  .navbar .navbar-right {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-  }
-  .navbar .navbar-left {
-    height: 100%;
-    width: auto;
-    max-height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .navbar .nav-burger-menu {
-    display: none;
-  }
+.navbar {
+  height: 90px;
+  top: 0;
+  position: fixed;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  width: 100%;
+  background-color: var(--third-color);
 }
+.navbar .navbar-center {
+  display: flex;
+  gap: 20px; /* spacing between links */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.navbar .navbar-center .nav-item {
+  padding: 0.8rem 1.2rem;
+}
+.navbar .navbar-center .nav-item:hover {
+  background-color: var(--secondary-color);
+  border-radius: var(--radius);
+}
+.navbar .navbar-center .nav-item:hover a {
+  color: var(--third-background);
+}
+.navbar .navbar-center .nav-item a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+}
+.navbar .navbar-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.navbar .navbar-left {
+  height: 100%;
+  width: auto;
+  max-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navbar .nav-burger-menu {
+  display: none;
+}
+
 /* DONE */
-@layer hero {
-  #hero {
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-  #hero .hero-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    -o-object-fit: cover;
-       object-fit: cover;
-  }
-  #hero .hero-content {
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+#hero {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
+#hero .hero-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+#hero .hero-content {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 /* Design pattern page */
 #designpattern {
   margin-top: 100px;
