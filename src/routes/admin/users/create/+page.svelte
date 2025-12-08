@@ -44,7 +44,7 @@
         <fieldset>
             <label for="name">Name</label>
             <input type="text" bind:value={name} name="name" id="name" required/>
-            <label for="email">email</label>
+            <label for="email">Email</label>
             <input type="email" bind:value={email} name="email" id="email" required/>
             <label for="password">Password</label>
             <input type="password" bind:value={password} name="password" id="login_password" autocomplete="current-password" required/>
@@ -60,6 +60,7 @@
                 <input type="checkbox" name="isAdmin" id="isAdmin" bind:checked={isAdmin} data-type="checkbox">
                 <label for="isAdmin">is Admin</label>
             </div>
+            <br>
             <button class="btn" type="submit">Create</button>
         </fieldset>
     </form>

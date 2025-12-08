@@ -51,6 +51,7 @@ declare module '$env/static/private' {
 	export const COLOR: string;
 	export const npm_config_noproxy: string;
 	export const npm_config_local_prefix: string;
+	export const LAUNCH_EDITOR: string;
 	export const USER: string;
 	export const VSCODE_LOGIN_INITIALIZED: string;
 	export const COMMAND_MODE: string;
@@ -154,6 +155,7 @@ declare module '$env/dynamic/private' {
 		COLOR: string;
 		npm_config_noproxy: string;
 		npm_config_local_prefix: string;
+		LAUNCH_EDITOR: string;
 		USER: string;
 		VSCODE_LOGIN_INITIALIZED: string;
 		COMMAND_MODE: string;

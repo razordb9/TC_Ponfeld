@@ -12,7 +12,7 @@
             <!-- <a href="/AGB">AGB •</a> k -->
         {/each}
         <span>
-            <a href="https://www.instagram.com/tcgroessinghofponfeld/" target="_blank">Instagram<img class="footer-img" src="/instagram.svg" alt="Instagram"/></a>
+            <a href="https://www.instagram.com/tcgroessinghofponfeld/" target="_blank">Instagram</a>
         </span>
     </footer>
 </section>

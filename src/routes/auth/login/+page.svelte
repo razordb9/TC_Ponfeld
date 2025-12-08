@@ -38,7 +38,7 @@
     <form method="POST" use:enhance={submitFunction} action="?/login">
         <h1>Login</h1>
         <fieldset>
-            <label for="email">email</label>
+            <label for="email">Email</label>
             <input
                 type="email"
                 bind:value={email}

@@ -10,7 +10,7 @@ return {
 	assets: new Set(["Tennispllatz.jpg","avatar_female.jpg","avatar_male.jpg","error.png","instagram.svg","logo.png","logo_sponsor.png","logo_transparent_bg.png","petzner.png","robots.txt"]),
 	mimeTypes: {".jpg":"image/jpeg",".png":"image/png",".svg":"image/svg+xml",".txt":"text/plain"},
 	_: {
-		client: {start:"_app/immutable/entry/start.8XnipHuR.js",app:"_app/immutable/entry/app.DgFUfXOx.js",imports:["_app/immutable/entry/start.8XnipHuR.js","_app/immutable/chunks/D_ae3WYQ.js","_app/immutable/chunks/z7jyqtY_.js","_app/immutable/chunks/CCi-juUc.js","_app/immutable/chunks/DIeogL5L.js","_app/immutable/chunks/CcDcK6xx.js","_app/immutable/entry/app.DgFUfXOx.js","_app/immutable/chunks/CCi-juUc.js","_app/immutable/chunks/DIeogL5L.js","_app/immutable/chunks/z7jyqtY_.js","_app/immutable/chunks/CcDcK6xx.js","_app/immutable/chunks/DsnmJJEf.js","_app/immutable/chunks/BzWMSwkn.js","_app/immutable/chunks/DN0FSCWz.js","_app/immutable/chunks/C0BbMH7p.js"],stylesheets:[],fonts:[],uses_env_dynamic_public:false},
+		client: {start:"_app/immutable/entry/start.B6xsYAIZ.js",app:"_app/immutable/entry/app.CHMLrMTU.js",imports:["_app/immutable/entry/start.B6xsYAIZ.js","_app/immutable/chunks/CACPNXsp.js","_app/immutable/chunks/DBIU9UIB.js","_app/immutable/chunks/BzaMqOHg.js","_app/immutable/chunks/DIeogL5L.js","_app/immutable/chunks/Dmxv7Y2o.js","_app/immutable/entry/app.CHMLrMTU.js","_app/immutable/chunks/BzaMqOHg.js","_app/immutable/chunks/DIeogL5L.js","_app/immutable/chunks/DBIU9UIB.js","_app/immutable/chunks/Dmxv7Y2o.js","_app/immutable/chunks/DsnmJJEf.js","_app/immutable/chunks/Dzq61bo8.js","_app/immutable/chunks/B4zi4o3v.js","_app/immutable/chunks/CYeZQaRx.js"],stylesheets:[],fonts:[],uses_env_dynamic_public:false},
 		nodes: [
 			__memo(() => import('../output/server/nodes/0.js')),
 			__memo(() => import('../output/server/nodes/1.js')),
@@ -29,7 +29,8 @@ return {
 			__memo(() => import('../output/server/nodes/14.js')),
 			__memo(() => import('../output/server/nodes/15.js')),
 			__memo(() => import('../output/server/nodes/16.js')),
-			__memo(() => import('../output/server/nodes/17.js'))
+			__memo(() => import('../output/server/nodes/17.js')),
+			__memo(() => import('../output/server/nodes/18.js'))
 		],
 		remotes: {
 			
@@ -39,98 +40,98 @@ return {
 				id: "/",
 				pattern: /^\/$/,
 				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 4 },
+				page: { layouts: [0,], errors: [1,], leaf: 5 },
 				endpoint: null
 			},
 			{
 				id: "/AGB",
 				pattern: /^\/AGB\/?$/,
 				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 5 },
+				page: { layouts: [0,], errors: [1,], leaf: 6 },
 				endpoint: null
 			},
 			{
 				id: "/Impressum",
 				pattern: /^\/Impressum\/?$/,
 				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 6 },
+				page: { layouts: [0,], errors: [1,], leaf: 7 },
 				endpoint: null
 			},
 			{
 				id: "/Scroller",
 				pattern: /^\/Scroller\/?$/,
 				params: [],
-				page: { layouts: [0,2,], errors: [1,,], leaf: 7 },
+				page: { layouts: [0,2,], errors: [1,,], leaf: 8 },
 				endpoint: null
 			},
 			{
 				id: "/admin",
 				pattern: /^\/admin\/?$/,
 				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 8 },
+				page: { layouts: [0,3,], errors: [1,,], leaf: 9 },
 				endpoint: null
 			},
 			{
 				id: "/admin/design",
 				pattern: /^\/admin\/design\/?$/,
 				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 9 },
+				page: { layouts: [0,3,], errors: [1,,], leaf: 10 },
 				endpoint: null
 			},
 			{
 				id: "/admin/posts",
 				pattern: /^\/admin\/posts\/?$/,
 				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 10 },
+				page: { layouts: [0,3,], errors: [1,,], leaf: 11 },
 				endpoint: null
 			},
 			{
 				id: "/admin/posts/create",
 				pattern: /^\/admin\/posts\/create\/?$/,
 				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 13 },
+				page: { layouts: [0,3,], errors: [1,,], leaf: 14 },
 				endpoint: null
 			},
 			{
 				id: "/admin/posts/[slug]",
 				pattern: /^\/admin\/posts\/([^/]+?)\/?$/,
 				params: [{"name":"slug","optional":false,"rest":false,"chained":false}],
-				page: { layouts: [0,], errors: [1,], leaf: 11 },
+				page: { layouts: [0,3,], errors: [1,,], leaf: 12 },
 				endpoint: null
 			},
 			{
 				id: "/admin/posts/[slug]/edit",
 				pattern: /^\/admin\/posts\/([^/]+?)\/edit\/?$/,
 				params: [{"name":"slug","optional":false,"rest":false,"chained":false}],
-				page: { layouts: [0,], errors: [1,], leaf: 12 },
+				page: { layouts: [0,3,], errors: [1,,], leaf: 13 },
 				endpoint: null
 			},
 			{
 				id: "/admin/users",
 				pattern: /^\/admin\/users\/?$/,
 				params: [],
-				page: { layouts: [0,3,], errors: [1,,], leaf: 14 },
+				page: { layouts: [0,3,4,], errors: [1,,,], leaf: 15 },
 				endpoint: null
 			},
 			{
 				id: "/admin/users/create",
 				pattern: /^\/admin\/users\/create\/?$/,
 				params: [],
-				page: { layouts: [0,3,], errors: [1,,], leaf: 15 },
+				page: { layouts: [0,3,4,], errors: [1,,,], leaf: 16 },
 				endpoint: null
 			},
 			{
 				id: "/auth/login",
 				pattern: /^\/auth\/login\/?$/,
 				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 16 },
+				page: { layouts: [0,], errors: [1,], leaf: 17 },
 				endpoint: null
 			},
 			{
 				id: "/auth/signup",
 				pattern: /^\/auth\/signup\/?$/,
 				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 17 },
+				page: { layouts: [0,], errors: [1,], leaf: 18 },
 				endpoint: null
 			}
 		],

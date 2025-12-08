@@ -29,9 +29,9 @@
     "file": "chunks/context.js",
     "name": "context"
   },
-  "_custom_styles.CHQ1kQ5P.css": {
-    "file": "_app/immutable/assets/custom_styles.CHQ1kQ5P.css",
-    "src": "_custom_styles.CHQ1kQ5P.css"
+  "_custom_styles.B2Ocgr2V.css": {
+    "file": "_app/immutable/assets/custom_styles.B2Ocgr2V.css",
+    "src": "_custom_styles.B2Ocgr2V.css"
   },
   "_environment.js": {
     "file": "chunks/environment.js",
@@ -146,6 +146,12 @@
       "_shared.js"
     ]
   },
+  "node_modules/@sveltejs/kit/src/runtime/components/svelte-5/layout.svelte": {
+    "file": "entries/fallbacks/layout.svelte.js",
+    "name": "entries/fallbacks/layout.svelte",
+    "src": "node_modules/@sveltejs/kit/src/runtime/components/svelte-5/layout.svelte",
+    "isEntry": true
+  },
   "node_modules/@sveltejs/kit/src/runtime/server/index.js": {
     "file": "index.js",
     "name": "index",
@@ -208,7 +214,7 @@
       "_auth-client.js"
     ],
     "css": [
-      "_app/immutable/assets/custom_styles.CHQ1kQ5P.css"
+      "_app/immutable/assets/custom_styles.B2Ocgr2V.css"
     ]
   },
   "src/routes/+page.server.ts": {
@@ -237,7 +243,7 @@
       "_attributes.js"
     ],
     "css": [
-      "_app/immutable/assets/custom_styles.CHQ1kQ5P.css"
+      "_app/immutable/assets/custom_styles.B2Ocgr2V.css"
     ]
   },
   "src/routes/AGB/+page.svelte": {
@@ -281,6 +287,12 @@
     "css": [
       "_app/immutable/assets/_page.CL3z5QhM.css"
     ]
+  },
+  "src/routes/admin/+layout.server.ts": {
+    "file": "entries/pages/admin/_layout.server.ts.js",
+    "name": "entries/pages/admin/_layout.server.ts",
+    "src": "src/routes/admin/+layout.server.ts",
+    "isEntry": true
   },
   "src/routes/admin/+page.server.ts": {
     "file": "entries/pages/admin/_page.server.ts.js",
@@ -385,13 +397,23 @@
     "file": "entries/pages/admin/users/create/_page.server.ts.js",
     "name": "entries/pages/admin/users/create/_page.server.ts",
     "src": "src/routes/admin/users/create/+page.server.ts",
-    "isEntry": true
+    "isEntry": true,
+    "imports": [
+      "_auth.js"
+    ]
   },
   "src/routes/admin/users/create/+page.svelte": {
     "file": "entries/pages/admin/users/create/_page.svelte.js",
     "name": "entries/pages/admin/users/create/_page.svelte",
     "src": "src/routes/admin/users/create/+page.svelte",
-    "isEntry": true
+    "isEntry": true,
+    "imports": [
+      "_attributes.js",
+      "_exports.js",
+      "_utils.js",
+      "_state.svelte.js",
+      "_auth-client.js"
+    ]
   },
   "src/routes/auth/login/+page.server.ts": {
     "file": "entries/pages/auth/login/_page.server.ts.js",
@@ -420,22 +442,12 @@
     "file": "entries/pages/auth/signup/_page.server.ts.js",
     "name": "entries/pages/auth/signup/_page.server.ts",
     "src": "src/routes/auth/signup/+page.server.ts",
-    "isEntry": true,
-    "imports": [
-      "_auth.js"
-    ]
+    "isEntry": true
   },
   "src/routes/auth/signup/+page.svelte": {
     "file": "entries/pages/auth/signup/_page.svelte.js",
     "name": "entries/pages/auth/signup/_page.svelte",
     "src": "src/routes/auth/signup/+page.svelte",
-    "isEntry": true,
-    "imports": [
-      "_attributes.js",
-      "_exports.js",
-      "_utils.js",
-      "_state.svelte.js",
-      "_auth-client.js"
-    ]
+    "isEntry": true
   }
 }

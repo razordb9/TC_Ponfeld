@@ -9,6 +9,7 @@
   }: {user: ExtendedUser} = $props();
 
   var open = $state(false);
+
   const openBurgerMenue = (e:MouseEvent) => {
     console.log(e.target)
     console.log(open)
@@ -41,7 +42,7 @@
   </div>
   <ul class="navbar-center">
     {#each navigation as route}
-        <li class="nav-item"><a href="{route.url}">{route.name}</a></li>
+        <li class="nav-item"><a href="{route.url}" >{route.name}</a></li>
     {/each}
   </ul>
   <ul class="navbar-right">

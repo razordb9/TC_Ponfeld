@@ -99,24 +99,31 @@ Palm Leaf
 
 Jungle Civilization
 #616a3e
+
+
+#cadb68
+#7dc477
+#3ca885
+#098886
+#1f6777
+#2f4858
+
 */
 
 /* Default settings start */
 @layer base {
   :root {
     //
-    --primary-color: #8fa33b;
-    --primary-background: #ececeb;
+    --primary-color: #2f4858;
+    --primary-background: #cadb68;
 
     --secondary-color: #cadb68;
-    --secondary-background: #fafdee;
+    --secondary-background: #3ca885;
 
     --third-color: #616a3e;
     --third-background: #11120c;
 
     --animation-speed: "10s";
-    //because navbar has hight 150px
-    // --padding: 180px;
 
     --padding-block: 1rem;
     --animation-fix-padding: 0.5rem;
@@ -126,16 +133,16 @@ Jungle Civilization
     margin: 0;
     padding: 0;
 
-    --color-orange-300: #fdba74;
-    --color-orange-400: #fb923c;
-    --color-orange-500: #f97316;
-    --color-orange-600: #ea580c;
-    --color-orange-700: #c2410c;
+    // --color-orange-300: #fdba74;
+    // --color-orange-400: #fb923c;
+    // --color-orange-500: #f97316;
+    // --color-orange-600: #ea580c;
+    // --color-orange-700: #c2410c;
 
-    --color-aquamarine-400: #4dd0c8;
-    --color-aquamarine-500: #38ccb3;
-    --color-aquamarine-600: #2ca89e;
-    --color-aquamarine-700: #1e807f;
+    // --color-aquamarine-400: #4dd0c8;
+    // --color-aquamarine-500: #38ccb3;
+    // --color-aquamarine-600: #2ca89e;
+    // --color-aquamarine-700: #1e807f;
 
     --base-font-size: 1rem;
     --scale: 1.25;
@@ -147,7 +154,7 @@ Jungle Civilization
     --h1: calc(var(--h2) * var(--scale));
     --p: calc(var(--base-font-size) * var(--scale));
 
-    --box-shadow-action: 0 0 10px 1px hsla(39, 85%, 42%, 0.3);
+    --box-shadow-action: 0 0 10px 1px var(--secondary-color);
 
     @media (width < 760px) {
       --scale: 1.15;
@@ -203,7 +210,7 @@ Jungle Civilization
     font-size: var(--h4);
     margin-block: 1.33em;
   }
-  
+
   h5,
   .text-size-h5 {
     font-size: var(--h5);
@@ -218,13 +225,14 @@ Jungle Civilization
   .text-small {
     font-size: calc(var(--base-font-size) / var(--scale));
   }
-  button, .btn {
+  button,
+  .btn {
     display: block;
-    background-color: transparent;
+    background-color: var(--secondary-color);
     padding: 0.8rem 1.2rem;
     font-size: var(--base-font-size);
     color: var(--color-text-1, green);
-    border: 1px solid var(--color-aquamarine-400, grey);
+    border: 1px solid var(--secondary-color, grey);
     border-radius: 4px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -400,20 +408,18 @@ Jungle Civilization
     box-shadow: var(--box-shadow-elevation-1);
   }
   .logo {
-    position: absolute;
     top: 0px;
     left: -5px;
     height: 90px;
     width: 90px;
     min-width: 90px;
-    min-height: 90px;
+    // min-height: 90px;
     border-radius: 50%;
     margin: 0;
     padding: 0;
     object-fit: contain;
     margin-left: 1rem;
     z-index: 13600;
-    position: fixed;
   }
 }
 
@@ -428,83 +434,101 @@ Jungle Civilization
   margin: auto 0;
 }
 
-/* Navbar */
-.navbar {
-  top: 0;
-  position: fixed;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 20px;
-  width: 100%;
-  background-color: var(--third-color);
-
-  .navbar-center {
+/* DONE */
+@layer navbar {
+  .navbar {
+    height: 90px;
+    top: 0;
+    position: fixed;
+    z-index: 2;
     display: flex;
-    gap: 20px; /* spacing between links */
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  .nav-item a {
-    text-decoration: none;
-    color: white;
-    font-weight: 500;
-  }
-  .navbar-center .nav-item {
-    padding: 20px;
-    &:hover {
-      background-color: var(--secondary-background);
-      border-radius: var(--radius);
-      a {
-        color: var(--third-background);
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    width: 100%;
+    background-color: var(--third-color);
+
+    .navbar-center {
+      display: flex;
+      gap: 20px; /* spacing between links */
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-item a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+    }
+    .navbar-center .nav-item {
+      padding: 0.8rem 1.2rem;
+      &:hover {
+        background-color: var(--secondary-color);
+        border-radius: var(--radius);
+        a {
+          color: var(--third-background);
+        }
       }
     }
-  }
-  .navbar-right {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-  }
-
-  .nav-burger-menu {
-    display: none;
+    .navbar-right {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
+    .navbar-left {
+      height: 100%;
+      width: auto;
+      max-height: 100%;
+      // padding-top: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .nav-burger-menu {
+      display: none;
+    }
   }
 }
-/* Navbar end*/
 
-#hero {
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-
-  .hero-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .hero-content {
-    z-index: 100000;
+/* DONE */
+@layer hero {
+  #hero {
+    height: 100vh;
+    overflow: hidden;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
+
+    .hero-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-content {
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
   }
 }
 
 /* Design pattern page */
 #designpattern {
-  padding: var(--padding);
-  text-align: left;
+  margin-top: 100px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
+
 /* Admin Page */
 #adminPage {
   height: 100vh;
@@ -652,16 +676,15 @@ Jungle Civilization
   }
 
   .sponsor {
-    /* width of the svg is 100px */
     padding: 1rem;
     border-radius: 10px;
-    // box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.308);
-    // background: linear-gradient(160deg, #d8d2d2, #332e2eb7);
+    
     a {
       display: flex;
       flex: 1;
       width: 100%;
       height: auto;
+      
       img {
         min-width: 120px;
         width: 100%;
@@ -683,8 +706,6 @@ Jungle Civilization
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  // background-color: salmon;
-  // border: 1px solid red;
 }
 
 /* Footer section */
@@ -700,7 +721,6 @@ Jungle Civilization
     position: relative;
     text-align: center;
     color: var(--surface-1-light);
-    // padding: 20px 0px 20px 0px;
     height: auto;
     a {
       text-decoration: none;
@@ -708,13 +728,6 @@ Jungle Civilization
     }
     .footer-img {
       filter: invert(1);
-    }
-    span {
-      // margin-top: 10px;
-      // display: flex;
-      // flex-direction: row;
-      // justify-content: center;
-      // gap: 10px;
     }
   }
 }
@@ -789,35 +802,36 @@ Jungle Civilization
     display: flex;
     justify-content: space-between;
     .navbar-left .logo {
-      // display: none;
       height: 70px;
-      // padding-top: 10px;
     }
-    .nav-item {
-      background-color: rgba(211, 211, 211);
-    }
+
     .navbar-center,
     .navbar-right {
       display: none;
     }
-    .nav-burger-menu .mobile {
-      display: block;
-    }
+
     .nav-burger-menu {
-      margin-right: 10px;
+      // margin-right: 10px;
       display: inline-block;
     }
     .nav-burger-menu-links {
-      flex-direction: column;
-      display: none;
-      top: 60px;
       position: absolute;
-      height: auto;
+      top: 70px;
+      right: 0;
       width: 100%;
-      background-color: rgba(211, 211, 211);
-      right: 0; /* Align dropdown to the right */
-      margin: 10px 0;
-      padding: 10px 0;
+      background-color: rgba(211, 211, 211, 0.5);
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transform: translateY(-10px);
+
+      transition:
+        max-height 0.35s ease,
+        opacity 0.25s ease,
+        transform 0.25s ease;
+
+      display: flex;
+      flex-direction: column;
 
       .nav-item {
         margin: 10px;
@@ -830,6 +844,11 @@ Jungle Civilization
           color: black;
         }
       }
+    }
+    .nav-burger-menu-links.mobile {
+      max-height: 500px;
+      opacity: 1;
+      transform: translateY(0);
     }
     .line {
       width: 25px;
