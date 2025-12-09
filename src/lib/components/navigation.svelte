@@ -60,6 +60,7 @@
     <div class="line"></div>
   </div>
 </div>
+
 <ul class="nav-burger-menu-links" class:mobile={open}>
   {#each navigation as route}
     <li class="nav-item"><a href={route.url}>{route.name}</a></li>

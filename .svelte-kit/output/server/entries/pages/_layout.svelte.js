@@ -34,12 +34,12 @@ function Navigation($$renderer, $$props) {
     $$renderer2.push(`<!--]--></ul> <ul class="navbar-right">`);
     if (user) {
       $$renderer2.push("<!--[-->");
-      $$renderer2.push(`<li class="nav-item"><a href="/admin">Admin Page</a></li> <li class="nav-item"><button>Logout</button></li>`);
+      $$renderer2.push(`<li class="nav-item"><a href="/admin">Admin Page</a></li> <li><button>Logout</button></li>`);
     } else {
       $$renderer2.push("<!--[!-->");
-      $$renderer2.push(`<li class="nav-item"><a href="/auth/login" role="button" class="btn">Login</a></li>`);
+      $$renderer2.push(`<li><a href="/auth/login" role="button" class="btn">Login</a></li>`);
     }
-    $$renderer2.push(`<!--]--></ul>  <div class="nav-burger-menu"><div class="line"></div> <div class="line"></div> <div class="line"></div> <ul${attr_class("nav-burger-menu-links", void 0, { "mobile": open })}><!--[-->`);
+    $$renderer2.push(`<!--]--></ul>  <div class="nav-burger-menu"><div class="line"></div> <div class="line"></div> <div class="line"></div></div></div> <ul${attr_class("nav-burger-menu-links", void 0, { "mobile": open })}><!--[-->`);
     const each_array_1 = ensure_array_like(navigation);
     for (let $$index_1 = 0, $$length = each_array_1.length; $$index_1 < $$length; $$index_1++) {
       let route = each_array_1[$$index_1];
@@ -53,7 +53,7 @@ function Navigation($$renderer, $$props) {
       $$renderer2.push("<!--[!-->");
       $$renderer2.push(`<li class="nav-item"><a role="button" class="btn" href="/auth/login">Login</a></li>`);
     }
-    $$renderer2.push(`<!--]--></ul></div></div>`);
+    $$renderer2.push(`<!--]--></ul>`);
   });
 }
 function _layout($$renderer, $$props) {
