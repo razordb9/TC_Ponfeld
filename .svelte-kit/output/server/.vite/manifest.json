@@ -29,9 +29,9 @@
     "file": "chunks/context.js",
     "name": "context"
   },
-  "_custom_styles.B2Ocgr2V.css": {
-    "file": "_app/immutable/assets/custom_styles.B2Ocgr2V.css",
-    "src": "_custom_styles.B2Ocgr2V.css"
+  "_custom_styles.lBDc4iBJ.css": {
+    "file": "_app/immutable/assets/custom_styles.lBDc4iBJ.css",
+    "src": "_custom_styles.lBDc4iBJ.css"
   },
   "_environment.js": {
     "file": "chunks/environment.js",
@@ -214,7 +214,7 @@
       "_auth-client.js"
     ],
     "css": [
-      "_app/immutable/assets/custom_styles.B2Ocgr2V.css"
+      "_app/immutable/assets/custom_styles.lBDc4iBJ.css"
     ]
   },
   "src/routes/+page.server.ts": {
@@ -238,12 +238,11 @@
       "_project.config.js",
       "_exports.js",
       "_utils.js",
-      "_escaping.js",
       "_state.svelte.js",
       "_attributes.js"
     ],
     "css": [
-      "_app/immutable/assets/custom_styles.B2Ocgr2V.css"
+      "_app/immutable/assets/custom_styles.lBDc4iBJ.css"
     ]
   },
   "src/routes/AGB/+page.svelte": {
@@ -437,17 +436,5 @@
       "_state.svelte.js",
       "_auth-client.js"
     ]
-  },
-  "src/routes/auth/signup/+page.server.ts": {
-    "file": "entries/pages/auth/signup/_page.server.ts.js",
-    "name": "entries/pages/auth/signup/_page.server.ts",
-    "src": "src/routes/auth/signup/+page.server.ts",
-    "isEntry": true
-  },
-  "src/routes/auth/signup/+page.svelte": {
-    "file": "entries/pages/auth/signup/_page.svelte.js",
-    "name": "entries/pages/auth/signup/_page.svelte",
-    "src": "src/routes/auth/signup/+page.svelte",
-    "isEntry": true
   }
 }

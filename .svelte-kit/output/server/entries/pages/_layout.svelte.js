@@ -18,7 +18,7 @@ function Footer($$renderer) {
     let foot = each_array[$$index];
     $$renderer.push(`<a${attr("href", foot.url)}>${escape_html(foot.name)} •</a>`);
   }
-  $$renderer.push(`<!--]--> <span><a href="https://www.instagram.com/tcgroessinghofponfeld/" target="_blank">Instagram<img class="footer-img" src="/instagram.svg" alt="Instagram"/></a></span></footer></section>`);
+  $$renderer.push(`<!--]--> <span><a href="https://www.instagram.com/tcgroessinghofponfeld/" target="_blank">Instagram</a></span></footer></section>`);
 }
 function Navigation($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {
@@ -34,7 +34,7 @@ function Navigation($$renderer, $$props) {
     $$renderer2.push(`<!--]--></ul> <ul class="navbar-right">`);
     if (user) {
       $$renderer2.push("<!--[-->");
-      $$renderer2.push(`<li class="nav-item"><a href="/admin">Admin Page</a></li> <li class="nav-item"><button tabindex="1">Logout</button></li>`);
+      $$renderer2.push(`<li class="nav-item"><a href="/admin">Admin Page</a></li> <li class="nav-item"><button>Logout</button></li>`);
     } else {
       $$renderer2.push("<!--[!-->");
       $$renderer2.push(`<li class="nav-item"><a href="/auth/login" role="button" class="btn">Login</a></li>`);

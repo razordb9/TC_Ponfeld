@@ -1,69 +1,65 @@
-import { d as bind_props, e as ensure_array_like } from "../../chunks/index2.js";
+import { e as ensure_array_like } from "../../chunks/index2.js";
 /* empty css                         */
 import { H as Horizontalscroller } from "../../chunks/horizontalscroller.js";
 import { m as members, s as sponsors } from "../../chunks/project.config.js";
+import "clsx";
 import "@sveltejs/kit/internal";
 import "../../chunks/exports.js";
 import "../../chunks/utils.js";
-import { e as escape_html } from "../../chunks/escaping.js";
-import "clsx";
 import "@sveltejs/kit/internal/server";
 import "../../chunks/state.svelte.js";
 import { a as attr } from "../../chunks/attributes.js";
-function Contact_new($$renderer, $$props) {
-  $$renderer.component(($$renderer2) => {
-    let { form = null } = $$props;
-    $$renderer2.push(`<form method="POST" action="?/sendmail" name="contact"><fieldset><label>Name (*) <input type="text" id="name" name="name"/></label> `);
-    if (form?.errors && form?.values.name) {
-      $$renderer2.push("<!--[-->");
-      $$renderer2.push(`<p class="error">${escape_html(form?.errors["name"]?.errors)}</p>`);
-    } else {
-      $$renderer2.push("<!--[!-->");
-    }
-    $$renderer2.push(`<!--]--> <label>Email (*)<input type="email" id="email" name="email" autocomplete="username" placeholder="example@domain.com"/></label> `);
-    if (form?.errors && form?.values.email) {
-      $$renderer2.push("<!--[-->");
-      $$renderer2.push(`<p class="error">${escape_html(form?.errors["email"]?.errors)}</p>`);
-    } else {
-      $$renderer2.push("<!--[!-->");
-    }
-    $$renderer2.push(`<!--]--> <label>Text (*)<textarea id="message" name="message" rows="7"></textarea></label> `);
-    if (form?.errors && form?.values.message) {
-      $$renderer2.push("<!--[-->");
-      $$renderer2.push(`<p class="error">${escape_html(form?.errors["message"]?.errors)}</p>`);
-    } else {
-      $$renderer2.push("<!--[!-->");
-    }
-    $$renderer2.push(`<!--]--> <button type="submit">Absenden</button> `);
-    if (form?.success) {
-      $$renderer2.push("<!--[-->");
-      $$renderer2.push(`<p style="color:green;">✅ Message sent successfully!</p>`);
-    } else {
-      $$renderer2.push("<!--[!-->");
-    }
-    $$renderer2.push(`<!--]--> `);
-    if (form?.error) {
-      $$renderer2.push("<!--[-->");
-      $$renderer2.push(`<p style="color:red;">❌ ${escape_html(form.error)}</p>`);
-    } else {
-      $$renderer2.push("<!--[!-->");
-    }
-    $$renderer2.push(`<!--]--></fieldset></form>`);
-    bind_props($$props, { form });
-  });
+function Contact_new($$renderer) {
+  $$renderer.push(`<form method="POST" action="?/sendmail" name="contact"><fieldset><label>Name (*) <input type="text" id="name" name="name"/></label> `);
+  {
+    $$renderer.push("<!--[!-->");
+  }
+  $$renderer.push(`<!--]--> <label>Email (*)<input type="email" id="email" name="email" autocomplete="username" placeholder="example@domain.com"/></label> `);
+  {
+    $$renderer.push("<!--[!-->");
+  }
+  $$renderer.push(`<!--]--> <label>Text (*)<textarea id="message" name="message" rows="7"></textarea></label> `);
+  {
+    $$renderer.push("<!--[!-->");
+  }
+  $$renderer.push(`<!--]--> <button type="submit">Absenden</button> `);
+  {
+    $$renderer.push("<!--[!-->");
+  }
+  $$renderer.push(`<!--]--> `);
+  {
+    $$renderer.push("<!--[!-->");
+  }
+  $$renderer.push(`<!--]--></fieldset></form>`);
 }
 function About_card($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {
     let { boardmember } = $$props;
-    $$renderer2.push(`<div class="member_card"><img class="member-image"${attr(
+    $$renderer2.push(`<div class="team-member-card"><img class="team-member-image"${attr(
       "src",
-      // console.log("AboutCard", boardmember)
+      //   console.log("AboutCard", boardmember)
+      //   const modal = document.getElementById("modal");
+      //   const open = document.getElementById("open-modal");
+      //   const close = document.getElementById("close-modal");
+      //   const modalImg = document.getElementById("modal-img");
+      //   open.onclick = () => {
+      //     modal.classList.add("show");
+      //     modalImg.src = open.src; // show the clicked image in the modal
+      //   };
+      //   close.onclick = () => {
+      //     modal.classList.remove("show");
+      //   };
+      //   // Close on background click
+      //   modal.onclick = (e) => {
+      //     if (e.target === modal) {
+      //       modal.classList.remove("show");
+      //     }
+      //   };
       boardmember.picture
-    )}${attr("alt", boardmember.picture)} loading="lazy"/> <div class="member-info"><h3>${escape_html(boardmember.name)}</h3> <h4>${escape_html(boardmember.function)}</h4> <p>${escape_html(boardmember.description)}</p></div></div>`);
+    )}${attr("alt", boardmember.picture)} loading="lazy" id="open-modal"/> <div class="modal" id="modal"><span class="close" id="close-modal">×</span> <img class="modal-content" id="modal-img"/></div></div>`);
   });
 }
-function _page($$renderer, $$props) {
-  let { form } = $$props;
+function _page($$renderer) {
   $$renderer.push(`<section id="hero"><img src="/Tennispllatz.jpg" alt="tennisplatz" class="hero-img"/> <div class="hero-content"><h1>TC Grössinghof Ponfeld</h1> <a href="https://groessinghof-ponfeld.tennisplatz.info/" target="_blank" class="btn">Platzreservierung</a></div></section> <section id="team"><h2>Our Team</h2> <div id="team-container"><!--[-->`);
   const each_array = ensure_array_like(members);
   for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
@@ -88,7 +84,7 @@ function _page($$renderer, $$props) {
     }
   });
   $$renderer.push(`<!----></div></section> <section id="contact"><h2>Wie könnt ihr mit uns in Verbindung treten?</h2> `);
-  Contact_new($$renderer, { form });
+  Contact_new($$renderer);
   $$renderer.push(`<!----></section>`);
 }
 export {

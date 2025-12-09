@@ -2,8 +2,8 @@
     import { applyAction, enhance } from "$app/forms";
     import { authClient } from "$lib/auth-client";
     import { type SubmitFunction, type ActionResult } from "@sveltejs/kit";
-    import type { ActionData } from "./$types";
     import { goto, invalidateAll } from "$app/navigation";
+    import type { ActionData } from "./$types";
 
     let { form }: { form: ActionData} = $props();
     let email = $state<string>("");

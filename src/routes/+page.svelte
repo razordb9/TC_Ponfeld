@@ -1,12 +1,10 @@
 <script lang="ts">
 	import "$lib/css/custom_styles.css";
-    import type { ActionData, PageProps } from "./$types";
     import Horizontalscroller from "$lib/components/horizontalscroller.svelte";
     import { sponsors } from "$lib/project.config";
     import { members } from "$lib/project.config";
     import Contact from "$lib/components/contact_new.svelte";
     import AboutCard from "$lib/components/about_card.svelte";
-    let { form }: { form: ActionData } = $props(); 
 
 </script>
 
@@ -53,5 +51,5 @@
 </section>
 <section id="contact">
     <h2>Wie könnt ihr mit uns in Verbindung treten?</h2>    
-    <Contact {form} />
+    <Contact />
 </section>

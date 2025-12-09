@@ -1,8 +1,7 @@
 <script lang="ts">
     import { enhance } from "$app/forms";
-    import type { ActionData } from "../../routes/$types";
 
-    let {form= $bindable<ActionData | null>(null) } = $props();
+   let form=$state<HTMLFormElement>();
 
 </script>
 

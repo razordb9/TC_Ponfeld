@@ -10,7 +10,7 @@ return {
 	assets: new Set(["Tennispllatz.jpg","avatar_female.jpg","avatar_male.jpg","error.png","instagram.svg","logo.png","logo_sponsor.png","logo_transparent_bg.png","petzner.png","robots.txt"]),
 	mimeTypes: {".jpg":"image/jpeg",".png":"image/png",".svg":"image/svg+xml",".txt":"text/plain"},
 	_: {
-		client: {start:"_app/immutable/entry/start.B6xsYAIZ.js",app:"_app/immutable/entry/app.CHMLrMTU.js",imports:["_app/immutable/entry/start.B6xsYAIZ.js","_app/immutable/chunks/CACPNXsp.js","_app/immutable/chunks/DBIU9UIB.js","_app/immutable/chunks/BzaMqOHg.js","_app/immutable/chunks/DIeogL5L.js","_app/immutable/chunks/Dmxv7Y2o.js","_app/immutable/entry/app.CHMLrMTU.js","_app/immutable/chunks/BzaMqOHg.js","_app/immutable/chunks/DIeogL5L.js","_app/immutable/chunks/DBIU9UIB.js","_app/immutable/chunks/Dmxv7Y2o.js","_app/immutable/chunks/DsnmJJEf.js","_app/immutable/chunks/Dzq61bo8.js","_app/immutable/chunks/B4zi4o3v.js","_app/immutable/chunks/CYeZQaRx.js"],stylesheets:[],fonts:[],uses_env_dynamic_public:false},
+		client: {start:"_app/immutable/entry/start.DyYgB9Bi.js",app:"_app/immutable/entry/app.Bk2C3n0d.js",imports:["_app/immutable/entry/start.DyYgB9Bi.js","_app/immutable/chunks/DX_wNguW.js","_app/immutable/chunks/CRakC5Jn.js","_app/immutable/chunks/DhQlDxi7.js","_app/immutable/chunks/DIeogL5L.js","_app/immutable/chunks/xyKh6EvY.js","_app/immutable/entry/app.Bk2C3n0d.js","_app/immutable/chunks/DhQlDxi7.js","_app/immutable/chunks/DIeogL5L.js","_app/immutable/chunks/CRakC5Jn.js","_app/immutable/chunks/xyKh6EvY.js","_app/immutable/chunks/DsnmJJEf.js","_app/immutable/chunks/I6AyiWhU.js","_app/immutable/chunks/D0xuNrLY.js"],stylesheets:[],fonts:[],uses_env_dynamic_public:false},
 		nodes: [
 			__memo(() => import('./nodes/0.js')),
 			__memo(() => import('./nodes/1.js')),
@@ -29,8 +29,7 @@ return {
 			__memo(() => import('./nodes/14.js')),
 			__memo(() => import('./nodes/15.js')),
 			__memo(() => import('./nodes/16.js')),
-			__memo(() => import('./nodes/17.js')),
-			__memo(() => import('./nodes/18.js'))
+			__memo(() => import('./nodes/17.js'))
 		],
 		remotes: {
 			
@@ -125,13 +124,6 @@ return {
 				pattern: /^\/auth\/login\/?$/,
 				params: [],
 				page: { layouts: [0,], errors: [1,], leaf: 17 },
-				endpoint: null
-			},
-			{
-				id: "/auth/signup",
-				pattern: /^\/auth\/signup\/?$/,
-				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 18 },
 				endpoint: null
 			}
 		],

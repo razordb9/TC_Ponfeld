@@ -27,7 +27,7 @@ export {};
 
 declare module "$app/types" {
 	export interface AppTypes {
-		RouteId(): "/" | "/AGB" | "/Impressum" | "/Scroller" | "/admin" | "/admin/design" | "/admin/posts" | "/admin/posts/create" | "/admin/posts/[slug]" | "/admin/posts/[slug]/edit" | "/admin/users" | "/admin/users/create" | "/auth" | "/auth/login" | "/auth/signup";
+		RouteId(): "/" | "/AGB" | "/Impressum" | "/Scroller" | "/admin" | "/admin/design" | "/admin/posts" | "/admin/posts/create" | "/admin/posts/[slug]" | "/admin/posts/[slug]/edit" | "/admin/users" | "/admin/users/create" | "/auth" | "/auth/login";
 		RouteParams(): {
 			"/admin/posts/[slug]": { slug: string };
 			"/admin/posts/[slug]/edit": { slug: string }
@@ -46,10 +46,9 @@ declare module "$app/types" {
 			"/admin/users": Record<string, never>;
 			"/admin/users/create": Record<string, never>;
 			"/auth": Record<string, never>;
-			"/auth/login": Record<string, never>;
-			"/auth/signup": Record<string, never>
+			"/auth/login": Record<string, never>
 		};
-		Pathname(): "/" | "/AGB" | "/AGB/" | "/Impressum" | "/Impressum/" | "/Scroller" | "/Scroller/" | "/admin" | "/admin/" | "/admin/design" | "/admin/design/" | "/admin/posts" | "/admin/posts/" | "/admin/posts/create" | "/admin/posts/create/" | `/admin/posts/${string}` & {} | `/admin/posts/${string}/` & {} | `/admin/posts/${string}/edit` & {} | `/admin/posts/${string}/edit/` & {} | "/admin/users" | "/admin/users/" | "/admin/users/create" | "/admin/users/create/" | "/auth" | "/auth/" | "/auth/login" | "/auth/login/" | "/auth/signup" | "/auth/signup/";
+		Pathname(): "/" | "/AGB" | "/AGB/" | "/Impressum" | "/Impressum/" | "/Scroller" | "/Scroller/" | "/admin" | "/admin/" | "/admin/design" | "/admin/design/" | "/admin/posts" | "/admin/posts/" | "/admin/posts/create" | "/admin/posts/create/" | `/admin/posts/${string}` & {} | `/admin/posts/${string}/` & {} | `/admin/posts/${string}/edit` & {} | `/admin/posts/${string}/edit/` & {} | "/admin/users" | "/admin/users/" | "/admin/users/create" | "/admin/users/create/" | "/auth" | "/auth/" | "/auth/login" | "/auth/login/";
 		ResolvedPathname(): `${"" | `/${string}`}${ReturnType<AppTypes['Pathname']>}`;
 		Asset(): "/Tennispllatz.jpg" | "/avatar_female.jpg" | "/avatar_male.jpg" | "/error.png" | "/instagram.svg" | "/logo.png" | "/logo_sponsor.png" | "/logo_transparent_bg.png" | "/petzner.png" | "/robots.txt" | string & {};
 	}

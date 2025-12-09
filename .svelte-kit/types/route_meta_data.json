@@ -63,9 +63,5 @@
 	"/auth/login": [
 		"src/routes/auth/login/+page.server.ts",
 		"src/routes/+layout.server.ts"
-	],
-	"/auth/signup": [
-		"src/routes/auth/signup/+page.server.ts",
-		"src/routes/+layout.server.ts"
 	]
 }
