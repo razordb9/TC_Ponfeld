@@ -404,7 +404,7 @@ Jungle Civilization
   }
 
   .layout {
-    margin-top: var(--header-height);
+    margin: var(--header-height) 0px;
   }
 
   // .main-header {
@@ -896,9 +896,8 @@ Jungle Civilization
 // }
 
 @media (max-width: 600px) {
-  #hero {
-    // margin-top: 70px;
-    // height: 100%;
+  #adminPage {
+    height: 90vh;
   }
 
   #team {

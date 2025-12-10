@@ -14,6 +14,12 @@
     open = !open;
   };
 
+  const openBurgerMenuIcon = (e: MouseEvent) => {
+    if (open) {
+      open = !open;
+    }
+  }
+
   console.log("get user: " + user);
 
   const signout = async () => {
@@ -30,7 +36,7 @@
 
 <div class="navbar">
   <div class="navbar-left">
-    <a href="/" onclick={openBurgerMenue}>
+    <a href="/" onclick={openBurgerMenuIcon}>
       <img
         src="/logo_transparent_bg.png"
         alt="Thomas Hudson-Zaussnig"

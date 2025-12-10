@@ -37,26 +37,9 @@ function About_card($$renderer, $$props) {
     let { boardmember } = $$props;
     $$renderer2.push(`<div class="team-member-card"><img class="team-member-image"${attr(
       "src",
-      //   console.log("AboutCard", boardmember)
-      //   const modal = document.getElementById("modal");
-      //   const open = document.getElementById("open-modal");
-      //   const close = document.getElementById("close-modal");
-      //   const modalImg = document.getElementById("modal-img");
-      //   open.onclick = () => {
-      //     modal.classList.add("show");
-      //     modalImg.src = open.src; // show the clicked image in the modal
-      //   };
-      //   close.onclick = () => {
-      //     modal.classList.remove("show");
-      //   };
-      //   // Close on background click
-      //   modal.onclick = (e) => {
-      //     if (e.target === modal) {
-      //       modal.classList.remove("show");
-      //     }
-      //   };
+      // console.log("AboutCard", boardmember)
       boardmember.picture
-    )}${attr("alt", boardmember.picture)} loading="lazy" id="open-modal"/> <div class="modal" id="modal"><span class="close" id="close-modal">×</span> <img class="modal-content" id="modal-img"/></div></div>`);
+    )}${attr("alt", boardmember.picture)} loading="lazy"/></div>`);
   });
 }
 function _page($$renderer) {

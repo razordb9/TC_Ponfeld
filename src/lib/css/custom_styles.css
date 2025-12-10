@@ -344,7 +344,7 @@ Jungle Civilization
     border-top: 1px solid var(--color-text-2-light);
   }
   .layout {
-    margin-top: var(--header-height);
+    margin: var(--header-height) 0px;
   }
 }
 .btn {
@@ -756,6 +756,9 @@ Jungle Civilization
 /* abour card */
 /* about card end*/
 @media (max-width: 600px) {
+  #adminPage {
+    height: 90vh;
+  }
   #team #team-container {
     display: flex;
     flex-direction: column;
