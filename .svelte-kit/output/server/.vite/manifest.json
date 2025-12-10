@@ -29,9 +29,9 @@
     "file": "chunks/context.js",
     "name": "context"
   },
-  "_custom_styles.CfcKl0Zo.css": {
-    "file": "_app/immutable/assets/custom_styles.CfcKl0Zo.css",
-    "src": "_custom_styles.CfcKl0Zo.css"
+  "_custom_styles.D0sc2U0_.css": {
+    "file": "_app/immutable/assets/custom_styles.D0sc2U0_.css",
+    "src": "_custom_styles.D0sc2U0_.css"
   },
   "_environment.js": {
     "file": "chunks/environment.js",
@@ -214,7 +214,7 @@
       "_auth-client.js"
     ],
     "css": [
-      "_app/immutable/assets/custom_styles.CfcKl0Zo.css"
+      "_app/immutable/assets/custom_styles.D0sc2U0_.css"
     ]
   },
   "src/routes/+page.server.ts": {
@@ -242,7 +242,7 @@
       "_attributes.js"
     ],
     "css": [
-      "_app/immutable/assets/custom_styles.CfcKl0Zo.css"
+      "_app/immutable/assets/custom_styles.D0sc2U0_.css"
     ]
   },
   "src/routes/AGB/+page.svelte": {

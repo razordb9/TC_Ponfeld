@@ -30,7 +30,7 @@
 
 <div class="navbar">
   <div class="navbar-left">
-    <a href="/">
+    <a href="/" onclick={openBurgerMenue}>
       <img
         src="/logo_transparent_bg.png"
         alt="Thomas Hudson-Zaussnig"
@@ -63,16 +63,16 @@
 
 <ul class="nav-burger-menu-links" class:mobile={open}>
   {#each navigation as route}
-    <li class="nav-item"><a href={route.url}>{route.name}</a></li>
+    <li class="nav-item"><a href={route.url} onclick={openBurgerMenue}>{route.name}</a></li>
   {/each}
   {#if user}
-    <li class="nav-item"><a href="/admin">Admin Page</a></li>
+    <li class="nav-item"><a href="/admin" onclick={openBurgerMenue}>Admin Page</a></li>
     <li class="nav-item">
-      <button class="btn" onclick={signout}>Logout</button>
+      <button class="btn" onclick={() => { openBurgerMenue; signout(); }}>Logout</button>
     </li>
   {:else}
     <li class="nav-item">
-      <a role="button" class="btn" href="/auth/login">Login</a>
+      <a role="button" class="btn" href="/auth/login" onclick={openBurgerMenue}>Login</a>
     </li>
   {/if}
 </ul>

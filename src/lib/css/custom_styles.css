@@ -133,18 +133,11 @@ Jungle Civilization
     --h1: calc(var(--h2) * var(--scale));
     --p: calc(var(--base-font-size) * var(--scale));
     --box-shadow-action: 0 0 10px 1px var(--secondary-color);
-    --font-family: "Satoshi",
-    "Segoe UI",
-    "Zodiak",
-    Tahoma,
-    Geneva,
-    Verdana,
-    sans-serif,
-    serif;
-    --serif: "Zodiak",
-    serif;
-    --san-serif: "Satoshi",
-    sans-serif;
+    --font-family:
+      "Satoshi", "Segoe UI", "Zodiak", Tahoma, Geneva, Verdana, sans-serif,
+      serif;
+    --serif: "Zodiak", serif;
+    --san-serif: "Satoshi", sans-serif;
     --content-width-blog: 800px;
     --content-width: 1280px;
     --side: 2rem;
@@ -484,7 +477,7 @@ Jungle Civilization
     top: 70px;
     right: 0;
     width: 100%;
-    background-color: rgba(211, 211, 211, 0.5);
+    background-color: rgb(211, 211, 211);
     opacity: 0;
     display: flex;
     flex-direction: column;
@@ -536,12 +529,18 @@ Jungle Civilization
      object-fit: cover;
 }
 #hero .hero-content {
+  z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
+@media (width < 650px) {
+  #hero {
+    height: calc(100vh - var(--header-height));
+  }
+}
 /* Design pattern page */
 #designpattern {
   margin-top: 100px;
@@ -603,9 +602,6 @@ Jungle Civilization
   align-items: center;
   gap: 20px;
   padding: 20px 0px;
-  /* When active */
-  /* Modal image */
-  /* Close button */
 }
 #team #team-container .team-member-card {
   display: flex;
@@ -646,34 +642,6 @@ Jungle Civilization
 }
 #team #team-container .team-member-card .team-member-info p {
   font-size: 0.85rem;
-}
-#team #team-container .modal {
-  display: none;
-  position: fixed;
-  z-index: 50;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  justify-content: center;
-  align-items: center;
-}
-#team #team-container .modal.show {
-  display: flex;
-}
-#team #team-container .modal-content {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 10px;
-}
-#team #team-container .close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 40px;
-  color: white;
-  cursor: pointer;
 }
 
 /* Sponsor section */
@@ -788,15 +756,8 @@ Jungle Civilization
 /* abour card */
 /* about card end*/
 @media (max-width: 600px) {
-  #hero {
-    margin-top: 70px;
-    height: 100%;
-  }
   #team #team-container {
     display: flex;
     flex-direction: column;
-  }
-  #hero {
-    height: 100vh;
   }
 }/*# sourceMappingURL=custom_styles.css.map */

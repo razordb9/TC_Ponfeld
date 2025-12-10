@@ -10,7 +10,7 @@ return {
 	assets: new Set(["Tennispllatz.jpg","avatar_female.jpg","avatar_male.jpg","error.png","instagram.svg","logo.png","logo_sponsor.png","logo_transparent_bg.png","petzner.png","robots.txt"]),
 	mimeTypes: {".jpg":"image/jpeg",".png":"image/png",".svg":"image/svg+xml",".txt":"text/plain"},
 	_: {
-		client: {start:"_app/immutable/entry/start.BTJrW7hT.js",app:"_app/immutable/entry/app.BnMl0OC8.js",imports:["_app/immutable/entry/start.BTJrW7hT.js","_app/immutable/chunks/BeJ9AWU4.js","_app/immutable/chunks/CRakC5Jn.js","_app/immutable/chunks/DhQlDxi7.js","_app/immutable/chunks/DIeogL5L.js","_app/immutable/chunks/xyKh6EvY.js","_app/immutable/entry/app.BnMl0OC8.js","_app/immutable/chunks/DhQlDxi7.js","_app/immutable/chunks/DIeogL5L.js","_app/immutable/chunks/CRakC5Jn.js","_app/immutable/chunks/xyKh6EvY.js","_app/immutable/chunks/DsnmJJEf.js","_app/immutable/chunks/I6AyiWhU.js","_app/immutable/chunks/D0xuNrLY.js"],stylesheets:[],fonts:[],uses_env_dynamic_public:false},
+		client: {start:"_app/immutable/entry/start.BmPCvACm.js",app:"_app/immutable/entry/app.CUGeOjTc.js",imports:["_app/immutable/entry/start.BmPCvACm.js","_app/immutable/chunks/Kr4daVIl.js","_app/immutable/chunks/CRakC5Jn.js","_app/immutable/chunks/DhQlDxi7.js","_app/immutable/chunks/DIeogL5L.js","_app/immutable/chunks/xyKh6EvY.js","_app/immutable/entry/app.CUGeOjTc.js","_app/immutable/chunks/DhQlDxi7.js","_app/immutable/chunks/DIeogL5L.js","_app/immutable/chunks/CRakC5Jn.js","_app/immutable/chunks/xyKh6EvY.js","_app/immutable/chunks/DsnmJJEf.js","_app/immutable/chunks/I6AyiWhU.js","_app/immutable/chunks/D0xuNrLY.js"],stylesheets:[],fonts:[],uses_env_dynamic_public:false},
 		nodes: [
 			__memo(() => import('./nodes/0.js')),
 			__memo(() => import('./nodes/1.js')),

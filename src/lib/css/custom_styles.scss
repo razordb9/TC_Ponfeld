@@ -1,5 +1,4 @@
 @layer reset {
-
   *,
   *::before,
   *::after {
@@ -170,18 +169,11 @@ Jungle Civilization
       --scale: 1.15;
     }
 
-    --font-family: "Satoshi",
-    "Segoe UI",
-    "Zodiak",
-    Tahoma,
-    Geneva,
-    Verdana,
-    sans-serif,
-    serif;
-    --serif: "Zodiak",
-    serif;
-    --san-serif: "Satoshi",
-    sans-serif;
+    --font-family:
+      "Satoshi", "Segoe UI", "Zodiak", Tahoma, Geneva, Verdana, sans-serif,
+      serif;
+    --serif: "Zodiak", serif;
+    --san-serif: "Satoshi", sans-serif;
 
     --content-width-blog: 800px;
     --content-width: 1280px;
@@ -481,7 +473,6 @@ Jungle Civilization
   justify-content: space-between;
   width: 100%;
   background-color: var(--third-color);
-  
 
   .navbar-left,
   .navbar-center,
@@ -532,8 +523,6 @@ Jungle Civilization
         align-items: center;
         text-align: center;
       }
-
-
     }
   }
 
@@ -544,7 +533,7 @@ Jungle Civilization
   .nav-burger-menu {
     display: none;
   }
-  
+
   transition: all 350ms ease-in-out;
 }
 .nav-burger-menu-links {
@@ -583,7 +572,7 @@ Jungle Civilization
     top: 70px;
     right: 0;
     width: 100%;
-    background-color: rgba(211, 211, 211, 0.5);
+    background-color: rgba(211, 211, 211);
     opacity: 0;
     display: flex;
     flex-direction: column;
@@ -640,10 +629,18 @@ Jungle Civilization
   }
 
   .hero-content {
+    z-index: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+}
+
+@media (width < 650px) {
+  #hero {
+    height: calc(100vh - var(--header-height));
+
   }
 }
 
@@ -766,41 +763,6 @@ Jungle Civilization
     // .team-member_card:hover .team-member-info {
     //   transform: translateY(0%); /* slide up into view */
     // }
-
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 50;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      justify-content: center;
-      align-items: center;
-    }
-
-    /* When active */
-    .modal.show {
-      display: flex;
-    }
-
-    /* Modal image */
-    .modal-content {
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: 10px;
-    }
-
-    /* Close button */
-    .close {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      font-size: 40px;
-      color: white;
-      cursor: pointer;
-    }
   }
 }
 
@@ -815,7 +777,8 @@ Jungle Civilization
 
   // background-color: aqua;
   // border: 1px solid red;
-  h2 {}
+  h2 {
+  }
 
   .sponsor {
     padding: 1rem;
@@ -934,8 +897,8 @@ Jungle Civilization
 
 @media (max-width: 600px) {
   #hero {
-    margin-top: 70px;
-    height: 100%;
+    // margin-top: 70px;
+    // height: 100%;
   }
 
   #team {
@@ -945,7 +908,5 @@ Jungle Civilization
     }
   }
 
-  #hero {
-    height: 100vh;
-  }
+
 }
