@@ -1,4 +1,4 @@
-import { e as ensure_array_like } from "../../chunks/index2.js";
+import { d as bind_props, e as ensure_array_like } from "../../chunks/index2.js";
 /* empty css                         */
 import { H as Horizontalscroller } from "../../chunks/horizontalscroller.js";
 import { m as members, s as sponsors } from "../../chunks/project.config.js";
@@ -9,8 +9,9 @@ import "../../chunks/utils.js";
 import "@sveltejs/kit/internal/server";
 import "../../chunks/state.svelte.js";
 import { a as attr } from "../../chunks/attributes.js";
+import { e as escape_html } from "../../chunks/escaping.js";
 function Contact_new($$renderer) {
-  $$renderer.push(`<form method="POST" action="?/sendmail" name="contact"><fieldset><label>Name (*) <input type="text" id="name" name="name"/></label> `);
+  $$renderer.push(`<div id="contactform"><form method="POST" action="?/sendmail" name="contact"><fieldset><label>Name (*) <input type="text" id="name" name="name"/></label> `);
   {
     $$renderer.push("<!--[!-->");
   }
@@ -30,16 +31,54 @@ function Contact_new($$renderer) {
   {
     $$renderer.push("<!--[!-->");
   }
-  $$renderer.push(`<!--]--></fieldset></form>`);
+  $$renderer.push(`<!--]--></fieldset></form></div>`);
+}
+function Modal($$renderer, $$props) {
+  $$renderer.component(($$renderer2) => {
+    let { showModal = void 0, header, children } = $$props;
+    $$renderer2.push(`<dialog><div>`);
+    header?.($$renderer2);
+    $$renderer2.push(`<!----> `);
+    children?.($$renderer2);
+    $$renderer2.push(`<!----> <button id="dialog_close" autofocus>Schließen</button></div></dialog>`);
+    bind_props($$props, { showModal });
+  });
 }
 function About_card($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {
     let { boardmember } = $$props;
-    $$renderer2.push(`<div class="team-member-card"><img class="team-member-image"${attr(
-      "src",
-      // console.log("AboutCard", boardmember)
-      boardmember.picture
-    )}${attr("alt", boardmember.picture)} loading="lazy"/></div>`);
+    let showModal = false;
+    let $$settled = true;
+    let $$inner_renderer;
+    function $$render_inner($$renderer3) {
+      $$renderer3.push(`<div class="team-member-card"><img class="team-member-image"${attr("src", boardmember.picture)}${attr("alt", boardmember.picture)} loading="lazy"/> `);
+      {
+        let header = function($$renderer4) {
+          $$renderer4.push(`<h1>${escape_html(boardmember.name)}</h1>`);
+        };
+        Modal($$renderer3, {
+          get showModal() {
+            return showModal;
+          },
+          set showModal($$value) {
+            showModal = $$value;
+            $$settled = false;
+          },
+          header,
+          children: ($$renderer4) => {
+            $$renderer4.push(`<img${attr("src", boardmember.picture)}${attr("alt", boardmember.name)}/> <p>Funktion: ${escape_html(boardmember.function)}</p> <p>Beschreibung: ${escape_html(boardmember.description)}</p>`);
+          },
+          $$slots: { header: true, default: true }
+        });
+      }
+      $$renderer3.push(`<!----></div>`);
+    }
+    do {
+      $$settled = true;
+      $$inner_renderer = $$renderer2.copy();
+      $$render_inner($$inner_renderer);
+    } while (!$$settled);
+    $$renderer2.subsume($$inner_renderer);
   });
 }
 function _page($$renderer) {
