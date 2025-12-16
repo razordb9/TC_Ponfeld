@@ -29,9 +29,9 @@
     "file": "chunks/context.js",
     "name": "context"
   },
-  "_custom_styles.PXNzQkJc.css": {
-    "file": "_app/immutable/assets/custom_styles.PXNzQkJc.css",
-    "src": "_custom_styles.PXNzQkJc.css"
+  "_custom_styles.BXBIO9Z-.css": {
+    "file": "_app/immutable/assets/custom_styles.BXBIO9Z-.css",
+    "src": "_custom_styles.BXBIO9Z-.css"
   },
   "_environment.js": {
     "file": "chunks/environment.js",
@@ -178,6 +178,10 @@
       "_environment.js"
     ]
   },
+  "src/lib/assets/avatar_female.jpg": {
+    "file": "_app/immutable/assets/avatar_female.OIHQwPzh.jpg",
+    "src": "src/lib/assets/avatar_female.jpg"
+  },
   "src/routes/+error.svelte": {
     "file": "entries/pages/_error.svelte.js",
     "name": "entries/pages/_error.svelte",
@@ -214,7 +218,7 @@
       "_auth-client.js"
     ],
     "css": [
-      "_app/immutable/assets/custom_styles.PXNzQkJc.css"
+      "_app/immutable/assets/custom_styles.BXBIO9Z-.css"
     ]
   },
   "src/routes/+page.server.ts": {
@@ -243,7 +247,7 @@
       "_escaping.js"
     ],
     "css": [
-      "_app/immutable/assets/custom_styles.PXNzQkJc.css"
+      "_app/immutable/assets/custom_styles.BXBIO9Z-.css"
     ]
   },
   "src/routes/AGB/+page.svelte": {
@@ -310,7 +314,18 @@
     "file": "entries/pages/admin/design/_page.svelte.js",
     "name": "entries/pages/admin/design/_page.svelte",
     "src": "src/routes/admin/design/+page.svelte",
-    "isEntry": true
+    "isEntry": true,
+    "imports": [
+      "_index2.js",
+      "_attributes.js",
+      "_escaping.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.BuNjsr1I.css"
+    ],
+    "assets": [
+      "_app/immutable/assets/avatar_female.OIHQwPzh.jpg"
+    ]
   },
   "src/routes/admin/posts/+page.server.ts": {
     "file": "entries/pages/admin/posts/_page.server.ts.js",
