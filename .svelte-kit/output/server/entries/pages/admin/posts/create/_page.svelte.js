@@ -17,7 +17,7 @@ function _page($$renderer, $$props) {
     const sanitize = (rawHTML) => {
       return DOMPurify.sanitize(rawHTML);
     };
-    $$renderer2.push(`<section id="createpost"><h1>Create new post</h1> <form method="POST" action="?/createpost"><label for="title">Post Title</label> <input type="text" id="title" name="title" placeholder="Blog title"/> <div id="editor" class="svelte-usekut"></div> <input${attr("value", html$1)} type="hidden" name="editorContent"/> <button class="btn" type="submit">Create</button></form> <h2>Preview</h2> <div class="preview svelte-usekut">${html(sanitize(html$1))}</div></section>`);
+    $$renderer2.push(`<a href="/admin">Back</a> <section id="createpost"><h1>Create new post</h1> <form method="POST" action="?/createpost"><label for="title">Post Title</label> <input type="text" id="title" name="title" placeholder="Blog title"/> <div id="editor"></div> <input${attr("value", html$1)} type="hidden" name="editorContent"/> <button class="btn" type="submit">Create</button></form> <h2>Preview</h2> <div class="preview">${html(sanitize(html$1))}</div></section>`);
   });
 }
 export {

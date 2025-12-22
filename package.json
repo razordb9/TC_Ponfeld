@@ -27,6 +27,7 @@
 		"@sveltejs/vite-plugin-svelte": "^6.2.1",
 		"@types/better-sqlite3": "^7.6.13",
 		"@types/node": "^24.10.1",
+		"@types/slug": "^5.0.9",
 		"drizzle-kit": "^0.31.7",
 		"drizzle-orm": "^0.44.7",
 		"prettier": "^3.4.2",
@@ -45,6 +46,7 @@
 		"dompurify": "^3.3.0",
 		"quill": "^2.0.3",
 		"resend": "^6.4.0",
+		"slug": "^11.0.1",
 		"zod": "^4.1.12"
 	}
 }

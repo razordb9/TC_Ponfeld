@@ -29,9 +29,9 @@
     "file": "chunks/context.js",
     "name": "context"
   },
-  "_custom_styles.BVflYjCV.css": {
-    "file": "_app/immutable/assets/custom_styles.BVflYjCV.css",
-    "src": "_custom_styles.BVflYjCV.css"
+  "_custom_styles.XD0yPZeY.css": {
+    "file": "_app/immutable/assets/custom_styles.XD0yPZeY.css",
+    "src": "_custom_styles.XD0yPZeY.css"
   },
   "_environment.js": {
     "file": "chunks/environment.js",
@@ -80,6 +80,10 @@
       "_escaping.js",
       "_context.js"
     ]
+  },
+  "_index3.js": {
+    "file": "chunks/index3.js",
+    "name": "index"
   },
   "_internal.js": {
     "file": "chunks/internal.js",
@@ -173,6 +177,7 @@
     "src": "src/hooks.server.ts",
     "isDynamicEntry": true,
     "imports": [
+      "_index3.js",
       "_utils.js",
       "_query.js",
       "_environment.js"
@@ -218,7 +223,7 @@
       "_auth-client.js"
     ],
     "css": [
-      "_app/immutable/assets/custom_styles.BVflYjCV.css"
+      "_app/immutable/assets/custom_styles.XD0yPZeY.css"
     ]
   },
   "src/routes/+page.server.ts": {
@@ -247,7 +252,7 @@
       "_escaping.js"
     ],
     "css": [
-      "_app/immutable/assets/custom_styles.BVflYjCV.css"
+      "_app/immutable/assets/custom_styles.XD0yPZeY.css"
     ]
   },
   "src/routes/AGB/+page.svelte": {
@@ -367,7 +372,10 @@
     "file": "entries/pages/admin/posts/create/_page.server.ts.js",
     "name": "entries/pages/admin/posts/create/_page.server.ts",
     "src": "src/routes/admin/posts/create/+page.server.ts",
-    "isEntry": true
+    "isEntry": true,
+    "imports": [
+      "_index3.js"
+    ]
   },
   "src/routes/admin/posts/create/+page.svelte": {
     "file": "entries/pages/admin/posts/create/_page.svelte.js",
@@ -381,7 +389,7 @@
       "_state.svelte.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.AqnVPHVM.css"
+      "_app/immutable/assets/_page.Bf4bJ6eu.css"
     ]
   },
   "src/routes/admin/users/+layout.server.ts": {

@@ -10,7 +10,7 @@ function _page($$renderer) {
       "hidden-image": activeImage == true
     })}${attr("data-index", _index)}${attr_style(`view-transition-name: ${stringify(`image-${_index}`)}`)}><a href="#" role="button" class="svelte-12sz2af"><img${attr("src", src)}${attr("alt", `dummy image1 $${stringify(_index)}`)} class="svelte-12sz2af"/> <div><p>${escape_html(text)}</p></div></a></li>`);
   }
-  $$renderer.push(`<section${attr_class("grid-images svelte-12sz2af", void 0, { "image-active": activeImage })}><div class="overlay svelte-12sz2af" role="button" aria-label="dd" tabindex="0"></div> <h2>Grid Members</h2> <ul class="image-grid match-element-applied svelte-12sz2af">`);
+  $$renderer.push(`<a href="/admin">Back</a> <section${attr_class("grid-images svelte-12sz2af", void 0, { "image-active": activeImage })}><div class="overlay svelte-12sz2af" role="button" aria-label="dd" tabindex="0"></div> <h2>Grid Members</h2> <ul class="image-grid match-element-applied svelte-12sz2af">`);
   imageCard($$renderer, p6, "0", "Roli1");
   $$renderer.push(`<!----> `);
   imageCard($$renderer, p6, "1", "Roli2");

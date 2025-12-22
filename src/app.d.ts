@@ -21,9 +21,19 @@ declare global {
 		interface ExtendedUser extends User{
 			isAdmin: boolean,
 		}
+		interface BlogPost {
+			title: string,
+			html: string,
+			slug: string,
+			markdown: string,
+			createdAt: number,
+			updatedAt: number,
+			authorId: string
+		}
+
 	}
 }
 
 
 
-export {Locals, ExtendedUser, Platform};
+export {Locals, ExtendedUser, Platform, BlogPost};
