@@ -29,6 +29,7 @@
 
 </script>
 
+<a href="/admin">Back</a>
 <section class="grid-images" class:image-active={activeImage} >
     <div
             class="overlay"

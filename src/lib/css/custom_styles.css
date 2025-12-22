@@ -344,7 +344,7 @@ Jungle Civilization
     border-top: 1px solid var(--color-text-2-light);
   }
   .layout {
-    margin: var(--header-height) 0px;
+    margin-top: var(--header-height);
   }
 }
 .btn {
@@ -449,6 +449,7 @@ Jungle Civilization
 .nav-burger-menu-links {
   transform: translateY(-300px);
   transition: all 350ms ease-in-out;
+  display: none;
 }
 
 @media (width < 650px) {
@@ -579,12 +580,15 @@ Jungle Civilization
 }
 
 /* Create Posts */
-#createpost {
-  display: flex;
-  justify-content: center;
-}
 #createpost #editor {
   height: 300px;
+  width: inherit;
+}
+#createpost .preview {
+  width: inherit;
+  border: 1px solid #ddd;
+  padding: 10px;
+  min-height: 200px;
 }
 
 /* Team  */

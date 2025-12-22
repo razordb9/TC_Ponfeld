@@ -38,6 +38,7 @@
     }
 </script>
 
+<a href="/admin">Back</a>
 <div id="signup">
     <form method="POST" use:enhance={submitFunction} action="?/signup">
         <h1>Create new user</h1>
