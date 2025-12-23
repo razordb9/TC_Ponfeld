@@ -1,24 +1,36 @@
-import { d as db, b as blogPost } from "../../../../../chunks/index3.js";
+import { B as Blogapi } from "../../../../../chunks/posts.js";
+import { redirect } from "@sveltejs/kit";
+import slug from "slug";
 const ssr = false;
 const actions = {
   createpost: async (event) => {
+    console.log("platform: " + event.platform?.env);
     const formData = await event.request.formData();
-    const editor = formData.get("editor");
+    const html = formData.get("editorContent");
     const title = formData.get("title");
+    const _slug = slug(title, { lower: true });
     console.log("FormData: ", formData);
     console.log("Title: ", formData.get("title"));
-    console.log("Content: ", formData.get("editorContent"));
+    console.log("HTML: ", formData.get("editorContent"));
     const blogEntry = {
       title,
-      content: editor
+      html,
+      slug: _slug,
+      markdown: null,
+      createdAt: Date.now(),
+      updatedAt: Date.now(),
+      authorId: event.locals.user?.id
     };
-    const newEntry = await db.insert(blogPost).values(blogEntry);
-    return {
-      success: true,
-      newEntry,
-      status: 200,
-      message: "New entry added"
-    };
+    const api = new Blogapi(event.platform);
+    const result = await api.createPost(blogEntry);
+    if (result.success) {
+      redirect(303, "/admin/posts");
+    } else {
+      return {
+        success: result.success,
+        error: result.error
+      };
+    }
   }
 };
 export {

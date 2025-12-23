@@ -51,8 +51,11 @@
   </ul>
   <ul class="navbar-right">
     {#if user}
-      <li class="nav-item"><a href="/admin">Admin Page</a></li>
-      <li><button onclick={signout}>Logout</button></li>
+      <li><button class="dropbtn">Menu</button></li>
+      <div class="dropdown-content">
+        <a href="/admin">Admin Page</a>
+        <button onclick={signout}>Logout</button>
+      </div>
     {:else}
       <li><a href="/auth/login" role="button" class="btn">Login</a></li>
     {/if}

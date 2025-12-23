@@ -1,5 +1,15 @@
 import { s as signupSchema } from "../../../../../chunks/auth.js";
+import { redirect } from "@sveltejs/kit";
 import z__default from "zod";
+const load = ({ locals }) => {
+  if (!locals.user.isAdmin === true) {
+    console.log(locals.user.name + " is no admin");
+    redirect(303, "/admin");
+  }
+  return {
+    user: locals.user
+  };
+};
 const actions = {
   signup: async ({ request }) => {
     const formData = await request.formData();
@@ -25,5 +35,6 @@ const actions = {
   }
 };
 export {
-  actions
+  actions,
+  load
 };

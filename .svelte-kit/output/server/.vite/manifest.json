@@ -29,9 +29,9 @@
     "file": "chunks/context.js",
     "name": "context"
   },
-  "_custom_styles.XD0yPZeY.css": {
-    "file": "_app/immutable/assets/custom_styles.XD0yPZeY.css",
-    "src": "_custom_styles.XD0yPZeY.css"
+  "_custom_styles.D22N4aXQ.css": {
+    "file": "_app/immutable/assets/custom_styles.D22N4aXQ.css",
+    "src": "_custom_styles.D22N4aXQ.css"
   },
   "_environment.js": {
     "file": "chunks/environment.js",
@@ -98,6 +98,13 @@
     ],
     "dynamicImports": [
       "src/hooks.server.ts"
+    ]
+  },
+  "_posts.js": {
+    "file": "chunks/posts.js",
+    "name": "posts",
+    "imports": [
+      "_index3.js"
     ]
   },
   "_project.config.js": {
@@ -223,7 +230,7 @@
       "_auth-client.js"
     ],
     "css": [
-      "_app/immutable/assets/custom_styles.XD0yPZeY.css"
+      "_app/immutable/assets/custom_styles.D22N4aXQ.css"
     ]
   },
   "src/routes/+page.server.ts": {
@@ -252,7 +259,7 @@
       "_escaping.js"
     ],
     "css": [
-      "_app/immutable/assets/custom_styles.XD0yPZeY.css"
+      "_app/immutable/assets/custom_styles.D22N4aXQ.css"
     ]
   },
   "src/routes/AGB/+page.svelte": {
@@ -336,13 +343,20 @@
     "file": "entries/pages/admin/posts/_page.server.ts.js",
     "name": "entries/pages/admin/posts/_page.server.ts",
     "src": "src/routes/admin/posts/+page.server.ts",
-    "isEntry": true
+    "isEntry": true,
+    "imports": [
+      "_posts.js"
+    ]
   },
   "src/routes/admin/posts/+page.svelte": {
     "file": "entries/pages/admin/posts/_page.svelte.js",
     "name": "entries/pages/admin/posts/_page.svelte",
     "src": "src/routes/admin/posts/+page.svelte",
-    "isEntry": true
+    "isEntry": true,
+    "imports": [
+      "_index2.js",
+      "_escaping.js"
+    ]
   },
   "src/routes/admin/posts/[slug]/+page.server.ts": {
     "file": "entries/pages/admin/posts/_slug_/_page.server.ts.js",
@@ -374,7 +388,7 @@
     "src": "src/routes/admin/posts/create/+page.server.ts",
     "isEntry": true,
     "imports": [
-      "_index3.js"
+      "_posts.js"
     ]
   },
   "src/routes/admin/posts/create/+page.svelte": {

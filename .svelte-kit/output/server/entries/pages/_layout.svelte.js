@@ -1,6 +1,6 @@
 import "clsx";
 /* empty css                         */
-import { e as ensure_array_like, c as attr_class } from "../../chunks/index2.js";
+import { e as ensure_array_like, d as attr_class } from "../../chunks/index2.js";
 import { f as footer, n as navigation } from "../../chunks/project.config.js";
 import { a as attr } from "../../chunks/attributes.js";
 import { e as escape_html } from "../../chunks/escaping.js";

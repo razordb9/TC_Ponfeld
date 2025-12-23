@@ -1,4 +1,4 @@
-import { c as attr_class, a as attr_style, b as stringify } from "../../../../chunks/index2.js";
+import { d as attr_class, a as attr_style, b as stringify } from "../../../../chunks/index2.js";
 import { a as attr } from "../../../../chunks/attributes.js";
 import { e as escape_html } from "../../../../chunks/escaping.js";
 const p6 = "/_app/immutable/assets/avatar_female.OIHQwPzh.jpg";

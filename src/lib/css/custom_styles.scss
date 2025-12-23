@@ -473,10 +473,10 @@ Jungle Civilization
   justify-content: space-between;
   width: 100%;
   background-color: var(--third-color);
-
+  
+  // add .navbar-right again after testing
   .navbar-left,
-  .navbar-center,
-  .navbar-right {
+  .navbar-center{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -527,9 +527,35 @@ Jungle Civilization
   }
 
   .navbar-right {
-    padding-right: 10px;
-  }
+    margin-right: 5px;
+    position: relative;
+    display: block;
+    // display: inline-block;
+    float: right;
 
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: lightgrey;
+      min-width: 200px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+  }
+  .navbar-right:hover .dropdown-content {
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    // top: 60px;
+    // height: 60px;
+    padding: 10px;
+    gap: 10px;
+    // min-width: 200px;
+    // padding-block: 20px;
+
+  }
   .nav-burger-menu {
     display: none;
   }

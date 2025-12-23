@@ -30,12 +30,12 @@ export const dictionary = {
 		"/Scroller": [8,[2]],
 		"/admin": [9,[3]],
 		"/admin/design": [10,[3]],
-		"/admin/posts": [11,[3]],
+		"/admin/posts": [~11,[3]],
 		"/admin/posts/create": [14,[3]],
 		"/admin/posts/[slug]": [12,[3]],
 		"/admin/posts/[slug]/edit": [13,[3]],
 		"/admin/users": [15,[3,4]],
-		"/admin/users/create": [16,[3,4]],
+		"/admin/users/create": [~16,[3,4]],
 		"/auth/login": [17]
 	};
 
