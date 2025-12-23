@@ -559,6 +559,15 @@ Jungle Civilization
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 10px;
+}
+#adminPage .posts {
+  border: 1px solid black;
+  width: 300px;
+}
+#adminPage .adminstuff {
+  border: 1px solid black;
+  width: 300px;
 }
 
 /* Login page done */

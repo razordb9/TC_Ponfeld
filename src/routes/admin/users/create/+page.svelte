@@ -49,14 +49,6 @@
             <input type="email" bind:value={email} name="email" id="email" required/>
             <label for="password">Password</label>
             <input type="password" bind:value={password} name="password" id="login_password" autocomplete="current-password" required/>
-            <!-- <label for="is_admin" data-type="checkbox">
-                <input
-                    type="checkbox"
-                    bind:checked={isAdmin}
-                    name="is_admin"
-                    id="is_admin"
-                />Is Admin
-            </label>  -->
             <div class="checkbox-wrap">
                 <input type="checkbox" name="isAdmin" id="isAdmin" bind:checked={isAdmin} data-type="checkbox">
                 <label for="isAdmin">is Admin</label>

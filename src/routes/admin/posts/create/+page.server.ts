@@ -6,13 +6,14 @@ export const ssr = false;
 
 export const actions = {
     createpost: async(event) => {
+        console.log("platform: " + event.platform?.env);
         const formData = await event.request.formData();
         const html = formData.get('editorContent') as string;
         const title = formData.get('title') as string;
         const _slug = slug(title, {lower: true} ) 
         console.log("FormData: ", formData);
         console.log("Title: ", formData.get('title'));
-        console.log("Content: ", formData.get('editorContent'));
+        console.log("HTML: ", formData.get('editorContent'));
 
         const blogEntry = {
             title: title,
