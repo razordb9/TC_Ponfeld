@@ -8,18 +8,6 @@ import { redirect, type Actions } from "@sveltejs/kit";
 import z from "zod";
 import type { PageServerLoad } from "../$types";
 
-export const load = ({locals}: Parameters<PageServerLoad>[0]) => {
-    if(!locals.user.isAdmin === true) {
-        // window.alert("No Admin");
-        console.log(locals.user.name + " is no admin")
-        redirect(303, "/admin");
-    }
-    
-    return {
-        user: locals.user
-    }
-}
-
 export const actions = {
     signup: async({ request }: import('./$types').RequestEvent) => {
         const formData = await request.formData();

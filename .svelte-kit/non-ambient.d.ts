@@ -27,7 +27,7 @@ export {};
 
 declare module "$app/types" {
 	export interface AppTypes {
-		RouteId(): "/" | "/AGB" | "/Impressum" | "/Scroller" | "/admin" | "/admin/design" | "/admin/posts" | "/admin/posts/create" | "/admin/posts/[slug]" | "/admin/posts/[slug]/edit" | "/admin/users" | "/admin/users/create" | "/auth" | "/auth/login";
+		RouteId(): "/" | "/AGB" | "/Blog" | "/Impressum" | "/Scroller" | "/admin" | "/admin/design" | "/admin/posts" | "/admin/posts/create" | "/admin/posts/[slug]" | "/admin/posts/[slug]/edit" | "/admin/users" | "/admin/users/create" | "/auth" | "/auth/login";
 		RouteParams(): {
 			"/admin/posts/[slug]": { slug: string };
 			"/admin/posts/[slug]/edit": { slug: string }
@@ -35,6 +35,7 @@ declare module "$app/types" {
 		LayoutParams(): {
 			"/": { slug?: string };
 			"/AGB": Record<string, never>;
+			"/Blog": Record<string, never>;
 			"/Impressum": Record<string, never>;
 			"/Scroller": Record<string, never>;
 			"/admin": { slug?: string };
@@ -48,7 +49,7 @@ declare module "$app/types" {
 			"/auth": Record<string, never>;
 			"/auth/login": Record<string, never>
 		};
-		Pathname(): "/" | "/AGB" | "/AGB/" | "/Impressum" | "/Impressum/" | "/Scroller" | "/Scroller/" | "/admin" | "/admin/" | "/admin/design" | "/admin/design/" | "/admin/posts" | "/admin/posts/" | "/admin/posts/create" | "/admin/posts/create/" | `/admin/posts/${string}` & {} | `/admin/posts/${string}/` & {} | `/admin/posts/${string}/edit` & {} | `/admin/posts/${string}/edit/` & {} | "/admin/users" | "/admin/users/" | "/admin/users/create" | "/admin/users/create/" | "/auth" | "/auth/" | "/auth/login" | "/auth/login/";
+		Pathname(): "/" | "/AGB" | "/AGB/" | "/Blog" | "/Blog/" | "/Impressum" | "/Impressum/" | "/Scroller" | "/Scroller/" | "/admin" | "/admin/" | "/admin/design" | "/admin/design/" | "/admin/posts" | "/admin/posts/" | "/admin/posts/create" | "/admin/posts/create/" | `/admin/posts/${string}` & {} | `/admin/posts/${string}/` & {} | `/admin/posts/${string}/edit` & {} | `/admin/posts/${string}/edit/` & {} | "/admin/users" | "/admin/users/" | "/admin/users/create" | "/admin/users/create/" | "/auth" | "/auth/" | "/auth/login" | "/auth/login/";
 		ResolvedPathname(): `${"" | `/${string}`}${ReturnType<AppTypes['Pathname']>}`;
 		Asset(): "/Tennispllatz.jpg" | "/avatar_male.jpg" | "/error.png" | "/instagram.svg" | "/logo.png" | "/logo_sponsor.png" | "/logo_transparent_bg.png" | "/petzner.png" | "/robots.txt" | string & {};
 	}

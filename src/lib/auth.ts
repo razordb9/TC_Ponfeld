@@ -9,7 +9,7 @@ import { getRequestEvent } from "$app/server";
 export const auth = ({platform}: {platform: Platform}) => {
    
     return betterAuth({
-        database: drizzleAdapter(db(platform), {
+        database: drizzleAdapter(db({platform}), {
             provider: "sqlite",
         }), 
         user: {

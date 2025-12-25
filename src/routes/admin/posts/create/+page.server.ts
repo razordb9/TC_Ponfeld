@@ -25,8 +25,8 @@ export const actions = {
             authorId: event.locals.user?.id
         }
         const api = new Blogapi(event.platform);
-
         const result = await api.createPost(blogEntry);
+        
         if (result.success) {
             redirect(303, "/admin/posts");
         } else {

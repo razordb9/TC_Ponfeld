@@ -6,7 +6,7 @@ import { local_db } from '../local_db';
 export type DBType = ReturnType<typeof drizzle<typeof schema>> | ReturnType<typeof local_db>
 
 
-export const db = (platform:Platform):DBType => {
+export const db = ({platform}:{platform: Platform}):DBType => {
     if(!platform) {
         throw new Error ("Platform not found");
     }

@@ -7,6 +7,10 @@
 	"/AGB": [
 		"src/routes/+layout.server.ts"
 	],
+	"/Blog": [
+		"src/routes/Blog/+page.server.ts",
+		"src/routes/+layout.server.ts"
+	],
 	"/Impressum": [
 		"src/routes/+layout.server.ts"
 	],

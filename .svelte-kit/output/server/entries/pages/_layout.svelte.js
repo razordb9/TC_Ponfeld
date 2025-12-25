@@ -34,7 +34,7 @@ function Navigation($$renderer, $$props) {
     $$renderer2.push(`<!--]--></ul> <ul class="navbar-right">`);
     if (user) {
       $$renderer2.push("<!--[-->");
-      $$renderer2.push(`<li class="nav-item"><a href="/admin">Admin Page</a></li> <li><button>Logout</button></li>`);
+      $$renderer2.push(`<li><button class="dropbtn">Menu</button></li> <div class="dropdown-content"><a href="/admin">Admin Page</a> <button>Logout</button></div>`);
     } else {
       $$renderer2.push("<!--[!-->");
       $$renderer2.push(`<li><a href="/auth/login" role="button" class="btn">Login</a></li>`);

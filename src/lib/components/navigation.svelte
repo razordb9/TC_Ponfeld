@@ -54,6 +54,7 @@
       <li><button class="dropbtn">Menu</button></li>
       <div class="dropdown-content">
         <a href="/admin">Admin Page</a>
+        <a href="/Blog">Blog</a>
         <button onclick={signout}>Logout</button>
       </div>
     {:else}
