@@ -2,8 +2,8 @@
     import { applyAction, enhance } from "$app/forms";
     import { authClient } from "$lib/auth-client";
     import { type SubmitFunction, type ActionResult } from "@sveltejs/kit";
-  import type { ActionData } from "./$types";
-  import { goto, invalidateAll } from "$app/navigation";
+    import { goto, invalidateAll } from "$app/navigation";
+    import type { ActionData } from "./$types";
 
     let { form }: { form: ActionData} = $props();
     let email = $state<string>("");
@@ -14,7 +14,6 @@
             await applyAction(result);
             if (result.type == "success" && result.data?.success === true) {
                 console.log(result)
-                
                 await authClient.signIn.email({
                     email,
                     password,
@@ -27,6 +26,7 @@
                     onError: async (error) =>{
                         let betterauthError = error instanceof Error ? error.error.message : "failed";
                         console.log(betterauthError);
+                        alert(error.error.message);
                     }
                 })
             }
@@ -35,10 +35,10 @@
 </script>
 
 <div id="login">
-    <h1>Login</h1>
     <form method="POST" use:enhance={submitFunction} action="?/login">
+        <h1>Login</h1>
         <fieldset>
-            <label for="email">email</label>
+            <label for="email">Email</label>
             <input
                 type="email"
                 bind:value={email}
@@ -46,6 +46,9 @@
                 id="email"
                 required
             />
+            {#if form?.errors}
+                <p style="color:red;">❌ {form.errors["email"]}</p>
+            {/if}
             <label for="password">Password</label>
             <input
                 type="password"
@@ -55,6 +58,9 @@
                 autocomplete="current-password"
                 required
             />
+            {#if form?.errors}
+                <p style="color:red;">❌ {form.errors["password"]}</p>
+            {/if}
             <button class="btn" type="submit">Login</button>
         </fieldset>
     </form>

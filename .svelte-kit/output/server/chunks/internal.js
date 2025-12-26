@@ -1,14 +1,12 @@
-import { H as HYDRATION_ERROR, C as COMMENT_NODE, f as HYDRATION_END, g as HYDRATION_START, h as HYDRATION_START_ELSE, B as BOUNDARY_EFFECT, E as ERROR_VALUE, i as EFFECT_RAN, j as CLEAN, I as INERT, k as EFFECT, l as BLOCK_EFFECT, D as DIRTY, m as BRANCH_EFFECT, R as ROOT_EFFECT, M as MAYBE_DIRTY, n as DESTROYED, o as DERIVED, A as ASYNC, p as EFFECT_TRANSPARENT, q as EFFECT_PRESERVED, U as UNOWNED, W as WAS_MARKED, r as EAGER_EFFECT, S as STATE_SYMBOL, t as UNINITIALIZED, u as HEAD_EFFECT, v as STALE_REACTION, w as RENDER_EFFECT, x as USER_EFFECT, y as DISCONNECTED, z as REACTION_IS_UPDATING, F as is_passive_event, L as LEGACY_PROPS, G as render } from "./index2.js";
+import { H as HYDRATION_ERROR, C as COMMENT_NODE, f as HYDRATION_END, g as HYDRATION_START, h as HYDRATION_START_ELSE, B as BOUNDARY_EFFECT, E as ERROR_VALUE, i as EFFECT_RAN, j as CLEAN, I as INERT, k as EFFECT, l as BLOCK_EFFECT, D as DIRTY, m as DERIVED, W as WAS_MARKED, n as BRANCH_EFFECT, R as ROOT_EFFECT, M as MAYBE_DIRTY, o as DESTROYED, A as ASYNC, p as HEAD_EFFECT, q as EFFECT_TRANSPARENT, r as EFFECT_PRESERVED, t as CONNECTED, u as EAGER_EFFECT, S as STATE_SYMBOL, U as UNINITIALIZED, v as STALE_REACTION, w as RENDER_EFFECT, x as USER_EFFECT, y as REACTION_IS_UPDATING, z as is_passive_event, L as LEGACY_PROPS, F as render } from "./index2.js";
 import { D as DEV } from "./server.js";
-import { a as run_all, d as deferred, o as object_prototype, b as array_prototype, g as get_descriptor, c as get_prototype_of, i as is_array, e as is_extensible, f as index_of, h as define_property, j as array_from } from "./utils.js";
+import { r as run_all, d as deferred, o as object_prototype, a as array_prototype, g as get_descriptor, b as get_prototype_of, i as is_array, c as is_extensible, e as index_of, f as define_property, h as array_from } from "./utils2.js";
 import { a as safe_equals, e as equals } from "./equality.js";
 import "clsx";
 import { c as setContext } from "./context.js";
 import "./environment.js";
-let private_env = {};
 let public_env = {};
 function set_private_env(environment) {
-  private_env = environment;
 }
 function set_public_env(environment) {
   public_env = environment;
@@ -256,6 +254,9 @@ class Batch {
    */
   skipped_effects = /* @__PURE__ */ new Set();
   is_fork = false;
+  is_deferred() {
+    return this.is_fork || this.#blocking_pending > 0;
+  }
   /**
    *
    * @param {Effect[]} root_effects
@@ -276,7 +277,7 @@ class Batch {
     if (!this.is_fork) {
       this.#resolve();
     }
-    if (this.#blocking_pending > 0 || this.is_fork) {
+    if (this.is_deferred()) {
       this.#defer_effects(target.effects);
       this.#defer_effects(target.render_effects);
       this.#defer_effects(target.block_effects);
@@ -348,7 +349,24 @@ class Batch {
     for (const e of effects) {
       const target = (e.f & DIRTY) !== 0 ? this.#dirty_effects : this.#maybe_dirty_effects;
       target.push(e);
+      this.#clear_marked(e.deps);
       set_signal_status(e, CLEAN);
+    }
+  }
+  /**
+   * @param {Value[] | null} deps
+   */
+  #clear_marked(deps) {
+    if (deps === null) return;
+    for (const dep of deps) {
+      if ((dep.f & DERIVED) === 0 || (dep.f & WAS_MARKED) === 0) {
+        continue;
+      }
+      dep.f ^= WAS_MARKED;
+      this.#clear_marked(
+        /** @type {Derived} */
+        dep.deps
+      );
     }
   }
   /**
@@ -361,13 +379,17 @@ class Batch {
     if (!this.previous.has(source2)) {
       this.previous.set(source2, value);
     }
-    this.current.set(source2, source2.v);
-    batch_values?.set(source2, source2.v);
+    if ((source2.f & ERROR_VALUE) === 0) {
+      this.current.set(source2, source2.v);
+      batch_values?.set(source2, source2.v);
+    }
   }
   activate() {
     current_batch = this;
+    this.apply();
   }
   deactivate() {
+    if (current_batch !== this) return;
     current_batch = null;
     batch_values = null;
   }
@@ -429,6 +451,8 @@ class Batch {
         }
         const others = [...batch.current.keys()].filter((s) => !this.current.has(s));
         if (others.length > 0) {
+          var prev_queued_root_effects = queued_root_effects;
+          queued_root_effects = [];
           const marked = /* @__PURE__ */ new Set();
           const checked = /* @__PURE__ */ new Map();
           for (const source2 of sources) {
@@ -440,9 +464,9 @@ class Batch {
             for (const root2 of queued_root_effects) {
               batch.#traverse_effect_tree(root2, dummy_target);
             }
-            queued_root_effects = [];
             batch.deactivate();
           }
+          queued_root_effects = prev_queued_root_effects;
         }
       }
       current_batch = null;
@@ -542,6 +566,7 @@ function flushSync(fn) {
 function flush_effects() {
   var was_updating_effect = is_updating_effect;
   is_flushing = true;
+  var source_stacks = null;
   try {
     var flush_count = 0;
     set_is_updating_effect(true);
@@ -554,6 +579,7 @@ function flush_effects() {
       }
       batch.process(queued_root_effects);
       old_values.clear();
+      if (DEV) ;
     }
   } finally {
     is_flushing = false;
@@ -666,7 +692,7 @@ function schedule_effect(signal) {
   while (effect.parent !== null) {
     effect = effect.parent;
     var flags2 = effect.f;
-    if (is_flushing && effect === active_effect && (flags2 & BLOCK_EFFECT) !== 0) {
+    if (is_flushing && effect === active_effect && (flags2 & BLOCK_EFFECT) !== 0 && (flags2 & HEAD_EFFECT) === 0) {
       return;
     }
     if ((flags2 & (ROOT_EFFECT | BRANCH_EFFECT)) !== 0) {
@@ -1043,10 +1069,10 @@ function get_derived_parent_effect(derived) {
   var parent = derived.parent;
   while (parent !== null) {
     if ((parent.f & DERIVED) === 0) {
-      return (
+      return (parent.f & DESTROYED) === 0 ? (
         /** @type {Effect} */
         parent
-      );
+      ) : null;
     }
     parent = parent.parent;
   }
@@ -1070,16 +1096,20 @@ function execute_derived(derived) {
 function update_derived(derived) {
   var value = execute_derived(derived);
   if (!derived.equals(value)) {
-    derived.v = value;
+    if (!current_batch?.is_fork) {
+      derived.v = value;
+    }
     derived.wv = increment_write_version();
   }
   if (is_destroying_effect) {
     return;
   }
   if (batch_values !== null) {
-    batch_values.set(derived, derived.v);
+    if (effect_tracking()) {
+      batch_values.set(derived, value);
+    }
   } else {
-    var status = (skip_reaction || (derived.f & UNOWNED) !== 0) && derived.deps !== null ? MAYBE_DIRTY : CLEAN;
+    var status = (derived.f & CONNECTED) === 0 ? MAYBE_DIRTY : CLEAN;
     set_signal_status(derived, status);
   }
 }
@@ -1139,7 +1169,7 @@ function internal_set(source2, value) {
           source2
         );
       }
-      set_signal_status(source2, (source2.f & UNOWNED) === 0 ? CLEAN : MAYBE_DIRTY);
+      set_signal_status(source2, (source2.f & CONNECTED) !== 0 ? CLEAN : MAYBE_DIRTY);
     }
     source2.wv = increment_write_version();
     mark_reactions(source2, DIRTY);
@@ -1158,14 +1188,20 @@ function internal_set(source2, value) {
 }
 function flush_eager_effects() {
   eager_effects_deferred = false;
+  var prev_is_updating_effect = is_updating_effect;
+  set_is_updating_effect(true);
   const inspects = Array.from(eager_effects);
-  for (const effect of inspects) {
-    if ((effect.f & CLEAN) !== 0) {
-      set_signal_status(effect, MAYBE_DIRTY);
+  try {
+    for (const effect of inspects) {
+      if ((effect.f & CLEAN) !== 0) {
+        set_signal_status(effect, MAYBE_DIRTY);
+      }
+      if (is_dirty(effect)) {
+        update_effect(effect);
+      }
     }
-    if (is_dirty(effect)) {
-      update_effect(effect);
-    }
+  } finally {
+    set_is_updating_effect(prev_is_updating_effect);
   }
   eager_effects.clear();
 }
@@ -1184,13 +1220,16 @@ function mark_reactions(signal, status) {
       set_signal_status(reaction, status);
     }
     if ((flags2 & DERIVED) !== 0) {
+      var derived = (
+        /** @type {Derived} */
+        reaction
+      );
+      batch_values?.delete(derived);
       if ((flags2 & WAS_MARKED) === 0) {
-        reaction.f |= WAS_MARKED;
-        mark_reactions(
-          /** @type {Derived} */
-          reaction,
-          MAYBE_DIRTY
-        );
+        if (flags2 & CONNECTED) {
+          reaction.f |= WAS_MARKED;
+        }
+        mark_reactions(derived, MAYBE_DIRTY);
       }
     } else if (not_dirty) {
       if ((flags2 & BLOCK_EFFECT) !== 0) {
@@ -1458,7 +1497,7 @@ function push_effect(effect, parent_effect) {
     parent_effect.last = effect;
   }
 }
-function create_effect(type, fn, sync, push2 = true) {
+function create_effect(type, fn, sync) {
   var parent = active_effect;
   if (parent !== null && (parent.f & INERT) !== 0) {
     type |= INERT;
@@ -1468,7 +1507,7 @@ function create_effect(type, fn, sync, push2 = true) {
     deps: null,
     nodes_start: null,
     nodes_end: null,
-    f: type | DIRTY,
+    f: type | DIRTY | CONNECTED,
     first: null,
     fn,
     last: null,
@@ -1492,27 +1531,25 @@ function create_effect(type, fn, sync, push2 = true) {
   } else if (fn !== null) {
     schedule_effect(effect);
   }
-  if (push2) {
-    var e = effect;
-    if (sync && e.deps === null && e.teardown === null && e.nodes_start === null && e.first === e.last && // either `null`, or a singular child
-    (e.f & EFFECT_PRESERVED) === 0) {
-      e = e.first;
-      if ((type & BLOCK_EFFECT) !== 0 && (type & EFFECT_TRANSPARENT) !== 0 && e !== null) {
-        e.f |= EFFECT_TRANSPARENT;
-      }
+  var e = effect;
+  if (sync && e.deps === null && e.teardown === null && e.nodes_start === null && e.first === e.last && // either `null`, or a singular child
+  (e.f & EFFECT_PRESERVED) === 0) {
+    e = e.first;
+    if ((type & BLOCK_EFFECT) !== 0 && (type & EFFECT_TRANSPARENT) !== 0 && e !== null) {
+      e.f |= EFFECT_TRANSPARENT;
     }
-    if (e !== null) {
-      e.parent = parent;
-      if (parent !== null) {
-        push_effect(e, parent);
-      }
-      if (active_reaction !== null && (active_reaction.f & DERIVED) !== 0 && (type & ROOT_EFFECT) === 0) {
-        var derived = (
-          /** @type {Derived} */
-          active_reaction
-        );
-        (derived.effects ??= []).push(e);
-      }
+  }
+  if (e !== null) {
+    e.parent = parent;
+    if (parent !== null) {
+      push_effect(e, parent);
+    }
+    if (active_reaction !== null && (active_reaction.f & DERIVED) !== 0 && (type & ROOT_EFFECT) === 0) {
+      var derived = (
+        /** @type {Derived} */
+        active_reaction
+      );
+      (derived.effects ??= []).push(e);
     }
   }
   return effect;
@@ -1547,8 +1584,8 @@ function block(fn, flags2 = 0) {
   var effect = create_effect(BLOCK_EFFECT | flags2, fn, true);
   return effect;
 }
-function branch(fn, push2 = true) {
-  return create_effect(BRANCH_EFFECT | EFFECT_PRESERVED, fn, true, push2);
+function branch(fn) {
+  return create_effect(BRANCH_EFFECT | EFFECT_PRESERVED, fn, true);
 }
 function execute_effect_teardown(effect) {
   var teardown = effect.teardown;
@@ -1732,7 +1769,6 @@ let update_version = read_version;
 function set_update_version(value) {
   update_version = value;
 }
-let skip_reaction = false;
 function increment_write_version() {
   return ++write_version;
 }
@@ -1741,39 +1777,15 @@ function is_dirty(reaction) {
   if ((flags2 & DIRTY) !== 0) {
     return true;
   }
+  if (flags2 & DERIVED) {
+    reaction.f &= ~WAS_MARKED;
+  }
   if ((flags2 & MAYBE_DIRTY) !== 0) {
     var dependencies = reaction.deps;
-    var is_unowned = (flags2 & UNOWNED) !== 0;
-    if (flags2 & DERIVED) {
-      reaction.f &= ~WAS_MARKED;
-    }
     if (dependencies !== null) {
-      var i;
-      var dependency;
-      var is_disconnected = (flags2 & DISCONNECTED) !== 0;
-      var is_unowned_connected = is_unowned && active_effect !== null && !skip_reaction;
       var length = dependencies.length;
-      if ((is_disconnected || is_unowned_connected) && (active_effect === null || (active_effect.f & DESTROYED) === 0)) {
-        var derived = (
-          /** @type {Derived} */
-          reaction
-        );
-        var parent = derived.parent;
-        for (i = 0; i < length; i++) {
-          dependency = dependencies[i];
-          if (is_disconnected || !dependency?.reactions?.includes(derived)) {
-            (dependency.reactions ??= []).push(derived);
-          }
-        }
-        if (is_disconnected) {
-          derived.f ^= DISCONNECTED;
-        }
-        if (is_unowned_connected && parent !== null && (parent.f & UNOWNED) === 0) {
-          derived.f ^= UNOWNED;
-        }
-      }
-      for (i = 0; i < length; i++) {
-        dependency = dependencies[i];
+      for (var i = 0; i < length; i++) {
+        var dependency = dependencies[i];
         if (is_dirty(
           /** @type {Derived} */
           dependency
@@ -1788,7 +1800,9 @@ function is_dirty(reaction) {
         }
       }
     }
-    if (!is_unowned || active_effect !== null && !skip_reaction) {
+    if ((flags2 & CONNECTED) !== 0 && // During time traveling we don't want to reset the status so that
+    // traversal of the graph in the other batches still happens
+    batch_values === null) {
       set_signal_status(reaction, CLEAN);
     }
   }
@@ -1827,7 +1841,6 @@ function update_reaction(reaction) {
   var previous_skipped_deps = skipped_deps;
   var previous_untracked_writes = untracked_writes;
   var previous_reaction = active_reaction;
-  var previous_skip_reaction = skip_reaction;
   var previous_sources = current_sources;
   var previous_component_context = component_context;
   var previous_untracking = untracking;
@@ -1837,7 +1850,6 @@ function update_reaction(reaction) {
   null;
   skipped_deps = 0;
   untracked_writes = null;
-  skip_reaction = (flags2 & UNOWNED) !== 0 && (untracking || !is_updating_effect || active_reaction === null);
   active_reaction = (flags2 & (BRANCH_EFFECT | ROOT_EFFECT)) === 0 ? reaction : null;
   current_sources = null;
   set_component_context(reaction.ctx);
@@ -1868,9 +1880,7 @@ function update_reaction(reaction) {
       } else {
         reaction.deps = deps = new_deps;
       }
-      if (!skip_reaction || // Deriveds that already have reactions can cleanup, so we still add them as reactions
-      (flags2 & DERIVED) !== 0 && /** @type {import('#client').Derived} */
-      reaction.reactions !== null) {
+      if (is_updating_effect && effect_tracking() && (reaction.f & CONNECTED) !== 0) {
         for (i = skipped_deps; i < deps.length; i++) {
           (deps[i].reactions ??= []).push(reaction);
         }
@@ -1912,7 +1922,6 @@ function update_reaction(reaction) {
     skipped_deps = previous_skipped_deps;
     untracked_writes = previous_untracked_writes;
     active_reaction = previous_reaction;
-    skip_reaction = previous_skip_reaction;
     current_sources = previous_sources;
     set_component_context(previous_component_context);
     untracking = previous_untracking;
@@ -1938,8 +1947,9 @@ function remove_reaction(signal, dependency) {
   // allows us to skip the expensive work of disconnecting and immediately reconnecting it
   (new_deps === null || !new_deps.includes(dependency))) {
     set_signal_status(dependency, MAYBE_DIRTY);
-    if ((dependency.f & (UNOWNED | DISCONNECTED)) === 0) {
-      dependency.f ^= DISCONNECTED;
+    if ((dependency.f & CONNECTED) !== 0) {
+      dependency.f ^= CONNECTED;
+      dependency.f &= ~WAS_MARKED;
     }
     destroy_derived_effects(
       /** @type {Derived} **/
@@ -2000,7 +2010,7 @@ function get(signal) {
             skipped_deps++;
           } else if (new_deps === null) {
             new_deps = [signal];
-          } else if (!skip_reaction || !new_deps.includes(signal)) {
+          } else if (!new_deps.includes(signal)) {
             new_deps.push(signal);
           }
         }
@@ -2014,25 +2024,16 @@ function get(signal) {
         }
       }
     }
-  } else if (is_derived && /** @type {Derived} */
-  signal.deps === null && /** @type {Derived} */
-  signal.effects === null) {
-    var derived = (
-      /** @type {Derived} */
-      signal
-    );
-    var parent = derived.parent;
-    if (parent !== null && (parent.f & UNOWNED) === 0) {
-      derived.f ^= UNOWNED;
-    }
   }
   if (is_destroying_effect) {
     if (old_values.has(signal)) {
       return old_values.get(signal);
     }
     if (is_derived) {
-      derived = /** @type {Derived} */
-      signal;
+      var derived = (
+        /** @type {Derived} */
+        signal
+      );
       var value = derived.v;
       if ((derived.f & CLEAN) === 0 && derived.reactions !== null || depends_on_old_values(derived)) {
         value = execute_derived(derived);
@@ -2040,14 +2041,14 @@ function get(signal) {
       old_values.set(derived, value);
       return value;
     }
-  } else if (is_derived) {
+  } else if (is_derived && !batch_values?.has(signal)) {
     derived = /** @type {Derived} */
     signal;
-    if (batch_values?.has(derived)) {
-      return batch_values.get(derived);
-    }
     if (is_dirty(derived)) {
       update_derived(derived);
+    }
+    if (is_updating_effect && effect_tracking() && (derived.f & CONNECTED) === 0) {
+      reconnect(derived);
     }
   }
   if (batch_values?.has(signal)) {
@@ -2057,6 +2058,19 @@ function get(signal) {
     throw signal.v;
   }
   return signal.v;
+}
+function reconnect(derived) {
+  if (derived.deps === null) return;
+  derived.f ^= CONNECTED;
+  for (const dep of derived.deps) {
+    (dep.reactions ??= []).push(derived);
+    if ((dep.f & DERIVED) !== 0 && (dep.f & CONNECTED) === 0) {
+      reconnect(
+        /** @type {Derived} */
+        dep
+      );
+    }
+  }
 }
 function depends_on_old_values(derived) {
   if (derived.v === UNINITIALIZED) return true;
@@ -2495,7 +2509,8 @@ function Root($$renderer, $$props) {
       form,
       data_0 = null,
       data_1 = null,
-      data_2 = null
+      data_2 = null,
+      data_3 = null
     } = $$props;
     {
       setContext("__svelte__", stores);
@@ -2503,7 +2518,7 @@ function Root($$renderer, $$props) {
     {
       stores.page.set(page);
     }
-    const Pyramid_2 = constructors[2];
+    const Pyramid_3 = constructors[3];
     if (constructors[1]) {
       $$renderer2.push("<!--[-->");
       const Pyramid_0 = constructors[0];
@@ -2522,9 +2537,30 @@ function Root($$renderer, $$props) {
               form,
               params: page.params,
               children: ($$renderer4) => {
-                $$renderer4.push(`<!---->`);
-                Pyramid_2($$renderer4, { data: data_2, form, params: page.params });
-                $$renderer4.push(`<!---->`);
+                if (constructors[3]) {
+                  $$renderer4.push("<!--[-->");
+                  const Pyramid_2 = constructors[2];
+                  $$renderer4.push(`<!---->`);
+                  Pyramid_2($$renderer4, {
+                    data: data_2,
+                    form,
+                    params: page.params,
+                    children: ($$renderer5) => {
+                      $$renderer5.push(`<!---->`);
+                      Pyramid_3($$renderer5, { data: data_3, form, params: page.params });
+                      $$renderer5.push(`<!---->`);
+                    },
+                    $$slots: { default: true }
+                  });
+                  $$renderer4.push(`<!---->`);
+                } else {
+                  $$renderer4.push("<!--[!-->");
+                  const Pyramid_2 = constructors[2];
+                  $$renderer4.push(`<!---->`);
+                  Pyramid_2($$renderer4, { data: data_2, form, params: page.params });
+                  $$renderer4.push(`<!---->`);
+                }
+                $$renderer4.push(`<!--]-->`);
               },
               $$slots: { default: true }
             });
@@ -2573,7 +2609,7 @@ const options = {
   service_worker: false,
   service_worker_options: void 0,
   templates: {
-    app: ({ head, body, assets, nonce, env }) => '<!doctype html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<link rel="icon" href="/logo.png" />\n		<meta name="viewport" content="width=device-width, initial-scale=1" />\n		' + head + '\n		<title>TC Groessinghof Ponfeld</title>\n	</head>\n	<body data-sveltekit-preload-data="hover">\n		<div style="display: contents">' + body + "</div>\n	</body>\n</html>\n",
+    app: ({ head, body, assets, nonce, env }) => '<!doctype html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<link rel="icon" href="/logo.png" />\n		<meta name="description" content="Vereinshomepage des TC Groessinghof Ponfeld, wo man nähers über den Verein erfährt." />\n		<meta name="viewport" content="width=device-width, initial-scale=1" />\n		' + head + '\n		<title>TC Groessinghof Ponfeld</title>\n	</head>\n	<body data-sveltekit-preload-data="hover">\n		<div style="display: contents">' + body + "</div>\n	</body>\n</html>\n",
     error: ({ status, message }) => '<!doctype html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<title>' + message + `</title>
 
 		<style>
@@ -2645,7 +2681,7 @@ const options = {
 		<div class="error">
 			<span class="status">` + status + '</span>\n			<div class="message">\n				<h1>' + message + "</h1>\n			</div>\n		</div>\n	</body>\n</html>\n"
   },
-  version_hash: "11qhhm8"
+  version_hash: "1tbywf1"
 };
 async function get_hooks() {
   let handle;
@@ -2667,13 +2703,12 @@ async function get_hooks() {
   };
 }
 export {
-  public_env as a,
-  set_public_env as b,
-  set_read_implementation as c,
-  set_manifest as d,
+  set_public_env as a,
+  set_read_implementation as b,
+  set_manifest as c,
   get_hooks as g,
   options as o,
-  private_env as p,
+  public_env as p,
   read_implementation as r,
   set_private_env as s
 };

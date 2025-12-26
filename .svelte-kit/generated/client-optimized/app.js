@@ -17,25 +17,26 @@ export const nodes = [
 	() => import('./nodes/13'),
 	() => import('./nodes/14'),
 	() => import('./nodes/15'),
-	() => import('./nodes/16')
+	() => import('./nodes/16'),
+	() => import('./nodes/17')
 ];
 
-export const server_loads = [0];
+export const server_loads = [0,3];
 
 export const dictionary = {
-		"/": [~4],
-		"/AGB": [5],
-		"/Impressum": [6],
-		"/Scroller": [7,[2]],
-		"/admin": [~8],
-		"/admin/posts": [9],
-		"/admin/posts/create": [12],
-		"/admin/posts/[slug]": [10],
-		"/admin/posts/[slug]/edit": [11],
-		"/admin/users": [13,[3]],
-		"/admin/users/create": [14,[3]],
-		"/auth/login": [15],
-		"/auth/signup": [16]
+		"/": [~5],
+		"/AGB": [6],
+		"/Impressum": [7],
+		"/Scroller": [8,[2]],
+		"/admin": [9,[3]],
+		"/admin/design": [10,[3]],
+		"/admin/posts": [~11,[3]],
+		"/admin/posts/create": [14,[3]],
+		"/admin/posts/[slug]": [12,[3]],
+		"/admin/posts/[slug]/edit": [13,[3]],
+		"/admin/users": [15,[3,4]],
+		"/admin/users/create": [~16,[3,4]],
+		"/auth/login": [17]
 	};
 
 export const hooks = {
@@ -46,6 +47,7 @@ export const hooks = {
 };
 
 export const decoders = Object.fromEntries(Object.entries(hooks.transport).map(([k, v]) => [k, v.decode]));
+export const encoders = Object.fromEntries(Object.entries(hooks.transport).map(([k, v]) => [k, v.encode]));
 
 export const hash = false;
 

@@ -81,7 +81,7 @@ export const members: Member[] = [
         name:"Pirker Michael",
         function:"Stv. Obmann",
         picture:"/avatar_male.jpg",
-        description:"Platwartz/Hirsch"
+        description:"Platzwart/Hirsch"
     },
     {
         name:"Jakeisch Michael",
@@ -123,18 +123,18 @@ export const footer: Link[] = [
 export const navigation: Link[] = [
     {
         name:"Über uns",
-        url:"#team"
+        url:"/#team"
     },
     // {
-    //     name:"News",
-    //     url:"/"
+    //     name:"Blog",
+    //     url:"/Blog"
     // },
     {
         name:"Sponsoren",
-        url:"#sponsors"
+        url:"/#sponsors"
     },
     {
         name:"Kontakt",
-        url:"#contact"
+        url:"/#contact"
     }
 ]

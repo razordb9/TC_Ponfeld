@@ -17,25 +17,28 @@ export const nodes = [
 	() => import('./nodes/13'),
 	() => import('./nodes/14'),
 	() => import('./nodes/15'),
-	() => import('./nodes/16')
+	() => import('./nodes/16'),
+	() => import('./nodes/17'),
+	() => import('./nodes/18')
 ];
 
-export const server_loads = [0,3];
+export const server_loads = [0,3,4];
 
 export const dictionary = {
-		"/": [~4],
-		"/AGB": [5],
-		"/Impressum": [6],
-		"/Scroller": [7,[2]],
-		"/admin": [~8],
-		"/admin/posts": [~9],
-		"/admin/posts/create": [~12],
-		"/admin/posts/[slug]": [~10],
-		"/admin/posts/[slug]/edit": [~11],
-		"/admin/users": [~13,[3]],
-		"/admin/users/create": [~14,[3]],
-		"/auth/login": [~15],
-		"/auth/signup": [~16]
+		"/": [~5],
+		"/AGB": [6],
+		"/Blog": [~7],
+		"/Impressum": [8],
+		"/Scroller": [9,[2]],
+		"/admin": [~10,[3]],
+		"/admin/design": [11,[3]],
+		"/admin/posts": [~12,[3]],
+		"/admin/posts/create": [~15,[3]],
+		"/admin/posts/[slug]": [~13,[3]],
+		"/admin/posts/[slug]/edit": [~14,[3]],
+		"/admin/users": [~16,[3,4]],
+		"/admin/users/create": [~17,[3,4]],
+		"/auth/login": [~18]
 	};
 
 export const hooks = {
@@ -46,6 +49,7 @@ export const hooks = {
 };
 
 export const decoders = Object.fromEntries(Object.entries(hooks.transport).map(([k, v]) => [k, v.decode]));
+export const encoders = Object.fromEntries(Object.entries(hooks.transport).map(([k, v]) => [k, v.encode]));
 
 export const hash = false;
 

@@ -79,7 +79,6 @@ export const verification = sqliteTable("verification", {
 	.notNull(),
 });
 
-
 export const blogPost = sqliteTable('blog_post', {
 	id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
 	title: text('title').notNull(),

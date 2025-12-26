@@ -1,8 +1,8 @@
 import { get_request_store } from "@sveltejs/kit/internal/server";
 import { c as create_validator, r as run_remote_function, g as get_cache, a as get_response, p as parse_remote_response } from "./chunks/query.js";
 import { q } from "./chunks/query.js";
-import "clsx";
-import { r as run } from "./chunks/utils.js";
+import { f as flatten_issues, c as create_field_proxy, n as normalize_issue, s as set_nested_value, d as deep_set } from "./chunks/form-utils.js";
+import { ValidationError } from "@sveltejs/kit/internal";
 import { error, json } from "@sveltejs/kit";
 import { b as base, a as app_dir, D as DEV } from "./chunks/server.js";
 import { s as stringify_remote_arg, a as stringify } from "./chunks/shared.js";
@@ -40,244 +40,6 @@ function command(validate_or_fn, maybe_fn) {
   });
   return wrapper;
 }
-const untrack = run ?? ((value) => value());
-function set_nested_value(object, path_string, value) {
-  if (path_string.startsWith("n:")) {
-    path_string = path_string.slice(2);
-    value = value === "" ? void 0 : parseFloat(value);
-  } else if (path_string.startsWith("b:")) {
-    path_string = path_string.slice(2);
-    value = value === "on";
-  }
-  return deep_set(object, split_path(path_string), value);
-}
-function convert_formdata(data) {
-  let result = /* @__PURE__ */ Object.create(null);
-  for (let key of data.keys()) {
-    if (key.startsWith("sveltekit:")) {
-      continue;
-    }
-    const is_array = key.endsWith("[]");
-    let values = data.getAll(key);
-    if (is_array) key = key.slice(0, -2);
-    if (values.length > 1 && !is_array) {
-      throw new Error(`Form cannot contain duplicated keys — "${key}" has ${values.length} values`);
-    }
-    values = values.filter((entry) => typeof entry === "string" || entry.name !== "" || entry.size > 0);
-    if (key.startsWith("n:")) {
-      key = key.slice(2);
-      values = values.map((v) => v === "" ? void 0 : parseFloat(
-        /** @type {string} */
-        v
-      ));
-    } else if (key.startsWith("b:")) {
-      key = key.slice(2);
-      values = values.map((v) => v === "on");
-    }
-    result = set_nested_value(result, key, is_array ? values : values[0]);
-  }
-  return result;
-}
-const path_regex = /^[a-zA-Z_$]\w*(\.[a-zA-Z_$]\w*|\[\d+\])*$/;
-function split_path(path) {
-  if (!path_regex.test(path)) {
-    throw new Error(`Invalid path ${path}`);
-  }
-  return path.split(/\.|\[|\]/).filter(Boolean);
-}
-function deep_set(object, keys, value) {
-  const result = Object.assign(/* @__PURE__ */ Object.create(null), object);
-  let current = result;
-  for (let i = 0; i < keys.length - 1; i += 1) {
-    const key = keys[i];
-    const is_array = /^\d+$/.test(keys[i + 1]);
-    const exists = key in current;
-    const inner = current[key];
-    if (exists && is_array !== Array.isArray(inner)) {
-      throw new Error(`Invalid array key ${keys[i + 1]}`);
-    }
-    current[key] = is_array ? exists ? [...inner] : [] : (
-      // guard against prototype pollution
-      Object.assign(/* @__PURE__ */ Object.create(null), inner)
-    );
-    current = current[key];
-  }
-  current[keys[keys.length - 1]] = value;
-  return result;
-}
-function flatten_issues(issues, server = false) {
-  const result = {};
-  for (const issue of issues) {
-    const normalized = { name: "", path: [], message: issue.message, server };
-    (result.$ ??= []).push(normalized);
-    let name = "";
-    if (issue.path !== void 0) {
-      for (const segment of issue.path) {
-        const key = (
-          /** @type {string | number} */
-          typeof segment === "object" ? segment.key : segment
-        );
-        normalized.path.push(key);
-        if (typeof key === "number") {
-          name += `[${key}]`;
-        } else if (typeof key === "string") {
-          name += name === "" ? key : "." + key;
-        }
-        (result[name] ??= []).push(normalized);
-      }
-      normalized.name = name;
-    }
-  }
-  return result;
-}
-function deep_get(object, path) {
-  let current = object;
-  for (const key of path) {
-    if (current == null || typeof current !== "object") {
-      return current;
-    }
-    current = current[key];
-  }
-  return current;
-}
-function create_field_proxy(target, get_input, depend, set_input, get_issues, path = []) {
-  const path_string = build_path_string(path);
-  const get_value = () => {
-    depend(path_string);
-    return untrack(() => deep_get(get_input(), path));
-  };
-  return new Proxy(target, {
-    get(target2, prop) {
-      if (typeof prop === "symbol") return target2[prop];
-      if (/^\d+$/.test(prop)) {
-        return create_field_proxy({}, get_input, depend, set_input, get_issues, [...path, parseInt(prop, 10)]);
-      }
-      const key = build_path_string(path);
-      if (prop === "set") {
-        const set_func = function(newValue) {
-          set_input(path, newValue);
-          return newValue;
-        };
-        return create_field_proxy(set_func, get_input, depend, set_input, get_issues, [...path, prop]);
-      }
-      if (prop === "value") {
-        return create_field_proxy(get_value, get_input, depend, set_input, get_issues, [...path, prop]);
-      }
-      if (prop === "issues" || prop === "allIssues") {
-        const issues_func = () => {
-          const all_issues = get_issues()[key === "" ? "$" : key];
-          if (prop === "allIssues") {
-            return all_issues?.map((issue) => ({ message: issue.message }));
-          }
-          return all_issues?.filter((issue) => issue.name === key)?.map((issue) => ({ message: issue.message }));
-        };
-        return create_field_proxy(issues_func, get_input, depend, set_input, get_issues, [...path, prop]);
-      }
-      if (prop === "as") {
-        const as_func = (type, input_value) => {
-          const is_array = type === "file multiple" || type === "select multiple" || type === "checkbox" && typeof input_value === "string";
-          const prefix = type === "number" || type === "range" ? "n:" : type === "checkbox" && !is_array ? "b:" : "";
-          const base_props = {
-            name: prefix + key + (is_array ? "[]" : ""),
-            get "aria-invalid"() {
-              const issues = get_issues();
-              return key in issues ? "true" : void 0;
-            }
-          };
-          if (type !== "text" && type !== "select" && type !== "select multiple") {
-            base_props.type = type === "file multiple" ? "file" : type;
-          }
-          if (type === "submit" || type === "hidden") {
-            return Object.defineProperties(base_props, { value: { value: input_value, enumerable: true } });
-          }
-          if (type === "select" || type === "select multiple") {
-            return Object.defineProperties(base_props, {
-              multiple: { value: is_array, enumerable: true },
-              value: {
-                enumerable: true,
-                get() {
-                  return get_value();
-                }
-              }
-            });
-          }
-          if (type === "checkbox" || type === "radio") {
-            return Object.defineProperties(base_props, {
-              value: { value: input_value ?? "on", enumerable: true },
-              checked: {
-                enumerable: true,
-                get() {
-                  const value = get_value();
-                  if (type === "radio") {
-                    return value === input_value;
-                  }
-                  if (is_array) {
-                    return (value ?? []).includes(input_value);
-                  }
-                  return value;
-                }
-              }
-            });
-          }
-          if (type === "file" || type === "file multiple") {
-            return Object.defineProperties(base_props, {
-              multiple: { value: is_array, enumerable: true },
-              files: {
-                enumerable: true,
-                get() {
-                  const value = get_value();
-                  if (value instanceof File) {
-                    if (typeof DataTransfer !== "undefined") {
-                      const fileList = new DataTransfer();
-                      fileList.items.add(value);
-                      return fileList.files;
-                    }
-                    return { 0: value, length: 1 };
-                  }
-                  if (Array.isArray(value) && value.every((f) => f instanceof File)) {
-                    if (typeof DataTransfer !== "undefined") {
-                      const fileList = new DataTransfer();
-                      value.forEach((file) => fileList.items.add(file));
-                      return fileList.files;
-                    }
-                    const fileListLike = { length: value.length };
-                    value.forEach((file, index) => {
-                      fileListLike[index] = file;
-                    });
-                    return fileListLike;
-                  }
-                  return null;
-                }
-              }
-            });
-          }
-          return Object.defineProperties(base_props, {
-            value: {
-              enumerable: true,
-              get() {
-                const value = get_value();
-                return value != null ? String(value) : "";
-              }
-            }
-          });
-        };
-        return create_field_proxy(as_func, get_input, depend, set_input, get_issues, [...path, "as"]);
-      }
-      return create_field_proxy({}, get_input, depend, set_input, get_issues, [...path, prop]);
-    }
-  });
-}
-function build_path_string(path) {
-  let result = "";
-  for (const segment of path) {
-    if (typeof segment === "number") {
-      result += `[${segment}]`;
-    } else {
-      result += result === "" ? segment : "." + segment;
-    }
-  }
-  return result;
-}
 // @__NO_SIDE_EFFECTS__
 function form(validate_or_fn, maybe_fn) {
   const fn = maybe_fn ?? validate_or_fn;
@@ -311,31 +73,22 @@ function form(validate_or_fn, maybe_fn) {
       type: "form",
       name: "",
       id: "",
-      /** @param {FormData} form_data */
-      fn: async (form_data) => {
-        const validate_only = form_data.get("sveltekit:validate_only") === "true";
-        let data = maybe_fn ? convert_formdata(form_data) : void 0;
-        if (data && data.id === void 0) {
-          const id = form_data.get("sveltekit:id");
-          if (typeof id === "string") {
-            data.id = JSON.parse(id);
-          }
-        }
+      fn: async (data, meta, form_data) => {
         const output = {};
         output.submission = true;
         const { event, state } = get_request_store();
         const validated = await schema?.["~standard"].validate(data);
-        if (validate_only) {
-          return validated?.issues ?? [];
+        if (meta.validate_only) {
+          return validated?.issues?.map((issue) => normalize_issue(issue, true)) ?? [];
         }
         if (validated?.issues !== void 0) {
-          handle_issues(output, validated.issues, event.isRemoteRequest, form_data);
+          handle_issues(output, validated.issues, form_data);
         } else {
           if (validated !== void 0) {
             data = validated.value;
           }
           state.refreshes ??= {};
-          const invalid = create_invalid();
+          const issue = create_issues();
           try {
             output.result = await run_remote_function(
               event,
@@ -343,11 +96,11 @@ function form(validate_or_fn, maybe_fn) {
               true,
               data,
               (d) => d,
-              (data2) => !maybe_fn ? fn(invalid) : fn(data2, invalid)
+              (data2) => !maybe_fn ? fn() : fn(data2, issue)
             );
           } catch (e) {
             if (e instanceof ValidationError) {
-              handle_issues(output, e.issues, event.isRemoteRequest, form_data);
+              handle_issues(output, e.issues, form_data);
             } else {
               throw e;
             }
@@ -371,11 +124,10 @@ function form(validate_or_fn, maybe_fn) {
     Object.defineProperty(instance, "fields", {
       get() {
         const data = get_cache(__)?.[""];
+        const issues = flatten_issues(data?.issues ?? []);
         return create_field_proxy(
           {},
           () => data?.input ?? {},
-          () => {
-          },
           (path, value) => {
             if (data?.submission) {
               return;
@@ -383,7 +135,7 @@ function form(validate_or_fn, maybe_fn) {
             const input = path.length === 0 ? value : deep_set(data?.input ?? {}, path.map(String), value);
             (get_cache(__)[""] ??= {}).input = input;
           },
-          () => data?.issues ?? {}
+          () => issues
         );
       }
     });
@@ -432,16 +184,16 @@ function form(validate_or_fn, maybe_fn) {
   }
   return create_instance();
 }
-function handle_issues(output, issues, is_remote_request, form_data) {
-  output.issues = flatten_issues(issues);
-  if (!is_remote_request) {
+function handle_issues(output, issues, form_data) {
+  output.issues = issues.map((issue) => normalize_issue(issue, true));
+  if (form_data) {
     output.input = {};
     for (let key of form_data.keys()) {
       if (/^[.\]]?_/.test(key)) continue;
       const is_array = key.endsWith("[]");
       const values = form_data.getAll(key).filter((value) => typeof value === "string");
       if (is_array) key = key.slice(0, -2);
-      output.input = set_nested_value(
+      set_nested_value(
         /** @type {Record<string, any>} */
         output.input,
         key,
@@ -450,62 +202,52 @@ function handle_issues(output, issues, is_remote_request, form_data) {
     }
   }
 }
-function create_invalid() {
-  function invalid(...issues) {
-    throw new ValidationError(
-      issues.map((issue) => {
-        if (typeof issue === "string") {
-          return {
-            path: [],
-            message: issue
-          };
-        }
-        return issue;
-      })
-    );
-  }
+function create_issues() {
   return (
-    /** @type {import('@sveltejs/kit').Invalid} */
-    new Proxy(invalid, {
+    /** @type {InvalidField<any>} */
+    new Proxy(
+      /** @param {string} message */
+      (message) => {
+        if (typeof message !== "string") {
+          throw new Error(
+            "`invalid` should now be imported from `@sveltejs/kit` to throw validation issues. The second parameter provided to the form function (renamed to `issue`) is still used to construct issues, e.g. `invalid(issue.field('message'))`. For more info see https://github.com/sveltejs/kit/pulls/14768"
+          );
+        }
+        return create_issue(message);
+      },
+      {
+        get(target, prop) {
+          if (typeof prop === "symbol") return (
+            /** @type {any} */
+            target[prop]
+          );
+          return create_issue_proxy(prop, []);
+        }
+      }
+    )
+  );
+  function create_issue(message, path = []) {
+    return {
+      message,
+      path
+    };
+  }
+  function create_issue_proxy(key, path) {
+    const new_path = [...path, key];
+    const issue_func = (message) => create_issue(message, new_path);
+    return new Proxy(issue_func, {
       get(target, prop) {
         if (typeof prop === "symbol") return (
           /** @type {any} */
           target[prop]
         );
-        const create_issue = (message, path = []) => ({
-          message,
-          path
-        });
-        return create_issue_proxy(prop, create_issue, []);
+        if (/^\d+$/.test(prop)) {
+          return create_issue_proxy(parseInt(prop, 10), new_path);
+        }
+        return create_issue_proxy(prop, new_path);
       }
-    })
-  );
-}
-class ValidationError extends Error {
-  /**
-   * @param {StandardSchemaV1.Issue[]} issues
-   */
-  constructor(issues) {
-    super("Validation failed");
-    this.name = "ValidationError";
-    this.issues = issues;
+    });
   }
-}
-function create_issue_proxy(key, create_issue, path) {
-  const new_path = [...path, key];
-  const issue_func = (message) => create_issue(message, new_path);
-  return new Proxy(issue_func, {
-    get(target, prop) {
-      if (typeof prop === "symbol") return (
-        /** @type {any} */
-        target[prop]
-      );
-      if (/^\d+$/.test(prop)) {
-        return create_issue_proxy(parseInt(prop, 10), create_issue, new_path);
-      }
-      return create_issue_proxy(prop, create_issue, new_path);
-    }
-  });
 }
 // @__NO_SIDE_EFFECTS__
 function prerender(validate_or_fn, fn_or_options, maybe_options) {

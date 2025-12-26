@@ -1,5 +1,5 @@
 import { get_request_store, with_request_store } from "@sveltejs/kit/internal/server";
-import { s as stringify_remote_arg, c as create_remote_cache_key } from "./shared.js";
+import { s as stringify_remote_arg, c as create_remote_key } from "./shared.js";
 import { p as prerendering } from "./environment.js";
 import { parse } from "devalue";
 import { error } from "@sveltejs/kit";
@@ -17,8 +17,7 @@ function create_validator(validate_or_fn, maybe_fn) {
   if ("~standard" in validate_or_fn) {
     return async (arg) => {
       const { event, state } = get_request_store();
-      const validate = validate_or_fn["~standard"].validate;
-      const result = await validate(arg);
+      const result = await validate_or_fn["~standard"].validate(arg);
       if (result.issues) {
         error(
           400,
@@ -104,40 +103,16 @@ function query(validate_or_fn, maybe_fn) {
       );
     }
     const { event, state } = get_request_store();
-    const promise = get_response(
-      __,
-      arg,
-      state,
-      () => run_remote_function(event, state, false, arg, validate, fn)
-    );
+    const get_remote_function_result = () => run_remote_function(event, state, false, arg, validate, fn);
+    const promise = get_response(__, arg, state, get_remote_function_result);
     promise.catch(() => {
     });
-    promise.set = (value) => {
-      const { state: state2 } = get_request_store();
-      const refreshes = state2.refreshes;
-      if (!refreshes) {
-        throw new Error(
-          `Cannot call set on query '${__.name}' because it is not executed in the context of a command/form remote function`
-        );
-      }
-      if (__.id) {
-        const cache = get_cache(__, state2);
-        const key = stringify_remote_arg(arg, state2.transport);
-        refreshes[create_remote_cache_key(__.id, key)] = cache[key] = Promise.resolve(value);
-      }
-    };
+    promise.set = (value) => update_refresh_value(get_refresh_context(__, "set", arg), value);
     promise.refresh = () => {
-      const { state: state2 } = get_request_store();
-      const refreshes = state2.refreshes;
-      if (!refreshes) {
-        throw new Error(
-          `Cannot call refresh on query '${__.name}' because it is not executed in the context of a command/form remote function`
-        );
-      }
-      const cache_key = create_remote_cache_key(__.id, stringify_remote_arg(arg, state2.transport));
-      refreshes[cache_key] = promise;
-      return promise.then(() => {
-      });
+      const refresh_context = get_refresh_context(__, "refresh", arg);
+      const is_immediate_refresh = !refresh_context.cache[refresh_context.cache_key];
+      const value = is_immediate_refresh ? promise : get_remote_function_result();
+      return update_refresh_value(refresh_context, value, is_immediate_refresh);
     };
     promise.withOverride = () => {
       throw new Error(`Cannot call '${__.name}.withOverride()' on the server`);
@@ -178,7 +153,7 @@ function batch(validate_or_fn, maybe_fn) {
       );
     }
     const { event, state } = get_request_store();
-    const promise = get_response(__, arg, state, () => {
+    const get_remote_function_result = () => {
       return new Promise((resolve, reject) => {
         batching.args.push(arg);
         batching.resolvers.push({ resolve, reject });
@@ -209,20 +184,16 @@ function batch(validate_or_fn, maybe_fn) {
           }
         }, 0);
       });
-    });
+    };
+    const promise = get_response(__, arg, state, get_remote_function_result);
     promise.catch(() => {
     });
-    promise.refresh = async () => {
-      const { state: state2 } = get_request_store();
-      const refreshes = state2.refreshes;
-      if (!refreshes) {
-        throw new Error(
-          `Cannot call refresh on query.batch '${__.name}' because it is not executed in the context of a command/form remote function`
-        );
-      }
-      const cache_key = create_remote_cache_key(__.id, stringify_remote_arg(arg, state2.transport));
-      refreshes[cache_key] = await /** @type {Promise<any>} */
-      promise;
+    promise.set = (value) => update_refresh_value(get_refresh_context(__, "set", arg), value);
+    promise.refresh = () => {
+      const refresh_context = get_refresh_context(__, "refresh", arg);
+      const is_immediate_refresh = !refresh_context.cache[refresh_context.cache_key];
+      const value = is_immediate_refresh ? promise : get_remote_function_result();
+      return update_refresh_value(refresh_context, value, is_immediate_refresh);
     };
     promise.withOverride = () => {
       throw new Error(`Cannot call '${__.name}.withOverride()' on the server`);
@@ -236,6 +207,31 @@ function batch(validate_or_fn, maybe_fn) {
   return wrapper;
 }
 Object.defineProperty(query, "batch", { value: batch, enumerable: true });
+function get_refresh_context(__, action, arg) {
+  const { state } = get_request_store();
+  const { refreshes } = state;
+  if (!refreshes) {
+    const name = __.type === "query_batch" ? `query.batch '${__.name}'` : `query '${__.name}'`;
+    throw new Error(
+      `Cannot call ${action} on ${name} because it is not executed in the context of a command/form remote function`
+    );
+  }
+  const cache = get_cache(__, state);
+  const cache_key = stringify_remote_arg(arg, state.transport);
+  const refreshes_key = create_remote_key(__.id, cache_key);
+  return { __, state, refreshes, refreshes_key, cache, cache_key };
+}
+function update_refresh_value({ __, refreshes, refreshes_key, cache, cache_key }, value, is_immediate_refresh = false) {
+  const promise = Promise.resolve(value);
+  if (!is_immediate_refresh) {
+    cache[cache_key] = promise;
+  }
+  if (__.id) {
+    refreshes[refreshes_key] = promise;
+  }
+  return promise.then(() => {
+  });
+}
 export {
   get_response as a,
   create_validator as c,

@@ -1,5 +1,5 @@
 import * as devalue from "devalue";
-import { b as base64_encode, t as text_decoder, a as base64_decode } from "./utils2.js";
+import { b as base64_encode, t as text_decoder, a as base64_decode } from "./utils.js";
 const INVALIDATED_PARAM = "x-sveltekit-invalidated";
 const TRAILING_SLASH_PARAM = "x-sveltekit-trailing-slash";
 function stringify(data, transport) {
@@ -21,14 +21,14 @@ function parse_remote_arg(string, transport) {
   const decoders = Object.fromEntries(Object.entries(transport).map(([k, v]) => [k, v.decode]));
   return devalue.parse(json_string, decoders);
 }
-function create_remote_cache_key(id, payload) {
+function create_remote_key(id, payload) {
   return id + "/" + payload;
 }
 export {
   INVALIDATED_PARAM as I,
   TRAILING_SLASH_PARAM as T,
   stringify as a,
-  create_remote_cache_key as c,
+  create_remote_key as c,
   parse_remote_arg as p,
   stringify_remote_arg as s
 };

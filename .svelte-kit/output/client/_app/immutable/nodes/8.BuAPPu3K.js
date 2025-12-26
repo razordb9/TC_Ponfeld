@@ -1,1 +1,0 @@
-import"../chunks/DsnmJJEf.js";import"../chunks/69_IOA4Y.js";import{f as t,e as i}from"../chunks/BXMoDmWe.js";var o=t('<section id="adminPage"><h1>AdminPage</h1> <ul><li><a href="/admin/posts/create">Create Post</a></li> <li><a href="/auth/signup">Create new user</a></li></ul></section>');function m(e){var a=o();i(e,a)}export{m as component};

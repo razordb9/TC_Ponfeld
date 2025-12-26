@@ -28,6 +28,7 @@
         return DOMPurify.sanitize(rawHTML);
     }
 </script>
+<a href="/admin">Back</a>
 <section id="createpost">
     <h1>Create new post</h1>
 
@@ -43,7 +44,7 @@
     <div class="preview">{@html sanitize(html)}</div>
 </section>
 
-<style>
+<!-- <style>
     #editor {
         height: 400px;
         margin-bottom: 20px; 
@@ -54,4 +55,4 @@
         padding: 10px;
         min-height: 200px;
     }
-</style>
+</style> -->

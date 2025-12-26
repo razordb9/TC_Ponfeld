@@ -1,7 +1,7 @@
 <script lang="ts">
 	import "$lib/css/custom_styles.css";
-	import Footer from '$lib/Components/footer.svelte';
-	import Navigation from '$lib/Components/navigation.svelte';
+	import Footer from '$lib/components/footer.svelte';
+	import Navigation from '$lib/components/navigation.svelte';
 	import type { Snippet } from "svelte";
   	import type { ExtendedUser } from "../app";
 	
@@ -13,39 +13,22 @@
 	$effect(() => {
 		user = data?.user;
 	}) 
-
 </script>
 <div class="app">
-	<header class="site-header">
+	<!-- <header class="site-header">
 		{user?.name ?? "guest"}
-		<Navigation user={data.user}>
-
-		</Navigation>
-	</header>
-	<main>
 		
-		{@render children?.()}
-		<Footer/>
+	</header> -->
+	<Navigation user={data.user}>
+
+	</Navigation>
+	<main class="main">
+		<div class="layout">
+			{@render children?.()}
+		</div>
 	</main>
+	<footer>
+		<Footer/>
+	</footer>
+
 </div>
-
-
-
-
-
-<style lang="scss">
-	html {
-    	scroll-behavior: smooth; 
-  	}
-
-	.site-header {
-		top: 0;
-		position: fixed;
-		z-index: 2;
-	}
-
-	main {
-		margin-top: 150px;
-	}
-	
-</style>
