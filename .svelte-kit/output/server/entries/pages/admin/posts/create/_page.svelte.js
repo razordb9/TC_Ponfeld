@@ -1,16 +1,13 @@
 import { a as attr } from "../../../../../chunks/attributes.js";
+import { h as html } from "../../../../../chunks/html.js";
 import "quill";
+/* empty css                               */
 import "@sveltejs/kit/internal";
 import "../../../../../chunks/exports.js";
 import "../../../../../chunks/utils.js";
 import "@sveltejs/kit/internal/server";
 import "../../../../../chunks/state.svelte.js";
 import DOMPurify from "dompurify";
-function html(value) {
-  var html2 = String(value ?? "");
-  var open = "<!---->";
-  return open + html2 + "<!---->";
-}
 function _page($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {
     let html$1 = "";

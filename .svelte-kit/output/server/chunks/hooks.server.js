@@ -10,7 +10,7 @@ import "./query.js";
 import { b as building } from "./environment.js";
 const auth = ({ platform }) => {
   return betterAuth({
-    database: drizzleAdapter(db(platform), {
+    database: drizzleAdapter(db({ platform }), {
       provider: "sqlite"
     }),
     user: {

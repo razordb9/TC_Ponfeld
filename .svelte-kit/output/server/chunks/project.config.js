@@ -102,8 +102,8 @@ const navigation = [
     url: "/#team"
   },
   // {
-  //     name:"News",
-  //     url:"/"
+  //     name:"Blog",
+  //     url:"/Blog"
   // },
   {
     name: "Sponsoren",

@@ -1,1 +1,0 @@
-import"../chunks/DsnmJJEf.js";import"../chunks/69_IOA4Y.js";import{i as r,o,c as s,f as l,a as d}from"../chunks/CcIFFwra.js";function c(i,a,t,e,m){r&&o();var n=a.$$slots?.[t],f=!1;n===!0&&(n=a.children,f=!0),n===void 0||n(i,f?()=>e:e)}function p(i,a){var t=s(),e=l(t);c(e,a,"default",{}),d(i,t)}export{p as component};

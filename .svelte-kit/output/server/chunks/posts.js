@@ -1,4 +1,5 @@
 import { d as db, b as blogPost } from "./index3.js";
+import { eq } from "drizzle-orm";
 class Blogapi {
   /**
    *
@@ -25,12 +26,12 @@ class Blogapi {
     }
   };
   //done
-  readPost = async () => {
+  readPosts = async () => {
     try {
-      const postRead = await this.db.select().from(blogPost).all();
+      const result = await this.db.select().from(blogPost).all();
       return {
         success: true,
-        post: postRead[0]
+        posts: result
       };
     } catch (e) {
       return {
@@ -39,9 +40,34 @@ class Blogapi {
       };
     }
   };
-  updatePost = async (postData) => {
+  //done
+  readPost = async (slug) => {
     try {
-      const updatePost = await this.db.update(blogPost).set({ title: postData.title, html: postData.html, updatedAt: postData.updatedAt, authorId: postData.authorId }).where(eq(postData.id, blogPost.id)).returning();
+      const result = await this.db.select().from(blogPost).where(eq(blogPost.slug, slug)).limit(1);
+      if (result && result.length > 0) {
+        return {
+          success: true,
+          post: result[0]
+        };
+      } else {
+        return {
+          success: false,
+          error: "Error readingpost with slug: " + slug
+        };
+      }
+    } catch (e) {
+      return {
+        success: false,
+        error: e instanceof Error ? e.message : "Error reading post"
+      };
+    }
+  };
+  //patch
+  updatePost = async (postData, orgSlug) => {
+    try {
+      console.log("slut ", postData.slug);
+      const updatePost = await this.db.update(blogPost).set({ ...postData, updated_at: /* @__PURE__ */ new Date() }).where(eq(blogPost.slug, orgSlug)).returning();
+      console.log("updatepost ", updatePost);
       return {
         success: true,
         post: updatePost[0]
@@ -54,13 +80,20 @@ class Blogapi {
     }
   };
   //done
-  deletePost = async (postData) => {
+  deletePost = async (slug) => {
     try {
-      const deletePost = await this.db.delete(blogPost).where(eq(postData.id, blogPost.id)).returning();
-      return {
-        success: true,
-        post: deletePost[0]
-      };
+      const result = await this.db.delete(blogPost).where(eq(blogPost.slug, slug)).limit(1).returning();
+      if (result) {
+        return {
+          success: true,
+          post: result
+        };
+      } else {
+        return {
+          success: false,
+          error: "Error deleting post with slug: " + slug
+        };
+      }
     } catch (e) {
       return {
         success: false,

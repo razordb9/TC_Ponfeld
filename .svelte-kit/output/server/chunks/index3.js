@@ -125,7 +125,7 @@ sqliteTable("blog_post", {
   updatedAt: date("updated_at").notNull(),
   authorId: text("author_id").notNull().references(() => user.id, { onDelete: "cascade", onUpdate: "cascade" })
 });
-const db = (platform) => {
+const db = ({ platform }) => {
   if (!platform) {
     throw new Error("Platform not found");
   }
