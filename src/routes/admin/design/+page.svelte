@@ -32,38 +32,22 @@
 <a href="/admin">Back</a>
 <section class="grid-images" class:image-active={activeImage} >
     <div
-            class="overlay"
-            role="button"
-            aria-label="dd"
-            tabindex="0"
-            onclick={closeOverlay}
-            onkeydown={closeOverlay}
-        ></div> 
-    <!-- <h1>Design pattern</h1>
-    
-        <h1>Heading h1</h1>
-        <h2>Heading h2</h2>
-        <h3>Heading h3</h3>
-        <h4>Heading h4</h4>
-        <h5>Heading h5</h5>
-        <h6>Heading h6</h6>
-
-    <h2>Colors used</h2>
-    <div class="colors">
-        <ul>
-            <li></li>
-        </ul>
-    </div> -->
-         
-        <h2>Grid Members</h2>
-        <ul class="image-grid match-element-applied">
+        class="overlay"
+        role="button"
+        aria-label="dd"
+        tabindex="0"
+        onclick={closeOverlay}
+        onkeydown={closeOverlay}
+    ></div> 
+    <h2>Grid Members</h2>
+    <ul class="image-grid match-element-applied">
         {@render imageCard(p1, "0", "Roli1")}
         {@render imageCard(p2, "1", "Roli2")}
         {@render imageCard(p3, "2", "Roli3")}
         {@render imageCard(p4, "3", "Roli4")}
         {@render imageCard(p5, "4", "Roli5")}
         {@render imageCard(p6, "5", "Roli6")}  
-        </ul> 
+    </ul> 
 </section>
 
 {#snippet imageCard(src: string, _index: string, text: string)}

@@ -1,6 +1,6 @@
 import "clsx";
 /* empty css                         */
-import { e as ensure_array_like, d as attr_class } from "../../chunks/index2.js";
+import { e as ensure_array_like, c as attr_class } from "../../chunks/index2.js";
 import { f as footer, n as navigation } from "../../chunks/project.config.js";
 import { a as attr } from "../../chunks/attributes.js";
 import { e as escape_html } from "../../chunks/escaping.js";
@@ -34,7 +34,7 @@ function Navigation($$renderer, $$props) {
     $$renderer2.push(`<!--]--></ul> <ul class="navbar-right">`);
     if (user) {
       $$renderer2.push("<!--[-->");
-      $$renderer2.push(`<li><button class="dropbtn">Menu</button></li> <div class="dropdown-content"><a href="/admin">Admin Page</a> <button>Logout</button></div>`);
+      $$renderer2.push(`<li><button class="dropbtn">Menu</button></li> <div class="dropdown-content"><a href="/admin">Admin Page</a> <a href="/Blog">Blog</a> <button>Logout</button></div>`);
     } else {
       $$renderer2.push("<!--[!-->");
       $$renderer2.push(`<li><a href="/auth/login" role="button" class="btn">Login</a></li>`);

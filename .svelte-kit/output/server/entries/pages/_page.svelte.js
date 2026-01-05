@@ -1,4 +1,4 @@
-import { c as bind_props, e as ensure_array_like } from "../../chunks/index2.js";
+import { d as bind_props, e as ensure_array_like } from "../../chunks/index2.js";
 /* empty css                         */
 import { H as Horizontalscroller } from "../../chunks/horizontalscroller.js";
 import { m as members, s as sponsors } from "../../chunks/project.config.js";
