@@ -6,7 +6,7 @@
 </script>
 <section id="footer">
     <footer>
-        Copyright &copy; Thomas HUDSON-ZAUSSNIG •
+        Copyright &copy; TC Grössinghof Ponfeld •
         {#each footer as foot}        
             <a href={foot.url}>{foot.name} •</a>
             <!-- <a href="/AGB">AGB •</a> k -->

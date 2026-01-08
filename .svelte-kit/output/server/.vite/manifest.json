@@ -202,6 +202,42 @@
     "file": "_app/immutable/assets/avatar_female.OIHQwPzh.jpg",
     "src": "src/lib/assets/avatar_female.jpg"
   },
+  "src/lib/assets/p1.jpg": {
+    "file": "_app/immutable/assets/p1.CVKwegkd.jpg",
+    "src": "src/lib/assets/p1.jpg"
+  },
+  "src/lib/assets/p2-small.jpg": {
+    "file": "_app/immutable/assets/p2-small.BN5-w8rI.jpg",
+    "src": "src/lib/assets/p2-small.jpg"
+  },
+  "src/lib/assets/p2.jpg": {
+    "file": "_app/immutable/assets/p2.BDNnxh1d.jpg",
+    "src": "src/lib/assets/p2.jpg"
+  },
+  "src/lib/assets/p3-small.jpg": {
+    "file": "_app/immutable/assets/p3-small.CO2FrRSB.jpg",
+    "src": "src/lib/assets/p3-small.jpg"
+  },
+  "src/lib/assets/p3.jpg": {
+    "file": "_app/immutable/assets/p3.fTTexs2r.jpg",
+    "src": "src/lib/assets/p3.jpg"
+  },
+  "src/lib/assets/p4.jpg": {
+    "file": "_app/immutable/assets/p4.DeL03cHW.jpg",
+    "src": "src/lib/assets/p4.jpg"
+  },
+  "src/lib/assets/p5-small.jpg": {
+    "file": "_app/immutable/assets/p5-small.BDmxVli6.jpg",
+    "src": "src/lib/assets/p5-small.jpg"
+  },
+  "src/lib/assets/p5.jpg": {
+    "file": "_app/immutable/assets/p5.VW1BedrY.jpg",
+    "src": "src/lib/assets/p5.jpg"
+  },
+  "src/lib/assets/p6.jpg": {
+    "file": "_app/immutable/assets/p6._AQgXvR6.jpg",
+    "src": "src/lib/assets/p6.jpg"
+  },
   "src/routes/+error.svelte": {
     "file": "entries/pages/_error.svelte.js",
     "name": "entries/pages/_error.svelte",
@@ -267,7 +303,19 @@
       "_escaping.js"
     ],
     "css": [
+      "_app/immutable/assets/_page.vC72MC1V.css",
       "_app/immutable/assets/custom_styles.BBh7_YOB.css"
+    ],
+    "assets": [
+      "_app/immutable/assets/p1.CVKwegkd.jpg",
+      "_app/immutable/assets/p2.BDNnxh1d.jpg",
+      "_app/immutable/assets/p3.fTTexs2r.jpg",
+      "_app/immutable/assets/p4.DeL03cHW.jpg",
+      "_app/immutable/assets/p5.VW1BedrY.jpg",
+      "_app/immutable/assets/p6._AQgXvR6.jpg",
+      "_app/immutable/assets/p2-small.BN5-w8rI.jpg",
+      "_app/immutable/assets/p3-small.CO2FrRSB.jpg",
+      "_app/immutable/assets/p5-small.BDmxVli6.jpg"
     ]
   },
   "src/routes/AGB/+page.svelte": {

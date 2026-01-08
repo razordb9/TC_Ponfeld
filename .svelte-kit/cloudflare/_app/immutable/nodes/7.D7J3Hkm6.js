@@ -1,0 +1,1 @@
+import"../chunks/DsnmJJEf.js";import"../chunks/69_IOA4Y.js";import{b as a,a as i}from"../chunks/BGUecI9D.js";var p=a('<div id="Blog"><h1>Blog des TC Ponfeld</h1></div>');function e(o){var r=p();i(o,r)}export{e as component};

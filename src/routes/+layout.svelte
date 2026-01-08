@@ -10,16 +10,22 @@
 	let user = $state<ExtendedUser | null>(null);
 	console.log(data.user);
 	
+	let y = $state(0);
+
 	$effect(() => {
 		user = data?.user;
+		console.log("y: ", y);
 	}) 
 </script>
+
+<svelte:window bind:scrollY={y} />
+
 <div class="app">
 	<!-- <header class="site-header">
 		{user?.name ?? "guest"}
 		
 	</header> -->
-	<Navigation user={data.user}>
+	<Navigation user={data.user} scroll={y}>
 
 	</Navigation>
 	<main class="main">
