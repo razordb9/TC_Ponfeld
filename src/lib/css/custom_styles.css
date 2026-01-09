@@ -386,7 +386,7 @@ Jungle Civilization
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  background-color: var(--third-color);
+  background-color: transparent;
   transition: all 350ms ease-in-out;
 }
 .navbar .navbar-left,
@@ -535,14 +535,14 @@ Jungle Civilization
   }
 }
 /* DONE */
-#hero {
+.hero {
   overflow: hidden;
   display: flex;
   justify-content: center;
   text-align: center;
   height: calc(100vh - var(--header-height));
 }
-#hero .hero-img {
+.hero .hero-img {
   position: absolute;
   top: 0;
   left: 0;
@@ -551,7 +551,7 @@ Jungle Civilization
   -o-object-fit: cover;
      object-fit: cover;
 }
-#hero .hero-content {
+.hero .hero-content {
   z-index: 1;
   display: flex;
   flex-direction: column;
@@ -623,7 +623,7 @@ Jungle Civilization
 }
 
 /* Team  */
-#team {
+.team {
   scroll-margin-top: calc(var(--header-height) + 10px);
   height: 60vh;
   text-align: center;
@@ -633,6 +633,7 @@ Jungle Civilization
 /* Sponsor section */
 #sponsors {
   scroll-margin-top: 90px;
+  height: 60vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -641,6 +642,7 @@ Jungle Civilization
 #sponsors .sponsor {
   padding: 1rem;
   border-radius: 10px;
+  width: 200px;
 }
 #sponsors .sponsor a {
   display: flex;
@@ -657,6 +659,49 @@ Jungle Civilization
      object-fit: cover;
   justify-content: center;
   align-items: center;
+}
+
+/* horizontal scroller */
+.scroller {
+  max-width: var(--horizontal-scroller-width, 100%);
+  width: 100vw;
+  height: 300px;
+}
+
+.inner-scroller {
+  margin: 0;
+  padding: 0;
+  padding-block: var(--padding-block);
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: flex-start;
+  list-style: none !important;
+}
+
+.scroller[data-animated=true] {
+  overflow: clip;
+  -webkit-mask: linear-gradient(90deg, transparent, #fff 20%, #fff 80%, transparent);
+          mask: linear-gradient(90deg, transparent, #fff 20%, #fff 80%, transparent);
+}
+
+.scroller[data-animated=true] .inner-scroller {
+  width: -moz-fit-content;
+  width: fit-content;
+  flex-wrap: nowrap;
+  animation-direction: var(--horizontal-scroller-animation-direction, forwards);
+  animation-name: scroll-animation;
+  animation-duration: var(--horizontal-scroller-animation-speed, 30s);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+  animation-fill-mode: forwards;
+}
+
+.scroller[data-animated=true] .inner-scroller:hover {
+  animation-play-state: paused;
 }
 
 /* Contact section */
@@ -726,49 +771,6 @@ dialog::backdrop {
 dialog[open]::backdrop {
   background-color: rgba(0, 0, 0, 0.5333333333);
   opacity: 1;
-}
-
-/* horizontal scroller */
-.scroller {
-  /* border: 3px solid red; */
-  max-width: var(--horizontal-scroller-width, 100%);
-  width: 100vw;
-}
-
-.inner-scroller {
-  margin: 0;
-  padding: 0;
-  padding-block: var(--padding-block);
-  display: flex;
-  flex: 1;
-  flex-wrap: wrap;
-  gap: 1rem;
-  align-items: center;
-  justify-content: flex-start;
-  list-style: none !important;
-}
-
-.scroller[data-animated=true] {
-  overflow: clip;
-  -webkit-mask: linear-gradient(90deg, transparent, #fff 20%, #fff 80%, transparent);
-          mask: linear-gradient(90deg, transparent, #fff 20%, #fff 80%, transparent);
-}
-
-.scroller[data-animated=true] .inner-scroller {
-  width: -moz-fit-content;
-  width: fit-content;
-  flex-wrap: nowrap;
-  animation-direction: var(--horizontal-scroller-animation-direction, forwards);
-  animation-name: scroll-animation;
-  animation-duration: var(--horizontal-scroller-animation-speed, 30s);
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-play-state: running;
-  animation-fill-mode: forwards;
-}
-
-.scroller[data-animated=true] .inner-scroller:hover {
-  animation-play-state: paused;
 }
 
 @keyframes scroll-animation {

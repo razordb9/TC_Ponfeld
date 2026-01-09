@@ -1,12 +1,11 @@
 <script lang="ts">
-	import { index } from './../../../../../Portfolio/.svelte-kit/output/server/nodes/1.js';
 	import "$lib/css/custom_styles.css";
     import Horizontalscroller from "$lib/components/horizontalscroller.svelte";
     import { sponsors } from "$lib/project.config";
     import { members } from "$lib/project.config";
     import Contact from "$lib/components/contact_new.svelte";
-  import { Name } from 'drizzle-orm';
-
+    import { Name } from 'drizzle-orm';
+  
     const images = import.meta.glob(
         ["$lib/assets/p*.jpg", "!$lib/assets/p*-small.jpg"],
         {
@@ -53,22 +52,22 @@
     };
 
     interface Member {
-    name: string,
-    picture: string,
-    function: string,
-    description: string
-}
+        name: string,
+        picture: string,
+        function: string,
+        description: string
+    }
 </script>
 
 
-<section id="hero">
+<section class="hero">
     <img src="/Tennispllatz.jpg" alt="tennisplatz" class="hero-img"/>    
     <div class="hero-content">
         <h1>TC Grössinghof Ponfeld</h1>
         <a href="https://groessinghof-ponfeld.tennisplatz.info/" target="_blank" class="btn">Platzreservierung</a>
     </div>
 </section>
-<article id="team" class:active-image={activeImage}> 
+<div class="team" class:active-image={activeImage}> 
     <div 
         class="overlay"
         role="button"
@@ -92,7 +91,7 @@ Enim dolore exercitation deserunt aute non irure eu aliquip incididunt irure con
             )}
         {/each}
     </ul>
-</article>
+</div>
 {#snippet renderImage(member: Member, index: number)}
     <li class="image-wrapper" data-index={index}>
         <a href="#" role="button" onclick={expand}>
@@ -135,17 +134,15 @@ Enim dolore exercitation deserunt aute non irure eu aliquip incididunt irure con
 {/snippet}
 <section id="sponsors">
     <h2>Unsere Sponsoren</h2>
-    <div id="sponsors-container">
-        <Horizontalscroller speed="30s" width="600px" direction="forward">
+        <Horizontalscroller speed="30s" width="800px" direction="forward">
             {#each sponsors as sponsor}
                 <li class="sponsor">
                     <a href={sponsor.url} target="_blank" rel="noopener">
-                        <img src={sponsor.logo} alt={sponsor.name} width="100" height="100" loading="lazy"/>
+                        <img src={sponsor.logo} alt={sponsor.name} width="200" height="200" loading="lazy"/>
                     </a>
                 </li>
             {/each}
         </Horizontalscroller>
-    </div>
 </section>
 <section id="contact">
     <h2>Wie könnt ihr mit uns in Verbindung treten?</h2>    
@@ -158,7 +155,7 @@ Enim dolore exercitation deserunt aute non irure eu aliquip incididunt irure con
         --img-height: 280px;
     }
 
-    #team {
+    .team {
         margin: 0 auto;
         width: 100%;
         height: fit-content;

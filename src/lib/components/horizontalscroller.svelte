@@ -47,3 +47,10 @@
         {@render children()}
     </ul>
 </div>
+
+<style lang="scss">
+    .sponsor-list {
+        height: 300px;
+        width: 300px;
+    }
+</style>

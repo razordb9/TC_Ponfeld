@@ -7,7 +7,9 @@
 
   export const ssr = false;
 
-  let { user, scroll}: { user: ExtendedUser, scroll:number} = $props();
+  let { user, scroll}: { user: ExtendedUser, scroll:boolean} = $props();
+  
+
 
   var open = $state(false);
   
@@ -35,9 +37,17 @@
       },
     });
   };
+
+ 
+
+	$effect(() => {
+		console.log("scroll: ", scroll)
+	}) ;
+
+
 </script>
 
-<div class="navbar" >
+<div class="navbar" class:scrolled={scroll === true} >
   <div class="navbar-left">
     <a href="/" onclick={openBurgerMenuIcon}>
       <img
@@ -87,3 +97,9 @@
     </li>
   {/if}
 </ul>
+
+<style lang="scss">
+  .scrolled {
+    background-color: var(--third-color);
+  }
+</style>
