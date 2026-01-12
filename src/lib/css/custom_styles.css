@@ -347,6 +347,17 @@ Jungle Civilization
     margin-top: var(--header-height);
   }
 }
+.menu {
+  width: 50px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 4px;
+  background-color: var(--secondary-color);
+}
+
 .btn {
   min-width: -moz-fit-content;
   min-width: fit-content;
@@ -395,9 +406,6 @@ Jungle Civilization
   justify-content: center;
   align-items: center;
   height: 100%;
-}
-.navbar .scrolled {
-  background-color: var(--third-color);
 }
 .navbar .navbar-left {
   height: 100%;

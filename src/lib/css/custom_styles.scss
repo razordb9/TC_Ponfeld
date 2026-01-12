@@ -434,6 +434,17 @@ Jungle Civilization
   //}
 }
 
+.menu {
+  width: 50px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 4px;
+  background-color: var(--secondary-color);
+}
+
 .btn {
   min-width: fit-content;
 }
@@ -482,9 +493,9 @@ Jungle Civilization
     align-items: center;
     height: 100%;
   }
-  .scrolled {
-    background-color: var(--third-color);
-  }
+  // .scrolled {
+  //   background-color: var(--third-color);
+  // }
 
   .navbar-left {
     height: 100%;
