@@ -21,7 +21,6 @@
 
 	$effect(() => {
 		user = data?.user;
-		// console.log("y: ", y);
 
 		const obs = new IntersectionObserver((entries) => {
             for (const entry of entries) {

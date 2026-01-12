@@ -113,6 +113,7 @@ Jungle Civilization
   :root {
     --primary-color: #2f4858;
     --primary-background: #cadb68;
+    --primary-color-text:"";
     --secondary-color: #cadb68;
     --secondary-background: #3ca885;
     --third-color: #616a3e;
@@ -335,14 +336,6 @@ Jungle Civilization
     width: 100%;
     min-height: var(--header-height);
   }
-  footer {
-    width: 100%;
-    height: 100%;
-    margin-top: auto;
-    text-align: center;
-    padding: 1rem 0;
-    border-top: 1px solid var(--color-text-2-light);
-  }
   .layout {
     margin-top: var(--header-height);
   }
@@ -429,10 +422,13 @@ Jungle Civilization
   height: 3rem;
   min-width: 100px;
   border-radius: var(--radius);
+  font-size: 1.3rem;
+  text-shadow: 2px 2px #929292;
 }
 .navbar .navbar-center .nav-item:hover,
 .navbar .navbar-right .nav-item:hover {
   background-color: var(--secondary-color);
+  text-shadow: none;
 }
 .navbar .navbar-center .nav-item:hover a,
 .navbar .navbar-right .nav-item:hover a {
@@ -719,26 +715,31 @@ Jungle Civilization
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
+  padding: 50px;
 }
 #contact #contactform {
   width: 60vw;
-  height: 60vh;
 }
 
 /* Footer section */
 #footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
   padding: 0;
-  height: var(--padding);
+  height: auto;
   background-color: var(--secondary-background);
+  margin-top: 20px;
 }
 #footer footer {
-  position: relative;
-  text-align: center;
-  color: var(--surface-1-light);
-  height: auto;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem 0;
+  border-top: 1px solid var(--color-text-2-light);
+  padding: 20px;
 }
 #footer footer a {
   text-decoration: none;
@@ -795,6 +796,9 @@ dialog[open]::backdrop {
 @media (max-width: 600px) {
   #adminPage {
     height: 90vh;
+  }
+  #contact {
+    padding: 20px;
   }
   #contact #contactform {
     width: 100%;

@@ -105,6 +105,13 @@
 <style lang="scss">
   .scrolled {
     background-color: var(--third-color);
+    transition: all 500ms ease-in-out;
+
+    // transition: 0.5s ease-in-out;
+
+    .nav-item {
+      text-shadow: none;
+    }
   }
 
 </style>
