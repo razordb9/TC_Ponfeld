@@ -68,6 +68,7 @@
     </div>
 </section>
 <div class="team" class:active-image={activeImage}> 
+    <div id="team">
     <div 
         class="overlay"
         role="button"
@@ -91,6 +92,7 @@ Enim dolore exercitation deserunt aute non irure eu aliquip incididunt irure con
             )}
         {/each}
     </ul>
+    </div>
 </div>
 {#snippet renderImage(member: Member, index: number)}
     <li class="image-wrapper" data-index={index}>
@@ -156,12 +158,12 @@ Enim dolore exercitation deserunt aute non irure eu aliquip incididunt irure con
     }
 
     .team {
+        padding-top: 100px;
         margin: 0 auto;
         width: 100%;
         height: fit-content;
         max-width: 900px;
-
-      
+  
         .image-grid {
             display: grid;
             grid-template-columns: repeat(

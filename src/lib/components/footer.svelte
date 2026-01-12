@@ -6,10 +6,9 @@
 </script>
 <section id="footer">
     <footer>
-        Copyright &copy; TC Grössinghof Ponfeld •
+        Copyright &copy; TC Grössinghof Ponfeld • 
         {#each footer as foot}        
-            <a href={foot.url}>{foot.name} •</a>
-            <!-- <a href="/AGB">AGB •</a> k -->
+            <a href={foot.url}> {foot.name} •</a>
         {/each}
         <span>
             <a href="https://www.instagram.com/tcgroessinghofponfeld/" target="_blank">Instagram</a>
