@@ -1,3 +1,6 @@
+@import url('$lib/css/bespoke-slab.css');
+
+
 @layer reset {
   *,
   *::before,
@@ -125,18 +128,18 @@ Jungle Civilization
   :root {
     //
     --primary-color: #2f4858;
-    --primary-background: #cadb68;
+    --primary-background: #efeea6;
     --primary-color-text:"";
 
-    --secondary-color: #cadb68;
+    --secondary-color: #3ca886;
     --secondary-background: #3ca88628;
 
-    --third-color: #616a3e;
+    --third-color: #b9974c;
     --third-background: #11120c;
 
-    --forth-color:#cadb68;
+    --forth-color:#efeea6;
     --forth-background: #7dc477;
-
+    --color-text-1: black;
     --animation-speed: "10s";
 
     --padding-block: 1rem;
@@ -174,7 +177,7 @@ Jungle Civilization
     }
 
     --font-family:
-      "Satoshi", "Segoe UI", "Zodiak", Tahoma, Geneva, Verdana, sans-serif,
+      "BespokeSlab", "Satoshi", "Segoe UI", "Zodiak", Tahoma, Geneva, Verdana, sans-serif,
       serif;
     --serif: "Zodiak", serif;
     --san-serif: "Satoshi", sans-serif;
@@ -197,7 +200,7 @@ Jungle Civilization
   h5,
   h6 {
     text-align: center;
-    font-family: serif;
+    font-family: "BespokeSlab-Medium";
     font-weight: true;
   }
 
@@ -271,7 +274,7 @@ Jungle Civilization
     font-family: var(--font-family);
     font-size: var(--base-font-size);
     padding: 0.5rem;
-    border: 1px solid var(--color-text-3, black);
+    border: 1px solid var(--color-text-3, rgb(179, 179, 179));
     border-radius: 4px;
     width: 100%;
     box-sizing: border-box;
@@ -445,7 +448,6 @@ Jungle Civilization
   height: 40px;
   display: flex;
   justify-content: center;
-  flex-direction: row;
   align-items: center;
   border-radius: 4px;
   background-color: var(--secondary-color);
@@ -525,22 +527,30 @@ Jungle Civilization
       height: 3rem;
       min-width: 100px;
       border-radius: var(--radius);
-      font-size: 1.3rem;
-      text-shadow: 2px 2px #000000;
-
-
+      font-size: 0.9rem;
+      text-shadow: 1px 1px 10px #000000;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border: 1px solid #efeea6;
+      
       &:hover {
-        background-color: var(--secondary-color);
+        // background-color: var(--secondary-color);
         text-shadow: none;
+        border: 1px solid #efeea6;
+        background-color: #efeea6;
 
         a {
-          color: var(--third-background);
+          // color: var(--third-background);
+          color: black;
         }
       }
 
       a {
+          padding-inline: 1rem;
+
         text-decoration: none;
-        color: white;
+              color: #efeea6;
+
         height: 100%;
         width: 100%;
         display: flex;
@@ -625,7 +635,8 @@ Jungle Civilization
     top: 70px;
     right: 0;
     width: 100%;
-    background-color: rgba(211, 211, 211);
+    // background-color: var(--third-color);
+    background-color: rgb(126, 163, 126);
     opacity: 0;
     display: flex;
     flex-direction: column;
@@ -681,13 +692,36 @@ Jungle Civilization
     object-fit: cover;
   }
 
+  
+
   .hero-content {
     z-index: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
+    h1{
+      font-family: "BespokeSlab-Medium";
+      color: #efeea6;
+      font-size: 80px;
+      letter-spacing: 0.2rem;
+      text-shadow: 1px 1px 10px #00000082;  
+    }    
   }
+}
+
+.hero::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #00000063;
+  z-index: 1;
 }
 
 @media (width < 650px) {
@@ -775,6 +809,7 @@ Jungle Civilization
   height: 60vh;
   text-align: center;
   height: 100%;
+
 }
 
 /* Sponsor section */
@@ -877,7 +912,7 @@ Jungle Civilization
   padding: 0;
   height: auto;
   background-color: #D6CA98;
-  margin-top: 20px;
+  // margin-top: 20px;
 
   footer {
     width: 100%;

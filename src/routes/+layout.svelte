@@ -7,7 +7,7 @@
 	
 	let { data, children }: {data:{user:ExtendedUser}, children: Snippet} = $props();
  	let imageOut = $state(false);
-	let app = $state(null);
+	let app = $state<HTMLDivElement>();
 	let user = $state<ExtendedUser | null>(null);
 	
 	console.log(data.user);
@@ -16,9 +16,8 @@
 
 	const options = {
 		root: null,
-		threashold: 0.05
+		threashold: 0
 	};
-
 	$effect(() => {
 		user = data?.user;
 
@@ -31,12 +30,13 @@
         },
             options
         );
-
-        const targets = app.querySelectorAll('.hero');
-        targets.forEach((el) => {
-			obs.observe(el);	
-		});
-
+		if (app != null) {
+	        const targets = app.querySelectorAll('.hero');
+			targets.forEach((el) => {
+				obs.observe(el);	
+			});
+		}
+        
         return () => obs.disconnect();
 	}) ;
 </script>
@@ -57,3 +57,8 @@
 	</footer>
 
 </div>
+<style lang="scss">
+	.main {
+		background-color: rgb(243, 243, 227);
+	}
+</style>

@@ -158,12 +158,17 @@ Enim dolore exercitation deserunt aute non irure eu aliquip incididunt irure con
     }
 
     .team {
-        padding-top: 100px;
+        // padding-top: 100px;
         margin: 0 auto;
+        margin-top: 8rem;
+
         width: 100%;
         height: fit-content;
         max-width: 900px;
-  
+        
+        h3 {
+            margin-top: 5rem;
+        }
         .image-grid {
             display: grid;
             grid-template-columns: repeat(

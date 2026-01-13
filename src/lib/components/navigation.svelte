@@ -4,6 +4,7 @@
   import { navigation } from "$lib/project.config";
   import type { ExtendedUser } from "../../app";
   import { Menu } from '@lucide/svelte';
+  import Aside from "./aside.svelte";
 
   export const ssr = false;
 
@@ -47,6 +48,7 @@
 
 </script>
 
+<Aside showMenu={open}/>
 <div class="navbar" class:scrolled={scroll === true} >
   <div class="navbar-left">
     <a href="/" onclick={openBurgerMenuIcon}>
@@ -86,7 +88,7 @@
   </div>
 </div>
 
-<ul class="nav-burger-menu-links" class:mobile={open}>
+<!-- <ul class="nav-burger-menu-links" class:mobile={open}>
   {#each navigation as route}
     <li class="nav-item"><a href={route.url} onclick={openBurgerMenue}>{route.name}</a></li>
   {/each}
@@ -100,7 +102,7 @@
       <a role="button" class="btn" href="/auth/login" onclick={openBurgerMenue}>Login</a>
     </li>
   {/if}
-</ul>
+</ul> -->
 
 <style lang="scss">
   .scrolled {

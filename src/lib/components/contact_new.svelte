@@ -29,3 +29,12 @@
         </fieldset>
     </form>
 </div>
+
+<style lang="scss">
+    fieldset {
+        border: none;
+        border: 1px solid rgba(81, 81, 81, 0.221);
+        border-radius: 15px;
+        padding: 2rem;
+    }
+</style>
