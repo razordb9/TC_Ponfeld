@@ -9,21 +9,28 @@
 <section id="footer">
     <footer>
         <div>
-            Copyright &copy; TC Grössinghof Ponfeld 
+            <h3>Copyright &copy; TC Grössinghof Ponfeld </h3>
+            <p>Größinghofstraße 18, 9061 Wölfnitz</p>
+            <p>office@tc-ponfeld.at</p>
+            <p>+43 463 40044</p>
+
         </div>    
-        <div>
-            {#each footer as foot, index}    
-                {#if index < footer.length -1} 
-                    <a href={foot.url}> {foot.name} |&nbsp</a>
-                {:else}
-                    <a href={foot.url}>{foot.name}</a>
-                {/if}
-            {/each}
-        </div>
-        <div>
-            <a href="https://www.instagram.com/tcgroessinghofponfeld/" target="_blank"><Instagram /></a>
-            <a href="mailto:tcgroessinghofponfeld@proton.me"><AtSign /></a>
-        </div>
-       
+        <div class="links">
+            <div>
+                <h2>Rechtliches</h2>
+                {#each footer as foot, index}   
+                    <ul>
+                        <li><a href={foot.url}>{foot.name}</a></li>
+                    </ul> 
+                {/each}
+            </div>
+            <div>
+                <h2>Social Media</h2>
+                <ul>
+                    <li><a href="https://www.instagram.com/tcgroessinghofponfeld/" target="_blank"><Instagram />Instagram</a></li>
+                    <li><a href="mailto:tcgroessinghofponfeld@proton.me"><AtSign />Mail</a></li>
+                </ul>
+            </div>
+        </div>       
     </footer>
 </section>
