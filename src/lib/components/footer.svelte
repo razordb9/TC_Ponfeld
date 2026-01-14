@@ -12,10 +12,12 @@
             <h3>Copyright &copy; TC Grössinghof Ponfeld </h3>
             <p>Größinghofstraße 18, 9061 Wölfnitz</p>
             <p>office@tc-ponfeld.at</p>
-            <p>+43 463 40044</p>
+            <p>+43 463 49440</p>
 
         </div>    
-        <div class="links">
+        <!-- <div class="links"> -->
+        <div>
+
             <div>
                 <h2>Rechtliches</h2>
                 {#each footer as foot, index}   

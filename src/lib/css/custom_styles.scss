@@ -177,7 +177,7 @@ Jungle Civilization
     }
 
     --font-family:
-      "BespokeSlab", "Satoshi", "Segoe UI", "Zodiak", Tahoma, Geneva, Verdana, sans-serif,
+      "BespokeSlab", "BespokeSerif", "Satoshi", "Segoe UI", "Zodiak", Tahoma, Geneva, Verdana, sans-serif,
       serif;
     --serif: "Zodiak", serif;
     --san-serif: "Satoshi", sans-serif;
@@ -697,8 +697,14 @@ Jungle Civilization
 }
 
 @media (width < 650px) {
-  #hero {
+  .hero {
     height: calc(100vh - var(--header-height));
+
+    .hero-content {
+      h1 {
+        font-size: 55px;
+      }
+    }
 
   }
 }
@@ -889,10 +895,13 @@ Jungle Civilization
   footer {
     width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    // display: flex;
+    // justify-content: space-between;
+    // align-items: center;
+    // flex-direction: row;
     padding: 1rem 0;
     border-top: 1px solid var(--color-text-2-light);
     padding: 20px;
