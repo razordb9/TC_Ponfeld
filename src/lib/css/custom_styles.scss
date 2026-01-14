@@ -568,38 +568,11 @@ Jungle Civilization
     // display: inline-block;
     float: right;
 
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      right: 0;
-      background-color: lightgrey;
-      min-width: 200px;
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-      z-index: 1;
-      border-radius: 4px;
-    }
+   
   }
-  .navbar-right:hover .dropdown-content {
-    display: flex;
-    // justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    // top: 60px;
-    // height: 60px;
-    padding: 10px;
-    gap: 10px;
-    // min-width: 200px;
-    // padding-block: 20px;
-
+  .menu {
+    margin-right: 10px;
   }
-  .nav-burger-menu {
-    display: none;
-  }
-}
-.nav-burger-menu-links {
-  transform: translateY(-300px);
-  transition: all 350ms ease-in-out;
-  display: none;
 }
 
 @media (width < 650px) {
@@ -612,14 +585,13 @@ Jungle Civilization
       height: 70px;
     }
 
-    .navbar-center,
-    .navbar-right {
+    .navbar-center {
       display: none;
     }
 
-    .nav-burger-menu {
+    .menu {
       margin-right: 10px;
-      display: inline-block;
+      // display: inline-block;
     }
   }
 

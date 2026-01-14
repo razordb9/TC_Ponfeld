@@ -3,8 +3,8 @@
   import { authClient } from "$lib/auth-client";
   import { navigation } from "$lib/project.config";
   import type { ExtendedUser } from "../../app";
-  import { Menu } from '@lucide/svelte';
-  import Aside from "./aside.svelte";
+  import { Menu, LucideX } from '@lucide/svelte';
+  // import Aside from "./aside.svelte";
 
   export const ssr = false;
 
@@ -20,12 +20,6 @@
     open = !open;
   };
 
-  const openBurgerMenuIcon = (e: MouseEvent) => {
-    if (open) {
-      open = !open;
-    }
-  }
-
   console.log("get user: " + user);
 
   const signout = async () => {
@@ -39,22 +33,51 @@
     });
   };
 
- 
-
 	$effect(() => {
 		console.log("scroll: ", scroll)
 	}) ;
 
 
+
+
 </script>
 
-<Aside showMenu={open}/>
-<div class="navbar" class:scrolled={scroll === true} >
-  <div class="navbar-left">
-    <a href="/" onclick={openBurgerMenuIcon}>
+<!-- <Aside showMenu={open}/> -->
+<nav class="aside" class:showMenu={open === true}>
+    <div class="asideHeader">
       <img
         src="/logo_transparent_bg.png"
-        alt="Thomas Hudson-Zaussnig"
+        alt="TC-Groessinghof Ponfeld"
+        class="logo"
+      />
+
+      <button class="close menu" onclick={()=> {
+          open = false;
+      }}><LucideX/></button>
+    </div>
+    <ul>
+        {#if user}
+          {#each navigation as route}
+              <li><a href={route.url} onclick={()=> {open = false;}}>{route.name}</a></li>
+          {/each}
+          <li><a href="/admin" onclick={()=> {open = false;}}>Admin Page</a></li>
+          <li><a href="/Blog" onclick={()=> {open = false;}}>Blog</a></li>
+          <li><button onclick={signout}>Logout</button></li>
+        {:else}    
+          {#each navigation as route}
+              <li><a href={route.url} onclick={()=> {open = false;}}>{route.name}</a></li>
+          {/each}
+          <li><a href="/auth/login" role="button" class="btn" onclick={()=> {open = false;}}>Login</a></li>
+        {/if}
+    </ul>
+</nav>
+
+<div class="navbar" class:scrolled={scroll === true} >
+  <div class="navbar-left">
+    <a href="/">
+      <img
+        src="/logo_transparent_bg.png"
+        alt="TC-Groessinghof Ponfeld"
         class="logo"
       />
     </a>
@@ -64,56 +87,87 @@
       <li class="nav-item"><a href={route.url}>{route.name}</a></li>
     {/each}
   </ul>
-  <ul class="navbar-right">
-    {#if user}
-      <div class="menu">
-        <Menu/>
-      </div>  
-      <div class="dropdown-content">
-        <a href="/admin">Admin Page</a>
-        <a href="/Blog">Blog</a>
-        <button onclick={signout}>Logout</button>
-      </div>
-    {:else}
-      <li><a href="/auth/login" role="button" class="btn">Login</a></li>
-    {/if}
-  </ul>
-
-  <!-- svelte-ignore a11y_click_events_have_key_events -->
-  <!-- svelte-ignore a11y_no_static_element_interactions -->
-  <div class="nav-burger-menu" onclick={openBurgerMenue}>
-    <div class="menu">
-      <Menu/>
-    </div>
+  <div class="navbar-right">
+    <ul>
+      {#if user}
+        <div class="menu" onclick={openBurgerMenue}>
+          <Menu/>
+        </div>  
+      {:else}
+        <li><a href="/auth/login" role="button" class="btn">Login</a></li>
+      {/if}
+    </ul>
   </div>
 </div>
 
-<!-- <ul class="nav-burger-menu-links" class:mobile={open}>
-  {#each navigation as route}
-    <li class="nav-item"><a href={route.url} onclick={openBurgerMenue}>{route.name}</a></li>
-  {/each}
-  {#if user}
-    <li class="nav-item"><a href="/admin" onclick={openBurgerMenue}>Admin Page</a></li>
-    <li class="nav-item">
-      <button class="btn" onclick={() => { openBurgerMenue; signout(); }}>Logout</button>
-    </li>
-  {:else}
-    <li class="nav-item">
-      <a role="button" class="btn" href="/auth/login" onclick={openBurgerMenue}>Login</a>
-    </li>
-  {/if}
-</ul> -->
 
 <style lang="scss">
   .scrolled {
     background-color: var(--third-color);
     transition: all 350ms ease-in-out;
 
-    // transition: 0.5s ease-in-out;
-
     .nav-item {
       text-shadow: none;
     }
   }
+  .aside {
+    width: 100vw;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 500;
+    background-color: #000000;
+    position: fixed;
+    height: 100vh;
+    transform: translateX(200vw);
+    transition: all 200ms ease-in-out;
 
+    ul, li {
+        width: 100%;
+        height: 50px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        row-gap: 1rem;
+        align-items: center;
+    }
+    ul {
+        margin-top: 7rem;
+    }
+  .asideHeader {
+    display: flex;
+    justify-content: space-between;
+    
+    .logo {
+      max-height: 90px;
+      width: auto;
+      object-fit: contain;
+      border-radius: 50%;
+      margin: 0.5rem;
+    }
+    .close {
+        position: absolute;
+        right: 0;
+        margin: 2rem;
+        display: flex;
+        padding: 0;
+    }
+    @media (width < 650px) {
+      height: 70px;
+      .logo {
+        margin: 0;
+        margin-left: 1rem;
+      }
+      .close {
+        margin: 1rem;
+      }
+    }
+  }
+}
+
+.showMenu {
+    transform: translateX(0);
+    transition: all 200ms ease-in-out;
+}
 </style>

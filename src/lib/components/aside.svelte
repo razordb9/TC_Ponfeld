@@ -1,6 +1,7 @@
 <script lang="ts">
     import { navigation } from '$lib/project.config';
     import { LucideX} from '@lucide/svelte';
+    import type { ExtendedUser } from '../../app';
     let {showMenu = $bindable(false)}:{showMenu: boolean} = $props();
 </script>
 
