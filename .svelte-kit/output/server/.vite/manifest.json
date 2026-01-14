@@ -29,9 +29,9 @@
     "file": "chunks/context.js",
     "name": "context"
   },
-  "_custom_styles.BBh7_YOB.css": {
-    "file": "_app/immutable/assets/custom_styles.BBh7_YOB.css",
-    "src": "_custom_styles.BBh7_YOB.css"
+  "_custom_styles.C1El7mLI.css": {
+    "file": "_app/immutable/assets/custom_styles.C1El7mLI.css",
+    "src": "_custom_styles.C1El7mLI.css"
   },
   "_environment.js": {
     "file": "chunks/environment.js",
@@ -56,12 +56,19 @@
       "_utils.js"
     ]
   },
+  "_horizontalscroller.C83B_gE_.css": {
+    "file": "_app/immutable/assets/horizontalscroller.C83B_gE_.css",
+    "src": "_horizontalscroller.C83B_gE_.css"
+  },
   "_horizontalscroller.js": {
     "file": "chunks/horizontalscroller.js",
     "name": "horizontalscroller",
     "imports": [
       "_index2.js",
       "_attributes.js"
+    ],
+    "css": [
+      "_app/immutable/assets/horizontalscroller.C83B_gE_.css"
     ]
   },
   "_html.js": {
@@ -72,7 +79,7 @@
     "file": "chunks/index.js",
     "name": "index",
     "imports": [
-      "_utils2.js",
+      "_escaping.js",
       "_equality.js"
     ]
   },
@@ -95,7 +102,7 @@
     "imports": [
       "_index2.js",
       "_server.js",
-      "_utils2.js",
+      "_escaping.js",
       "_equality.js",
       "_context.js",
       "_environment.js"
@@ -142,15 +149,11 @@
     "file": "chunks/state.svelte.js",
     "name": "state.svelte",
     "imports": [
-      "_utils2.js"
+      "_escaping.js"
     ]
   },
   "_utils.js": {
     "file": "chunks/utils.js",
-    "name": "utils"
-  },
-  "_utils2.js": {
-    "file": "chunks/utils2.js",
     "name": "utils"
   },
   "node_modules/@sveltejs/kit/src/runtime/app/server/remote/index.js": {
@@ -238,6 +241,150 @@
     "file": "_app/immutable/assets/p6._AQgXvR6.jpg",
     "src": "src/lib/assets/p6.jpg"
   },
+  "src/lib/fonts/BespokeSlab/BespokeSlab-Bold.ttf": {
+    "file": "_app/immutable/assets/BespokeSlab-Bold.D_pGbhnv.ttf",
+    "src": "src/lib/fonts/BespokeSlab/BespokeSlab-Bold.ttf"
+  },
+  "src/lib/fonts/BespokeSlab/BespokeSlab-Bold.woff": {
+    "file": "_app/immutable/assets/BespokeSlab-Bold.t-TU9hGf.woff",
+    "src": "src/lib/fonts/BespokeSlab/BespokeSlab-Bold.woff"
+  },
+  "src/lib/fonts/BespokeSlab/BespokeSlab-Bold.woff2": {
+    "file": "_app/immutable/assets/BespokeSlab-Bold.C--Qg07z.woff2",
+    "src": "src/lib/fonts/BespokeSlab/BespokeSlab-Bold.woff2"
+  },
+  "src/lib/fonts/BespokeSlab/BespokeSlab-BoldItalic.ttf": {
+    "file": "_app/immutable/assets/BespokeSlab-BoldItalic.Cfm6iv-O.ttf",
+    "src": "src/lib/fonts/BespokeSlab/BespokeSlab-BoldItalic.ttf"
+  },
+  "src/lib/fonts/BespokeSlab/BespokeSlab-BoldItalic.woff": {
+    "file": "_app/immutable/assets/BespokeSlab-BoldItalic.BDs57Iaz.woff",
+    "src": "src/lib/fonts/BespokeSlab/BespokeSlab-BoldItalic.woff"
+  },
+  "src/lib/fonts/BespokeSlab/BespokeSlab-BoldItalic.woff2": {
+    "file": "_app/immutable/assets/BespokeSlab-BoldItalic.Cl2rRakb.woff2",
+    "src": "src/lib/fonts/BespokeSlab/BespokeSlab-BoldItalic.woff2"
+  },
+  "src/lib/fonts/BespokeSlab/BespokeSlab-Extrabold.ttf": {
+    "file": "_app/immutable/assets/BespokeSlab-Extrabold.BWd2VU4b.ttf",
+    "src": "src/lib/fonts/BespokeSlab/BespokeSlab-Extrabold.ttf"
+  },
+  "src/lib/fonts/BespokeSlab/BespokeSlab-Extrabold.woff": {
+    "file": "_app/immutable/assets/BespokeSlab-Extrabold.BOSEMvvl.woff",
+    "src": "src/lib/fonts/BespokeSlab/BespokeSlab-Extrabold.woff"
+  },
+  "src/lib/fonts/BespokeSlab/BespokeSlab-Extrabold.woff2": {
+    "file": "_app/immutable/assets/BespokeSlab-Extrabold.DyxcH9xz.woff2",
+    "src": "src/lib/fonts/BespokeSlab/BespokeSlab-Extrabold.woff2"
+  },
+  "src/lib/fonts/BespokeSlab/BespokeSlab-ExtraboldItalic.ttf": {
+    "file": "_app/immutable/assets/BespokeSlab-ExtraboldItalic.BRpskuS1.ttf",
+    "src": "src/lib/fonts/BespokeSlab/BespokeSlab-ExtraboldItalic.ttf"
+  },
+  "src/lib/fonts/BespokeSlab/BespokeSlab-ExtraboldItalic.woff": {
+    "file": "_app/immutable/assets/BespokeSlab-ExtraboldItalic.DGWLPRVT.woff",
+    "src": "src/lib/fonts/BespokeSlab/BespokeSlab-ExtraboldItalic.woff"
+  },
+  "src/lib/fonts/BespokeSlab/BespokeSlab-ExtraboldItalic.woff2": {
+    "file": "_app/immutable/assets/BespokeSlab-ExtraboldItalic.wQctudIi.woff2",
+    "src": "src/lib/fonts/BespokeSlab/BespokeSlab-ExtraboldItalic.woff2"
+  },
+  "src/lib/fonts/BespokeSlab/BespokeSlab-Italic.ttf": {
+    "file": "_app/immutable/assets/BespokeSlab-Italic.2nupSLCw.ttf",
+    "src": "src/lib/fonts/BespokeSlab/BespokeSlab-Italic.ttf"
+  },
+  "src/lib/fonts/BespokeSlab/BespokeSlab-Italic.woff": {
+    "file": "_app/immutable/assets/BespokeSlab-Italic.XjXDsjxJ.woff",
+    "src": "src/lib/fonts/BespokeSlab/BespokeSlab-Italic.woff"
+  },
+  "src/lib/fonts/BespokeSlab/BespokeSlab-Italic.woff2": {
+    "file": "_app/immutable/assets/BespokeSlab-Italic.CuUlw_CW.woff2",
+    "src": "src/lib/fonts/BespokeSlab/BespokeSlab-Italic.woff2"
+  },
+  "src/lib/fonts/BespokeSlab/BespokeSlab-Light.ttf": {
+    "file": "_app/immutable/assets/BespokeSlab-Light.DvU8xzid.ttf",
+    "src": "src/lib/fonts/BespokeSlab/BespokeSlab-Light.ttf"
+  },
+  "src/lib/fonts/BespokeSlab/BespokeSlab-Light.woff": {
+    "file": "_app/immutable/assets/BespokeSlab-Light.CF3rE1Uc.woff",
+    "src": "src/lib/fonts/BespokeSlab/BespokeSlab-Light.woff"
+  },
+  "src/lib/fonts/BespokeSlab/BespokeSlab-Light.woff2": {
+    "file": "_app/immutable/assets/BespokeSlab-Light.D1wS48St.woff2",
+    "src": "src/lib/fonts/BespokeSlab/BespokeSlab-Light.woff2"
+  },
+  "src/lib/fonts/BespokeSlab/BespokeSlab-LightItalic.ttf": {
+    "file": "_app/immutable/assets/BespokeSlab-LightItalic.CCGTnpCM.ttf",
+    "src": "src/lib/fonts/BespokeSlab/BespokeSlab-LightItalic.ttf"
+  },
+  "src/lib/fonts/BespokeSlab/BespokeSlab-LightItalic.woff": {
+    "file": "_app/immutable/assets/BespokeSlab-LightItalic.BQl9HRCG.woff",
+    "src": "src/lib/fonts/BespokeSlab/BespokeSlab-LightItalic.woff"
+  },
+  "src/lib/fonts/BespokeSlab/BespokeSlab-LightItalic.woff2": {
+    "file": "_app/immutable/assets/BespokeSlab-LightItalic.DZNg32Kx.woff2",
+    "src": "src/lib/fonts/BespokeSlab/BespokeSlab-LightItalic.woff2"
+  },
+  "src/lib/fonts/BespokeSlab/BespokeSlab-Medium.ttf": {
+    "file": "_app/immutable/assets/BespokeSlab-Medium.S52eQBpC.ttf",
+    "src": "src/lib/fonts/BespokeSlab/BespokeSlab-Medium.ttf"
+  },
+  "src/lib/fonts/BespokeSlab/BespokeSlab-Medium.woff": {
+    "file": "_app/immutable/assets/BespokeSlab-Medium.CDt0suvb.woff",
+    "src": "src/lib/fonts/BespokeSlab/BespokeSlab-Medium.woff"
+  },
+  "src/lib/fonts/BespokeSlab/BespokeSlab-Medium.woff2": {
+    "file": "_app/immutable/assets/BespokeSlab-Medium.DAhtFEVX.woff2",
+    "src": "src/lib/fonts/BespokeSlab/BespokeSlab-Medium.woff2"
+  },
+  "src/lib/fonts/BespokeSlab/BespokeSlab-MediumItalic.ttf": {
+    "file": "_app/immutable/assets/BespokeSlab-MediumItalic.D4wA4DX6.ttf",
+    "src": "src/lib/fonts/BespokeSlab/BespokeSlab-MediumItalic.ttf"
+  },
+  "src/lib/fonts/BespokeSlab/BespokeSlab-MediumItalic.woff": {
+    "file": "_app/immutable/assets/BespokeSlab-MediumItalic.DToAwe0r.woff",
+    "src": "src/lib/fonts/BespokeSlab/BespokeSlab-MediumItalic.woff"
+  },
+  "src/lib/fonts/BespokeSlab/BespokeSlab-MediumItalic.woff2": {
+    "file": "_app/immutable/assets/BespokeSlab-MediumItalic.DhBS7q6M.woff2",
+    "src": "src/lib/fonts/BespokeSlab/BespokeSlab-MediumItalic.woff2"
+  },
+  "src/lib/fonts/BespokeSlab/BespokeSlab-Regular.ttf": {
+    "file": "_app/immutable/assets/BespokeSlab-Regular.y70Liotk.ttf",
+    "src": "src/lib/fonts/BespokeSlab/BespokeSlab-Regular.ttf"
+  },
+  "src/lib/fonts/BespokeSlab/BespokeSlab-Regular.woff": {
+    "file": "_app/immutable/assets/BespokeSlab-Regular.BVB6oZZ8.woff",
+    "src": "src/lib/fonts/BespokeSlab/BespokeSlab-Regular.woff"
+  },
+  "src/lib/fonts/BespokeSlab/BespokeSlab-Regular.woff2": {
+    "file": "_app/immutable/assets/BespokeSlab-Regular.BlHcZzRX.woff2",
+    "src": "src/lib/fonts/BespokeSlab/BespokeSlab-Regular.woff2"
+  },
+  "src/lib/fonts/BespokeSlab/BespokeSlab-Variable.ttf": {
+    "file": "_app/immutable/assets/BespokeSlab-Variable.BSd12Rth.ttf",
+    "src": "src/lib/fonts/BespokeSlab/BespokeSlab-Variable.ttf"
+  },
+  "src/lib/fonts/BespokeSlab/BespokeSlab-Variable.woff": {
+    "file": "_app/immutable/assets/BespokeSlab-Variable.BCkliuM_.woff",
+    "src": "src/lib/fonts/BespokeSlab/BespokeSlab-Variable.woff"
+  },
+  "src/lib/fonts/BespokeSlab/BespokeSlab-Variable.woff2": {
+    "file": "_app/immutable/assets/BespokeSlab-Variable.DTsXCtJM.woff2",
+    "src": "src/lib/fonts/BespokeSlab/BespokeSlab-Variable.woff2"
+  },
+  "src/lib/fonts/BespokeSlab/BespokeSlab-VariableItalic.ttf": {
+    "file": "_app/immutable/assets/BespokeSlab-VariableItalic.B3q7ZYtn.ttf",
+    "src": "src/lib/fonts/BespokeSlab/BespokeSlab-VariableItalic.ttf"
+  },
+  "src/lib/fonts/BespokeSlab/BespokeSlab-VariableItalic.woff": {
+    "file": "_app/immutable/assets/BespokeSlab-VariableItalic.OmCGlj0A.woff",
+    "src": "src/lib/fonts/BespokeSlab/BespokeSlab-VariableItalic.woff"
+  },
+  "src/lib/fonts/BespokeSlab/BespokeSlab-VariableItalic.woff2": {
+    "file": "_app/immutable/assets/BespokeSlab-VariableItalic.zTa5rUhx.woff2",
+    "src": "src/lib/fonts/BespokeSlab/BespokeSlab-VariableItalic.woff2"
+  },
   "src/routes/+error.svelte": {
     "file": "entries/pages/_error.svelte.js",
     "name": "entries/pages/_error.svelte",
@@ -274,7 +421,46 @@
       "_auth-client.js"
     ],
     "css": [
-      "_app/immutable/assets/custom_styles.BBh7_YOB.css"
+      "_app/immutable/assets/_layout.CNjzxQGl.css",
+      "_app/immutable/assets/custom_styles.C1El7mLI.css"
+    ],
+    "assets": [
+      "_app/immutable/assets/BespokeSlab-Light.D1wS48St.woff2",
+      "_app/immutable/assets/BespokeSlab-Light.CF3rE1Uc.woff",
+      "_app/immutable/assets/BespokeSlab-Light.DvU8xzid.ttf",
+      "_app/immutable/assets/BespokeSlab-LightItalic.DZNg32Kx.woff2",
+      "_app/immutable/assets/BespokeSlab-LightItalic.BQl9HRCG.woff",
+      "_app/immutable/assets/BespokeSlab-LightItalic.CCGTnpCM.ttf",
+      "_app/immutable/assets/BespokeSlab-Regular.BlHcZzRX.woff2",
+      "_app/immutable/assets/BespokeSlab-Regular.BVB6oZZ8.woff",
+      "_app/immutable/assets/BespokeSlab-Regular.y70Liotk.ttf",
+      "_app/immutable/assets/BespokeSlab-Italic.CuUlw_CW.woff2",
+      "_app/immutable/assets/BespokeSlab-Italic.XjXDsjxJ.woff",
+      "_app/immutable/assets/BespokeSlab-Italic.2nupSLCw.ttf",
+      "_app/immutable/assets/BespokeSlab-Medium.DAhtFEVX.woff2",
+      "_app/immutable/assets/BespokeSlab-Medium.CDt0suvb.woff",
+      "_app/immutable/assets/BespokeSlab-Medium.S52eQBpC.ttf",
+      "_app/immutable/assets/BespokeSlab-MediumItalic.DhBS7q6M.woff2",
+      "_app/immutable/assets/BespokeSlab-MediumItalic.DToAwe0r.woff",
+      "_app/immutable/assets/BespokeSlab-MediumItalic.D4wA4DX6.ttf",
+      "_app/immutable/assets/BespokeSlab-Bold.C--Qg07z.woff2",
+      "_app/immutable/assets/BespokeSlab-Bold.t-TU9hGf.woff",
+      "_app/immutable/assets/BespokeSlab-Bold.D_pGbhnv.ttf",
+      "_app/immutable/assets/BespokeSlab-BoldItalic.Cl2rRakb.woff2",
+      "_app/immutable/assets/BespokeSlab-BoldItalic.BDs57Iaz.woff",
+      "_app/immutable/assets/BespokeSlab-BoldItalic.Cfm6iv-O.ttf",
+      "_app/immutable/assets/BespokeSlab-Extrabold.DyxcH9xz.woff2",
+      "_app/immutable/assets/BespokeSlab-Extrabold.BOSEMvvl.woff",
+      "_app/immutable/assets/BespokeSlab-Extrabold.BWd2VU4b.ttf",
+      "_app/immutable/assets/BespokeSlab-ExtraboldItalic.wQctudIi.woff2",
+      "_app/immutable/assets/BespokeSlab-ExtraboldItalic.DGWLPRVT.woff",
+      "_app/immutable/assets/BespokeSlab-ExtraboldItalic.BRpskuS1.ttf",
+      "_app/immutable/assets/BespokeSlab-Variable.DTsXCtJM.woff2",
+      "_app/immutable/assets/BespokeSlab-Variable.BCkliuM_.woff",
+      "_app/immutable/assets/BespokeSlab-Variable.BSd12Rth.ttf",
+      "_app/immutable/assets/BespokeSlab-VariableItalic.zTa5rUhx.woff2",
+      "_app/immutable/assets/BespokeSlab-VariableItalic.OmCGlj0A.woff",
+      "_app/immutable/assets/BespokeSlab-VariableItalic.B3q7ZYtn.ttf"
     ]
   },
   "src/routes/+page.server.ts": {
@@ -303,8 +489,8 @@
       "_escaping.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.vC72MC1V.css",
-      "_app/immutable/assets/custom_styles.BBh7_YOB.css"
+      "_app/immutable/assets/_page.BtkM9fUE.css",
+      "_app/immutable/assets/custom_styles.C1El7mLI.css"
     ],
     "assets": [
       "_app/immutable/assets/p1.CVKwegkd.jpg",
@@ -315,7 +501,43 @@
       "_app/immutable/assets/p6._AQgXvR6.jpg",
       "_app/immutable/assets/p2-small.BN5-w8rI.jpg",
       "_app/immutable/assets/p3-small.CO2FrRSB.jpg",
-      "_app/immutable/assets/p5-small.BDmxVli6.jpg"
+      "_app/immutable/assets/p5-small.BDmxVli6.jpg",
+      "_app/immutable/assets/BespokeSlab-Light.D1wS48St.woff2",
+      "_app/immutable/assets/BespokeSlab-Light.CF3rE1Uc.woff",
+      "_app/immutable/assets/BespokeSlab-Light.DvU8xzid.ttf",
+      "_app/immutable/assets/BespokeSlab-LightItalic.DZNg32Kx.woff2",
+      "_app/immutable/assets/BespokeSlab-LightItalic.BQl9HRCG.woff",
+      "_app/immutable/assets/BespokeSlab-LightItalic.CCGTnpCM.ttf",
+      "_app/immutable/assets/BespokeSlab-Regular.BlHcZzRX.woff2",
+      "_app/immutable/assets/BespokeSlab-Regular.BVB6oZZ8.woff",
+      "_app/immutable/assets/BespokeSlab-Regular.y70Liotk.ttf",
+      "_app/immutable/assets/BespokeSlab-Italic.CuUlw_CW.woff2",
+      "_app/immutable/assets/BespokeSlab-Italic.XjXDsjxJ.woff",
+      "_app/immutable/assets/BespokeSlab-Italic.2nupSLCw.ttf",
+      "_app/immutable/assets/BespokeSlab-Medium.DAhtFEVX.woff2",
+      "_app/immutable/assets/BespokeSlab-Medium.CDt0suvb.woff",
+      "_app/immutable/assets/BespokeSlab-Medium.S52eQBpC.ttf",
+      "_app/immutable/assets/BespokeSlab-MediumItalic.DhBS7q6M.woff2",
+      "_app/immutable/assets/BespokeSlab-MediumItalic.DToAwe0r.woff",
+      "_app/immutable/assets/BespokeSlab-MediumItalic.D4wA4DX6.ttf",
+      "_app/immutable/assets/BespokeSlab-Bold.C--Qg07z.woff2",
+      "_app/immutable/assets/BespokeSlab-Bold.t-TU9hGf.woff",
+      "_app/immutable/assets/BespokeSlab-Bold.D_pGbhnv.ttf",
+      "_app/immutable/assets/BespokeSlab-BoldItalic.Cl2rRakb.woff2",
+      "_app/immutable/assets/BespokeSlab-BoldItalic.BDs57Iaz.woff",
+      "_app/immutable/assets/BespokeSlab-BoldItalic.Cfm6iv-O.ttf",
+      "_app/immutable/assets/BespokeSlab-Extrabold.DyxcH9xz.woff2",
+      "_app/immutable/assets/BespokeSlab-Extrabold.BOSEMvvl.woff",
+      "_app/immutable/assets/BespokeSlab-Extrabold.BWd2VU4b.ttf",
+      "_app/immutable/assets/BespokeSlab-ExtraboldItalic.wQctudIi.woff2",
+      "_app/immutable/assets/BespokeSlab-ExtraboldItalic.DGWLPRVT.woff",
+      "_app/immutable/assets/BespokeSlab-ExtraboldItalic.BRpskuS1.ttf",
+      "_app/immutable/assets/BespokeSlab-Variable.DTsXCtJM.woff2",
+      "_app/immutable/assets/BespokeSlab-Variable.BCkliuM_.woff",
+      "_app/immutable/assets/BespokeSlab-Variable.BSd12Rth.ttf",
+      "_app/immutable/assets/BespokeSlab-VariableItalic.zTa5rUhx.woff2",
+      "_app/immutable/assets/BespokeSlab-VariableItalic.OmCGlj0A.woff",
+      "_app/immutable/assets/BespokeSlab-VariableItalic.B3q7ZYtn.ttf"
     ]
   },
   "src/routes/AGB/+page.svelte": {

@@ -1,5 +1,5 @@
-import { t as to_class, b as to_style, c as clsx, a as attr } from "./attributes.js";
-import { e as escape_html } from "./escaping.js";
+import { t as to_class, c as clsx, a as attr, b as to_style } from "./attributes.js";
+import { n as noop, e as escape_html } from "./escaping.js";
 import { s as set_ssr_context, a as ssr_context, p as push, b as pop } from "./context.js";
 const DERIVED = 1 << 1;
 const EFFECT = 1 << 2;
@@ -39,6 +39,27 @@ const ELEMENT_IS_NAMESPACED = 1;
 const ELEMENT_PRESERVE_ATTRIBUTE_CASE = 1 << 1;
 const ELEMENT_IS_INPUT = 1 << 2;
 const UNINITIALIZED = Symbol();
+const VOID_ELEMENT_NAMES = [
+  "area",
+  "base",
+  "br",
+  "col",
+  "command",
+  "embed",
+  "hr",
+  "img",
+  "input",
+  "keygen",
+  "link",
+  "meta",
+  "param",
+  "source",
+  "track",
+  "wbr"
+];
+function is_void(name) {
+  return VOID_ELEMENT_NAMES.includes(name) || name.toLowerCase() === "!doctype";
+}
 const DOM_BOOLEAN_ATTRIBUTES = [
   "allowfullscreen",
   "async",
@@ -76,8 +97,19 @@ const PASSIVE_EVENTS = ["touchstart", "touchmove"];
 function is_passive_event(name) {
   return PASSIVE_EVENTS.includes(name);
 }
+const RAW_TEXT_ELEMENTS = (
+  /** @type {const} */
+  ["textarea", "script", "style", "title"]
+);
+function is_raw_text_element(name) {
+  return RAW_TEXT_ELEMENTS.includes(
+    /** @type {typeof RAW_TEXT_ELEMENTS[number]} */
+    name
+  );
+}
 const BLOCK_OPEN = `<!--${HYDRATION_START}-->`;
 const BLOCK_CLOSE = `<!--${HYDRATION_END}-->`;
+const EMPTY_COMMENT = `<!---->`;
 let controller = null;
 function abort() {
   controller?.abort(STALE_REACTION);
@@ -625,6 +657,22 @@ class SSRState {
   }
 }
 const INVALID_ATTR_NAME_CHAR_REGEX = /[\s'">/=\u{FDD0}-\u{FDEF}\u{FFFE}\u{FFFF}\u{1FFFE}\u{1FFFF}\u{2FFFE}\u{2FFFF}\u{3FFFE}\u{3FFFF}\u{4FFFE}\u{4FFFF}\u{5FFFE}\u{5FFFF}\u{6FFFE}\u{6FFFF}\u{7FFFE}\u{7FFFF}\u{8FFFE}\u{8FFFF}\u{9FFFE}\u{9FFFF}\u{AFFFE}\u{AFFFF}\u{BFFFE}\u{BFFFF}\u{CFFFE}\u{CFFFF}\u{DFFFE}\u{DFFFF}\u{EFFFE}\u{EFFFF}\u{FFFFE}\u{FFFFF}\u{10FFFE}\u{10FFFF}]/u;
+function element(renderer, tag, attributes_fn = noop, children_fn = noop) {
+  renderer.push("<!---->");
+  if (tag) {
+    renderer.push(`<${tag}`);
+    attributes_fn();
+    renderer.push(`>`);
+    if (!is_void(tag)) {
+      children_fn();
+      if (!is_raw_text_element(tag)) {
+        renderer.push(EMPTY_COMMENT);
+      }
+      renderer.push(`</${tag}>`);
+    }
+  }
+  renderer.push("<!---->");
+}
 function render(component, options = {}) {
   return Renderer.render(
     /** @type {Component<Props>} */
@@ -665,6 +713,22 @@ function attributes(attrs, css_hash, classes, styles, flags = 0) {
   }
   return attr_str;
 }
+function spread_props(props) {
+  const merged_props = {};
+  let key;
+  for (let i = 0; i < props.length; i++) {
+    const obj = props[i];
+    for (key in obj) {
+      const desc = Object.getOwnPropertyDescriptor(obj, key);
+      if (desc) {
+        Object.defineProperty(merged_props, key, desc);
+      } else {
+        merged_props[key] = obj[key];
+      }
+    }
+  }
+  return merged_props;
+}
 function stringify(value) {
   return typeof value === "string" ? value : value == null ? "" : value + "";
 }
@@ -685,6 +749,15 @@ function slot(renderer, $$props, name, slot_props, fallback_fn) {
     slot_fn(renderer, slot_props);
   }
 }
+function bind_props(props_parent, props_now) {
+  for (const key in props_now) {
+    const initial_value = props_parent[key];
+    const value = props_now[key];
+    if (initial_value === void 0 && value !== void 0 && Object.getOwnPropertyDescriptor(props_parent, key)?.set) {
+      props_parent[key] = value;
+    }
+  }
+}
 function ensure_array_like(array_like_or_iterator) {
   if (array_like_or_iterator) {
     return array_like_or_iterator.length !== void 0 ? array_like_or_iterator : Array.from(array_like_or_iterator);
@@ -697,38 +770,42 @@ export {
   COMMENT_NODE as C,
   DIRTY as D,
   ERROR_VALUE as E,
+  USER_EFFECT as F,
+  REACTION_IS_UPDATING as G,
   HYDRATION_ERROR as H,
   INERT as I,
+  is_passive_event as J,
+  render as K,
   LEGACY_PROPS as L,
   MAYBE_DIRTY as M,
   ROOT_EFFECT as R,
   STATE_SYMBOL as S,
   UNINITIALIZED as U,
   WAS_MARKED as W,
-  attr_style as a,
-  stringify as b,
+  stringify as a,
+  attr_style as b,
   attr_class as c,
-  HYDRATION_END as d,
+  attributes as d,
   ensure_array_like as e,
-  HYDRATION_START as f,
-  HYDRATION_START_ELSE as g,
-  EFFECT_RAN as h,
-  CLEAN as i,
-  EFFECT as j,
-  BLOCK_EFFECT as k,
-  DERIVED as l,
-  BRANCH_EFFECT as m,
-  DESTROYED as n,
-  HEAD_EFFECT as o,
-  EFFECT_TRANSPARENT as p,
-  EFFECT_PRESERVED as q,
-  CONNECTED as r,
+  element as f,
+  spread_props as g,
+  bind_props as h,
+  HYDRATION_END as i,
+  HYDRATION_START as j,
+  HYDRATION_START_ELSE as k,
+  EFFECT_RAN as l,
+  CLEAN as m,
+  EFFECT as n,
+  BLOCK_EFFECT as o,
+  DERIVED as p,
+  BRANCH_EFFECT as q,
+  DESTROYED as r,
   slot as s,
-  EAGER_EFFECT as t,
-  STALE_REACTION as u,
-  RENDER_EFFECT as v,
-  USER_EFFECT as w,
-  REACTION_IS_UPDATING as x,
-  is_passive_event as y,
-  render as z
+  HEAD_EFFECT as t,
+  EFFECT_TRANSPARENT as u,
+  EFFECT_PRESERVED as v,
+  CONNECTED as w,
+  EAGER_EFFECT as x,
+  STALE_REACTION as y,
+  RENDER_EFFECT as z
 };

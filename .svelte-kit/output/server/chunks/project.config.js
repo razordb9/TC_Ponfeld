@@ -8,43 +8,43 @@ const sponsors = [
   {
     name: "Wiener Roither",
     logo: "/logo_sponsor.png",
-    url: "http",
+    url: "/",
     description: "Supi dupi"
   },
   {
     name: "Wiener Roither",
     logo: "/logo_sponsor.png",
-    url: "http",
+    url: "/",
     description: "Supi dupi"
   },
   {
     name: "Wiener Roither",
     logo: "/logo_sponsor.png",
-    url: "http",
+    url: "/",
     description: "Supi dupi"
   },
   {
     name: "Wiener Roither",
     logo: "/logo_sponsor.png",
-    url: "http",
+    url: "/",
     description: "Supi dupi"
   },
   {
     name: "Wiener Roither",
     logo: "/logo_sponsor.png",
-    url: "http",
+    url: "/",
     description: "Supi dupi"
   },
   {
     name: "Wiener Roither",
     logo: "/logo_sponsor.png",
-    url: "http",
+    url: "/",
     description: "Supi dupi"
   },
   {
     name: "Wiener Roither",
     logo: "/logo_sponsor.png",
-    url: "http",
+    url: "/",
     description: "Supi dupi"
   }
 ];

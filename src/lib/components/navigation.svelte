@@ -173,6 +173,7 @@
 @media (width < 650px) {
   .aside {
     width: 100vw;
+    height: 100%;
     left: 0;
     .asideHeader {
       height: 70px;
