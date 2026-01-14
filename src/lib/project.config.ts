@@ -117,18 +117,6 @@ export const footer: Link[] = [
     {
         name: "Impressum",
         url: "/Impressum"
-    },
-    {
-        name: "Impressum",
-        url: "/Impressum"
-    },
-    {
-        name: "Impressum",
-        url: "/Impressum"
-    },
-    {
-        name: "Impressum",
-        url: "/Impressum"
     }
 ]
 
