@@ -9,14 +9,12 @@
   export const ssr = false;
 
   let { user, scroll}: { user: ExtendedUser, scroll:boolean} = $props();
-  
-
 
   var open = $state(false);
   
   const openBurgerMenue = (e: MouseEvent) => {
-    console.log(e.target);
-    console.log(open);
+    console.log("e.target: ", e.target);
+    console.log("open: ", open);
     open = !open;
   };
 
@@ -34,13 +32,12 @@
   };
 
 	$effect(() => {
-		console.log("scroll: ", scroll)
+		console.log("scroll: ", scroll);
 	}) ;
 
 
-
-
 </script>
+
 
 <!-- <Aside showMenu={open}/> -->
 <nav class="aside" class:showMenu={open === true}>
@@ -57,9 +54,12 @@
     </div>
     <ul>
         {#if user}
-          {#each navigation as route}
+          <div class="smallDevice">
+            {#each navigation as route}
               <li><a href={route.url} onclick={()=> {open = false;}}>{route.name}</a></li>
-          {/each}
+            {/each}
+          </div>
+          <li><a href="https://groessinghof-ponfeld.tennisplatz.info/" target="_blank" onclick={()=> {open = false;}}>Platzreservierung</a></li>
           <li><a href="/admin" onclick={()=> {open = false;}}>Admin Page</a></li>
           <li><a href="/Blog" onclick={()=> {open = false;}}>Blog</a></li>
           <li><button onclick={signout}>Logout</button></li>
@@ -89,13 +89,9 @@
   </ul>
   <div class="navbar-right">
     <ul>
-      {#if user}
-        <div class="menu" onclick={openBurgerMenue}>
-          <Menu/>
-        </div>  
-      {:else}
-        <li><a href="/auth/login" role="button" class="btn">Login</a></li>
-      {/if}
+      <div class="menu" onclick={openBurgerMenue}>
+        <Menu/>
+      </div>  
     </ul>
   </div>
 </div>
@@ -175,6 +171,7 @@
     width: 100vw;
     height: 100%;
     left: 0;
+
     .asideHeader {
       height: 70px;
       .logo {
