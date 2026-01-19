@@ -23,7 +23,14 @@ export const auth = ({platform}: {platform: Platform}) => {
         },
         emailAndPassword: {
             enabled: true,
-            autoSignIn: false
+            autoSignIn: false,
+            sendResetPassword: async({user, url}, request) => {
+                void sendEmail({
+                    to: user.email,
+                    subject: 'Reset your password',
+                    text: `Click the link to reset your password: ${url}`
+                })
+            }
         },
         plugins: [
             sveltekitCookies(getRequestEvent) // make sure that cookies are properly set when calling signIn/signOut
