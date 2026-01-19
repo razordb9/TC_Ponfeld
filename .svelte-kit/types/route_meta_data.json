@@ -71,5 +71,8 @@
 	"/auth/login": [
 		"src/routes/auth/login/+page.server.ts",
 		"src/routes/+layout.server.ts"
+	],
+	"/auth/resetpassword": [
+		"src/routes/+layout.server.ts"
 	]
 }

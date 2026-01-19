@@ -4,10 +4,12 @@ import { db } from "./server/db";
 import type { Platform } from "../app";
 import { sveltekitCookies } from "better-auth/svelte-kit";
 import { getRequestEvent } from "$app/server";
+import { Resend } from "resend";
+import { RESEND_API_KEY, EMAIL_FROM, EMAIL_TO } from '$env/static/private';
+const resend = new Resend(RESEND_API_KEY);
 
 // TODO figure above line out
 export const auth = ({platform}: {platform: Platform}) => {
-   
     return betterAuth({
         database: drizzleAdapter(db({platform}), {
             provider: "sqlite",
@@ -24,8 +26,9 @@ export const auth = ({platform}: {platform: Platform}) => {
         emailAndPassword: {
             enabled: true,
             autoSignIn: false,
-            sendResetPassword: async({user, url}, request) => {
-                void sendEmail({
+            sendResetPassword: async({user, url}) => {
+                await resend.emails.send({
+                    from: 'TC Ponfeld Groessinghof <onboarding@resend.dev>',
                     to: user.email,
                     subject: 'Reset your password',
                     text: `Click the link to reset your password: ${url}`
@@ -37,7 +40,8 @@ export const auth = ({platform}: {platform: Platform}) => {
         ],
         trustedOrigins: [
             'http://localhost:8787', 
-            'https://tc-ponfeld.thomas-zaussnig.workers.dev'
+            'https://tc-ponfeld.thomas-zaussnig.workers.dev',
+            'http://localhost:5173'
         ]
     })
 }
