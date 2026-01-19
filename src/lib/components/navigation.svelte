@@ -54,11 +54,9 @@
     </div>
     <ul>
         {#if user}
-          <div class="smallDevice">
             {#each navigation as route}
               <li><a href={route.url} onclick={()=> {open = false;}}>{route.name}</a></li>
             {/each}
-          </div>
           <li><a href="https://groessinghof-ponfeld.tennisplatz.info/" target="_blank" onclick={()=> {open = false;}}>Platzreservierung</a></li>
           <li><a href="/admin" onclick={()=> {open = false;}}>Admin Page</a></li>
           <li><a href="/Blog" onclick={()=> {open = false;}}>Blog</a></li>

@@ -27,7 +27,8 @@
         return images[path];
     }
 
-     const getPh = (name: string) => {
+    //get placeholder image
+    const getPh = (name: string) => {
         const path = `/src/lib/assets/${name}.jpg`;
         return ph[path];
     }
@@ -39,7 +40,6 @@
     let currentIndex = $state(-1);
     
     const expand = (e: MouseEvent | TouchEvent | KeyboardEvent) => {
-        console.log("irgendwas schach")
         e.preventDefault();
         let target = e.target as HTMLElement;
         let li: HTMLLIElement | null = target.closest("li") as HTMLLIElement;
@@ -59,7 +59,6 @@
     }
 </script>
 
-
 <section class="hero">
     <img src="/Tennispllatz.jpg" alt="tennisplatz" class="hero-img"/>    
     <div class="hero-content">
@@ -74,7 +73,10 @@
         role="button"
         aria-label="overlay"
         tabindex="0"
-        onclick={() => {}}
+        onclick={() => {
+            activeImage = false;
+            currentIndex = -1;
+        }}
         onkeydown={() => {}}
     ></div>    
     <h2>Über uns</h2>
@@ -131,7 +133,6 @@ Enim dolore exercitation deserunt aute non irure eu aliquip incididunt irure con
                 Beschreibung: {member.description}
             </div>
         </div>
-        
     </li>
 {/snippet}
 <section id="sponsors">
