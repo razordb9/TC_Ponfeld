@@ -10,7 +10,7 @@
 	let app = $state<HTMLDivElement>();
 	let user = $state<ExtendedUser | null>(null);
 	
-	console.log(data.user);
+	console.log("data.user: ", data.user);
 	
 	let y = $state(0);
 
@@ -20,7 +20,6 @@
 	};
 	$effect(() => {
 		user = data?.user;
-
 		const obs = new IntersectionObserver((entries) => {
             for (const entry of entries) {
                 if(entry.target.className?.includes('hero')) {

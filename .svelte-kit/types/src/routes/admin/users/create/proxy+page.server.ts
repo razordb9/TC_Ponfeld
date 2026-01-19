@@ -8,6 +8,17 @@ import { redirect, type Actions } from "@sveltejs/kit";
 import z from "zod";
 import type { PageServerLoad } from "../$types";
 
+//necessary to protect from non admins to access page
+export const load = ({locals}: Parameters<PageServerLoad>[0]) => {
+    if(locals.user == null || locals.user.isAdmin !== true) {
+        redirect(303, "/admin")
+    }
+    
+    return {
+        user: locals.user
+    }
+}
+
 export const actions = {
     signup: async({ request }: import('./$types').RequestEvent) => {
         const formData = await request.formData();

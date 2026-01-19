@@ -61,6 +61,7 @@
             {#if form?.errors}
                 <p style="color:red;">❌ {form.errors["password"]}</p>
             {/if}
+            <p><a href="/">Forgot password?</a></p>
             <button class="btn" type="submit">Login</button>
         </fieldset>
     </form>

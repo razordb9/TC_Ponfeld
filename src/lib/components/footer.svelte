@@ -4,7 +4,7 @@
     import { Instagram } from '@lucide/svelte';
     import { AtSign } from '@lucide/svelte';
 
-    console.log("Footer: ", footer);
+    // console.log("Footer: ", footer);
 </script>
 <section id="footer">
     <footer>

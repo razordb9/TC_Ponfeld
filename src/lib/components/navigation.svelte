@@ -18,8 +18,6 @@
     open = !open;
   };
 
-  console.log("get user: " + user);
-
   const signout = async () => {
     authClient.signOut({
       fetchOptions: {
