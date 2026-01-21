@@ -53,6 +53,6 @@ declare module "$app/types" {
 		};
 		Pathname(): "/" | "/AGB" | "/AGB/" | "/Blog" | "/Blog/" | "/Impressum" | "/Impressum/" | "/Scroller" | "/Scroller/" | "/admin" | "/admin/" | "/admin/design" | "/admin/design/" | "/admin/posts" | "/admin/posts/" | "/admin/posts/create" | "/admin/posts/create/" | `/admin/posts/${string}` & {} | `/admin/posts/${string}/` & {} | `/admin/posts/${string}/edit` & {} | `/admin/posts/${string}/edit/` & {} | "/admin/users" | "/admin/users/" | "/admin/users/create" | "/admin/users/create/" | "/auth" | "/auth/" | "/auth/forgotpassword" | "/auth/forgotpassword/" | "/auth/login" | "/auth/login/" | "/auth/resetpassword" | "/auth/resetpassword/";
 		ResolvedPathname(): `${"" | `/${string}`}${ReturnType<AppTypes['Pathname']>}`;
-		Asset(): "/Tennispllatz.jpg" | "/avatar_male.jpg" | "/error.png" | "/instagram.svg" | "/logo.png" | "/logo_sponsor.png" | "/logo_transparent_bg.png" | "/petzner.png" | "/robots.txt" | string & {};
+		Asset(): "/avatar_male.jpg" | "/error.png" | "/instagram.svg" | "/logo.png" | "/logo_sponsor.png" | "/logo_transparent_bg.png" | "/petzner.png" | "/robots.txt" | "/Tennispllatz.jpg" | string & {};
 	}
 }

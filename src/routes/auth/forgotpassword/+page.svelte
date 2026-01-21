@@ -21,10 +21,12 @@
   }
 </script>
 
-<h2>Forgot password?</h2>
+
 
 <div id="forgotpassword">
     <form method="POST" onsubmit={resetPassword}>
+
+      <h2>Forgot password?</h2>
         <fieldset>
             <label for="email">Email</label>
             <input
@@ -38,6 +40,9 @@
                 <p style="color:red;">❌ {form.errors["email"]}</p>
             {/if}
             <button class="btn" type="submit">Reset Passwort</button>
+            <p><a href="/auth/login">Remember your password?</a></p>
+
         </fieldset>
+        
     </form>
 </div>
