@@ -24,25 +24,25 @@ export const nodes = [
 	() => import('./nodes/20')
 ];
 
-export const server_loads = [0,3,4];
+export const server_loads = [0,2,3];
 
 export const dictionary = {
 		"/": [~5],
-		"/AGB": [6],
-		"/Blog": [~7],
-		"/Impressum": [8],
-		"/Scroller": [9,[2]],
-		"/admin": [~10,[3]],
-		"/admin/design": [11,[3]],
-		"/admin/posts": [~12,[3]],
-		"/admin/posts/create": [~15,[3]],
-		"/admin/posts/[slug]": [~13,[3]],
-		"/admin/posts/[slug]/edit": [~14,[3]],
-		"/admin/users": [~16,[3,4]],
-		"/admin/users/create": [~17,[3,4]],
-		"/auth/forgotpassword": [~18],
-		"/auth/login": [~19],
-		"/auth/resetpassword": [20]
+		"/AGB": [14],
+		"/Blog": [~18],
+		"/Impressum": [19],
+		"/Scroller": [20,[4]],
+		"/admin": [~6,[2]],
+		"/admin/design": [7,[2]],
+		"/admin/posts": [~8,[2]],
+		"/admin/posts/create": [~9,[2]],
+		"/admin/posts/[slug]": [~10,[2]],
+		"/admin/posts/[slug]/edit": [~11,[2]],
+		"/admin/users": [~12,[2,3]],
+		"/admin/users/create": [~13,[2,3]],
+		"/auth/forgotpassword": [~15],
+		"/auth/login": [~16],
+		"/auth/resetpassword": [17]
 	};
 
 export const hooks = {

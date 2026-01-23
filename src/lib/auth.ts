@@ -31,7 +31,14 @@ export const auth = ({platform}: {platform: Platform}) => {
                     from: 'TC Ponfeld Groessinghof <onboarding@resend.dev>',
                     to: user.email,
                     subject: 'Reset your password',
-                    text: `Click the link to reset your password: ${url}`
+                    html:`
+                        <p>Hi ${user.name}!</p>
+                        <p>Someone requested a password reset for your account. If it was you, click the link below</p>
+                        <p><a href="${url}">Reset Password</a></p>
+                        <p>This link will expire in 1 hour</p>
+                        <p>If you didn't request this, please ignore this email</p>
+                        <p>Thanks,<br>Your TC Groessinghof Ponfeld</p>
+                    `
                 })
             }
         },
