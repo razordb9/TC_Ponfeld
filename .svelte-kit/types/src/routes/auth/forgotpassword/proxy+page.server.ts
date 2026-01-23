@@ -1,3 +1,4 @@
+// @ts-nocheck
 import type { Actions } from '../../../routes/$types';
 import { resetSchema } from "$lib/schema/auth";
 import { authClient } from "$lib/auth-client";
@@ -5,8 +6,8 @@ import { authClient } from "$lib/auth-client";
 import z from "zod";
 import { auth } from '$lib/auth';
 
-export const actions:Actions = {
-    sendReset: async( event ) => {
+export const actions = {
+    sendReset: async( event: import('./$types').RequestEvent ) => {
         const formData = await event.request.formData();
         const formEntries = Object.fromEntries(formData);
         const result = await resetSchema.safeParseAsync(formEntries);
@@ -36,4 +37,4 @@ export const actions:Actions = {
             }
         }
     }
-}
+};null as any as Actions;
