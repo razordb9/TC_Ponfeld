@@ -18,7 +18,7 @@ export const actions:Actions = {
 
         const data = await auth-client({
             body: {
-                newPassword: "";
+                newPassword: "", 
                 token
             }
         })

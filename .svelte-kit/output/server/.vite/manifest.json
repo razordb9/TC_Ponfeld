@@ -25,6 +25,16 @@
     "file": "chunks/auth.js",
     "name": "auth"
   },
+  "_auth2.js": {
+    "file": "chunks/auth2.js",
+    "name": "auth",
+    "imports": [
+      "_index2.js",
+      "_utils.js",
+      "_query.js",
+      "_private.js"
+    ]
+  },
   "_client.js": {
     "file": "chunks/client.js",
     "name": "client",
@@ -209,10 +219,7 @@
     "src": "src/hooks.server.ts",
     "isDynamicEntry": true,
     "imports": [
-      "_index2.js",
-      "_utils.js",
-      "_query.js",
-      "_private.js",
+      "_auth2.js",
       "_environment.js"
     ]
   },
@@ -786,7 +793,12 @@
     "file": "entries/pages/auth/forgotpassword/_page.server.ts.js",
     "name": "entries/pages/auth/forgotpassword/_page.server.ts",
     "src": "src/routes/auth/forgotpassword/+page.server.ts",
-    "isEntry": true
+    "isEntry": true,
+    "imports": [
+      "_auth.js",
+      "_auth-client.js",
+      "_auth2.js"
+    ]
   },
   "src/routes/auth/forgotpassword/+page.svelte": {
     "file": "entries/pages/auth/forgotpassword/_page.svelte.js",

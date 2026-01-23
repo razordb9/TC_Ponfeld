@@ -19,7 +19,7 @@ export const actions = {
 
         const data = await auth-client({
             body: {
-                newPassword: "";
+                newPassword: "", 
                 token
             }
         })
