@@ -26,7 +26,7 @@ declare global {
 			html: string,
 			slug: string,
 			markdown: string,
-			createdAt: number,
+			createdAt: Date,
 			updatedAt: number,
 			authorId: string
 		}

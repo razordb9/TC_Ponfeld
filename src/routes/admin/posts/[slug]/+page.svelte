@@ -3,22 +3,56 @@
 
     let {data}:{data: {post: BlogPost}} = $props();  
 
-    // console.log(data.post);
+    console.log(data.post);
+    const formattedDate = (date: Date) =>
+    date.toLocaleDateString('de-DE', {
+      weekday: 'short',
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric'
+    });
 
 </script>
 
+
 <article class="prose">
     <a href="/admin/posts/{data.post.slug}/edit">edit</a>
-    <h1>{data.post.title}</h1>
-    <p>{data.post.createdAt}</p>
-    <p>{data.post.updatedAt}</p>
-
+    <a href="/admin">back</a>
     <div class="post">
-        {@html data.post.html as string}
+        <h1>{data.post.title}</h1>
+        <div class="basicInfo">
+            <p id="date">Erstellt am {formattedDate(data.post.createdAt)}</p>
+            <p>Bearbeitet am {formattedDate(data.post.updatedAt)}</p>
+            <p>Erstellt von {data.post.authorName}</p>
+        </div>
+        
+        <div>
+            {@html data.post.html as string}
 
+        </div>
     </div>
+    
 </article>
 
 
 
-<!-- lucide for icons -->
+<style lang="scss">
+    .prose {
+        width: 90vw;
+        margin: 0 auto;
+    }
+    .post {
+        display: flex;
+        flex-direction: column;
+        // justify-content: center;
+        //align-items: center;
+        // width: 400px;
+        height: 100%;
+        margin-bottom: 20px;
+
+        .basicInfo {
+            border-bottom: 1px solid black;
+            margin-bottom: 20px;
+        }
+    }
+</style>
