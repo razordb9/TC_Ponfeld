@@ -1,6 +1,14 @@
 import { s as signupSchema } from "../../../../../chunks/auth.js";
-import "@sveltejs/kit";
+import { redirect } from "@sveltejs/kit";
 import z__default from "zod";
+const load = ({ locals }) => {
+  if (locals.user == null || locals.user.isAdmin !== true) {
+    redirect(303, "/admin");
+  }
+  return {
+    user: locals.user
+  };
+};
 const actions = {
   signup: async ({ request }) => {
     const formData = await request.formData();
@@ -26,5 +34,6 @@ const actions = {
   }
 };
 export {
-  actions
+  actions,
+  load
 };

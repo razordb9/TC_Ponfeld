@@ -1,4 +1,4 @@
-import { b as attr_style, a as stringify } from "./index2.js";
+import { a as attr_style, b as stringify } from "./index.js";
 import { a as attr } from "./attributes.js";
 function Horizontalscroller($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {

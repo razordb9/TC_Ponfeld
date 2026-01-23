@@ -48,7 +48,9 @@ export const auth = ({platform}: {platform: Platform}) => {
         trustedOrigins: [
             'http://localhost:8787', 
             'https://tc-ponfeld.thomas-zaussnig.workers.dev',
-            'http://localhost:5173'
+            'http://localhost:5173',
+            'https://www.tc-ponfeld.at',
+            'https://tc-ponfeld.at'
         ]
     })
 }

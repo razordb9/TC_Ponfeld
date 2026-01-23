@@ -25,7 +25,7 @@ function _page($$renderer, $$props) {
     } else {
       $$renderer2.push("<!--[!-->");
     }
-    $$renderer2.push(`<!--]--> <button class="btn" type="submit">Login</button></fieldset></form></div>`);
+    $$renderer2.push(`<!--]--> <p><a href="/auth/forgotpassword">Forgot password?</a></p> <button class="btn" type="submit">Login</button></fieldset></form></div>`);
   });
 }
 export {

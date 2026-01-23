@@ -1,10 +1,10 @@
-import * as server from '../entries/pages/auth/login/_page.server.ts.js';
+import * as server from '../entries/pages/auth/forgotpassword/_page.server.ts.js';
 
 export const index = 18;
 let component_cache;
-export const component = async () => component_cache ??= (await import('../entries/pages/auth/login/_page.svelte.js')).default;
+export const component = async () => component_cache ??= (await import('../entries/pages/auth/forgotpassword/_page.svelte.js')).default;
 export { server };
-export const server_id = "src/routes/auth/login/+page.server.ts";
-export const imports = ["_app/immutable/nodes/18.C1hbI4Om.js","_app/immutable/chunks/DsnmJJEf.js","_app/immutable/chunks/Ggb_3YAm.js","_app/immutable/chunks/DIeogL5L.js","_app/immutable/chunks/aNfF06Qi.js","_app/immutable/chunks/N6DR26or.js","_app/immutable/chunks/GtcsyiZ-.js","_app/immutable/chunks/Cy49vD9S.js","_app/immutable/chunks/BWpd8_Ck.js","_app/immutable/chunks/JwTrKaL4.js","_app/immutable/chunks/CLUl5aer.js","_app/immutable/chunks/BD7UFvEK.js","_app/immutable/chunks/BtMrN8Co.js","_app/immutable/chunks/v2bYc8lV.js"];
+export const server_id = "src/routes/auth/forgotpassword/+page.server.ts";
+export const imports = ["_app/immutable/nodes/18.DC10V5nc.js","_app/immutable/chunks/DsnmJJEf.js","_app/immutable/chunks/0R0_Ar2M.js","_app/immutable/chunks/DIeogL5L.js","_app/immutable/chunks/DiNyOgzF.js","_app/immutable/chunks/DemQrE1o.js","_app/immutable/chunks/CX5J-uUl.js","_app/immutable/chunks/DHGorhT9.js","_app/immutable/chunks/qu7fvfu4.js","_app/immutable/chunks/DUUpJD2p.js","_app/immutable/chunks/BFYcbEmI.js","_app/immutable/chunks/B_Wh9Hke.js","_app/immutable/chunks/Dgfss5hr.js","_app/immutable/chunks/v2bYc8lV.js"];
 export const stylesheets = [];
 export const fonts = [];

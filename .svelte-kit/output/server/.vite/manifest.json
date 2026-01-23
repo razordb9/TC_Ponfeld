@@ -25,13 +25,23 @@
     "file": "chunks/auth.js",
     "name": "auth"
   },
+  "_client.js": {
+    "file": "chunks/client.js",
+    "name": "client",
+    "imports": [
+      "_state.svelte.js",
+      "_exports.js",
+      "_utils.js",
+      "_index3.js"
+    ]
+  },
   "_context.js": {
     "file": "chunks/context.js",
     "name": "context"
   },
-  "_custom_styles.C1El7mLI.css": {
-    "file": "_app/immutable/assets/custom_styles.C1El7mLI.css",
-    "src": "_custom_styles.C1El7mLI.css"
+  "_custom_styles.DTs-9mNK.css": {
+    "file": "_app/immutable/assets/custom_styles.DTs-9mNK.css",
+    "src": "_custom_styles.DTs-9mNK.css"
   },
   "_environment.js": {
     "file": "chunks/environment.js",
@@ -64,7 +74,7 @@
     "file": "chunks/horizontalscroller.js",
     "name": "horizontalscroller",
     "imports": [
-      "_index2.js",
+      "_index.js",
       "_attributes.js"
     ],
     "css": [
@@ -79,28 +89,28 @@
     "file": "chunks/index.js",
     "name": "index",
     "imports": [
-      "_escaping.js",
-      "_equality.js"
-    ]
-  },
-  "_index2.js": {
-    "file": "chunks/index2.js",
-    "name": "index",
-    "imports": [
       "_attributes.js",
       "_escaping.js",
       "_context.js"
     ]
   },
+  "_index2.js": {
+    "file": "chunks/index2.js",
+    "name": "index"
+  },
   "_index3.js": {
     "file": "chunks/index3.js",
-    "name": "index"
+    "name": "index",
+    "imports": [
+      "_escaping.js",
+      "_equality.js"
+    ]
   },
   "_internal.js": {
     "file": "chunks/internal.js",
     "name": "internal",
     "imports": [
-      "_index2.js",
+      "_index.js",
       "_server.js",
       "_escaping.js",
       "_equality.js",
@@ -115,8 +125,12 @@
     "file": "chunks/posts.js",
     "name": "posts",
     "imports": [
-      "_index3.js"
+      "_index2.js"
     ]
+  },
+  "_private.js": {
+    "file": "chunks/private.js",
+    "name": "private"
   },
   "_project.config.js": {
     "file": "chunks/project.config.js",
@@ -184,7 +198,7 @@
       "_form-utils.js",
       "_exports.js",
       "_utils.js",
-      "_index.js",
+      "_index3.js",
       "_internal.js",
       "_shared.js"
     ]
@@ -195,9 +209,10 @@
     "src": "src/hooks.server.ts",
     "isDynamicEntry": true,
     "imports": [
-      "_index3.js",
+      "_index2.js",
       "_utils.js",
       "_query.js",
+      "_private.js",
       "_environment.js"
     ]
   },
@@ -392,10 +407,7 @@
     "isEntry": true,
     "imports": [
       "_escaping.js",
-      "_state.svelte.js",
-      "_exports.js",
-      "_utils.js",
-      "_index.js",
+      "_client.js",
       "_context.js"
     ]
   },
@@ -411,7 +423,7 @@
     "src": "src/routes/+layout.svelte",
     "isEntry": true,
     "imports": [
-      "_index2.js",
+      "_index.js",
       "_project.config.js",
       "_attributes.js",
       "_escaping.js",
@@ -421,8 +433,8 @@
       "_auth-client.js"
     ],
     "css": [
-      "_app/immutable/assets/_layout.CNjzxQGl.css",
-      "_app/immutable/assets/custom_styles.C1El7mLI.css"
+      "_app/immutable/assets/_layout.C8y3-c_H.css",
+      "_app/immutable/assets/custom_styles.DTs-9mNK.css"
     ],
     "assets": [
       "_app/immutable/assets/BespokeSlab-Light.D1wS48St.woff2",
@@ -470,7 +482,8 @@
     "isEntry": true,
     "imports": [
       "_utils.js",
-      "_query.js"
+      "_query.js",
+      "_private.js"
     ]
   },
   "src/routes/+page.svelte": {
@@ -479,7 +492,7 @@
     "src": "src/routes/+page.svelte",
     "isEntry": true,
     "imports": [
-      "_index2.js",
+      "_index.js",
       "_horizontalscroller.js",
       "_project.config.js",
       "_exports.js",
@@ -490,7 +503,7 @@
     ],
     "css": [
       "_app/immutable/assets/_page.BtkM9fUE.css",
-      "_app/immutable/assets/custom_styles.C1El7mLI.css"
+      "_app/immutable/assets/custom_styles.DTs-9mNK.css"
     ],
     "assets": [
       "_app/immutable/assets/p1.CVKwegkd.jpg",
@@ -576,7 +589,7 @@
     "src": "src/routes/Scroller/+layout.svelte",
     "isEntry": true,
     "imports": [
-      "_index2.js"
+      "_index.js"
     ]
   },
   "src/routes/Scroller/+page.svelte": {
@@ -585,7 +598,7 @@
     "src": "src/routes/Scroller/+page.svelte",
     "isEntry": true,
     "imports": [
-      "_index2.js",
+      "_index.js",
       "_horizontalscroller.js",
       "_project.config.js",
       "_attributes.js"
@@ -618,7 +631,7 @@
     "src": "src/routes/admin/design/+page.svelte",
     "isEntry": true,
     "imports": [
-      "_index2.js",
+      "_index.js",
       "_attributes.js",
       "_escaping.js"
     ],
@@ -644,7 +657,7 @@
     "src": "src/routes/admin/posts/+page.svelte",
     "isEntry": true,
     "imports": [
-      "_index2.js",
+      "_index.js",
       "_attributes.js",
       "_escaping.js"
     ]
@@ -664,10 +677,13 @@
     "src": "src/routes/admin/posts/[slug]/+page.svelte",
     "isEntry": true,
     "imports": [
-      "_index2.js",
+      "_index.js",
       "_attributes.js",
       "_escaping.js",
       "_html.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.D8hgCykE.css"
     ]
   },
   "src/routes/admin/posts/[slug]/edit/+page.server.ts": {
@@ -766,6 +782,24 @@
       "_auth-client.js"
     ]
   },
+  "src/routes/auth/forgotpassword/+page.server.ts": {
+    "file": "entries/pages/auth/forgotpassword/_page.server.ts.js",
+    "name": "entries/pages/auth/forgotpassword/_page.server.ts",
+    "src": "src/routes/auth/forgotpassword/+page.server.ts",
+    "isEntry": true
+  },
+  "src/routes/auth/forgotpassword/+page.svelte": {
+    "file": "entries/pages/auth/forgotpassword/_page.svelte.js",
+    "name": "entries/pages/auth/forgotpassword/_page.svelte",
+    "src": "src/routes/auth/forgotpassword/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_attributes.js",
+      "_escaping.js",
+      "_client.js",
+      "_auth-client.js"
+    ]
+  },
   "src/routes/auth/login/+page.server.ts": {
     "file": "entries/pages/auth/login/_page.server.ts.js",
     "name": "entries/pages/auth/login/_page.server.ts",
@@ -783,6 +817,19 @@
     "imports": [
       "_attributes.js",
       "_escaping.js",
+      "_exports.js",
+      "_utils.js",
+      "_state.svelte.js",
+      "_auth-client.js"
+    ]
+  },
+  "src/routes/auth/resetpassword/+page.svelte": {
+    "file": "entries/pages/auth/resetpassword/_page.svelte.js",
+    "name": "entries/pages/auth/resetpassword/_page.svelte",
+    "src": "src/routes/auth/resetpassword/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_attributes.js",
       "_exports.js",
       "_utils.js",
       "_state.svelte.js",

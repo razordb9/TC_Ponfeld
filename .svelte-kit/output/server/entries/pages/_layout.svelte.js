@@ -1,6 +1,6 @@
 import "clsx";
 /* empty css                         */
-import { d as attributes, e as ensure_array_like, f as element, g as spread_props, c as attr_class, h as bind_props } from "../../chunks/index2.js";
+import { d as attributes, e as ensure_array_like, f as element, g as spread_props, c as attr_class, h as bind_props } from "../../chunks/index.js";
 import { f as footer, n as navigation } from "../../chunks/project.config.js";
 import { c as clsx, a as attr } from "../../chunks/attributes.js";
 import { e as escape_html } from "../../chunks/escaping.js";
@@ -209,9 +209,12 @@ function X($$renderer, $$props) {
   });
 }
 function Footer($$renderer) {
-  console.log("Footer: ", footer);
   $$renderer.push(`<section id="footer"><footer><div class="basics"><h2>TC Grössinghof Ponfeld</h2> <div class="content"><p>Größinghofstraße 18, 9061 Wölfnitz</p> <p>office@tc-ponfeld.at</p> <p>+43 463 49440</p></div></div> <div class="links"><h2>Rechtliches</h2> <div class="content"><!--[-->`);
-  const each_array = ensure_array_like(footer);
+  const each_array = ensure_array_like(
+    // import { footer } from '$lib/footer';
+    // console.log("Footer: ", footer);
+    footer
+  );
   for (let index = 0, $$length = each_array.length; index < $$length; index++) {
     let foot = each_array[index];
     $$renderer.push(`<ul><li><a${attr("href", foot.url)}>${escape_html(foot.name)}</a></li></ul>`);
@@ -227,7 +230,6 @@ function Navigation($$renderer, $$props) {
     const ssr = false;
     let { user, scroll } = $$props;
     var open = false;
-    console.log("get user: " + user);
     $$renderer2.push(`<nav${attr_class("aside svelte-1o1at76", void 0, { "showMenu": open === true })}><div class="asideHeader svelte-1o1at76"><img src="/logo_transparent_bg.png" alt="TC-Groessinghof Ponfeld" class="logo svelte-1o1at76"/> <button class="close menu svelte-1o1at76">`);
     X($$renderer2, {});
     $$renderer2.push(`<!----></button></div> <ul class="svelte-1o1at76">`);
@@ -239,7 +241,7 @@ function Navigation($$renderer, $$props) {
         let route = each_array[$$index];
         $$renderer2.push(`<li class="svelte-1o1at76"><a${attr("href", route.url)} class="svelte-1o1at76">${escape_html(route.name)}</a></li>`);
       }
-      $$renderer2.push(`<!--]--> <li class="svelte-1o1at76"><a href="/admin" class="svelte-1o1at76">Admin Page</a></li> <li class="svelte-1o1at76"><a href="/Blog" class="svelte-1o1at76">Blog</a></li> <li class="svelte-1o1at76"><button>Logout</button></li>`);
+      $$renderer2.push(`<!--]--> <li class="svelte-1o1at76"><a href="https://groessinghof-ponfeld.tennisplatz.info/" target="_blank" class="svelte-1o1at76">Platzreservierung</a></li> <li class="svelte-1o1at76"><a href="/admin" class="svelte-1o1at76">Admin Page</a></li> <li class="svelte-1o1at76"><a href="/Blog" class="svelte-1o1at76">Blog</a></li> <li class="svelte-1o1at76"><button>Logout</button></li>`);
     } else {
       $$renderer2.push("<!--[!-->");
       $$renderer2.push(`<!--[-->`);
@@ -256,17 +258,9 @@ function Navigation($$renderer, $$props) {
       let route = each_array_2[$$index_2];
       $$renderer2.push(`<li class="nav-item svelte-1o1at76"><a${attr("href", route.url)}>${escape_html(route.name)}</a></li>`);
     }
-    $$renderer2.push(`<!--]--></ul> <div class="navbar-right"><ul>`);
-    if (user) {
-      $$renderer2.push("<!--[-->");
-      $$renderer2.push(`<div class="menu">`);
-      Menu($$renderer2, {});
-      $$renderer2.push(`<!----></div>`);
-    } else {
-      $$renderer2.push("<!--[!-->");
-      $$renderer2.push(`<li><a href="/auth/login" role="button" class="btn">Login</a></li>`);
-    }
-    $$renderer2.push(`<!--]--></ul></div></div>`);
+    $$renderer2.push(`<!--]--></ul> <div class="navbar-right"><ul><div class="menu">`);
+    Menu($$renderer2, {});
+    $$renderer2.push(`<!----></div></ul></div></div>`);
     bind_props($$props, { ssr });
   });
 }
@@ -274,7 +268,7 @@ function _layout($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {
     let { data, children } = $$props;
     let imageOut = false;
-    console.log(data.user);
+    console.log("data.user: ", data.user);
     $$renderer2.push(`<div class="app">`);
     Navigation($$renderer2, { user: data.user, scroll: imageOut });
     $$renderer2.push(`<!----> <main class="main svelte-12qhfyh"><div class="layout">`);

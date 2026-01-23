@@ -10,7 +10,7 @@ return {
 	assets: new Set(["Tennispllatz.jpg","avatar_male.jpg","error.png","instagram.svg","logo.png","logo_sponsor.png","logo_transparent_bg.png","petzner.png","robots.txt"]),
 	mimeTypes: {".jpg":"image/jpeg",".png":"image/png",".svg":"image/svg+xml",".txt":"text/plain"},
 	_: {
-		client: {start:"_app/immutable/entry/start.DW1aZ2an.js",app:"_app/immutable/entry/app.BSYb1ZGF.js",imports:["_app/immutable/entry/start.DW1aZ2an.js","_app/immutable/chunks/BWpd8_Ck.js","_app/immutable/chunks/JwTrKaL4.js","_app/immutable/chunks/Ggb_3YAm.js","_app/immutable/chunks/DIeogL5L.js","_app/immutable/chunks/aNfF06Qi.js","_app/immutable/chunks/CLUl5aer.js","_app/immutable/chunks/GtcsyiZ-.js","_app/immutable/entry/app.BSYb1ZGF.js","_app/immutable/chunks/Ggb_3YAm.js","_app/immutable/chunks/DIeogL5L.js","_app/immutable/chunks/aNfF06Qi.js","_app/immutable/chunks/DsnmJJEf.js","_app/immutable/chunks/JwTrKaL4.js","_app/immutable/chunks/CLUl5aer.js","_app/immutable/chunks/GtcsyiZ-.js","_app/immutable/chunks/N6DR26or.js","_app/immutable/chunks/PFW7ySZs.js","_app/immutable/chunks/CitwpGqX.js"],stylesheets:[],fonts:[],uses_env_dynamic_public:false},
+		client: {start:"_app/immutable/entry/start.CuQ7_IYr.js",app:"_app/immutable/entry/app.BaLWxOk8.js",imports:["_app/immutable/entry/start.CuQ7_IYr.js","_app/immutable/chunks/BFYcbEmI.js","_app/immutable/chunks/B_Wh9Hke.js","_app/immutable/chunks/0R0_Ar2M.js","_app/immutable/chunks/DIeogL5L.js","_app/immutable/chunks/DiNyOgzF.js","_app/immutable/chunks/Dgfss5hr.js","_app/immutable/chunks/CX5J-uUl.js","_app/immutable/entry/app.BaLWxOk8.js","_app/immutable/chunks/0R0_Ar2M.js","_app/immutable/chunks/DIeogL5L.js","_app/immutable/chunks/DiNyOgzF.js","_app/immutable/chunks/DsnmJJEf.js","_app/immutable/chunks/B_Wh9Hke.js","_app/immutable/chunks/Dgfss5hr.js","_app/immutable/chunks/CX5J-uUl.js","_app/immutable/chunks/DemQrE1o.js","_app/immutable/chunks/DzRbtzg8.js","_app/immutable/chunks/C-RS85LU.js"],stylesheets:[],fonts:[],uses_env_dynamic_public:false},
 		nodes: [
 			__memo(() => import('./nodes/0.js')),
 			__memo(() => import('./nodes/1.js')),
@@ -30,7 +30,9 @@ return {
 			__memo(() => import('./nodes/15.js')),
 			__memo(() => import('./nodes/16.js')),
 			__memo(() => import('./nodes/17.js')),
-			__memo(() => import('./nodes/18.js'))
+			__memo(() => import('./nodes/18.js')),
+			__memo(() => import('./nodes/19.js')),
+			__memo(() => import('./nodes/20.js'))
 		],
 		remotes: {
 			
@@ -128,10 +130,24 @@ return {
 				endpoint: null
 			},
 			{
+				id: "/auth/forgotpassword",
+				pattern: /^\/auth\/forgotpassword\/?$/,
+				params: [],
+				page: { layouts: [0,], errors: [1,], leaf: 18 },
+				endpoint: null
+			},
+			{
 				id: "/auth/login",
 				pattern: /^\/auth\/login\/?$/,
 				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 18 },
+				page: { layouts: [0,], errors: [1,], leaf: 19 },
+				endpoint: null
+			},
+			{
+				id: "/auth/resetpassword",
+				pattern: /^\/auth\/resetpassword\/?$/,
+				params: [],
+				page: { layouts: [0,], errors: [1,], leaf: 20 },
 				endpoint: null
 			}
 		],

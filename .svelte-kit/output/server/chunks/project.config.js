@@ -80,10 +80,10 @@ const members = [
     description: "IT guy"
   },
   {
-    name: "Bitte bewerben",
+    name: "Sprachowitz Melanie",
     function: "Stv. Schriftführer",
     picture: "p6",
-    description: "schriftlich"
+    description: "Ginderella"
   }
 ];
 const footer = [
