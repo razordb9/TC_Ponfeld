@@ -603,16 +603,7 @@ Jungle Civilization
 }
 
 /* Login page done */
-#login {
-  height: 90vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Signup page done */
-#signup {
+#login, #forgotpassword, #resetpassword, #signup {
   height: 90vh;
   display: flex;
   flex-direction: column;

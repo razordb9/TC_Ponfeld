@@ -15,7 +15,8 @@ export const actions:Actions = {
         if (!token) {
 
         }
-
+        console.log("token: ", token);
+        
         const data = await auth-client({
             body: {
                 newPassword: "", 

@@ -38,7 +38,8 @@ export const auth = ({platform}: {platform: Platform}) => {
                         <p>This link will expire in 1 hour</p>
                         <p>If you didn't request this, please ignore this email</p>
                         <p>Thanks,<br>Your TC Groessinghof Ponfeld</p>
-                    `
+                    `, 
+                    // text: `Click the link to verify your email: ${url}`,
                 })
             }
         },
@@ -49,7 +50,6 @@ export const auth = ({platform}: {platform: Platform}) => {
             'http://localhost:8787', 
             'https://tc-ponfeld.thomas-zaussnig.workers.dev',
             'http://localhost:5173',
-            'https://www.tc-ponfeld.at',
             'https://tc-ponfeld.at'
         ]
     })

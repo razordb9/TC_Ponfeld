@@ -40,6 +40,7 @@ const auth = ({ platform }) => {
                         <p>If you didn't request this, please ignore this email</p>
                         <p>Thanks,<br>Your TC Groessinghof Ponfeld</p>
                     `
+          // text: `Click the link to verify your email: ${url}`,
         });
       }
     },
@@ -51,7 +52,6 @@ const auth = ({ platform }) => {
       "http://localhost:8787",
       "https://tc-ponfeld.thomas-zaussnig.workers.dev",
       "http://localhost:5173",
-      "https://www.tc-ponfeld.at",
       "https://tc-ponfeld.at"
     ]
   });

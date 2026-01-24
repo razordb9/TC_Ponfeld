@@ -8,6 +8,7 @@ const actions = {
     const formEntries = Object.fromEntries(formData);
     const result = await resetSchema.safeParseAsync(formEntries);
     const token = new URLSearchParams(window.location.search).get("token");
+    console.log("token: ", token);
     await auth - client({
       body: {
         newPassword: "",

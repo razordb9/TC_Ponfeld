@@ -3,7 +3,7 @@
   import { authClient } from "$lib/auth-client";
   import { navigation } from "$lib/project.config";
   import type { ExtendedUser } from "../../app";
-  import { Menu, LucideX } from '@lucide/svelte';
+  import { Menu, LucideX, LogIn, LogOut, Wrench } from '@lucide/svelte';
   // import Aside from "./aside.svelte";
 
   export const ssr = false;
@@ -56,14 +56,14 @@
               <li><a href={route.url} onclick={()=> {open = false;}}>{route.name}</a></li>
             {/each}
           <li><a href="https://groessinghof-ponfeld.tennisplatz.info/" target="_blank" onclick={()=> {open = false;}}>Platzreservierung</a></li>
-          <li><a href="/admin" onclick={()=> {open = false;}}>Admin Page</a></li>
+          <li><a href="/admin" onclick={()=> {open = false;}}><Wrench/>Admin Page</a></li>
           <li><a href="/Blog" onclick={()=> {open = false;}}>Blog</a></li>
-          <li><button onclick={signout}>Logout</button></li>
+          <li><button onclick={signout}><LogOut/> Logout</button></li>
         {:else}    
           {#each navigation as route}
               <li><a href={route.url} onclick={()=> {open = false;}}>{route.name}</a></li>
           {/each}
-          <li><a href="/auth/login" role="button" class="btn" onclick={()=> {open = false;}}>Login</a></li>
+          <li><a href="/auth/login" role="button" class="btn" onclick={()=> {open = false;}}><LogIn/> Login</a></li>
         {/if}
     </ul>
 </nav>
@@ -128,9 +128,14 @@
     ul {
         margin-top: 7rem;
     }
-
+    li button {
+      display: flex;
+      align-items: center;
+    }
     a {
       color: white;
+      display: flex;
+      align-items: center;
 
     }
   .asideHeader {

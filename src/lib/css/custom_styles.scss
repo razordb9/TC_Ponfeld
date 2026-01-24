@@ -746,23 +746,17 @@ Jungle Civilization
 }
 
 /* Login page done */
-#login {
+#login, #forgotpassword, #resetpassword, #signup{
   height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+// #login {
 
-/* Signup page done */
-#signup {
-  height: 90vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
+//   width: 50%;
+// }
 /* Create Posts */
 #createpost {
   // display: flex;

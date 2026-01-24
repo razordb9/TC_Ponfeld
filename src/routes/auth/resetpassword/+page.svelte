@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { goto } from "$app/navigation";
-  import { resolve } from "$app/paths";
-  import { authClient } from "$lib/auth-client";
+    import { goto } from "$app/navigation";
+    import { resolve } from "$app/paths";
+    import { authClient } from "$lib/auth-client";
     import type { ActionData } from "../../$types";
-
+    
     let { form }: { form: ActionData} = $props();
     let password = $state<string>("");
 
@@ -26,13 +26,11 @@
   }
 </script>
 
-<div id="login">
+<div id="resetpassword">
     <h2>Reset password</h2>
 
     <form method="POST" onsubmit={resetPassword}>
-        
         <fieldset>
-           
             <label for="password">Password</label>
             <input
                 type="password"

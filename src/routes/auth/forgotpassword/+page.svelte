@@ -41,8 +41,12 @@
             {/if}
             <button class="btn" type="submit">Reset Passwort</button>
             <p><a href="/auth/login">Remember your password?</a></p>
-
         </fieldset>
-        
     </form>
 </div>
+
+
+<style lang="scss">
+
+
+</style>
