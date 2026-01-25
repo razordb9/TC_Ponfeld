@@ -43,7 +43,7 @@ const actions = {
     }
     try {
       await resend.emails.send({
-        from: "TC Ponfeld Groessinghof <onboarding@resend.dev>",
+        from: "TC Ponfeld Groessinghof <office@tc-ponfeld.at>",
         // from: EMAIL_FROM as string,
         to: EMAIL_TO,
         subject: "New message from TC Ponfeld Groessinghof website",

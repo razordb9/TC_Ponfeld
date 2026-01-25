@@ -26,9 +26,9 @@ export const auth = ({platform}: {platform: Platform}) => {
         emailAndPassword: {
             enabled: true,
             autoSignIn: false,
-            sendResetPassword: async({user, url}) => {
-                await resend.emails.send({
-                    from: 'TC Ponfeld Groessinghof <onboarding@resend.dev>',
+            sendResetPassword: async({user, url}, ctx) => {
+                const promise =  resend.emails.send({
+                    from: 'TC Ponfeld Groessinghof <office@tc-ponfeld.at>',
                     to: user.email,
                     subject: 'Reset your password',
                     html:`
@@ -40,7 +40,8 @@ export const auth = ({platform}: {platform: Platform}) => {
                         <p>Thanks,<br>Your TC Groessinghof Ponfeld</p>
                     `, 
                     // text: `Click the link to verify your email: ${url}`,
-                })
+                });
+                ctx.waitUntil?.(promise);
             }
         },
         plugins: [
@@ -50,7 +51,8 @@ export const auth = ({platform}: {platform: Platform}) => {
             'http://localhost:8787', 
             'https://tc-ponfeld.thomas-zaussnig.workers.dev',
             'http://localhost:5173',
-            'https://tc-ponfeld.at'
+            'https://tc-ponfeld.at',
+            'https://tc-ponfeld.at/api/auth/request-password-reset'
         ]
     })
 }

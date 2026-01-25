@@ -1,10 +1,11 @@
 <script lang="ts">
   import { page } from "$app/state";
   import { authClient } from "$lib/auth-client";
-    import type { ActionData } from "../../$types";
+  import type { ActionData } from "../../$types";
+  
 
-    let { form }: { form: ActionData} = $props();
-    let email = $state<string>("");
+  let { form }: { form: ActionData} = $props();
+  let email = $state<string>("");
 
 
 
@@ -13,12 +14,13 @@
     const baseURL = page.url.origin;
     const redirectURL = `${baseURL}/auth/resetpassword`;
     console.log("url: ", redirectURL);
-
+    
     const { data, error } = await authClient.requestPasswordReset({
-        email: email, // required
-        redirectTo: redirectURL,
+      email: email, // required
+      redirectTo: redirectURL,
     });
   }
+
 </script>
 
 

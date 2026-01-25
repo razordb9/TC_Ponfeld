@@ -12,7 +12,7 @@
     event.preventDefault();
     const token = new URLSearchParams(window.location.search).get("token");
     if (!token) {
-    // Handle the error
+        console.log("No token found");
     } else {
         const { data, error } = await authClient.resetPassword({
             newPassword: password, // required

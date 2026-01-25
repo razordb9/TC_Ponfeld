@@ -1,8 +1,9 @@
 import "clsx";
 /* empty css                         */
-import { d as attributes, e as ensure_array_like, f as element, g as spread_props, c as attr_class, h as bind_props } from "../../chunks/index.js";
+import { g as spread_props, e as ensure_array_like, c as attr_class, h as bind_props } from "../../chunks/index.js";
 import { f as footer, n as navigation } from "../../chunks/project.config.js";
-import { c as clsx, a as attr } from "../../chunks/attributes.js";
+import { I as Icon, L as Log_in } from "../../chunks/log-in.js";
+import { a as attr } from "../../chunks/attributes.js";
 import { e as escape_html } from "../../chunks/escaping.js";
 import "@sveltejs/kit/internal";
 import "../../chunks/exports.js";
@@ -10,58 +11,6 @@ import "../../chunks/utils.js";
 import "@sveltejs/kit/internal/server";
 import "../../chunks/state.svelte.js";
 import "../../chunks/auth-client.js";
-const defaultAttributes = {
-  xmlns: "http://www.w3.org/2000/svg",
-  width: 24,
-  height: 24,
-  viewBox: "0 0 24 24",
-  fill: "none",
-  stroke: "currentColor",
-  "stroke-width": 2,
-  "stroke-linecap": "round",
-  "stroke-linejoin": "round"
-};
-function Icon($$renderer, $$props) {
-  $$renderer.component(($$renderer2) => {
-    const {
-      name,
-      color = "currentColor",
-      size = 24,
-      strokeWidth = 2,
-      absoluteStrokeWidth = false,
-      iconNode = [],
-      children,
-      $$slots,
-      $$events,
-      ...props
-    } = $$props;
-    $$renderer2.push(`<svg${attributes(
-      {
-        ...defaultAttributes,
-        ...props,
-        width: size,
-        height: size,
-        stroke: color,
-        "stroke-width": absoluteStrokeWidth ? Number(strokeWidth) * 24 / Number(size) : strokeWidth,
-        class: clsx(["lucide-icon lucide", name && `lucide-${name}`, props.class])
-      },
-      void 0,
-      void 0,
-      void 0,
-      3
-    )}><!--[-->`);
-    const each_array = ensure_array_like(iconNode);
-    for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
-      let [tag, attrs] = each_array[$$index];
-      element($$renderer2, tag, () => {
-        $$renderer2.push(`${attributes({ ...attrs }, void 0, void 0, void 0, 3)}`);
-      });
-    }
-    $$renderer2.push(`<!--]-->`);
-    children?.($$renderer2);
-    $$renderer2.push(`<!----></svg>`);
-  });
-}
 function At_sign($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {
     let { $$slots, $$events, ...props } = $$props;
@@ -143,6 +92,39 @@ function Instagram($$renderer, $$props) {
     ]));
   });
 }
+function Log_out($$renderer, $$props) {
+  $$renderer.component(($$renderer2) => {
+    let { $$slots, $$events, ...props } = $$props;
+    const iconNode = [
+      ["path", { "d": "m16 17 5-5-5-5" }],
+      ["path", { "d": "M21 12H9" }],
+      ["path", { "d": "M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" }]
+    ];
+    Icon($$renderer2, spread_props([
+      { name: "log-out" },
+      /**
+       * @component @name LogOut
+       * @description Lucide SVG icon component, renders SVG Element with children.
+       *
+       * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMTYgMTcgNS01LTUtNSIgLz4KICA8cGF0aCBkPSJNMjEgMTJIOSIgLz4KICA8cGF0aCBkPSJNOSAyMUg1YTIgMiAwIDAgMS0yLTJWNWEyIDIgMCAwIDEgMi0yaDQiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/log-out
+       * @see https://lucide.dev/guide/packages/lucide-svelte - Documentation
+       *
+       * @param {Object} props - Lucide icons props and any valid SVG attribute
+       * @returns {FunctionalComponent} Svelte component
+       *
+       */
+      props,
+      {
+        iconNode,
+        children: ($$renderer3) => {
+          props.children?.($$renderer3);
+          $$renderer3.push(`<!---->`);
+        },
+        $$slots: { default: true }
+      }
+    ]));
+  });
+}
 function Menu($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {
     let { $$slots, $$events, ...props } = $$props;
@@ -158,6 +140,42 @@ function Menu($$renderer, $$props) {
        * @description Lucide SVG icon component, renders SVG Element with children.
        *
        * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNNCA1aDE2IiAvPgogIDxwYXRoIGQ9Ik00IDEyaDE2IiAvPgogIDxwYXRoIGQ9Ik00IDE5aDE2IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/menu
+       * @see https://lucide.dev/guide/packages/lucide-svelte - Documentation
+       *
+       * @param {Object} props - Lucide icons props and any valid SVG attribute
+       * @returns {FunctionalComponent} Svelte component
+       *
+       */
+      props,
+      {
+        iconNode,
+        children: ($$renderer3) => {
+          props.children?.($$renderer3);
+          $$renderer3.push(`<!---->`);
+        },
+        $$slots: { default: true }
+      }
+    ]));
+  });
+}
+function Wrench($$renderer, $$props) {
+  $$renderer.component(($$renderer2) => {
+    let { $$slots, $$events, ...props } = $$props;
+    const iconNode = [
+      [
+        "path",
+        {
+          "d": "M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z"
+        }
+      ]
+    ];
+    Icon($$renderer2, spread_props([
+      { name: "wrench" },
+      /**
+       * @component @name Wrench
+       * @description Lucide SVG icon component, renders SVG Element with children.
+       *
+       * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTQuNyA2LjNhMSAxIDAgMCAwIDAgMS40bDEuNiAxLjZhMSAxIDAgMCAwIDEuNCAwbDMuMTA2LTMuMTA1Yy4zMi0uMzIyLjg2My0uMjIuOTgzLjIxOGE2IDYgMCAwIDEtOC4yNTkgNy4wNTdsLTcuOTEgNy45MWExIDEgMCAwIDEtMi45OTktM2w3LjkxLTcuOTFhNiA2IDAgMCAxIDcuMDU3LTguMjU5Yy40MzguMTIuNTQuNjYyLjIxOS45ODR6IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/wrench
        * @see https://lucide.dev/guide/packages/lucide-svelte - Documentation
        *
        * @param {Object} props - Lucide icons props and any valid SVG attribute
@@ -241,7 +259,11 @@ function Navigation($$renderer, $$props) {
         let route = each_array[$$index];
         $$renderer2.push(`<li class="svelte-1o1at76"><a${attr("href", route.url)} class="svelte-1o1at76">${escape_html(route.name)}</a></li>`);
       }
-      $$renderer2.push(`<!--]--> <li class="svelte-1o1at76"><a href="https://groessinghof-ponfeld.tennisplatz.info/" target="_blank" class="svelte-1o1at76">Platzreservierung</a></li> <li class="svelte-1o1at76"><a href="/admin" class="svelte-1o1at76">Admin Page</a></li> <li class="svelte-1o1at76"><a href="/Blog" class="svelte-1o1at76">Blog</a></li> <li class="svelte-1o1at76"><button>Logout</button></li>`);
+      $$renderer2.push(`<!--]--> <li class="svelte-1o1at76"><a href="https://groessinghof-ponfeld.tennisplatz.info/" target="_blank" class="svelte-1o1at76">Platzreservierung</a></li> <li class="svelte-1o1at76"><a href="/admin" class="svelte-1o1at76">`);
+      Wrench($$renderer2, {});
+      $$renderer2.push(`<!---->Admin Page</a></li> <li class="svelte-1o1at76"><a href="/Blog" class="svelte-1o1at76">Blog</a></li> <li class="svelte-1o1at76"><button class="svelte-1o1at76">`);
+      Log_out($$renderer2, {});
+      $$renderer2.push(`<!----> Logout</button></li>`);
     } else {
       $$renderer2.push("<!--[!-->");
       $$renderer2.push(`<!--[-->`);
@@ -250,7 +272,9 @@ function Navigation($$renderer, $$props) {
         let route = each_array_1[$$index_1];
         $$renderer2.push(`<li class="svelte-1o1at76"><a${attr("href", route.url)} class="svelte-1o1at76">${escape_html(route.name)}</a></li>`);
       }
-      $$renderer2.push(`<!--]--> <li class="svelte-1o1at76"><a href="/auth/login" role="button" class="btn svelte-1o1at76">Login</a></li>`);
+      $$renderer2.push(`<!--]--> <li class="svelte-1o1at76"><a href="/auth/login" role="button" class="btn svelte-1o1at76">`);
+      Log_in($$renderer2, {});
+      $$renderer2.push(`<!----> Login</a></li>`);
     }
     $$renderer2.push(`<!--]--></ul></nav> <div${attr_class("navbar svelte-1o1at76", void 0, { "scrolled": scroll === true })}><div class="navbar-left"><a href="/"><img src="/logo_transparent_bg.png" alt="TC-Groessinghof Ponfeld" class="logo"/></a></div> <ul class="navbar-center"><!--[-->`);
     const each_array_2 = ensure_array_like(navigation);

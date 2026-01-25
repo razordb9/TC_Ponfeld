@@ -25,16 +25,6 @@
     "file": "chunks/auth.js",
     "name": "auth"
   },
-  "_auth2.js": {
-    "file": "chunks/auth2.js",
-    "name": "auth",
-    "imports": [
-      "_index2.js",
-      "_utils.js",
-      "_query.js",
-      "_private.js"
-    ]
-  },
   "_client.js": {
     "file": "chunks/client.js",
     "name": "client",
@@ -49,9 +39,9 @@
     "file": "chunks/context.js",
     "name": "context"
   },
-  "_custom_styles.DTs-9mNK.css": {
-    "file": "_app/immutable/assets/custom_styles.DTs-9mNK.css",
-    "src": "_custom_styles.DTs-9mNK.css"
+  "_custom_styles.giltqv6P.css": {
+    "file": "_app/immutable/assets/custom_styles.giltqv6P.css",
+    "src": "_custom_styles.giltqv6P.css"
   },
   "_environment.js": {
     "file": "chunks/environment.js",
@@ -129,6 +119,14 @@
     ],
     "dynamicImports": [
       "src/hooks.server.ts"
+    ]
+  },
+  "_log-in.js": {
+    "file": "chunks/log-in.js",
+    "name": "log-in",
+    "imports": [
+      "_index.js",
+      "_attributes.js"
     ]
   },
   "_posts.js": {
@@ -219,7 +217,10 @@
     "src": "src/hooks.server.ts",
     "isDynamicEntry": true,
     "imports": [
-      "_auth2.js",
+      "_index2.js",
+      "_utils.js",
+      "_query.js",
+      "_private.js",
       "_environment.js"
     ]
   },
@@ -432,6 +433,7 @@
     "imports": [
       "_index.js",
       "_project.config.js",
+      "_log-in.js",
       "_attributes.js",
       "_escaping.js",
       "_exports.js",
@@ -440,8 +442,8 @@
       "_auth-client.js"
     ],
     "css": [
-      "_app/immutable/assets/_layout.C8y3-c_H.css",
-      "_app/immutable/assets/custom_styles.DTs-9mNK.css"
+      "_app/immutable/assets/_layout.Da7Kr-Jg.css",
+      "_app/immutable/assets/custom_styles.giltqv6P.css"
     ],
     "assets": [
       "_app/immutable/assets/BespokeSlab-Light.D1wS48St.woff2",
@@ -510,7 +512,7 @@
     ],
     "css": [
       "_app/immutable/assets/_page.BtkM9fUE.css",
-      "_app/immutable/assets/custom_styles.DTs-9mNK.css"
+      "_app/immutable/assets/custom_styles.giltqv6P.css"
     ],
     "assets": [
       "_app/immutable/assets/p1.CVKwegkd.jpg",
@@ -793,12 +795,7 @@
     "file": "entries/pages/auth/forgotpassword/_page.server.ts.js",
     "name": "entries/pages/auth/forgotpassword/_page.server.ts",
     "src": "src/routes/auth/forgotpassword/+page.server.ts",
-    "isEntry": true,
-    "imports": [
-      "_auth.js",
-      "_auth-client.js",
-      "_auth2.js"
-    ]
+    "isEntry": true
   },
   "src/routes/auth/forgotpassword/+page.svelte": {
     "file": "entries/pages/auth/forgotpassword/_page.svelte.js",
@@ -832,7 +829,11 @@
       "_exports.js",
       "_utils.js",
       "_state.svelte.js",
-      "_auth-client.js"
+      "_auth-client.js",
+      "_log-in.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.BCvPr7NE.css"
     ]
   },
   "src/routes/auth/resetpassword/+page.svelte": {

@@ -10,6 +10,7 @@ declare global {
             cf: CfProperties
             ctx: ExecutionContext
 			caches: { default: Cache } & CacheStorage 
+			context: { waitUntil(promise: Promise<any>): void; }
         }
 		interface Locals {
 			user: ExtendedUser | null,
