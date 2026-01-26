@@ -1,3 +1,6 @@
+@import url('$lib/css/bespoke-slab.css');
+
+
 @layer reset {
   *,
   *::before,
@@ -125,14 +128,18 @@ Jungle Civilization
   :root {
     //
     --primary-color: #2f4858;
-    --primary-background: #cadb68;
+    --primary-background: #efeea6;
+    --primary-color-text:"";
 
-    --secondary-color: #cadb68;
-    --secondary-background: #3ca885;
+    --secondary-color: #3ca886;
+    --secondary-background: #3ca88628;
 
-    --third-color: #616a3e;
+    --third-color: #b9974c;
     --third-background: #11120c;
 
+    --forth-color:#efeea6;
+    --forth-background: #7dc477;
+    --color-text-1: black;
     --animation-speed: "10s";
 
     --padding-block: 1rem;
@@ -170,7 +177,7 @@ Jungle Civilization
     }
 
     --font-family:
-      "Satoshi", "Segoe UI", "Zodiak", Tahoma, Geneva, Verdana, sans-serif,
+      "BespokeSlab", "BespokeSerif", "Satoshi", "Segoe UI", "Zodiak", Tahoma, Geneva, Verdana, sans-serif,
       serif;
     --serif: "Zodiak", serif;
     --san-serif: "Satoshi", sans-serif;
@@ -193,7 +200,7 @@ Jungle Civilization
   h5,
   h6 {
     text-align: center;
-    font-family: serif;
+    font-family: "BespokeSlab-Medium";
     font-weight: true;
   }
 
@@ -267,7 +274,7 @@ Jungle Civilization
     font-family: var(--font-family);
     font-size: var(--base-font-size);
     padding: 0.5rem;
-    border: 1px solid var(--color-text-3, black);
+    border: 1px solid var(--color-text-3, rgb(179, 179, 179));
     border-radius: 4px;
     width: 100%;
     box-sizing: border-box;
@@ -381,7 +388,7 @@ Jungle Civilization
   }
 
   main {
-    padding-inline: var(--side);
+    // padding-inline: var(--side);
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -394,14 +401,16 @@ Jungle Civilization
     min-height: var(--header-height);
   }
 
-  footer {
-    width: 100%;
-    height: 100%;
-    margin-top: auto;
-    text-align: center;
-    padding: 1rem 0;
-    border-top: 1px solid var(--color-text-2-light);
-  }
+  // footer {
+  //   width: 100%;
+  //   height: 100%;
+  //   display: flex;
+  //   justify-content: center;
+  //   flex-direction: row;
+  //   // gap: 5rem;
+  //   padding: 1rem 0;
+  //   border-top: 1px solid var(--color-text-2-light);
+  // }
 
   .layout {
     margin-top: var(--header-height);
@@ -432,6 +441,21 @@ Jungle Civilization
   //  margin-left: 1rem;
   //  z-index: 13600;
   //}
+
+  // p {
+  //   font-family: "BespokeSerif-Variable";
+  //   font-size: 25px;
+  // }
+}
+
+.menu {
+  width: 50px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  background-color: var(--secondary-color);
 }
 
 .btn {
@@ -472,7 +496,8 @@ Jungle Civilization
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  background-color: var(--third-color);
+  background-color: transparent;
+  transition: all 350ms ease-in-out;
   
   // add .navbar-right again after testing
   .navbar-left,
@@ -482,6 +507,9 @@ Jungle Civilization
     align-items: center;
     height: 100%;
   }
+  // .scrolled {
+  //   background-color: var(--third-color);
+  // }
 
   .navbar-left {
     height: 100%;
@@ -495,7 +523,7 @@ Jungle Civilization
       border-radius: 50%;
     }
   }
-
+  
   .navbar-center,
   .navbar-right {
     gap: 20px;
@@ -504,18 +532,30 @@ Jungle Civilization
       height: 3rem;
       min-width: 100px;
       border-radius: var(--radius);
-
+      font-size: 0.9rem;
+      text-shadow: 1px 1px 10px #000000;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border: 1px solid #efeea6;
+      
       &:hover {
-        background-color: var(--secondary-color);
+        // background-color: var(--secondary-color);
+        text-shadow: none;
+        border: 1px solid #efeea6;
+        background-color: #efeea6;
 
         a {
-          color: var(--third-background);
+          // color: var(--third-background);
+          color: black;
         }
       }
 
       a {
+          padding-inline: 1rem;
+
         text-decoration: none;
-        color: white;
+              color: #efeea6;
+
         height: 100%;
         width: 100%;
         display: flex;
@@ -533,57 +573,30 @@ Jungle Civilization
     // display: inline-block;
     float: right;
 
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      right: 0;
-      background-color: lightgrey;
-      min-width: 200px;
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-      z-index: 1;
-    }
+   
   }
-  .navbar-right:hover .dropdown-content {
-    display: flex;
-    // justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    // top: 60px;
-    // height: 60px;
-    padding: 10px;
-    gap: 10px;
-    // min-width: 200px;
-    // padding-block: 20px;
-
+  .menu {
+    margin-right: 10px;
   }
-  .nav-burger-menu {
-    display: none;
-  }
-
-  transition: all 350ms ease-in-out;
-}
-.nav-burger-menu-links {
-  transform: translateY(-300px);
-  transition: all 350ms ease-in-out;
-  display: none;
 }
 
 @media (width < 650px) {
   .navbar {
     height: 70px;
+    background-color: var(--third-color);
+
     .navbar-left .logo {
       //maybe smaller
       height: 70px;
     }
 
-    .navbar-center,
-    .navbar-right {
+    .navbar-center {
       display: none;
     }
 
-    .nav-burger-menu {
+    .menu {
       margin-right: 10px;
-      display: inline-block;
+      // display: inline-block;
     }
   }
 
@@ -599,7 +612,8 @@ Jungle Civilization
     top: 70px;
     right: 0;
     width: 100%;
-    background-color: rgba(211, 211, 211);
+    // background-color: var(--third-color);
+    background-color: rgb(126, 163, 126);
     opacity: 0;
     display: flex;
     flex-direction: column;
@@ -639,7 +653,7 @@ Jungle Civilization
 }
 
 /* DONE */
-#hero {
+.hero {
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -655,18 +669,47 @@ Jungle Civilization
     object-fit: cover;
   }
 
+  
+
   .hero-content {
     z-index: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
+    h1{
+      font-family: "BespokeSlab-Medium";
+      color: #efeea6;
+      font-size: 80px;
+      letter-spacing: 0.2rem;
+      text-shadow: 1px 1px 10px #00000082;  
+    }    
   }
 }
 
+.hero::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #00000063;
+  z-index: 1;
+}
+
 @media (width < 650px) {
-  #hero {
+  .hero {
     height: calc(100vh - var(--header-height));
+
+    .hero-content {
+      h1 {
+        font-size: 55px;
+      }
+    }
 
   }
 }
@@ -703,23 +746,17 @@ Jungle Civilization
 }
 
 /* Login page done */
-#login {
+#login, #forgotpassword, #resetpassword, #signup{
   height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+// #login {
 
-/* Signup page done */
-#signup {
-  height: 90vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
+//   width: 50%;
+// }
 /* Create Posts */
 #createpost {
   // display: flex;
@@ -745,77 +782,11 @@ Jungle Civilization
 
 /* Team  */
 #team {
-  scroll-margin-top: 90px;
+  scroll-margin-top: calc(var(--header-height) + 30px);
   height: 60vh;
   text-align: center;
   height: 100%;
 
-  #team-container {
-    padding-top: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    padding: 20px 0px;
-
-    .team-member-card {
-      // position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: 200px;
-      overflow: hidden;
-      // border-radius: 12px;
-      // background: #fff;
-      // box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-
-      img {
-        width: 170px;
-        object-fit: cover;
-        margin: 0.5rem;
-      }
-
-      .team-member-info {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        padding: 1rem;
-        background: rgba(0, 0, 0, 0.75);
-        color: white;
-
-        // transform: translateY(100%); /* hide panel below card */
-        // transition: transform 0.3s ease-out;
-
-        h3,
-        h4,
-        p {
-          margin: 0;
-        }
-
-        h3 {
-          font-size: 1.1rem;
-          margin-bottom: 0.25rem;
-        }
-
-        h4 {
-          font-size: 0.9rem;
-          opacity: 0.8;
-          margin-bottom: 0.5rem;
-        }
-
-        p {
-          font-size: 0.85rem;
-        }
-      }
-    }
-
-    // .team-member_card:hover .team-member-info {
-    //   transform: translateY(0%); /* slide up into view */
-    // }
-  }
 }
 
 /* Sponsor section */
@@ -829,12 +800,12 @@ Jungle Civilization
 
   // background-color: aqua;
   // border: 1px solid red;
-  h2 {
-  }
+
 
   .sponsor {
     padding: 1rem;
     border-radius: 10px;
+    width: 200px;
 
     a {
       display: flex;
@@ -855,11 +826,57 @@ Jungle Civilization
   }
 }
 
+/* horizontal scroller */
+.scroller {
+  max-width: var(--horizontal-scroller-width, 100%);
+  width: 100vw;
+  height: 300px;
+}
+
+.inner-scroller {
+  margin: 0;
+  padding: 0;
+  padding-block: var(--padding-block);
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: flex-start;
+  list-style: none !important;
+}
+
+.scroller[data-animated="true"] {
+  overflow: clip;
+  mask: linear-gradient(90deg, transparent, #fff 20%, #fff 80%, transparent);
+}
+
+.scroller[data-animated="true"] .inner-scroller {
+  width: fit-content;
+  flex-wrap: nowrap;
+  animation-direction: var(--horizontal-scroller-animation-direction, forwards);
+  animation-name: scroll-animation;
+  animation-duration: var(--horizontal-scroller-animation-speed, 30s);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+  animation-fill-mode: forwards;
+}
+
+.scroller[data-animated="true"] .inner-scroller:hover {
+  animation-play-state: paused;
+}
+
 /* Contact section */
 #contact {
+  scroll-margin-top: calc(var(--header-height) + 10px);
+  background-color: var(--secondary-background);
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
+  // width: 100vw;
+  padding: 50px;
 
   #contactform{
     width: 60vw;
@@ -868,26 +885,62 @@ Jungle Civilization
 
 /* Footer section */
 #footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
   padding: 0;
-  height: var(--padding);
-  background-color: var(--secondary-background);
+  height: auto;
+  background-color: #D6CA98;
+  // margin-top: 20px;
 
   footer {
-    position: relative;
-    text-align: center;
-    color: var(--surface-1-light);
-    height: auto;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    // display: flex;
+    // justify-content: space-between;
+    // align-items: center;
+    // flex-direction: row;
+    padding: 1rem 0;
+    border-top: 1px solid var(--color-text-2-light);
+    padding: 20px;
+    
+    a {
+        text-align: center;
+        display: flex;
+        align-items: center;
+    }
+    .content {
+      // width: 100%;
+      height: 120px;
+    }
+    .socialmedia, .links, .basics {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+    }
 
     a {
       text-decoration: none;
       color: var(--surface-1-light);
+
     }
 
     .footer-img {
       filter: invert(1);
+    }
+  }
+}
+
+@media (width < 650px) {
+  
+  #footer {
+    footer {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
     }
   }
 }
@@ -929,47 +982,7 @@ dialog[open]::backdrop {
   opacity: 1;
 }
 
-/* horizontal scroller */
-.scroller {
-  /* border: 3px solid red; */
-  // background-color: green;
-  max-width: var(--horizontal-scroller-width, 100%);
-  width: 100vw;
-}
 
-.inner-scroller {
-  margin: 0;
-  padding: 0;
-  padding-block: var(--padding-block);
-  display: flex;
-  flex: 1;
-  flex-wrap: wrap;
-  gap: 1rem;
-  align-items: center;
-  justify-content: flex-start;
-  list-style: none !important;
-}
-
-.scroller[data-animated="true"] {
-  overflow: clip;
-  mask: linear-gradient(90deg, transparent, #fff 20%, #fff 80%, transparent);
-}
-
-.scroller[data-animated="true"] .inner-scroller {
-  width: fit-content;
-  flex-wrap: nowrap;
-  animation-direction: var(--horizontal-scroller-animation-direction, forwards);
-  animation-name: scroll-animation;
-  animation-duration: var(--horizontal-scroller-animation-speed, 30s);
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-play-state: running;
-  animation-fill-mode: forwards;
-}
-
-.scroller[data-animated="true"] .inner-scroller:hover {
-  animation-play-state: paused;
-}
 
 //CSS animation
 @keyframes scroll-animation {
@@ -993,10 +1006,11 @@ dialog[open]::backdrop {
     height: 90vh;
   }
   #contact {
-  #contactform {
-    width: 100%;
+    padding: 20px;
+    #contactform {
+      width: 100%;
+    }
   }
-}
   #team {
     #team-container {
       display: flex;

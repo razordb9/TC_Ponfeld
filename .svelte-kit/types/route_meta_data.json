@@ -64,8 +64,15 @@
 		"src/routes/admin/+layout.server.ts",
 		"src/routes/+layout.server.ts"
 	],
+	"/auth/forgotpassword": [
+		"src/routes/auth/forgotpassword/+page.server.ts",
+		"src/routes/+layout.server.ts"
+	],
 	"/auth/login": [
 		"src/routes/auth/login/+page.server.ts",
+		"src/routes/+layout.server.ts"
+	],
+	"/auth/resetpassword": [
 		"src/routes/+layout.server.ts"
 	]
 }

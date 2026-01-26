@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { index } from './../../../../../Portfolio/.svelte-kit/output/server/nodes/1.js';
 	import "$lib/css/custom_styles.css";
     import Horizontalscroller from "$lib/components/horizontalscroller.svelte";
     import { sponsors } from "$lib/project.config";
     import { members } from "$lib/project.config";
     import Contact from "$lib/components/contact_new.svelte";
-
+    import { Name } from 'drizzle-orm';
+  
     const images = import.meta.glob(
         ["$lib/assets/p*.jpg", "!$lib/assets/p*-small.jpg"],
         {
@@ -27,7 +27,8 @@
         return images[path];
     }
 
-     const getPh = (name: string) => {
+    //get placeholder image
+    const getPh = (name: string) => {
         const path = `/src/lib/assets/${name}.jpg`;
         return ph[path];
     }
@@ -39,7 +40,6 @@
     let currentIndex = $state(-1);
     
     const expand = (e: MouseEvent | TouchEvent | KeyboardEvent) => {
-        console.log("irgendwas schach")
         e.preventDefault();
         let target = e.target as HTMLElement;
         let li: HTMLLIElement | null = target.closest("li") as HTMLLIElement;
@@ -52,31 +52,40 @@
     };
 
     interface Member {
-    name: string,
-    picture: string,
-    function: string,
-    description: string
-}
+        name: string,
+        picture: string,
+        function: string,
+        description: string
+    }
 </script>
 
-
-<section id="hero">
+<section class="hero">
     <img src="/Tennispllatz.jpg" alt="tennisplatz" class="hero-img"/>    
     <div class="hero-content">
         <h1>TC Grössinghof Ponfeld</h1>
         <a href="https://groessinghof-ponfeld.tennisplatz.info/" target="_blank" class="btn">Platzreservierung</a>
     </div>
 </section>
-<article id="team" class:active-image={activeImage}> 
+<div class="team" class:active-image={activeImage}> 
+    <div id="team">
     <div 
         class="overlay"
         role="button"
         aria-label="overlay"
         tabindex="0"
-        onclick={() => {}}
+        onclick={() => {
+            activeImage = false;
+            currentIndex = -1;
+        }}
         onkeydown={() => {}}
     ></div>    
-    <h2>Our Team</h2> 
+    <h2>Über uns</h2>
+    <p>Eu irure eiusmod consectetur officia ad dolore culpa fugiat irure ea. Irure aute ex mollit officia occaecat adipisicing labore cillum. Nostrud et eu elit Lorem eu consequat nostrud do. Incididunt exercitation veniam irure ea veniam veniam consequat nostrud nulla amet incididunt magna labore. Ipsum veniam incididunt nisi exercitation exercitation mollit irure proident fugiat sint nisi dolore dolore cillum.Labore adipisicing et laboris laboris minim cillum adipisicing eu adipisicing. Duis mollit sunt aliquip consequat incididunt. Amet dolor minim cillum enim in fugiat. Culpa Lorem consequat laborum commodo anim. Proident nisi duis ex deserunt.
+
+Sunt mollit voluptate occaecat quis cupidatat magna adipisicing esse fugiat nulla fugiat consectetur est. Ut exercitation aute cupidatat et do sit nostrud eiusmod veniam pariatur aliquip nisi mollit. Non cillum ad deserunt culpa adipisicing ex eiusmod dolor Lorem laboris elit non. Ullamco incididunt exercitation eu non do do. Exercitation exercitation proident dolore nostrud quis quis est. Tempor pariatur dolore proident nostrud id.
+
+Enim dolore exercitation deserunt aute non irure eu aliquip incididunt irure consectetur irure. Sunt officia occaecat aute eu mollit occaecat ipsum ipsum. Pariatur nostrud fugiat et aliquip sit eu aute labore et ipsum veniam excepteur proident. Sunt ullamco reprehenderit exercitation nulla sit officia consequat duis aliquip consequat veniam. Aute aute dolore ex aute mollit ea dolore est do consectetur nulla occaecat velit.</p>
+    <h3>Unser Team</h3> 
     <ul class="image-grid">
         {#each members as member,i}
             {@render renderImage(
@@ -85,7 +94,8 @@
             )}
         {/each}
     </ul>
-</article>
+    </div>
+</div>
 {#snippet renderImage(member: Member, index: number)}
     <li class="image-wrapper" data-index={index}>
         <a href="#" role="button" onclick={expand}>
@@ -110,26 +120,32 @@
                     loadedImages[index] = true;
                 }}
             />
-            <p>
-                {member.function}
-            </p>
+            
         </a>
-
+        <div class="description">
+            <div>
+                Name: {member.name}
+            </div>
+            <div>
+                Funktion: {member.function}
+            </div>    
+            <div>
+                Beschreibung: {member.description}
+            </div>
+        </div>
     </li>
 {/snippet}
 <section id="sponsors">
     <h2>Unsere Sponsoren</h2>
-    <div id="sponsors-container">
-        <Horizontalscroller speed="30s" width="600px" direction="forward">
+        <Horizontalscroller speed="30s" width="800px" direction="forward">
             {#each sponsors as sponsor}
                 <li class="sponsor">
                     <a href={sponsor.url} target="_blank" rel="noopener">
-                        <img src={sponsor.logo} alt={sponsor.name} width="100" height="100" loading="lazy"/>
+                        <img src={sponsor.logo} alt={sponsor.name} width="200" height="200" loading="lazy"/>
                     </a>
                 </li>
             {/each}
         </Horizontalscroller>
-    </div>
 </section>
 <section id="contact">
     <h2>Wie könnt ihr mit uns in Verbindung treten?</h2>    
@@ -142,12 +158,18 @@
         --img-height: 280px;
     }
 
-    #team {
+    .team {
+        // padding-top: 100px;
         margin: 0 auto;
+        margin-top: 8rem;
+
         width: 100%;
         height: fit-content;
         max-width: 900px;
-
+        
+        h3 {
+            margin-top: 5rem;
+        }
         .image-grid {
             display: grid;
             grid-template-columns: repeat(
@@ -162,22 +184,32 @@
             height: max-content;
         }
 
+        .description {
+            margin-top: 5px;
+            max-width: 100%;
+            // background-color: green;
+        }
         .image-wrapper {
+            min-width: 280px;
+            max-width: 100%;
+            min-height: 380px;
+            max-height: fit-content;
+            height: fit-content;
+            width: max-content;
+            display: block;
+            border: 1px solid rgba(183, 181, 181, 0.779);
+            border-radius: 20px;
+            overflow: hidden;
+            // margin-bottom:50px;
+
+        }
+        a {
             min-width: var(--img-width);
             max-width: 100%;
             min-height: var(--img-width);
             max-height: var(--img-height);
             height: var(--img-height);
             width: max-content;
-            display: block;
-        }
-        a {
-            height: inherit;
-            width: inherit;
-            max-width: inherit;
-            max-height: inherit;
-            min-width: inherit;
-            min-height: inherit;
             display: grid;
             place-items: center;
             place-content: center;
@@ -190,13 +222,13 @@
             display: block;
             object-fit: cover;
             object-position: center center;
-            max-width: inherit;
-            max-height: inherit;
-            min-width: inherit;
-            min-height: inherit;
-            width: fit-content;
-            height: inherit;
-            border-radius: 20px;
+            min-width: var(--img-width);
+            max-width: 100%;
+            min-height: var(--img-width);
+            max-height: var(--img-height);
+            height: var(--img-height);
+            width: max-content;
+            border-radius: 20px 20px 0 0;
         }
 
         .placeholder-img {
@@ -232,6 +264,7 @@
                 animation-fill-mode: forwards;
                 animation-play-state: paused;
                 transition: all 100ms ease-in-out;
+                display: none;
             }
         }
         
@@ -248,6 +281,7 @@
             height: 100%;
             width: auto;
             z-index: 220;
+            border-radius: 20px;
         }
 
         .hidden-image {

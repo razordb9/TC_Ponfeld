@@ -1,0 +1,148 @@
+/**
+* @license
+*
+* Font Family: Bespoke Slab
+* Designed by: Jérémie Hornus, Théo Guillard, Morgane Pambrun, Alisa Nowak, Joachim Vu
+* URL: https://www.fontshare.com/fonts/BespokeSlab/bespoke-slab
+* © 2026 Indian Type Foundry
+*
+* Bespoke Slab Light 
+* Bespoke Slab LightItalic 
+* Bespoke Slab Regular 
+* Bespoke Slab Italic 
+* Bespoke Slab Medium 
+* Bespoke Slab MediumItalic 
+* Bespoke Slab Bold 
+* Bespoke Slab BoldItalic 
+* Bespoke Slab Extrabold 
+* Bespoke Slab ExtraboldItalic 
+* Bespoke Slab Variable (Variable font)
+* Bespoke Slab VariableItalic (Variable font)
+
+*
+*/
+@font-face {
+  font-family: 'BespokeSlab-Light';
+  src: url('../fonts/BespokeSlab/BespokeSlab-Light.woff2') format('woff2'),
+       url('../fonts/BespokeSlab/BespokeSlab-Light.woff') format('woff'),
+       url('../fonts/BespokeSlab/BespokeSlab-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'BespokeSlab-LightItalic';
+  src: url('../fonts/BespokeSlab/BespokeSlab-LightItalic.woff2') format('woff2'),
+       url('../fonts/BespokeSlab/BespokeSlab-LightItalic.woff') format('woff'),
+       url('../fonts/BespokeSlab/BespokeSlab-LightItalic.ttf') format('truetype');
+  font-weight: 300;
+  font-display: swap;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'BespokeSlab-Regular';
+  src: url('../fonts/BespokeSlab/BespokeSlab-Regular.woff2') format('woff2'),
+       url('../fonts/BespokeSlab/BespokeSlab-Regular.woff') format('woff'),
+       url('../fonts/BespokeSlab/BespokeSlab-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'BespokeSlab-Italic';
+  src: url('../fonts/BespokeSlab/BespokeSlab-Italic.woff2') format('woff2'),
+       url('../fonts/BespokeSlab/BespokeSlab-Italic.woff') format('woff'),
+       url('../fonts/BespokeSlab/BespokeSlab-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'BespokeSlab-Medium';
+  src: url('../fonts/BespokeSlab/BespokeSlab-Medium.woff2') format('woff2'),
+       url('../fonts/BespokeSlab/BespokeSlab-Medium.woff') format('woff'),
+       url('../fonts/BespokeSlab/BespokeSlab-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'BespokeSlab-MediumItalic';
+  src: url('../fonts/BespokeSlab/BespokeSlab-MediumItalic.woff2') format('woff2'),
+       url('../fonts/BespokeSlab/BespokeSlab-MediumItalic.woff') format('woff'),
+       url('../fonts/BespokeSlab/BespokeSlab-MediumItalic.ttf') format('truetype');
+  font-weight: 500;
+  font-display: swap;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'BespokeSlab-Bold';
+  src: url('../fonts/BespokeSlab/BespokeSlab-Bold.woff2') format('woff2'),
+       url('../fonts/BespokeSlab/BespokeSlab-Bold.woff') format('woff'),
+       url('../fonts/BespokeSlab/BespokeSlab-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'BespokeSlab-BoldItalic';
+  src: url('../fonts/BespokeSlab/BespokeSlab-BoldItalic.woff2') format('woff2'),
+       url('../fonts/BespokeSlab/BespokeSlab-BoldItalic.woff') format('woff'),
+       url('../fonts/BespokeSlab/BespokeSlab-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'BespokeSlab-Extrabold';
+  src: url('../fonts/BespokeSlab/BespokeSlab-Extrabold.woff2') format('woff2'),
+       url('../fonts/BespokeSlab/BespokeSlab-Extrabold.woff') format('woff'),
+       url('../fonts/BespokeSlab/BespokeSlab-Extrabold.ttf') format('truetype');
+  font-weight: 800;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'BespokeSlab-ExtraboldItalic';
+  src: url('../fonts/BespokeSlab/BespokeSlab-ExtraboldItalic.woff2') format('woff2'),
+       url('../fonts/BespokeSlab/BespokeSlab-ExtraboldItalic.woff') format('woff'),
+       url('../fonts/BespokeSlab/BespokeSlab-ExtraboldItalic.ttf') format('truetype');
+  font-weight: 800;
+  font-display: swap;
+  font-style: italic;
+}
+/**
+* This is a variable font
+* You can control variable axes as shown below:
+* font-variation-settings: wght 800.0;
+*
+* available axes:
+'wght' (range from 300.0 to 800.0
+*/
+@font-face {
+  font-family: 'BespokeSlab-Variable';
+  src: url('../fonts/BespokeSlab/BespokeSlab-Variable.woff2') format('woff2'),
+       url('../fonts/BespokeSlab/BespokeSlab-Variable.woff') format('woff'),
+       url('../fonts/BespokeSlab/BespokeSlab-Variable.ttf') format('truetype');
+  font-weight: 300 800;
+  font-display: swap;
+  font-style: normal;
+}
+/**
+* This is a variable font
+* You can control variable axes as shown below:
+* font-variation-settings: wght 800.0;
+*
+* available axes:
+'wght' (range from 300.0 to 800.0
+*/
+@font-face {
+  font-family: 'BespokeSlab-VariableItalic';
+  src: url('../fonts/BespokeSlab/BespokeSlab-VariableItalic.woff2') format('woff2'),
+       url('../fonts/BespokeSlab/BespokeSlab-VariableItalic.woff') format('woff'),
+       url('../fonts/BespokeSlab/BespokeSlab-VariableItalic.ttf') format('truetype');
+  font-weight: 300 800;
+  font-display: swap;
+  font-style: italic;
+}
+

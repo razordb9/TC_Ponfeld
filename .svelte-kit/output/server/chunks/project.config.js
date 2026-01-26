@@ -8,43 +8,43 @@ const sponsors = [
   {
     name: "Wiener Roither",
     logo: "/logo_sponsor.png",
-    url: "http",
+    url: "/",
     description: "Supi dupi"
   },
   {
     name: "Wiener Roither",
     logo: "/logo_sponsor.png",
-    url: "http",
+    url: "/",
     description: "Supi dupi"
   },
   {
     name: "Wiener Roither",
     logo: "/logo_sponsor.png",
-    url: "http",
+    url: "/",
     description: "Supi dupi"
   },
   {
     name: "Wiener Roither",
     logo: "/logo_sponsor.png",
-    url: "http",
+    url: "/",
     description: "Supi dupi"
   },
   {
     name: "Wiener Roither",
     logo: "/logo_sponsor.png",
-    url: "http",
+    url: "/",
     description: "Supi dupi"
   },
   {
     name: "Wiener Roither",
     logo: "/logo_sponsor.png",
-    url: "http",
+    url: "/",
     description: "Supi dupi"
   },
   {
     name: "Wiener Roither",
     logo: "/logo_sponsor.png",
-    url: "http",
+    url: "/",
     description: "Supi dupi"
   }
 ];
@@ -52,38 +52,38 @@ const members = [
   {
     name: "Holzer Roland",
     function: "Obmann",
-    picture: "/avatar_male.jpg",
+    picture: "p1",
     description: "Moasta"
   },
   {
     name: "Pirker Michael",
     function: "Stv. Obmann",
-    picture: "/avatar_male.jpg",
+    picture: "p2",
     description: "Platzwart/Hirsch"
   },
   {
     name: "Jakeisch Michael",
     function: "Kassier",
-    picture: "/avatar_male.jpg",
+    picture: "p3",
     description: "Rambo"
   },
   {
     name: "Schallegger Petra",
     function: "Stv. Kassier",
-    picture: "/avatar_female.jpg",
+    picture: "p4",
     description: "Frau"
   },
   {
     name: "Hudson-Zaußnig Thomas",
     function: "Schriftführer",
-    picture: "/avatar_male.jpg",
+    picture: "p5",
     description: "IT guy"
   },
   {
-    name: "Bitte bewerben",
+    name: "Sprachowitz Melanie",
     function: "Stv. Schriftführer",
-    picture: "/avatar_female.jpg",
-    description: "schriftlich"
+    picture: "p6",
+    description: "Ginderella"
   }
 ];
 const footer = [

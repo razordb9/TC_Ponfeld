@@ -1,4 +1,4 @@
-import { e as ensure_array_like } from "../../../chunks/index2.js";
+import { e as ensure_array_like } from "../../../chunks/index.js";
 import { H as Horizontalscroller } from "../../../chunks/horizontalscroller.js";
 import { m as members, s as sponsors } from "../../../chunks/project.config.js";
 import { a as attr } from "../../../chunks/attributes.js";

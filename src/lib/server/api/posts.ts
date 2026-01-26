@@ -1,6 +1,7 @@
 import  type { Platform, BlogPost } from "../../../app.d.ts";
 import { db, type DBType} from '$lib/server/db';
-import { blogPost } from '$lib/server/db/schema';
+import { blogPost, user } from '$lib/server/db/schema';
+
 import { eq } from "drizzle-orm";
 
 
@@ -51,7 +52,37 @@ export class Blogapi  {
     //done
     public readPost = async(slug: string):Promise<{success: boolean, post?: BlogPost[], error?: string}>  => {
         try {
-            const result: BlogPost[] = await this.db.select().from(blogPost).where(eq(blogPost.slug, slug)).limit(1);
+            // const result: BlogPost[] = await this.db.select().from(blogPost).where(eq(blogPost.slug, slug)).limit(1);
+            const result = await this.db
+            .select({
+                id: blogPost.id,
+                title: blogPost.title,
+                slug: blogPost.slug,
+                html: blogPost.html,
+                createdAt: blogPost.createdAt,
+                updatedAt: blogPost.updatedAt,
+                authorName: user.name,
+            })
+            .from(blogPost)
+            .innerJoin(user, eq(blogPost.authorId, user.id))
+            .where(eq(blogPost.slug, slug))
+            .limit(1);
+
+            // const result = await this.db
+            //     .select({
+            //         id: blogPost.id,
+            //         title: blogPost.title,
+            //         slug: blogPost.slug,
+            //         markdown: blogPost.markdown,
+            //         html: blogPost.html,
+            //         createdAt: blogPost.createdAt,
+            //         updatedAt: blogPost.updatedAt,
+            //         authorName: user.name, // 👈 THIS is what you want
+            //     })
+            //     .from(blogPost)
+            //     .innerJoin(user, eq(blogPost.authorId, user.id))
+            //     .where(eq(blogPost.slug, slug))
+            //     .limit(1);
             // console.log("APi result ", result);
             if (result && result.length > 0) {
                 return {

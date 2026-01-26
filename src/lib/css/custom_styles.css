@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url("$lib/css/bespoke-slab.css");
 @layer reset {
   *,
   *::before,
@@ -112,11 +113,15 @@ Jungle Civilization
 @layer base {
   :root {
     --primary-color: #2f4858;
-    --primary-background: #cadb68;
-    --secondary-color: #cadb68;
-    --secondary-background: #3ca885;
-    --third-color: #616a3e;
+    --primary-background: #efeea6;
+    --primary-color-text:"";
+    --secondary-color: #3ca886;
+    --secondary-background: #3ca88628;
+    --third-color: #b9974c;
     --third-background: #11120c;
+    --forth-color:#efeea6;
+    --forth-background: #7dc477;
+    --color-text-1: black;
     --animation-speed: "10s";
     --padding-block: 1rem;
     --animation-fix-padding: 0.5rem;
@@ -134,7 +139,7 @@ Jungle Civilization
     --p: calc(var(--base-font-size) * var(--scale));
     --box-shadow-action: 0 0 10px 1px var(--secondary-color);
     --font-family:
-      "Satoshi", "Segoe UI", "Zodiak", Tahoma, Geneva, Verdana, sans-serif,
+      "BespokeSlab", "BespokeSerif", "Satoshi", "Segoe UI", "Zodiak", Tahoma, Geneva, Verdana, sans-serif,
       serif;
     --serif: "Zodiak", serif;
     --san-serif: "Satoshi", sans-serif;
@@ -159,7 +164,7 @@ Jungle Civilization
   h5,
   h6 {
     text-align: center;
-    font-family: serif;
+    font-family: "BespokeSlab-Medium";
     font-weight: true;
   }
   h1,
@@ -222,7 +227,7 @@ Jungle Civilization
     font-family: var(--font-family);
     font-size: var(--base-font-size);
     padding: 0.5rem;
-    border: 1px solid var(--color-text-3, black);
+    border: 1px solid var(--color-text-3, rgb(179, 179, 179));
     border-radius: 4px;
     width: 100%;
     box-sizing: border-box;
@@ -324,7 +329,6 @@ Jungle Civilization
     height: auto;
   }
   main {
-    padding-inline: var(--side);
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -335,18 +339,20 @@ Jungle Civilization
     width: 100%;
     min-height: var(--header-height);
   }
-  footer {
-    width: 100%;
-    height: 100%;
-    margin-top: auto;
-    text-align: center;
-    padding: 1rem 0;
-    border-top: 1px solid var(--color-text-2-light);
-  }
   .layout {
     margin-top: var(--header-height);
   }
 }
+.menu {
+  width: 50px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  background-color: var(--secondary-color);
+}
+
 .btn {
   min-width: -moz-fit-content;
   min-width: fit-content;
@@ -386,7 +392,7 @@ Jungle Civilization
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  background-color: var(--third-color);
+  background-color: transparent;
   transition: all 350ms ease-in-out;
 }
 .navbar .navbar-left,
@@ -418,19 +424,27 @@ Jungle Civilization
   height: 3rem;
   min-width: 100px;
   border-radius: var(--radius);
+  font-size: 0.9rem;
+  text-shadow: 1px 1px 10px #000000;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border: 1px solid #efeea6;
 }
 .navbar .navbar-center .nav-item:hover,
 .navbar .navbar-right .nav-item:hover {
-  background-color: var(--secondary-color);
+  text-shadow: none;
+  border: 1px solid #efeea6;
+  background-color: #efeea6;
 }
 .navbar .navbar-center .nav-item:hover a,
 .navbar .navbar-right .nav-item:hover a {
-  color: var(--third-background);
+  color: black;
 }
 .navbar .navbar-center .nav-item a,
 .navbar .navbar-right .nav-item a {
+  padding-inline: 1rem;
   text-decoration: none;
-  color: white;
+  color: #efeea6;
   height: 100%;
   width: 100%;
   display: flex;
@@ -444,46 +458,23 @@ Jungle Civilization
   display: block;
   float: right;
 }
-.navbar .navbar-right .dropdown-content {
-  display: none;
-  position: absolute;
-  right: 0;
-  background-color: lightgrey;
-  min-width: 200px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
-.navbar .navbar-right:hover .dropdown-content {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  padding: 10px;
-  gap: 10px;
-}
-.navbar .nav-burger-menu {
-  display: none;
-}
-
-.nav-burger-menu-links {
-  transform: translateY(-300px);
-  transition: all 350ms ease-in-out;
-  display: none;
+.navbar .menu {
+  margin-right: 10px;
 }
 
 @media (width < 650px) {
   .navbar {
     height: 70px;
+    background-color: var(--third-color);
   }
   .navbar .navbar-left .logo {
     height: 70px;
   }
-  .navbar .navbar-center,
-  .navbar .navbar-right {
+  .navbar .navbar-center {
     display: none;
   }
-  .navbar .nav-burger-menu {
+  .navbar .menu {
     margin-right: 10px;
-    display: inline-block;
   }
   .line {
     width: 25px;
@@ -496,7 +487,7 @@ Jungle Civilization
     top: 70px;
     right: 0;
     width: 100%;
-    background-color: rgb(211, 211, 211);
+    background-color: rgb(126, 163, 126);
     opacity: 0;
     display: flex;
     flex-direction: column;
@@ -531,14 +522,14 @@ Jungle Civilization
   }
 }
 /* DONE */
-#hero {
+.hero {
   overflow: hidden;
   display: flex;
   justify-content: center;
   text-align: center;
   height: calc(100vh - var(--header-height));
 }
-#hero .hero-img {
+.hero .hero-img {
   position: absolute;
   top: 0;
   left: 0;
@@ -547,17 +538,40 @@ Jungle Civilization
   -o-object-fit: cover;
      object-fit: cover;
 }
-#hero .hero-content {
+.hero .hero-content {
   z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+.hero .hero-content h1 {
+  font-family: "BespokeSlab-Medium";
+  color: #efeea6;
+  font-size: 80px;
+  letter-spacing: 0.2rem;
+  text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5098039216);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3882352941);
+  z-index: 1;
+}
 
 @media (width < 650px) {
-  #hero {
+  .hero {
     height: calc(100vh - var(--header-height));
+  }
+  .hero .hero-content h1 {
+    font-size: 55px;
   }
 }
 /* Design pattern page */
@@ -589,16 +603,7 @@ Jungle Civilization
 }
 
 /* Login page done */
-#login {
-  height: 90vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Signup page done */
-#signup {
+#login, #forgotpassword, #resetpassword, #signup {
   height: 90vh;
   display: flex;
   flex-direction: column;
@@ -620,59 +625,10 @@ Jungle Civilization
 
 /* Team  */
 #team {
-  scroll-margin-top: 90px;
+  scroll-margin-top: calc(var(--header-height) + 30px);
   height: 60vh;
   text-align: center;
   height: 100%;
-}
-#team #team-container {
-  padding-top: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  padding: 20px 0px;
-}
-#team #team-container .team-member-card {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-}
-#team #team-container .team-member-card img {
-  width: 170px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  margin: 0.5rem;
-}
-#team #team-container .team-member-card .team-member-info {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 1rem;
-  background: rgba(0, 0, 0, 0.75);
-  color: white;
-}
-#team #team-container .team-member-card .team-member-info h3,
-#team #team-container .team-member-card .team-member-info h4,
-#team #team-container .team-member-card .team-member-info p {
-  margin: 0;
-}
-#team #team-container .team-member-card .team-member-info h3 {
-  font-size: 1.1rem;
-  margin-bottom: 0.25rem;
-}
-#team #team-container .team-member-card .team-member-info h4 {
-  font-size: 0.9rem;
-  opacity: 0.8;
-  margin-bottom: 0.5rem;
-}
-#team #team-container .team-member-card .team-member-info p {
-  font-size: 0.85rem;
 }
 
 /* Sponsor section */
@@ -687,6 +643,7 @@ Jungle Civilization
 #sponsors .sponsor {
   padding: 1rem;
   border-radius: 10px;
+  width: 200px;
 }
 #sponsors .sponsor a {
   display: flex;
@@ -705,80 +662,11 @@ Jungle Civilization
   align-items: center;
 }
 
-/* Contact section */
-#contact {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-#contact #contactform {
-  width: 60vw;
-}
-
-/* Footer section */
-#footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  height: var(--padding);
-  background-color: var(--secondary-background);
-}
-#footer footer {
-  position: relative;
-  text-align: center;
-  color: var(--surface-1-light);
-  height: auto;
-}
-#footer footer a {
-  text-decoration: none;
-  color: var(--surface-1-light);
-}
-#footer footer .footer-img {
-  filter: invert(1);
-}
-
-dialog {
-  width: 500px;
-  border-radius: 10px;
-  border: none;
-  padding: 0;
-  transition: opacity 500ms ease-out, display 600ms, overlay 600ms;
-  transition-behavior: allow-discrete;
-  opacity: 0;
-}
-dialog div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-dialog[open] {
-  opacity: 1;
-}
-@starting-style {
-  dialog[open] {
-    opacity: 0;
-  }
-}
-
-dialog::backdrop {
-  opacity: 0;
-  background-color: rgba(0, 0, 0, 0.5333333333);
-  transition: opacity 500ms ease-out, display 600ms allow-discrete;
-}
-
-dialog[open]::backdrop {
-  background-color: rgba(0, 0, 0, 0.5333333333);
-  opacity: 1;
-}
-
 /* horizontal scroller */
 .scroller {
-  /* border: 3px solid red; */
   max-width: var(--horizontal-scroller-width, 100%);
   width: 100vw;
+  height: 300px;
 }
 
 .inner-scroller {
@@ -817,6 +705,102 @@ dialog[open]::backdrop {
   animation-play-state: paused;
 }
 
+/* Contact section */
+#contact {
+  scroll-margin-top: calc(var(--header-height) + 10px);
+  background-color: var(--secondary-background);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  padding: 50px;
+}
+#contact #contactform {
+  width: 60vw;
+}
+
+/* Footer section */
+#footer {
+  width: 100%;
+  padding: 0;
+  height: auto;
+  background-color: #D6CA98;
+}
+#footer footer {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding: 1rem 0;
+  border-top: 1px solid var(--color-text-2-light);
+  padding: 20px;
+}
+#footer footer a {
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+#footer footer .content {
+  height: 120px;
+}
+#footer footer .socialmedia, #footer footer .links, #footer footer .basics {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+#footer footer a {
+  text-decoration: none;
+  color: var(--surface-1-light);
+}
+#footer footer .footer-img {
+  filter: invert(1);
+}
+
+@media (width < 650px) {
+  #footer footer {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+}
+dialog {
+  width: 500px;
+  border-radius: 10px;
+  border: none;
+  padding: 0;
+  transition: opacity 500ms ease-out, display 600ms, overlay 600ms;
+  transition-behavior: allow-discrete;
+  opacity: 0;
+}
+dialog div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+dialog[open] {
+  opacity: 1;
+}
+@starting-style {
+  dialog[open] {
+    opacity: 0;
+  }
+}
+
+dialog::backdrop {
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.5333333333);
+  transition: opacity 500ms ease-out, display 600ms allow-discrete;
+}
+
+dialog[open]::backdrop {
+  background-color: rgba(0, 0, 0, 0.5333333333);
+  opacity: 1;
+}
+
 @keyframes scroll-animation {
   to {
     transform: translate(calc(-50% - var(--animation-fix-padding)));
@@ -828,6 +812,9 @@ dialog[open]::backdrop {
 @media (max-width: 600px) {
   #adminPage {
     height: 90vh;
+  }
+  #contact {
+    padding: 20px;
   }
   #contact #contactform {
     width: 100%;

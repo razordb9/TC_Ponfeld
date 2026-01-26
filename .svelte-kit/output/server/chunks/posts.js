@@ -1,4 +1,4 @@
-import { d as db, b as blogPost } from "./index3.js";
+import { d as db, b as blogPost, u as user } from "./index2.js";
 import { eq } from "drizzle-orm";
 class Blogapi {
   /**
@@ -43,7 +43,15 @@ class Blogapi {
   //done
   readPost = async (slug) => {
     try {
-      const result = await this.db.select().from(blogPost).where(eq(blogPost.slug, slug)).limit(1);
+      const result = await this.db.select({
+        id: blogPost.id,
+        title: blogPost.title,
+        slug: blogPost.slug,
+        html: blogPost.html,
+        createdAt: blogPost.createdAt,
+        updatedAt: blogPost.updatedAt,
+        authorName: user.name
+      }).from(blogPost).innerJoin(user, eq(blogPost.authorId, user.id)).where(eq(blogPost.slug, slug)).limit(1);
       if (result && result.length > 0) {
         return {
           success: true,

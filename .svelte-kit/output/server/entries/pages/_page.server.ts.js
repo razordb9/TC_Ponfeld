@@ -5,9 +5,7 @@ import "../../chunks/utils.js";
 import "@sveltejs/kit/internal";
 import "../../chunks/query.js";
 import { Resend } from "resend";
-const RESEND_API_KEY = "re_Lq1kWDWx_8DWqpZULm8zrAAWMzCcmJAnW";
-const EMAIL_TO = "thomas.zaussnig@gmail.com";
-const EMAIL_FROM = "thomas.zaussnig@hudson-zaussnig.it.com";
+import { R as RESEND_API_KEY, E as EMAIL_FROM, a as EMAIL_TO } from "../../chunks/private.js";
 const contactform = z.object({
   name: z.string().min(3, { message: "Name is required and must be at least 3 characters long" }),
   email: z.string().email(),
@@ -45,7 +43,7 @@ const actions = {
     }
     try {
       await resend.emails.send({
-        from: "TC Ponfeld Groessinghof <onboarding@resend.dev>",
+        from: "TC Ponfeld Groessinghof <office@tc-ponfeld.at>",
         // from: EMAIL_FROM as string,
         to: EMAIL_TO,
         subject: "New message from TC Ponfeld Groessinghof website",

@@ -19,7 +19,9 @@ export const nodes = [
 	() => import('./nodes/15'),
 	() => import('./nodes/16'),
 	() => import('./nodes/17'),
-	() => import('./nodes/18')
+	() => import('./nodes/18'),
+	() => import('./nodes/19'),
+	() => import('./nodes/20')
 ];
 
 export const server_loads = [0,3,4];
@@ -38,7 +40,9 @@ export const dictionary = {
 		"/admin/posts/[slug]/edit": [~14,[3]],
 		"/admin/users": [~16,[3,4]],
 		"/admin/users/create": [~17,[3,4]],
-		"/auth/login": [~18]
+		"/auth/forgotpassword": [~18],
+		"/auth/login": [~19],
+		"/auth/resetpassword": [20]
 	};
 
 export const hooks = {

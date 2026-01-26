@@ -4,6 +4,8 @@
     import { type SubmitFunction, type ActionResult } from "@sveltejs/kit";
     import { goto, invalidateAll } from "$app/navigation";
     import type { ActionData } from "./$types";
+    import { LogIn } from '@lucide/svelte';
+
 
     let { form }: { form: ActionData} = $props();
     let email = $state<string>("");
@@ -36,20 +38,24 @@
 
 <div id="login">
     <form method="POST" use:enhance={submitFunction} action="?/login">
-        <h1>Login</h1>
         <fieldset>
-            <label for="email">Email</label>
+            <div class="header">
+                <p class="logo"><LogIn/></p>
+                <p>Anmelden mit Email Adresse</p>
+            </div>
+            <!-- <label for="email">Email</label> -->
             <input
                 type="email"
                 bind:value={email}
                 name="email"
                 id="email"
                 required
+                placeholder="email"
             />
             {#if form?.errors}
                 <p style="color:red;">❌ {form.errors["email"]}</p>
             {/if}
-            <label for="password">Password</label>
+            <!-- <label for="password">Password</label> -->
             <input
                 type="password"
                 bind:value={password}
@@ -57,11 +63,53 @@
                 id="login_password"
                 autocomplete="current-password"
                 required
+                placeholder="password"
             />
             {#if form?.errors}
                 <p style="color:red;">❌ {form.errors["password"]}</p>
             {/if}
+            <p><a href="/auth/forgotpassword">Forgot password?</a></p>
             <button class="btn" type="submit">Login</button>
         </fieldset>
     </form>
 </div>
+
+<style lang="scss">
+    button {
+        display: flex;
+        justify-content: center;
+    }
+    fieldset {
+        width: 50vw;
+        padding: 50px;
+        display: flex;
+        flex-direction: column;
+        border-radius: 15px;
+        background-color: rgba(255, 255, 255, 0.366);
+
+        input {
+            background-color: inherit;
+        }
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+            
+            .logo {
+                display: flex;
+                align-items: center;
+                padding: 15px;
+                border-radius: 15px;
+                background-color: white;
+                margin-bottom: 20px;
+            }
+        }
+    }
+
+    @media (width < 650px) {
+        fieldset {
+            width: 90vw;
+        }
+    }
+</style>
