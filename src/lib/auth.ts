@@ -6,6 +6,9 @@ import { sveltekitCookies } from "better-auth/svelte-kit";
 import { getRequestEvent } from "$app/server";
 import { Resend } from "resend";
 import { RESEND_API_KEY, EMAIL_FROM, EMAIL_TO } from '$env/static/private';
+
+
+
 const resend = new Resend(RESEND_API_KEY);
 
 // TODO figure above line out
@@ -41,7 +44,8 @@ export const auth = ({platform}: {platform: Platform}) => {
                     `, 
                     // text: `Click the link to verify your email: ${url}`,
                 });
-                ctx.waitUntil?.(promise);
+                console.log('waitUntil exists:', !!platform.ctx.waitUntil);
+                platform.ctx.waitUntil?.(promise);
             }
         },
         plugins: [

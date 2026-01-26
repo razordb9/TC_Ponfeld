@@ -43,7 +43,8 @@ const auth = ({ platform }) => {
                     `
           // text: `Click the link to verify your email: ${url}`,
         });
-        ctx.waitUntil?.(promise);
+        console.log("waitUntil exists:", !!platform.ctx.waitUntil);
+        platform.ctx.waitUntil?.(promise);
       }
     },
     plugins: [
