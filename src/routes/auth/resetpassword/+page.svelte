@@ -27,11 +27,13 @@
 </script>
 
 <div id="resetpassword">
-    <h2>Reset password</h2>
 
-    <form method="POST" onsubmit={resetPassword}>
+    <form method="POST" onsubmit={resetPassword} class="reset">
         <fieldset>
-            <label for="password">Password</label>
+            <div class="header">
+                <h1>Reset password</h1>
+                <p>Please create a new password that you don't use on any other site</p>
+            </div>
             <input
                 type="password"
                 name="password"
@@ -39,8 +41,9 @@
                 id="login_password"
                 autocomplete="current-password"
                 required
+                placeholder="Password"
             />
-            <button class="btn" type="submit">Login</button>
+            <button class="btn" type="submit">Change</button>
         </fieldset>
     </form>
 </div>

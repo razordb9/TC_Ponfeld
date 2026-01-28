@@ -372,6 +372,41 @@ Jungle Civilization
   vertical-align: middle;
 }
 
+.reset button {
+  display: flex;
+  justify-content: center;
+}
+.reset fieldset {
+  width: 50vw;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.366);
+}
+.reset fieldset input {
+  background-color: inherit;
+}
+.reset fieldset .header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.reset fieldset .header .logo {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-radius: 15px;
+  background-color: white;
+  margin-bottom: 20px;
+}
+@media (width < 650px) {
+  .reset fieldset {
+    width: 90vw;
+  }
+}
+
 /* DONE */
 .error-msg {
   display: flex;
