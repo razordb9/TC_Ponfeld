@@ -6,7 +6,7 @@ function _page($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {
     let { form } = $$props;
     let email = "";
-    $$renderer2.push(`<div id="forgotpassword"><form method="POST"><h2>Forgot password?</h2> <fieldset><label for="email">Email</label> <input type="email" name="email" id="email"${attr("value", email)} required/> `);
+    $$renderer2.push(`<div id="forgotpassword"><form method="POST" class="reset"><fieldset><div class="header"><h1>Forgot password?</h1> <p>Enter your email adress and we will send you a link to reset your password.</p></div> <input type="email" name="email" id="email"${attr("value", email)} required placeholder="example@mail.com"/> `);
     if (form?.errors) {
       $$renderer2.push("<!--[-->");
       $$renderer2.push(`<p style="color:red;">❌ ${escape_html(form.errors["email"])}</p>`);
