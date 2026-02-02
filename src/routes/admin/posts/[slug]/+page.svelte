@@ -28,7 +28,6 @@
         
         <div>
             {@html data.post.html as string}
-
         </div>
     </div>
     

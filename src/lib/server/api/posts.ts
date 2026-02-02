@@ -36,7 +36,18 @@ export class Blogapi  {
     //done
     public readPosts = async():Promise<{success: boolean, posts?: BlogPost[], error?: string}>  => {
         try {
-            const result: BlogPost[] = await this.db.select().from(blogPost).all();
+            const result: BlogPost[] = await this.db.select({
+                id: blogPost.id,
+                title: blogPost.title,
+                slug: blogPost.slug,
+                html: blogPost.html,
+                createdAt: blogPost.createdAt,
+                updatedAt: blogPost.updatedAt,
+                authorName: user.name,
+            })
+            .from(blogPost)
+            .innerJoin(user, eq(blogPost.authorId, user.id))
+            .all();
             return {
                 success: true,
                 posts: result
@@ -50,10 +61,10 @@ export class Blogapi  {
     }
 
     //done
-    public readPost = async(slug: string):Promise<{success: boolean, post?: BlogPost[], error?: string}>  => {
+    public readPost = async(slug: string):Promise<{success: boolean, post?: BlogPost, error?: string}>  => {
         try {
             // const result: BlogPost[] = await this.db.select().from(blogPost).where(eq(blogPost.slug, slug)).limit(1);
-            const result = await this.db
+            const result: BlogPost[] = await this.db
             .select({
                 id: blogPost.id,
                 title: blogPost.title,
@@ -68,22 +79,6 @@ export class Blogapi  {
             .where(eq(blogPost.slug, slug))
             .limit(1);
 
-            // const result = await this.db
-            //     .select({
-            //         id: blogPost.id,
-            //         title: blogPost.title,
-            //         slug: blogPost.slug,
-            //         markdown: blogPost.markdown,
-            //         html: blogPost.html,
-            //         createdAt: blogPost.createdAt,
-            //         updatedAt: blogPost.updatedAt,
-            //         authorName: user.name, // 👈 THIS is what you want
-            //     })
-            //     .from(blogPost)
-            //     .innerJoin(user, eq(blogPost.authorId, user.id))
-            //     .where(eq(blogPost.slug, slug))
-            //     .limit(1);
-            // console.log("APi result ", result);
             if (result && result.length > 0) {
                 return {
                     success: true,
