@@ -799,18 +799,19 @@ Jungle Civilization
 //   width: 50%;
 // }
 /* Create Posts */
-#createpost {
+#createpost, #updatepost {
   // display: flex;
   // justify-content: center;
   // align-items: center;
   // flex-direction: column;
-  // width: 500px;
+  margin: 0 auto;
+  width: 800px;
 
 
   #editor {
     height: 300px;
     width: inherit;
-
+    margin-bottom: 20px;
   }
   .preview {
     width: inherit;
@@ -820,6 +821,82 @@ Jungle Civilization
     
   }
 }
+
+.ql-toolbar, .ql-picker-options {
+    margin: 0 auto;
+    background-color: var(--primary-background-1) !important;
+    border-radius: 8px;
+    color: var(--accent-color-1,#d37f11) !important;
+}
+
+.ql-picker-options {
+    margin-top: 10px !important;
+    border-color: var(--primary-color-3) !important;
+    padding-inline: 10px !important;
+}
+
+.ql-picker-options > .ql-picker-item {
+    color: var(--accent-color-1,#d37f11) !important;
+}
+
+.ql-picker-label {
+    color: var(--accent-color-1,#d37f11) !important;
+}
+
+.ql-stroke {
+    stroke: var(--accent-color-1,#d37f11) !important;
+    stroke-width: 1px !important;
+}
+
+.ql-fill {
+    fill: var(--accent-color-2,#d37f11) !important;
+}
+
+.ql-tooltip.ql-editing {
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+} 
+
+.ql-align-center {
+  text-align: center;
+}
+.post {
+  margin: 0 auto;
+  width: 50%;
+  border: 1px solid grey;
+  border-radius: 10px;
+  margin-bottom: 20px;;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  .post-header {
+    border-bottom: 1px solid grey;
+    padding: 20px;
+    color: black;
+
+  }
+  .post-preview {
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    padding: 20px 20px 8px 20px;
+    color: black;
+    // padding-bottom: 8px;
+  }
+
+  .post-content {
+    li {
+      list-style: disc;
+      list-style-position: inside;
+    }
+  }
+}
+
+
+
 
 /* Team  */
 #team {

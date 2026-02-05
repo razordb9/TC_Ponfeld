@@ -24,8 +24,10 @@
                     <p>Erstellt am {formattedDate(post.createdAt)}</p>
                     <p>Author {post.authorName}</p>
                 </div>
-                <h2>{post.title}</h2>
-                <p>{@html post.html as string}</p>
+                <div class="post-content">
+                    <h2>{post.title}</h2>
+                    <p>{@html post.html as string}</p>
+                </div>
             </a>
         </li>
     </div>
@@ -34,7 +36,7 @@
 </ul>
 
 
-<style lang="scss">
+<!-- <style lang="scss">
     .post {
         margin: 0 auto;
         width: 50%;
@@ -47,5 +49,9 @@
         .post-header {
             border-bottom: 1px solid red;
         }
+
+        .post-content {
+            padding: 20px;
+        }
     }
-</style>
+</style> -->

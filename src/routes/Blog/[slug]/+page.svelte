@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { BlogPost } from "../../../../app";
+  import type { BlogPost } from "../../../app";
 
     let {data}:{data: {post: BlogPost}} = $props();  
 
@@ -16,8 +16,7 @@
 
 
 <article class="prose">
-    <a href="/admin/posts/{data.post.slug}/edit">edit</a>
-    <a href="/admin">back</a>
+    <a href="/Blog">back</a>
     <div class="post">
         <h1>{data.post.title}</h1>
         <div class="basicInfo">
@@ -26,7 +25,7 @@
             <p>Erstellt von {data.post.authorName}</p>
         </div>
         
-        <div class="post-content">
+        <div class="post-conent">
             {@html data.post.html as string}
         </div>
     </div>
@@ -35,23 +34,23 @@
 
 
 
-<!-- <style lang="scss">
+<style lang="scss">
     .prose {
         width: 90vw;
         margin: 0 auto;
     }
-    .post {
-        display: flex;
-        flex-direction: column;
-        // justify-content: center;
-        //align-items: center;
-        // width: 400px;
-        height: 100%;
-        margin-bottom: 20px;
+    // .post {
+    //     display: flex;
+    //     flex-direction: column;
+    //     // justify-content: center;
+    //     //align-items: center;
+    //     // width: 400px;
+    //     height: 100%;
+    //     margin-bottom: 20px;
 
-        .basicInfo {
-            border-bottom: 1px solid black;
-            margin-bottom: 20px;
-        }
-    }
-</style> -->
+    //     .basicInfo {
+    //         border-bottom: 1px solid black;
+    //         margin-bottom: 20px;
+    //     }
+    // }
+</style>

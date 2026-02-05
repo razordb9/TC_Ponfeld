@@ -1,12 +1,18 @@
-import { redirect } from "@sveltejs/kit"
-import type { PageServerLoad } from "../$types"
+import { Blogapi } from '$lib/server/api/posts';
+import type { BlogPost } from '../../app.d.ts';
 
-export const load: PageServerLoad = ({locals}) => {
-    if(locals.user == null || locals.user == undefined) {
-        redirect(303, "/auth/login")
-    }
-    
-    return {
-        user: locals.user
+export const load = async(event) => {
+    const api = new Blogapi(event.platform);
+
+    const result = await api.readPosts();
+
+    if (result.success){
+        return {
+            posts: result.posts
+        };
+    } else {
+        return {
+            posts: []
+        }
     }
 }

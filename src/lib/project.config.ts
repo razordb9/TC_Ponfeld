@@ -125,10 +125,10 @@ export const navigation: Link[] = [
         name:"Über uns",
         url:"/#team"
     },
-    // {
-    //     name:"Blog",
-    //     url:"/Blog"
-    // },
+    {
+        name:"Blog",
+        url:"/Blog"
+    },
     {
         name:"Sponsoren",
         url:"/#sponsors"
