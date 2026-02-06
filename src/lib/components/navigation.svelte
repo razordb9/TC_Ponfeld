@@ -112,7 +112,7 @@
     z-index: 500;
     background-color: #000000;
     position: fixed;
-    height: 50%;
+    height: 100%;
     transform: translateX(100vw);
     transition: all 200ms ease-in-out;
 

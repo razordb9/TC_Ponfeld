@@ -19,13 +19,12 @@
     <a href="/admin/posts/{data.post.slug}/edit">edit</a>
     <a href="/admin">back</a>
     <div class="post">
-        <h1>{data.post.title}</h1>
         <div class="basicInfo">
             <p id="date">Erstellt am {formattedDate(data.post.createdAt)}</p>
             <p>Bearbeitet am {formattedDate(data.post.updatedAt)}</p>
             <p>Erstellt von {data.post.authorName}</p>
         </div>
-        
+        <h1>{data.post.title}</h1>
         <div class="post-content">
             {@html data.post.html as string}
         </div>

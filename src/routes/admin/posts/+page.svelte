@@ -24,7 +24,7 @@
                     <p>Erstellt am {formattedDate(post.createdAt)}</p>
                     <p>Author {post.authorName}</p>
                 </div>
-                <div class="post-content">
+                <div class="post-preview">
                     <h2>{post.title}</h2>
                     <p>{@html post.html as string}</p>
                 </div>
@@ -34,24 +34,3 @@
     
 {/each}
 </ul>
-
-
-<!-- <style lang="scss">
-    .post {
-        margin: 0 auto;
-        width: 50%;
-        border: 1px solid red;
-        margin-bottom: 20px;;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-
-        .post-header {
-            border-bottom: 1px solid red;
-        }
-
-        .post-content {
-            padding: 20px;
-        }
-    }
-</style> -->
