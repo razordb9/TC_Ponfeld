@@ -22,25 +22,25 @@ export const sponsors: Sponsor[] = [
        name: 'petzner',
        logo: '/petzner.png',
        url: 'http://www.petzner.at/',
-       description: 'Raiffeisen Bank is der geilste Sponsor aller Zeiten.'
+       description: 'Siebdruck, Direktflock, Transferpatch, Digitaldruck, Plottflex Plottflock, Sublimation, Stick, Stickapplikation, Weblable.'
+   },
+   {
+       name: 'Hotel Schloss Leonstain',
+       logo: '/Hotel_Schloss_Leonstain.jpeg',
+       url: 'https://www.leonstain.at/',
+       description: 'Wir begrüßen Sie herzlich im Hotel Schloss Leonstain! Direkt im Ortszentrum von Pörtschach am Wörthersee empfangen wir Sie in unseren geschichtsträchtigen Gewölben und laden Sie ein, einen ganz besonderen Urlaub bei uns zu verbringen. '
    },
    {
        name: 'Wiener Roither',
-       logo: '/logo_sponsor.png',
-       url: '/',
-       description: 'Supi dupi'
+       logo: '/A_u_H_Bewaesserer.jpeg',
+       url: 'https://www.diebewaesserer.com/',
+       description: 'Wir sind ein Unternehmen aus Kärnten, das sich auf Beratung, Planung, Einrichtung und Service von professionellen Bewässerungssystemen spezialisiert hat.'
    },
    {
-       name: 'Wiener Roither',
-       logo: '/logo_sponsor.png',
-       url: '/',
-       description: 'Supi dupi'
-   },
-   {
-       name: 'Wiener Roither',
-       logo: '/logo_sponsor.png',
-       url: '/',
-       description: 'Supi dupi'
+       name: 'drei',
+       logo: '/drei_at.jpg',
+       url: 'https://www.drei.at/n/home',
+       description: 'Hutchison Drei Austria (Marke: Drei) ist ein großes Telekommunikationsunternehmen in Österreich mit Sitz in Wien.'
    },
    {
        name: 'Wiener Roither',
