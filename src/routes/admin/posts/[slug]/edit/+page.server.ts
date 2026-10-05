@@ -1,5 +1,5 @@
 import { Blogapi } from '$lib/server/api/posts.js';
-import { redirect } from '@sveltejs/kit';
+import { error, redirect } from '@sveltejs/kit';
 import slug from 'slug';
 import type { PageServerLoad } from '../$types';
 
@@ -25,6 +25,16 @@ export const load: PageServerLoad = async ({params, platform}) => {
 }
 
 export const actions = {
+    deletePost: async ({ params, platform }) => {
+        const api = new Blogapi(platform);
+        const result = await api.deletePost(params.slug);
+
+        if (!result.success) {
+            error(500, result.error ?? 'Unable to delete post');
+        }
+
+        redirect(303, '/admin/posts');
+    },
     updatePost: async(event) => {
         // console.log("platform: " + event.platform?.env);
         const formData = await event.request.formData();

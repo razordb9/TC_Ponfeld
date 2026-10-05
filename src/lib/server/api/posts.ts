@@ -119,11 +119,11 @@ export class Blogapi  {
     //done
     public deletePost = async(slug: string):Promise<{success: boolean, post?: BlogPost, error?: string}> => {
         try {
-            const result: BlogPost = await this.db.delete(blogPost).where(eq(blogPost.slug, slug)).limit(1).returning();
-            if (result) {
+            const result: BlogPost[] = await this.db.delete(blogPost).where(eq(blogPost.slug, slug)).limit(1).returning();
+            if (result.length > 0) {
                 return {
                     success: true,
-                    post: result
+                    post: result[0]
                 }
             } else {
                 return {
