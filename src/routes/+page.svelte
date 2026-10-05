@@ -86,7 +86,7 @@
 <svelte:window onkeydown={handleKeydown} />
 
 <section class="hero">
-    <img src="/Tennispllatz.jpg" alt="tennisplatz" class="hero-img"/>    
+    <img src="/Tennisplatz.jpg" alt="tennisplatz" class="hero-img"/>    
     <div class="hero-content">
         <h1>TC Grössinghof Ponfeld</h1>
         <a href="https://groessinghof-ponfeld.tennisplatz.info/" target="_blank" class="btn">Platzreservierung</a>

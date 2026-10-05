@@ -7,7 +7,7 @@ export const load: PageServerLoad = async ({params, platform}) => {
     const {readPost} = new Blogapi(platform);
 
     const result = await readPost(slug);
-
+    
     if (result.success) {
         return {
             post: result.post

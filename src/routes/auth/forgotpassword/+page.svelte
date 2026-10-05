@@ -26,17 +26,19 @@
 
 
 <div id="forgotpassword">
-    <form method="POST" onsubmit={resetPassword}>
-
-      <h2>Forgot password?</h2>
+    <form method="POST" onsubmit={resetPassword} class="reset">
         <fieldset>
-            <label for="email">Email</label>
+            <div class="header">
+              <h1>Forgot password?</h1>
+              <p>Enter your email adress and we will send you a link to reset your password.</p>
+            </div>
             <input
                 type="email"
                 name="email"
                 id="email"
                 bind:value={email}
                 required
+                placeholder="example@mail.com"
             />
             {#if form?.errors}
                 <p style="color:red;">❌ {form.errors["email"]}</p>
