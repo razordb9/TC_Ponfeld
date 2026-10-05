@@ -51,13 +51,39 @@
         }
     };
 
+    const handleKeydown = (e: KeyboardEvent) => {
+        if (!activeImage) return;
+        if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            navigateImage('prev');
+        } else if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            navigateImage('next');
+        } else if (e.key === 'Escape') {
+            e.preventDefault();
+            activeImage = false;
+            currentIndex = -1;
+        }
+    };
+
     interface Member {
         name: string,
         picture: string,
         function: string,
         description: string
     }
+
+    const navigateImage = (direction: 'prev' | 'next') => {
+        const total = Object.entries(images).length;
+        if (direction === 'next') {
+            currentIndex = (currentIndex + 1) % total;
+        } else {
+            currentIndex = (currentIndex - 1 + total) % total;
+        }
+    };
 </script>
+
+<svelte:window onkeydown={handleKeydown} />
 
 <section class="hero">
     <img src="/Tennispllatz.jpg" alt="tennisplatz" class="hero-img"/>    
@@ -78,7 +104,30 @@
             currentIndex = -1;
         }}
         onkeydown={() => {}}
-    ></div>    
+    >
+        {#if activeImage}
+            <button 
+                class="nav-button nav-prev"
+                onclick={(e) => {
+                    e.stopPropagation();
+                    navigateImage('prev');
+                }}
+                aria-label="Previous image"
+            >
+                ◀
+            </button>
+            <button 
+                class="nav-button nav-next"
+                onclick={(e) => {
+                    e.stopPropagation();
+                    navigateImage('next');
+                }}
+                aria-label="Next image"
+            >
+                ▶
+            </button>
+        {/if}
+    </div>    
     <h2>Über uns</h2>
     <p>Eu irure eiusmod consectetur officia ad dolore culpa fugiat irure ea. Irure aute ex mollit officia occaecat adipisicing labore cillum. Nostrud et eu elit Lorem eu consequat nostrud do. Incididunt exercitation veniam irure ea veniam veniam consequat nostrud nulla amet incididunt magna labore. Ipsum veniam incididunt nisi exercitation exercitation mollit irure proident fugiat sint nisi dolore dolore cillum.Labore adipisicing et laboris laboris minim cillum adipisicing eu adipisicing. Duis mollit sunt aliquip consequat incididunt. Amet dolor minim cillum enim in fugiat. Culpa Lorem consequat laborum commodo anim. Proident nisi duis ex deserunt.
 
@@ -325,6 +374,60 @@ Enim dolore exercitation deserunt aute non irure eu aliquip incididunt irure con
 
     .active-image .overlay {
         opacity: 1;
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+    }
+
+    .nav-button {
+        position: fixed;
+        z-index: 225;
+        background-color: rgba(255, 255, 255, 0.3);
+        border: none;
+        color: white;
+        font-size: 2rem;
+        padding: 15px 20px;
+        cursor: pointer;
+        border-radius: 8px;
+        transition: all 200ms ease-in-out;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+            transform: scale(1.1);
+        }
+
+        &:active {
+            transform: scale(0.95);
+        }
+    }
+
+    .nav-prev {
+        left: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .nav-next {
+        right: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    @media (max-width: 768px) {
+        .nav-button {
+            font-size: 1.5rem;
+            padding: 10px 15px;
+        }
+
+        .nav-prev {
+            left: 10px;
+        }
+
+        .nav-next {
+            right: 10px;
+        }
     }
 </style>
