@@ -29,7 +29,8 @@ declare global {
 			markdown: string,
 			createdAt: Date,
 			updatedAt: number,
-			authorId: string
+			authorId: string,
+			authorName?: string
 		}
 
 	}

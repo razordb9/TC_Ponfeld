@@ -42,9 +42,8 @@ export const auth = ({platform}: {platform: Platform}) => {
                         <p>If you didn't request this, please ignore this email</p>
                         <p>Thanks,<br>Your TC Groessinghof Ponfeld</p>
                     `, 
-                    // text: `Click the link to verify your email: ${url}`,
                 });
-                console.log('waitUntil exists:', !!platform.ctx.waitUntil);
+                // console.log('waitUntil exists:', !!platform.ctx.waitUntil);
                 platform.ctx.waitUntil?.(promise);
             }
         },

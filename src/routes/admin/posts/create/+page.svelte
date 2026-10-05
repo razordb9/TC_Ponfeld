@@ -13,7 +13,22 @@
     onMount(() => {
         if (browser && window) {
             editor = new Quill(quillcontainer, {
-                theme: 'snow'
+                theme: 'snow',
+                modules: {
+                    toolbar: [
+                        [{ header: [1, 2, 3, false] }],
+                        ["bold", "italic", "underline", "strike"],
+                        [
+                            { list: "ordered" },
+                            { list: "bullet" },
+                            { indent: "-1" },
+                            { indent: "+1" },
+                        ],
+                        [{ align: ["center", "right", "justify"] }],
+                        ["link", "image", "video"],
+                        ["clean"],
+                    ],
+                },
             });
             editor.on('text-change', refresh);
         }
