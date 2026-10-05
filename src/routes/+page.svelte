@@ -390,17 +390,12 @@ Enim dolore exercitation deserunt aute non irure eu aliquip incididunt irure con
         padding: 15px 20px;
         cursor: pointer;
         border-radius: 8px;
-        transition: all 200ms ease-in-out;
+        transition: background-color 200ms ease-in-out;
         user-select: none;
         -webkit-tap-highlight-color: transparent;
 
         &:hover {
             background-color: rgba(255, 255, 255, 0.5);
-            transform: scale(1.1);
-        }
-
-        &:active {
-            transform: scale(0.95);
         }
     }
 
