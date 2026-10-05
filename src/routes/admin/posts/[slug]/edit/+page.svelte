@@ -47,6 +47,19 @@
         <button class="btn" type="submit">Update</button> 
     </form>
 
+    <form
+        method="POST"
+        use:enhance
+        action="?/deletePost"
+        onsubmit={(event) => {
+            if (!confirm("Are you sure you want to delete this post? This cannot be undone.")) {
+                event.preventDefault();
+            }
+        }}
+    >
+        <button class="btn btn-error" type="submit">Delete post</button>
+    </form>
+
     <h2>Preview</h2>
     <div class="preview">{@html sanitize(html)}</div>
 </section>
