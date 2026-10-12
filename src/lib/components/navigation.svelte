@@ -19,11 +19,12 @@
   };
 
   const signout = async () => {
-    authClient.signOut({
+    open = false;
+    await authClient.signOut({
       fetchOptions: {
         onSuccess: async () => {
           await invalidateAll();
-          goto("/auth/login");
+          await goto("/auth/login");
         },
       },
     });
