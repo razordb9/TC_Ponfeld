@@ -1,8 +1,17 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	import type { ActionData, PageData } from './$types';
+	import type { ActionData } from './$types';
 
-	let { data, form }: { data: PageData; form: ActionData } = $props();
+	type UserAccount = {
+		id: string;
+		name: string;
+		email: string;
+		isAdmin: boolean;
+		createdAt: Date;
+		postCount: number;
+	};
+
+	let { data, form }: { data: { users: UserAccount[] }; form: ActionData } = $props();
 
 	const formattedDate = (date: Date) =>
 		date.toLocaleDateString('de-DE', {
@@ -116,21 +125,27 @@
 							{:else}
 								<p class="delete-note">Konto kann gelöscht werden.</p>
 							{/if}
-							<form
-								method="POST"
-								action="?/deleteUser"
-								onsubmit={confirmDelete}
-								use:enhance
-							>
-								<input type="hidden" name="id" value={account.id} />
-								<button
-									class="delete-button"
-									type="submit"
-									disabled={account.postCount > 0}
+							<div class="user-actions">
+								<form method="POST" action="?/resetPassword" use:enhance>
+									<input type="hidden" name="id" value={account.id} />
+									<button class="reset-button" type="submit">Passwort-Reset senden</button>
+								</form>
+								<form
+									method="POST"
+									action="?/deleteUser"
+									onsubmit={confirmDelete}
+									use:enhance
 								>
-									Löschen
-								</button>
-							</form>
+									<input type="hidden" name="id" value={account.id} />
+									<button
+										class="delete-button"
+										type="submit"
+										disabled={account.postCount > 0}
+									>
+										Löschen
+									</button>
+								</form>
+							</div>
 						</div>
 					</article>
 				{/each}
@@ -421,6 +436,7 @@
 	}
 
 	.save-button,
+	.reset-button,
 	.delete-button {
 		width: auto;
 		margin: 0;
@@ -442,6 +458,16 @@
 		background: #2f6248;
 	}
 
+	.reset-button {
+		border: 1px solid #9eb99b;
+		background: transparent;
+		color: #347755;
+	}
+
+	.reset-button:hover {
+		background: #edf3e8;
+	}
+
 	.card-footer {
 		display: flex;
 		align-items: center;
@@ -450,6 +476,13 @@
 		margin-top: 1rem;
 		padding-top: 0.8rem;
 		border-top: 1px solid var(--admin-line);
+	}
+
+	.user-actions {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-end;
+		gap: 0.6rem;
 	}
 
 	.delete-note {
@@ -538,6 +571,24 @@
 		.user-card-heading time {
 			max-width: 88px;
 			text-align: right;
+		}
+
+		.card-footer {
+			align-items: flex-start;
+			flex-direction: column;
+		}
+
+		.user-actions {
+			width: 100%;
+			justify-content: flex-start;
+		}
+
+		.user-actions form {
+			flex: 1;
+		}
+
+		.user-actions button {
+			width: 100%;
 		}
 	}
 
