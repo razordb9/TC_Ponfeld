@@ -24,7 +24,7 @@
         <div>
           <dt>Vereinsadresse</dt>
           <dd>
-            Joschweg 13, MusterStiege 1 MusterTür 1,<br />9061 Wölfnitz,<br
+            Joschweg 13<br />9061 Wölfnitz,<br
             />Österreich
           </dd>
         </div>
