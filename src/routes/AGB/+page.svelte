@@ -1,29 +1,36 @@
 <div id="agb">
-  <h1>AGB</h1>
-  <h1 class="adsimple-113084898">Datenschutzerklärung</h1>
-  <h2>Inhaltsverzeichnis</h2>
-  <ul>
-    <li>
-      <a href="#einleitung-ueberblick">Einleitung und Überblick</a>
-    </li>
-    <li>
-      <a href="#anwendungsbereich">Anwendungsbereich</a>
-    </li>
-    <li>
-      <a href="#rechtsgrundlagen">Rechtsgrundlagen</a>
-    </li>
-    <li>
-      <a href="#speicherdauer">Speicherdauer</a>
-    </li>
-    <li>
-      <a href="#rechte-dsgvo">Rechte laut Datenschutz-Grundverordnung</a>
-    </li>
-    <li>
-      <a href="#erklaerung-verwendeter-begriffe"
-        >Erklärung verwendeter Begriffe</a
-      >
-    </li>
-  </ul>
+  <header class="legal-header">
+    <p class="legal-kicker">Datenschutz · Rechtliches</p>
+    <h1>Datenschutzerklärung</h1>
+    <p class="legal-intro">
+      Informationen zum Umgang mit personenbezogenen Daten.
+    </p>
+  </header>
+  <nav class="legal-toc" aria-label="Inhaltsverzeichnis">
+    <h2>Inhaltsverzeichnis</h2>
+    <ul>
+      <li>
+        <a href="#einleitung-ueberblick">Einleitung und Überblick</a>
+      </li>
+      <li>
+        <a href="#anwendungsbereich">Anwendungsbereich</a>
+      </li>
+      <li>
+        <a href="#rechtsgrundlagen">Rechtsgrundlagen</a>
+      </li>
+      <li>
+        <a href="#speicherdauer">Speicherdauer</a>
+      </li>
+      <li>
+        <a href="#rechte-dsgvo">Rechte laut Datenschutz-Grundverordnung</a>
+      </li>
+      <li>
+        <a href="#erklaerung-verwendeter-begriffe"
+          >Erklärung verwendeter Begriffe</a
+        >
+      </li>
+    </ul>
+  </nav>
   <h2 id="einleitung-ueberblick" class="adsimple-113084898">
     Einleitung und Überblick
   </h2>
@@ -35,11 +42,11 @@
       target="_blank"
       rel="noopener">Datenschutz-Grundverordnung (EU) 2016/679</a
     >
-    und anwendbaren nationalen Gesetzen zu erklären, welche personenbezogenen
-    Daten (kurz Daten) wir als Verantwortliche &#8211; und die von uns
-    beauftragten Auftragsverarbeiter (z. B. Provider) &#8211; verarbeiten,
-    zukünftig verarbeiten werden und welche rechtmäßigen Möglichkeiten Sie
-    haben. Die verwendeten Begriffe sind geschlechtsneutral zu verstehen.<br />
+    und anwendbaren nationalen Gesetzen zu erklären, welche personenbezogenen Daten
+    (kurz Daten) wir als Verantwortliche &#8211; und die von uns beauftragten Auftragsverarbeiter
+    (z. B. Provider) &#8211; verarbeiten, zukünftig verarbeiten werden und welche
+    rechtmäßigen Möglichkeiten Sie haben. Die verwendeten Begriffe sind geschlechtsneutral
+    zu verstehen.<br />
     <strong class="adsimple-113084898">Kurz gesagt:</strong> Wir informieren Sie
     umfassend über Daten, die wir über Sie verarbeiten.
   </p>
@@ -52,13 +59,13 @@
     >, Links zu weiterführenden Informationen geboten und
     <strong class="adsimple-113084898">Grafiken</strong>
     zum Einsatz gebracht. Wir informieren damit in klarer und einfacher Sprache,
-    dass wir im Rahmen unserer Geschäftstätigkeiten nur dann personenbezogene
-    Daten verarbeiten, wenn eine entsprechende gesetzliche Grundlage gegeben
-    ist. Das ist sicher nicht möglich, wenn man möglichst knappe, unklare und
-    juristisch-technische Erklärungen abgibt, so wie sie im Internet oft
-    Standard sind, wenn es um Datenschutz geht. Ich hoffe, Sie finden die
-    folgenden Erläuterungen interessant und informativ und vielleicht ist die
-    eine oder andere Information dabei, die Sie noch nicht kannten.<br />
+    dass wir im Rahmen unserer Geschäftstätigkeiten nur dann personenbezogene Daten
+    verarbeiten, wenn eine entsprechende gesetzliche Grundlage gegeben ist. Das ist
+    sicher nicht möglich, wenn man möglichst knappe, unklare und juristisch-technische
+    Erklärungen abgibt, so wie sie im Internet oft Standard sind, wenn es um Datenschutz
+    geht. Ich hoffe, Sie finden die folgenden Erläuterungen interessant und informativ
+    und vielleicht ist die eine oder andere Information dabei, die Sie noch nicht
+    kannten.<br />
     Wenn trotzdem Fragen bleiben, möchten wir Sie bitten, sich an die unten bzw.
     im Impressum genannte verantwortliche Stelle zu wenden, den vorhandenen Links
     zu folgen und sich weitere Informationen auf Drittseiten anzusehen. Unsere Kontaktdaten
@@ -304,8 +311,8 @@
       target="_blank"
       rel="noopener">https://www.dsb.gv.at/</a
     >
-    finden. In Deutschland gibt es für jedes Bundesland einen
-    Datenschutzbeauftragten. Für nähere Informationen können Sie sich an die
+    finden. In Deutschland gibt es für jedes Bundesland einen Datenschutzbeauftragten.
+    Für nähere Informationen können Sie sich an die
     <a
       class="adsimple-113084898"
       href="https://www.bfdi.bund.de/DE/Home/home_node.html"
@@ -567,6 +574,126 @@
 
 <style lang="scss">
   #agb {
+    width: min(100% - 2rem, 920px);
+    margin: 0 auto;
+    padding: clamp(2rem, 6vw, 5rem) 0;
     text-align: left;
+
+    .legal-header {
+      margin-bottom: 2rem;
+      padding: clamp(1.75rem, 5vw, 3.5rem);
+      border-radius: 1.5rem;
+      background:
+        radial-gradient(ellipse at top right, #cadb6840, transparent 55%),
+        #2f4858;
+      color: #fafdee;
+      box-shadow: 0 1.25rem 3rem #2f485820;
+    }
+
+    .legal-kicker {
+      margin-bottom: 0.75rem;
+      color: #cadb68;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      color: inherit;
+      font-size: clamp(2.25rem, 6vw, 4rem);
+      text-align: left;
+    }
+
+    .legal-intro {
+      max-width: 42rem;
+      margin-top: 1rem;
+      color: #fafdeccc;
+      font-size: 1.05rem;
+    }
+
+    .legal-toc {
+      margin-bottom: 2rem;
+      padding: clamp(1.5rem, 4vw, 2.25rem);
+      border: 1px solid #2f48581a;
+      border-radius: 1.25rem;
+      background: #fffefa;
+      box-shadow: 0 0.75rem 2rem #2f48580c;
+    }
+
+    h2 {
+      margin: 2.5rem 0 0.85rem;
+      padding-bottom: 0.65rem;
+      border-bottom: 1px solid #2f485826;
+      color: #2f4858;
+      font-size: clamp(1.35rem, 3vw, 1.8rem);
+      text-align: left;
+    }
+
+    .legal-toc h2 {
+      margin-top: 0;
+    }
+
+    p {
+      margin: 0.85rem 0;
+      line-height: 1.8;
+    }
+
+    ul,
+    ol {
+      margin: 0.75rem 0 1.25rem;
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin: 0.45rem 0;
+      padding-left: 0.25rem;
+      line-height: 1.75;
+      list-style: disc;
+    }
+
+    ol > li {
+      list-style: decimal;
+    }
+
+    ul ul {
+      margin-block: 0.4rem;
+    }
+
+    blockquote {
+      margin: 1.25rem 0;
+      padding: 0.25rem 1.25rem;
+      border-left: 3px solid #3ca886;
+      color: #2f4858;
+      background: #3ca8860d;
+    }
+
+    a {
+      color: #176c62;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.2em;
+      overflow-wrap: anywhere;
+
+      &:hover {
+        color: #2f4858;
+      }
+
+      &:focus-visible {
+        border-radius: 2px;
+        outline: 2px solid #3ca886;
+        outline-offset: 3px;
+      }
+    }
+
+    @media (width < 600px) {
+      width: min(100% - 1.25rem, 920px);
+
+      .legal-header,
+      .legal-toc {
+        border-radius: 1rem;
+      }
+    }
   }
 </style>
